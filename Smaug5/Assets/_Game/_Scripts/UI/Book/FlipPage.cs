@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.Net.NetworkInformation;
+using TMPro;
 using UnityEngine.UI;
 
 public class FlipPage : MonoBehaviour
@@ -15,6 +16,7 @@ public class FlipPage : MonoBehaviour
 
     [SerializeField] private Button previousBtn;
     [SerializeField] private Button nextBtn;
+    [SerializeField] private TextMeshProUGUI[] texts;
 
     private Vector3 _rotation;
     private Vector3 _startPosition;
@@ -24,6 +26,8 @@ public class FlipPage : MonoBehaviour
 
     private DateTime _startTime;
     private DateTime _endTime;
+
+    private float _textsDefaultAlpha;
 
     private void Start()
     {
@@ -35,20 +39,28 @@ public class FlipPage : MonoBehaviour
 
         if (nextBtn != null)
             nextBtn.onClick.AddListener(() => TurnOnePage(ButtonType.Next));
+
+        _textsDefaultAlpha = texts[0].color.a;
     }
 
     private void Update()
     {
         if (_isClicked)
         {
+            for (int i = 0; i < texts.Length; i++)
+                texts[i].color = new Color(texts[i].color.r, texts[i].color.g, texts[i].color.b, 1f);
+
             transform.Rotate(_rotation * Time.deltaTime);
             _endTime = DateTime.Now;
 
-            if ((_endTime - _startTime).TotalSeconds >= 1)
+            if ((_endTime - _startTime).TotalSeconds >= 2)
             {
                 _isClicked = false;
                 transform.rotation = _startRotation;
                 transform.position = _startPosition;
+
+                for (int i = 0; i < texts.Length; i++)
+                    texts[i].color = new Color(texts[i].color.r, texts[i].color.g, texts[i].color.b, _textsDefaultAlpha);
             }
         }
     }
