@@ -16,13 +16,15 @@ public class FlipPage : MonoBehaviour
 
     [SerializeField] private Button previousBtn;
     [SerializeField] private Button nextBtn;
+    [SerializeField] private Button closeBtn;
     [SerializeField] private TextMeshProUGUI[] texts;
+    [SerializeField] private OpenBook openBookScript;
 
     private Vector3 _rotation;
     private Vector3 _startPosition;
     private Quaternion _startRotation;
 
-    private bool _isClicked;
+    private bool _isClicked = false;
 
     private DateTime _startTime;
     private DateTime _endTime;
@@ -39,6 +41,9 @@ public class FlipPage : MonoBehaviour
 
         if (nextBtn != null)
             nextBtn.onClick.AddListener(() => TurnOnePage(ButtonType.Next));
+
+        if (closeBtn != null)
+            closeBtn.onClick.AddListener(() => ClickCloseBook());
 
         _textsDefaultAlpha = texts[0].color.a;
     }
@@ -67,18 +72,24 @@ public class FlipPage : MonoBehaviour
 
     private void TurnOnePage(ButtonType type)
     {
-        _isClicked = true;
-        _startTime = DateTime.Now;
-
         if (type == ButtonType.Previous)
         {
-            var newRotation = new Vector3(_startRotation.x, -180, _startRotation.z);
-            transform.rotation = Quaternion.Euler(newRotation);
-            _rotation = new Vector3(0, 180, 0);
+            //var newRotation = new Vector3(_startRotation.x, 180, _startRotation.z);
+            //transform.rotation = Quaternion.Euler(newRotation);
+            _rotation = new Vector3(0, -180, 0);
         }
         else // Next
         {
             _rotation = new Vector3(0, 180, 0);
         }
+
+        _isClicked = true;
+        _startTime = DateTime.Now;
+    }
+
+    private void ClickCloseBook()
+    {
+        openBookScript.ClickClose();
+        print("Foi!");
     }
 }
