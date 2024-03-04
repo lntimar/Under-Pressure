@@ -37,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (isGrounded && velocity.y < 0)
         {
-            velocity.y = 0.2f; //Podia ser 0, mas o checksphere ativa antes, ent é mais seguro deixar menor
+            velocity.y = -2f; //Podia ser 0, mas o checksphere ativa antes, ent é mais seguro deixar menor
         }
 
         float x = Input.GetAxis("Horizontal");
