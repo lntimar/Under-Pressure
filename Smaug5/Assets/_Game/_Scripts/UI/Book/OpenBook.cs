@@ -38,6 +38,8 @@ public class OpenBook : MonoBehaviour
     #region Funções Unity
     private void Start()
     {
+        openBtn.enabled = true;
+
         if (openBtn != null)
             openBtn.onClick.AddListener(() => ClickOpen());
     }
@@ -46,11 +48,15 @@ public class OpenBook : MonoBehaviour
     {
         if (_isOpenClicked || _isCloseClicked)
         {
+            openBtn.enabled = false;
+
             transform.Rotate(_rotation * Time.deltaTime);
             _endTime = DateTime.Now;
 
             if (_isOpenClicked)
             {
+                openBtn.enabled = true;
+
                 if ((_endTime - _startTime).TotalSeconds >= 1)
                 {
                     for (int i = 0; i < tempTexts.Length; i++)
@@ -65,6 +71,8 @@ public class OpenBook : MonoBehaviour
 
             if (_isCloseClicked)
             {
+                openBtn.enabled = true;
+
                 if ((_endTime - _startTime).TotalSeconds >= 1)
                 {
                     _isCloseClicked = false;
