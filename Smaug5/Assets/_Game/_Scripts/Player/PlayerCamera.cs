@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class PlayerCamera : MonoBehaviour
 {
-    public float mouseSensitivity = 1000f;
-    public Transform player;
+    #region Variáveis Globais
+    public float mouseSensitivity = 100f;
+    public Transform playerBody;
     float xRotation = 0f;
+    #endregion
 
-    void Update()
+    #region Funções Unity
+    private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-
+    }
+    void Update()
+    {
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
@@ -20,6 +25,7 @@ public class PlayerCamera : MonoBehaviour
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
         transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
-        player.Rotate(Vector3.up * mouseX);
+        playerBody.Rotate(Vector3.up * mouseX);
     }
+    #endregion
 }

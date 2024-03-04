@@ -5,10 +5,11 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    #region Variáveis Globais
     [Header("Movimentação")]
     public bool isSprinting = false;
-    public float sprintSpeed = 17f;
-    float currentSpeed;
+    public float sprintSpeed = 20f;
+    public float moveSpeed = 15f;
     public float gravity = -9.81f;
     public CharacterController characterController;
 
@@ -19,33 +20,24 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask groundMask;
     Vector3 velocity;
     bool isGrounded;
-    public int jumpsRemaining = 1;
-    //public GameObject doubleJumpEffect;
+    //public int jumpsRemaining = 1;
 
     /*[Header("Agachar")]
     public Transform playerBody;
     public bool isCrouching = false;
     Vector3 crouchScale = new Vector3(1.2f, 0.9f, 1.2f);
-    Vector3 playerScale = new Vector3(1.2f, 1.8f, 1.2f);*/
+    Vector3 playerScale = new Vector3(1.2f, 1.8f, 1.2f);
+    */
+    #endregion
 
-    [Header("Dash")]
-    public float dashSpeed = 10f;
-    public float dashDistance = 5f;
-    public float dashCooldown = 3f;
-    bool isDashing = false;
-    float dashCooldownTimer;
-
-    [Header("Outros")]
-    public PlayerStats playerStats;
-
+    #region Funções Unity
     void Update()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
         if (isGrounded && velocity.y < 0)
         {
-            velocity.y = -2f;
-            jumpsRemaining = 1;
+            velocity.y = 0.2f; //Podia ser 0, mas o checksphere ativa antes, ent é mais seguro deixar menor
         }
 
         float x = Input.GetAxis("Horizontal");
@@ -53,36 +45,33 @@ public class PlayerMovement : MonoBehaviour
 
         Vector3 move = transform.right * x + transform.forward * z;
 
-        characterController.Move(move * currentSpeed * Time.deltaTime);
+        characterController.Move(move * moveSpeed * Time.deltaTime);
 
-        //PULAR
-        if (Input.GetButtonDown("Jump") && jumpsRemaining > 0)
+        #region Pular
+        if (Input.GetButtonDown("Jump") && isGrounded)
         {
-            if (isGrounded)
-            {
-                velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-            }
-            else
-            {
-                velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-                jumpsRemaining--;
-                //GameObject doubleJumpPrefab = Instantiate(doubleJumpEffect, groundCheck);
-                //Destroy(doubleJumpPrefab, 1f);
-            }
+            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
+        #endregion
 
+        velocity.y += gravity * Time.deltaTime;
+
+        characterController.Move(velocity * Time.deltaTime);
+
+        #region Correr
         //CORRER
-        if (Input.GetKey(KeyCode.LeftShift) && isGrounded)
+        /*if (Input.GetKey(KeyCode.LeftShift) && isGrounded)
         {
             isSprinting = true;
-            currentSpeed = sprintSpeed;
+            moveSpeed = sprintSpeed;
         }
         else
         {
             isSprinting = false;
-            currentSpeed = playerStats.speed;
-        }
+        }*/
+        #endregion
 
+        #region Agachar
         //AGACHAR (ARRUMAR)
         /*if (Input.GetKeyDown(KeyCode.LeftControl) && isGrounded && !isCrouching)
         {
@@ -96,53 +85,11 @@ public class PlayerMovement : MonoBehaviour
             playerBody.transform.localScale = playerScale;
             characterController.transform.localScale = playerScale;
         }*/
-
-        //AVANÇAR
-        if (Input.GetKeyDown(KeyCode.E) && !isDashing && dashCooldownTimer <= 0)
-        {
-            StartCoroutine(Dash());
-        }
-        if (dashCooldownTimer > 0)
-        {
-            dashCooldownTimer -= Time.deltaTime;
-        }
-
-        velocity.y += gravity * Time.deltaTime;
-
-        characterController.Move(velocity * Time.deltaTime);
-
-        /*if (Input.GetKeyDown(KeyCode.Q) && pistolOnHand)
-        {
-            machinegunOnHand = true;
-            machinegun.SetActive(true);
-            pistolOnHand = false;
-            pistol.SetActive(false);
-        }
-        else if (Input.GetKeyDown(KeyCode.Q) && machinegunOnHand)
-        {
-            machinegunOnHand = false;
-            machinegun.SetActive(false);
-            pistolOnHand = true;
-            pistol.SetActive(true);
-        }*/
+        #endregion
     }
+    #endregion
 
-    IEnumerator Dash()
-    {
-        isDashing = true;
+    #region Funções Próprias
 
-        Vector3 dashDirection = characterController.velocity.normalized;
-        float dashTimer = 0;
-
-        while (dashTimer < 0.5f) // Tempo total do dash
-        {
-            characterController.Move(dashDirection * dashDistance * Time.deltaTime * dashSpeed); // Ajuste o multiplicador para a velocidade desejada
-
-            dashTimer += Time.deltaTime;
-            yield return null;
-        }
-
-        isDashing = false;
-        dashCooldownTimer = dashCooldown;
-    }
+    #endregion
 }
