@@ -760,9 +760,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b41bb0859f8ebf24dbad3e064071f96d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teste: -2
   isSprinting: 0
-  sprintSpeed: 20
+  sprintSpeed: 30
+  normalSpeed: 15
   moveSpeed: 15
   gravity: -19.62
   characterController: {fileID: 599359036}
@@ -772,6 +772,8 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 8
+  playerBody: {fileID: 599359033}
+  isCrouching: 0
 --- !u!114 &599359035
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -8,8 +8,9 @@ public class PlayerMovement : MonoBehaviour
     #region Variáveis Globais
     [Header("Movimentação")]
     public bool isSprinting = false;
-    public float sprintSpeed = 20f;
-    public float moveSpeed = 15f;
+    public float sprintSpeed = 30f;
+    public float normalSpeed = 15f;
+    public float moveSpeed;
     public float gravity = -9.81f;
     public CharacterController characterController;
 
@@ -20,22 +21,22 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask groundMask;
     Vector3 velocity;
     bool isGrounded;
-    //public int jumpsRemaining = 1;
 
-    /*[Header("Agachar")]
+    [Header("Agachar")]
     public Transform playerBody;
     public bool isCrouching = false;
     Vector3 crouchScale = new Vector3(1.2f, 0.9f, 1.2f);
     Vector3 playerScale = new Vector3(1.2f, 1.8f, 1.2f);
-    */
+    
     #endregion
 
     #region Funções Unity
     void Update()
     {
+        float crouchSpeed = normalSpeed / 2;
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
-        if (isGrounded && velocity.y < 0)
+        if (isGrounded && velocity.y < -20)
         {
             velocity.y = -2f; //Podia ser 0, mas o checksphere ativa antes, ent é mais seguro deixar menor
         }
@@ -48,7 +49,7 @@ public class PlayerMovement : MonoBehaviour
         characterController.Move(move * moveSpeed * Time.deltaTime);
 
         #region Pular
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        if (Input.GetButtonDown("Jump") && isGrounded && !isCrouching)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
@@ -59,8 +60,7 @@ public class PlayerMovement : MonoBehaviour
         characterController.Move(velocity * Time.deltaTime);
 
         #region Correr
-        //CORRER
-        /*if (Input.GetKey(KeyCode.LeftShift) && isGrounded)
+        if (Input.GetKey(KeyCode.LeftShift) && isGrounded && !isCrouching)
         {
             isSprinting = true;
             moveSpeed = sprintSpeed;
@@ -68,23 +68,26 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             isSprinting = false;
-        }*/
+            moveSpeed = normalSpeed;
+        }
         #endregion
 
         #region Agachar
-        //AGACHAR (ARRUMAR)
-        /*if (Input.GetKeyDown(KeyCode.LeftControl) && isGrounded && !isCrouching)
+        //ARRUMAR
+        if (Input.GetKeyDown(KeyCode.LeftControl) && isGrounded && !isCrouching)
         {
             isCrouching = true;
             playerBody.transform.localScale = crouchScale;
             characterController.transform.localScale = crouchScale;
+            moveSpeed = crouchSpeed;
         }
         if (Input.GetKeyUp(KeyCode.LeftControl) && isGrounded && isCrouching)
         {
             isCrouching = false;
             playerBody.transform.localScale = playerScale;
             characterController.transform.localScale = playerScale;
-        }*/
+            moveSpeed = normalSpeed;
+        }
         #endregion
     }
     #endregion
