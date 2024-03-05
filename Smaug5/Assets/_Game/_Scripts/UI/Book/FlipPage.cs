@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-using System.Net.NetworkInformation;
 using TMPro;
 using UnityEngine.UI;
 
@@ -48,10 +47,6 @@ public class FlipPage : MonoBehaviour
     #region Funções Unity
     private void Start()
     {
-        previousBtn.interactable = true;
-        nextBtn.interactable = true;
-        closeBtn.interactable = true;
-
         _startPosition = transform.position;
         _startRotation = transform.rotation;
 
@@ -126,10 +121,6 @@ public class FlipPage : MonoBehaviour
     {
         if (_isClicked)
         {
-            previousBtn.interactable = false;
-            nextBtn.interactable = false;
-            closeBtn.interactable = false;
-
             for (int i = 0; i < texts.Length; i++)
                 texts[i].color = new Color(texts[i].color.r, texts[i].color.g, texts[i].color.b, 1f);
 
@@ -138,10 +129,6 @@ public class FlipPage : MonoBehaviour
 
             if ((_endTime - _startTime).TotalSeconds >= 2)
             {
-                previousBtn.interactable = true;
-                nextBtn.interactable = true;
-                closeBtn.interactable = true;
-
                 _isClicked = false;
                 transform.rotation = _startRotation;
                 transform.position = _startPosition;

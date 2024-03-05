@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CollisionLayersManager : MonoBehaviour
 {
-    [Header("Layers:")]
-    public SingleUnityLayer Test;
+    [Header("Layers:")] 
+    public SingleUnityLayer Player;
+    public SingleUnityLayer LevelTrigger;
 }
