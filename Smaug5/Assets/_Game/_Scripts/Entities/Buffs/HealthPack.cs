@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelTrigger : MonoBehaviour
+public class HealthPack : MonoBehaviour
 {
-    public string levelName;
+    public int Points = 50;
 }

@@ -6,5 +6,8 @@ public class CollisionLayersManager : MonoBehaviour
 {
     [Header("Layers:")] 
     public SingleUnityLayer Player;
-    public SingleUnityLayer LevelTrigger;
+    public SingleUnityLayer CheckPoint;
+    public SingleUnityLayer LoadPoint;
+    public SingleUnityLayer Enemy;
+    public SingleUnityLayer HealthPack;
 }
