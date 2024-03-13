@@ -514,7 +514,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1504695971}
   m_Father: {fileID: 639654798}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &487335500
@@ -772,8 +773,9 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 8
-  playerBody: {fileID: 599359033}
   isCrouching: 0
+  crouchSpeed: 7.5
+  playerBody: {fileID: 599359033}
 --- !u!114 &599359035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -786,7 +788,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffab6299725e5bd45bf2bed7c0a5d54f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  Health: 100
+  MaxHealth: 100
 --- !u!143 &599359036
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1060,6 +1063,77 @@ Transform:
   m_Children: []
   m_Father: {fileID: 599359033}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1504695970
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1504695971}
+  - component: {fileID: 1504695972}
+  m_Layer: 0
+  m_Name: Weapon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1504695971
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1504695970}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 487335499}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1504695972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1504695970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92e126978587c7b45830e1991aabdcd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isHitscan: 0
+  isProjectile: 0
+  damage: 0
+  bullet: {fileID: 0}
+  shootForce: 0
+  upwardForce: 0
+  timeBetweenShooting: 0
+  horizontalSpread: 0
+  verticalSpread: 0
+  range: 0
+  reloadTime: 0
+  timeBetweenShots: 0
+  magazineSize: 0
+  bulletsPerTap: 0
+  allowButtonHold: 0
+  rotationSpeed: 0
+  recoilForce: 0
+  gunSprite: {fileID: 0}
+  muzzleFlash: {fileID: 0}
+  ammoDisplay: {fileID: 0}
+  impactEffect: {fileID: 0}
+  playerCamera: {fileID: 0}
+  attackPoint: {fileID: 0}
+  enemies:
+    serializedVersion: 2
+    m_Bits: 0
+  playerRb: {fileID: 0}
 --- !u!1 &1588777355
 GameObject:
   m_ObjectHideFlags: 0

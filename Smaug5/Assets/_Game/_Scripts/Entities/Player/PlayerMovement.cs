@@ -23,8 +23,9 @@ public class PlayerMovement : MonoBehaviour
     bool isGrounded;
 
     [Header("Agachar")]
-    public Transform playerBody;
     public bool isCrouching = false;
+    public float crouchSpeed = 7.5f;
+    public Transform playerBody;
     Vector3 crouchScale = new Vector3(1.2f, 0.9f, 1.2f);
     Vector3 playerScale = new Vector3(1.2f, 1.8f, 1.2f);
     
@@ -33,7 +34,6 @@ public class PlayerMovement : MonoBehaviour
     #region Funções Unity
     void Update()
     {
-        float crouchSpeed = normalSpeed / 2;
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
         if (isGrounded && velocity.y < -20)
@@ -65,7 +65,7 @@ public class PlayerMovement : MonoBehaviour
             isSprinting = true;
             moveSpeed = sprintSpeed;
         }
-        else
+        else if (!isCrouching)
         {
             isSprinting = false;
             moveSpeed = normalSpeed;
