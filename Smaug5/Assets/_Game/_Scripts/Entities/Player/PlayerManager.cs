@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    //Não me pergunte, também não entendi nada
+    /* Esse Script serve pra basicamente relacionar o player com o inimigo
+    Ou seja, É MUITO IMPORTANTE!!! */
     #region Singleton
 
     public static PlayerManager instance;
