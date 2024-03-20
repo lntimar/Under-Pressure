@@ -5,19 +5,9 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    [Header("Hitscan ou Projétil?")]
-    public bool isHitscan;
-    public bool isProjectile;
-
-    [Header("Dano da Arma Hitscan")]
-    public int damage;
-
-    [Header("Projétil da Arma Projétil")]
-    public GameObject bullet;
-    public float shootForce;
-    public float upwardForce;
-
+    #region Variáveis Globais
     [Header("Estatísticas Gerais")]
+    public int damage;
     public float timeBetweenShooting;
     public float horizontalSpread;
     public float verticalSpread;
@@ -36,19 +26,17 @@ public class Weapon : MonoBehaviour
     bool reloading;
 
     [Header("Gráficos")]
-    public GameObject gunSprite;
-    public GameObject muzzleFlash;
+    public GameObject gunModel;
+    //public GameObject muzzleFlash;
     public TextMeshProUGUI ammoDisplay;
     public GameObject impactEffect;
-    //public CameraShake camShake;
-    //public float camShakeDuration;
-    //public float camShakeMagnitude;
 
     [Header("Referências")]
     public Camera playerCamera;
     public Transform attackPoint;
     public LayerMask enemies;
     public Rigidbody playerRb;
+    #endregion
 
     private void Awake()
     {
@@ -73,7 +61,7 @@ public class Weapon : MonoBehaviour
         }
         else
         {
-            gunSprite.transform.localRotation = Quaternion.identity;
+            gunModel.transform.localRotation = Quaternion.identity;
         }
     }
 
@@ -99,15 +87,10 @@ public class Weapon : MonoBehaviour
         }
 
         //ATIRAR
-        if (isHitscan && readyToShoot && shooting && !reloading && bulletsLeft > 0)
+        if (readyToShoot && shooting && !reloading && bulletsLeft > 0)
         {
             bulletsShot = bulletsPerTap;
             ShootHitscan();
-        }
-        if (isProjectile && readyToShoot && shooting && !reloading && bulletsLeft > 0)
-        {
-            bulletsShot = bulletsPerTap;
-            ShootProjectile();
         }
     }
 
@@ -142,8 +125,8 @@ public class Weapon : MonoBehaviour
         //StartCoroutine(camShake.Shake(camShakeDuration, camShakeMagnitude));
 
         //MUZZLE EFFECT
-        GameObject muzzleFlashInstance = Instantiate(muzzleFlash, attackPoint.position, Quaternion.identity);
-        Destroy(muzzleFlashInstance, 0.1f);
+        //GameObject muzzleFlashInstance = Instantiate(muzzleFlash, attackPoint.position, Quaternion.identity);
+        //Destroy(muzzleFlashInstance, 0.1f);
 
         bulletsLeft--;
         bulletsShot--;
@@ -155,57 +138,6 @@ public class Weapon : MonoBehaviour
         if (bulletsShot > 0 && bulletsLeft > 0)
         {
             Invoke("ShootHitscan", timeBetweenShots);
-        }
-    }
-
-    private void ShootProjectile()
-    {
-        readyToShoot = false;
-
-        //RAYCAST
-        Ray ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-        RaycastHit hit;
-
-        Vector3 targetPoint;
-        if (Physics.Raycast(ray, out hit))
-        {
-            targetPoint = hit.point;
-        }
-        else
-        {
-            targetPoint = ray.GetPoint(75);
-        }
-
-        //PROPAGAÇÃO DE BALA
-        float x = Random.Range(-horizontalSpread, horizontalSpread);
-        float y = Random.Range(-horizontalSpread, verticalSpread);
-        Vector3 directionWithoutSpread = targetPoint - attackPoint.position;
-        Vector3 directionWithSpread = directionWithoutSpread + new Vector3(x, y, 0);
-
-        //PROJÉTIL
-        GameObject currentBullet = Instantiate(bullet, attackPoint.position, Quaternion.identity);
-        currentBullet.transform.forward = directionWithSpread.normalized;
-
-        currentBullet.GetComponent<Rigidbody>().AddForce(directionWithSpread.normalized * shootForce, ForceMode.Impulse);
-        currentBullet.GetComponent<Rigidbody>().AddForce(playerCamera.transform.up * upwardForce, ForceMode.Impulse);
-
-        //BALANÇAR CAMERA
-        //StartCoroutine(camShake.Shake(camShakeDuration, camShakeMagnitude));
-
-        //MUZZLE FLASH
-        GameObject muzzleFlashInstance = Instantiate(muzzleFlash, attackPoint.position, Quaternion.identity);
-        Destroy(muzzleFlashInstance, 0.1f);
-
-        bulletsLeft--;
-        bulletsShot--;
-
-        //RECÚO
-        playerRb.AddForce(-directionWithSpread * recoilForce, ForceMode.Impulse);
-
-        Invoke("ResetShot", timeBetweenShooting);
-        if (bulletsShot > 0 && bulletsLeft > 0)
-        {
-            Invoke("ShootProjectile", timeBetweenShots);
         }
     }
 
@@ -232,7 +164,7 @@ public class Weapon : MonoBehaviour
         while (reloading)
         {
             // Adicione a lógica de rotação aqui
-            gunSprite.transform.Rotate(0, 0, Time.deltaTime * rotationSpeed);
+            gunModel.transform.Rotate(Time.deltaTime * rotationSpeed, 0, 0);
 
             yield return null;
         }
