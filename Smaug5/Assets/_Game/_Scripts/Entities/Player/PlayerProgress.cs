@@ -27,8 +27,8 @@ public class PlayerProgress : MonoBehaviour
     private PlayerStats _playerStats;
 
     // CheckPoint Atual:
-    private static CheckPoint _currentCheckPoint;
-    private static LoadPoint _currentLoadPoint;
+    private static CheckPointTrigger _currentCheckPoint;
+    private static LoadPointTrigger _currentLoadPoint;
     #endregion
 
     #region Funções Unity
@@ -44,23 +44,23 @@ public class PlayerProgress : MonoBehaviour
     private void OnTriggerEnter(Collider col)
     {
         if (col.gameObject.layer == _collisionLayersManager.CheckPoint.Index)
-            ChangeCheckPoint(col.gameObject.GetComponent<CheckPoint>());
+            ChangeCheckPoint(col.gameObject.GetComponent<CheckPointTrigger>());
         else if (col.gameObject.layer == _collisionLayersManager.LoadPoint.Index)
-            LoadNewScene(col.gameObject.GetComponent<LoadPoint>());
+            LoadNewScene(col.gameObject.GetComponent<LoadPointTrigger>());
     }
     #endregion
 
     #region Funções Próprias
     public void Restart() => TransitionManager.Instance().Transition(SceneManager.GetActiveScene().name, transitionSettings, loadTime);
 
-    private void LoadNewScene(LoadPoint newLoadPoint)
+    private void LoadNewScene(LoadPointTrigger newLoadPoint)
     {
         _currentLoadPoint = newLoadPoint;
         WriteStats(WriteType.LoadPoint);
         SceneManager.LoadScene(_currentLoadPoint.SceneName);
     } 
 
-    private void ChangeCheckPoint(CheckPoint newCheckPoint)
+    private void ChangeCheckPoint(CheckPointTrigger newCheckPoint)
     {
         _currentCheckPoint = newCheckPoint; 
         // Registrar valores no PlayerLog

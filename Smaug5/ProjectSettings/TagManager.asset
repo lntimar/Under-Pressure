@@ -14,9 +14,9 @@ TagManager:
   - Player
   - CheckPoint
   - LoadPoint
-  - 
-  - 
-  - 
+  - ConversationTrigger
+  - Enemy
+  - HealthPack
   - 
   - 
   - 

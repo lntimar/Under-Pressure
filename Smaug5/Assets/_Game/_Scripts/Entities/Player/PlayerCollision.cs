@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DialogueEditor;
 using UnityEngine;
 
 public class PlayerCollision : MonoBehaviour
@@ -7,6 +8,7 @@ public class PlayerCollision : MonoBehaviour
     #region Variáveis Globais
     // Referências:
     private CollisionLayersManager _collisionLayersManager;
+    private ConversationManager _conversationManagerScript;
 
     // Componentes:
     private PlayerStats _playerStats;
@@ -16,6 +18,7 @@ public class PlayerCollision : MonoBehaviour
     private void Awake()
     {
         _collisionLayersManager = FindObjectOfType<CollisionLayersManager>();
+        _conversationManagerScript = FindObjectOfType<ConversationManager>();
         _playerStats = GetComponent<PlayerStats>();
     }
 
@@ -32,5 +35,17 @@ public class PlayerCollision : MonoBehaviour
             Destroy(col.gameObject);
         }
     }
+
+    private void OnTriggerEnter(Collider col)
+    {
+        if (col.gameObject.layer == _collisionLayersManager.ConversationTrigger.Index)
+        {
+            StartConversation(col.gameObject.GetComponent<ConversationTrigger>().ConversationScript);
+        }
+    }
+    #endregion
+
+    #region Funções Próprias
+    private void StartConversation(NPCConversation conversation) => _conversationManagerScript.StartConversation(conversation);
     #endregion
 }

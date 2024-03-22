@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class CheckPoint : MonoBehaviour
+public class CheckPointTrigger : MonoBehaviour
 {
     public Transform checkPointSpawnPos;
     public string sceneName;
