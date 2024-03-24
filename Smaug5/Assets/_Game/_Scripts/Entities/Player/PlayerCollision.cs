@@ -41,6 +41,7 @@ public class PlayerCollision : MonoBehaviour
         if (col.gameObject.layer == _collisionLayersManager.ConversationTrigger.Index)
         {
             StartConversation(col.gameObject.GetComponent<ConversationTrigger>().ConversationScript);
+            Destroy(col.gameObject);
         }
     }
     #endregion
