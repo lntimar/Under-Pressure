@@ -29,11 +29,6 @@ public class PlayerCollision : MonoBehaviour
             _playerStats.ChangeHealthPoints(col.gameObject.GetComponent<EnemyStats>().Damage);
             // TODO: Aplicar Knockback
         }
-        else if (col.gameObject.layer == _collisionLayersManager.HealthPack.Index)
-        {
-            _playerStats.ChangeHealthPoints(col.gameObject.GetComponent<HealthPack>().Points);
-            Destroy(col.gameObject);
-        }
     }
 
     private void OnTriggerEnter(Collider col)
@@ -41,6 +36,11 @@ public class PlayerCollision : MonoBehaviour
         if (col.gameObject.layer == _collisionLayersManager.ConversationTrigger.Index)
         {
             StartConversation(col.gameObject.GetComponent<ConversationTrigger>().ConversationScript);
+            Destroy(col.gameObject);
+        }
+        else if (col.gameObject.layer == _collisionLayersManager.HealthPack.Index)
+        {
+            _playerStats.ChangeHealthPoints(col.gameObject.GetComponent<HealthPack>().Points);
             Destroy(col.gameObject);
         }
     }

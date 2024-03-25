@@ -37,7 +37,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 282, y: -173}
+  m_AnchoredPosition: {x: 282, y: -183}
   m_SizeDelta: {x: 592.70496, y: 131.685}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &597940066340652073
@@ -105,14 +105,14 @@ RectTransform:
   m_GameObject: {fileID: 2688397720665024708}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.4419, y: 1.4419, z: 1.4419}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 743178260937694259}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -66.921}
+  m_AnchoredPosition: {x: 359, y: -325}
   m_SizeDelta: {x: 0, y: -133.84}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4323203240529503874
@@ -625,8 +625,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5076406518077678625}
   - {fileID: 7356121657875251471}
+  - {fileID: 5076406518077678625}
   m_Father: {fileID: 7509007416944549997}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -652,7 +652,7 @@ MonoBehaviour:
   BackgroundImageSliced: 1
   OptionImage: {fileID: 21300000, guid: bf566e80557acbc45b9a695fcaa25327, type: 3}
   OptionImageSliced: 1
-  AllowMouseInteraction: 1
+  AllowMouseInteraction: 0
   DialoguePanel: {fileID: 5076406518077678625}
   OptionsPanel: {fileID: 7356121657875251471}
   DialogueBackground: {fileID: 6755026941412545740}

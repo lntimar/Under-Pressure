@@ -46,12 +46,16 @@ namespace DialogueEditor
         public UnityEngine.Events.UnityEvent Event;
         public List<EditableParameter> ParameterList; // Serialized into the json string
 
-        
+
 
 
         //--------------------------------------
         // Util
         //--------------------------------------
+
+        public void StopConversation() => Invoke("End", 1f);
+
+        private void End() => ConversationManager.Instance.EndConversation();
 
         public NodeEventHolder GetNodeData(int id)
         {

@@ -627,7 +627,8 @@ namespace DialogueEditor
         private void TurnOnUI()
         {
             DialoguePanel.gameObject.SetActive(true);
-            OptionsPanel.gameObject.SetActive(true);
+            // Alterando ASSET
+            //OptionsPanel.gameObject.SetActive(true);
 
             if (BackgroundImage != null)
             {
