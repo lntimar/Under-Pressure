@@ -121,6 +121,10 @@ public class FlipPage : MonoBehaviour
     {
         if (_isClicked)
         {
+            previousBtn.interactable = false;
+            nextBtn.interactable = false;
+            closeBtn.interactable = false;
+            
             for (int i = 0; i < texts.Length; i++)
                 texts[i].color = new Color(texts[i].color.r, texts[i].color.g, texts[i].color.b, 1f);
 
@@ -129,6 +133,10 @@ public class FlipPage : MonoBehaviour
 
             if ((_endTime - _startTime).TotalSeconds >= 2)
             {
+                previousBtn.interactable = true;
+                nextBtn.interactable = true;
+                closeBtn.interactable = true;
+
                 _isClicked = false;
                 transform.rotation = _startRotation;
                 transform.position = _startPosition;
