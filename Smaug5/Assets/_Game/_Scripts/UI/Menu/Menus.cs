@@ -2,7 +2,8 @@ public enum Default
 {
     MainMenu,
     Options,
-    Controls
+    Controls,
+    Credits
 }
 
 public enum InGame
