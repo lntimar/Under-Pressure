@@ -12,12 +12,11 @@ public class SonarScript : MonoBehaviour
     {
         if (Input.GetMouseButton(1))
         {
-            affectedObjects.ForEach(GameObject =>
+            affectedObjects.ForEach(obj =>
             {
-                var rb = GetComponent<Rigidbody>();
+                var rb = obj.GetComponent<Rigidbody>();
                 rb.AddExplosionForce(force, transform.position, 15f, 2f);
             });
-
         }
     }
 

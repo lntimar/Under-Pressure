@@ -104,8 +104,10 @@ public class Weapon : MonoBehaviour
         Vector3 direction = playerCamera.transform.forward + new Vector3(x, y, 0);
 
         //RAYCAST
+        int layerMaskIgnore = ~(1 << LayerMask.NameToLayer("IgnoreRaycast"));
+
         RaycastHit hit;
-        if (Physics.Raycast(playerCamera.transform.position, direction, out hit, range))
+        if (Physics.Raycast(playerCamera.transform.position, direction, out hit, range, layerMaskIgnore))
         {
             Debug.Log(hit.transform.name);
 
