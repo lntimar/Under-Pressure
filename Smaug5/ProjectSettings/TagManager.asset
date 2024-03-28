@@ -17,7 +17,7 @@ TagManager:
   - ConversationTrigger
   - Enemy
   - HealthPack
-  - 
+  - IgnoreRaycast
   - 
   - 
   - 
