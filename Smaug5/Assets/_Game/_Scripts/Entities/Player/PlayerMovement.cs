@@ -28,13 +28,20 @@ public class PlayerMovement : MonoBehaviour
     public Transform playerBody;
     Vector3 crouchScale = new Vector3(1.2f, 0.9f, 1.2f);
     Vector3 playerScale = new Vector3(1.2f, 1.8f, 1.2f);
-    
+
+    [Header("Escalar")]
+    public float climbingDistance = 0.4f;
+    public Transform stairsCheck;
+    public LayerMask stairsMask;
+    public bool isClimbing = false;
+
     #endregion
 
     #region Funções Unity
     void Update()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+        isClimbing = Physics.CheckSphere(stairsCheck.position, climbingDistance, stairsMask);
 
         if (isGrounded && velocity.y < -20)
         {
@@ -46,7 +53,18 @@ public class PlayerMovement : MonoBehaviour
 
         Vector3 move = transform.right * x + transform.forward * z;
 
-        characterController.Move(move * moveSpeed * Time.deltaTime);
+        if (!isClimbing)
+        {
+            characterController.Move(move * moveSpeed * Time.deltaTime);
+        }
+
+        //ARRUMAR
+        if (isClimbing)
+        {
+            float y = Input.GetAxis("Vertical");
+            Vector2 climbMove = transform.up * y;
+            characterController.Move(climbMove * moveSpeed * Time.deltaTime);
+        }
 
         #region Pular
         if (Input.GetButtonDown("Jump") && isGrounded && !isCrouching)
@@ -73,7 +91,6 @@ public class PlayerMovement : MonoBehaviour
         #endregion
 
         #region Agachar
-        //ARRUMAR
         if (Input.GetKeyDown(KeyCode.LeftControl) && isGrounded && !isCrouching)
         {
             isCrouching = true;
