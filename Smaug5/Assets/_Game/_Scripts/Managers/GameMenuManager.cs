@@ -9,7 +9,7 @@ public class GameMenuManager : MonoBehaviour
     public static GameMenuManager Instance;
 
     // Referências dos Menus que serão manipulados
-    public GameObject GameMenu, OptionsMenu, ControlsMenu;
+    public static GameObject GameMenu, OptionsMenu, ControlsMenu;
     #endregion
 
     #region Funções Unity
@@ -31,21 +31,21 @@ public class GameMenuManager : MonoBehaviour
     }
 
     // Abre o menu desejado e fecha o que foi utilizado anteriormente
-    public static void OpenMenu(InGame menu, GameObject callingMenu)
+    public void OpenMenu(InGame menu, GameObject callingMenu)
     {
         // Ativando o menu selecionado
         switch (menu)
         {
             case InGame.GameMenu:
-                Instance.GameMenu.SetActive(true);
+                GameMenu.SetActive(true);
                 break;
 
             case InGame.Options:
-                Instance.OptionsMenu.SetActive(true);
+                OptionsMenu.SetActive(true);
                 break;
 
             case InGame.Controls:
-                Instance.ControlsMenu.SetActive(true);
+                ControlsMenu.SetActive(true);
                 break;
         }
 
