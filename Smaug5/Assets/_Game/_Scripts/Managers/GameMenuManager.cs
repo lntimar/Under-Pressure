@@ -8,6 +8,9 @@ public class GameMenuManager : MonoBehaviour
     // Instância da Classe
     public static GameMenuManager Instance;
 
+    // Referência Canvas
+    public static GameObject MenuCanvas;
+
     // Referências dos Menus que serão manipulados
     public static GameObject GameMenu, OptionsMenu, ControlsMenu;
     #endregion
@@ -23,11 +26,13 @@ public class GameMenuManager : MonoBehaviour
     #region Funções Próprias
     // Coletando os objetos necessários
     private void Init()
-    {
-        var menuCanvas = GameObject.Find("GameMenu Canvas");
-        GameMenu = menuCanvas.transform.Find("GameMenu").gameObject;
-        OptionsMenu = menuCanvas.transform.Find("OptionsMenu").gameObject;
-        ControlsMenu = menuCanvas.transform.Find("ControlsMenu").gameObject;
+    { 
+        MenuCanvas = GameObject.Find("GameMenu Canvas");
+        GameMenu = MenuCanvas.transform.Find("GameMenu").gameObject;
+        OptionsMenu = MenuCanvas.transform.Find("OptionsMenu").gameObject;
+        ControlsMenu = MenuCanvas.transform.Find("ControlsMenu").gameObject;
+
+        MenuCanvas.SetActive(false);
     }
 
     // Abre o menu desejado e fecha o que foi utilizado anteriormente

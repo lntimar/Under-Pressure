@@ -56,3 +56,5 @@ MonoBehaviour:
     _layerIndex: 11
   ConversationTrigger:
     _layerIndex: 9
+  Stairs:
+    _layerIndex: 13

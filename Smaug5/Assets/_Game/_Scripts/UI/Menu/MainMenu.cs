@@ -16,7 +16,7 @@ public class MainMenu : MonoBehaviour
     #endregion
 
     #region Funções Próprias
-    public void StartGame() => TransitionManager.Instance().Transition(SceneManager.GetActiveScene().name, transitionSettings, loadTime);
+    public void StartGame() => TransitionManager.Instance().Transition("Level 1", transitionSettings, loadTime);
 
     public void GoToOptions() => MainMenuManager.Instance.OpenMenu(Default.Options, MainMenuManager.MainMenu);
 
