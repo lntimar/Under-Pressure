@@ -33,7 +33,7 @@ public class GameMenu : MonoBehaviour
     private void Pause()
     {
         Time.timeScale = 0f;
-        GameMenuManager.MenuCanvas.SetActive(true);
+        GameMenuManager.MenuCanvas.GetComponent<Canvas>().enabled = true;
         _gamePaused = true;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
@@ -42,7 +42,7 @@ public class GameMenu : MonoBehaviour
     public void Resume()
     {
         Time.timeScale = 1f;
-        GameMenuManager.MenuCanvas.SetActive(false);
+        GameMenuManager.MenuCanvas.GetComponent<Canvas>().enabled = false;
         _gamePaused = false;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;

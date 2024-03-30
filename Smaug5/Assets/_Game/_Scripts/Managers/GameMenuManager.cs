@@ -32,7 +32,7 @@ public class GameMenuManager : MonoBehaviour
         OptionsMenu = MenuCanvas.transform.Find("OptionsMenu").gameObject;
         ControlsMenu = MenuCanvas.transform.Find("ControlsMenu").gameObject;
 
-        MenuCanvas.SetActive(false);
+        MenuCanvas.GetComponent<Canvas>().enabled = false;
     }
 
     // Abre o menu desejado e fecha o que foi utilizado anteriormente
