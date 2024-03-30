@@ -3688,7 +3688,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e51306a2e865da84a9dadea50694cffc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioMixer: {fileID: 0}
+  audioMixer: {fileID: 24100000, guid: 0fb87ec143f71da4ab2b6d25c300c844, type: 2}
   volumeSlider: {fileID: 0}
 --- !u!1 &1068415805
 GameObject:
@@ -5288,7 +5288,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e51306a2e865da84a9dadea50694cffc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioMixer: {fileID: 0}
+  audioMixer: {fileID: 24100000, guid: 0fb87ec143f71da4ab2b6d25c300c844, type: 2}
   volumeSlider: {fileID: 0}
 --- !u!1 &1627832349
 GameObject:
