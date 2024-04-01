@@ -11,4 +11,5 @@ public class CollisionLayersManager : MonoBehaviour
     public SingleUnityLayer Enemy;
     public SingleUnityLayer HealthPack;
     public SingleUnityLayer ConversationTrigger;
+    public SingleUnityLayer Stairs;
 }

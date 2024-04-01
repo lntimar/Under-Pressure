@@ -8,17 +8,24 @@ public class EnemyBehavior : MonoBehaviour
     #region Global Variables
     //Tamanho da visão do inimigo
     public float lookRadius = 10f;
+    public float minSpeed = 0f;
 
     Transform target;
     NavMeshAgent agent;
+    Animator animator;
+    BoxCollider[] boxColliders;
+    private Rigidbody _rb;
 
     #endregion
 
     #region Default Methods
     void Start()
     {
+        animator = GetComponent<Animator>();
         target = PlayerManager.instance.player.transform;
         agent = GetComponent<NavMeshAgent>();
+        boxColliders = GetComponentsInChildren<BoxCollider>();
+        _rb = GetComponent<Rigidbody>();
     }
 
     private void Update()
@@ -34,8 +41,15 @@ public class EnemyBehavior : MonoBehaviour
             //Está perto do player e pronto para atacar
             if (distance <= agent.stoppingDistance)
             {
-                //Atacar jogador
+                animator.SetBool("Chasing", false);
+                //Debug.Log("chasing off");
+                EnemyAttack();
                 FaceTarget();
+            }
+            else
+            {
+                animator.SetBool("Chasing", true);
+                //Debug.Log("chasing on");
             }
         }
     }
@@ -44,11 +58,51 @@ public class EnemyBehavior : MonoBehaviour
 
     #region Custom Methods
     //Faz com que o inimigo sempre olhe para o player
-    void FaceTarget ()
+    private void FaceTarget ()
     {
         Vector3 direction = (target.position - transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
+    }
+
+    //Ataque acontece quando player encosta na hitbox na mão do inimigo
+    public void EnemyAttack()
+    {
+        if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Z_Attack"))
+        {
+            animator.SetTrigger("Attack");
+            Debug.Log("Trigger Attack");
+            //agent.SetDestination(transform.position);
+        }
+    }
+
+    public void disableAttack()
+    {
+        foreach (BoxCollider collider in boxColliders)
+        {
+            collider.enabled = false;
+            Debug.Log("Desativou Colisor");
+        }
+    }
+
+    public void enableAttack()
+    {
+        foreach (BoxCollider collider in boxColliders)
+        {
+            collider.enabled = true;
+            Debug.Log("Ativou Colisor");
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        var player = other.GetComponent<PlayerMovement>();
+
+        if (player != null)
+        {
+            Debug.Log("Bateu");
+            //tirar vida jogador
+        }
     }
 
     //Apenas visual do raio de visão

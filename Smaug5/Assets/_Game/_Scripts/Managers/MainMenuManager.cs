@@ -9,7 +9,7 @@ public class MainMenuManager : MonoBehaviour
     public static MainMenuManager Instance;
 
     // Referências dos Menus que serão manipulados
-    public GameObject MainMenu, OptionsMenu, ControlsMenu, CreditsMenu;
+    public static GameObject MainMenu, OptionsMenu, ControlsMenu, CreditsMenu;
     #endregion
 
     #region Funções Unity
@@ -32,25 +32,25 @@ public class MainMenuManager : MonoBehaviour
     }
 
     // Abre o menu desejado e fecha o que foi utilizado anteriormente
-    public static void OpenMenu(Default menu, GameObject callingMenu)
+    public void OpenMenu(Default menu, GameObject callingMenu)
     {
         // Ativando o menu selecionado
         switch (menu)
         {
             case Default.MainMenu:
-                Instance.MainMenu.SetActive(true);
+                MainMenu.SetActive(true);
                 break;
 
             case Default.Options:
-                Instance.OptionsMenu.SetActive(true);
+                OptionsMenu.SetActive(true);
                 break;
 
             case Default.Controls:
-                Instance.ControlsMenu.SetActive(true);
+                ControlsMenu.SetActive(true);
                 break;
 
             case Default.Credits:
-                Instance.CreditsMenu.SetActive(true);
+                CreditsMenu.SetActive(true);
                 break;
         }
 
