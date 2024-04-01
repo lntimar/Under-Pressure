@@ -59,12 +59,14 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //ARRUMAR
+        #region Escalar
         if (isClimbing)
         {
-            float y = Input.GetAxis("Vertical");
-            Vector2 climbMove = transform.up * y;
-            characterController.Move(climbMove * moveSpeed * Time.deltaTime);
+            float verticalInput = Input.GetAxis("Vertical");
+            Vector3 climbMovement = transform.up * verticalInput * moveSpeed * Time.deltaTime;
+            characterController.Move(climbMovement);
         }
+        #endregion
 
         #region Pular
         if (Input.GetButtonDown("Jump") && isGrounded && !isCrouching)
