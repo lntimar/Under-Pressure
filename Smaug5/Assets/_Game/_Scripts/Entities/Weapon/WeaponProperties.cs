@@ -38,6 +38,7 @@ public class Weapon : MonoBehaviour
     public Rigidbody playerRb;
     #endregion
 
+    #region Funções Unity
     private void Awake()
     {
         bulletsLeft = magazineSize;
@@ -64,7 +65,9 @@ public class Weapon : MonoBehaviour
             gunModel.transform.localRotation = Quaternion.identity;
         }
     }
+    #endregion
 
+    #region Funções Próprias
     private void ShootingInput()
     {
         if (allowButtonHold)
@@ -109,15 +112,15 @@ public class Weapon : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(playerCamera.transform.position, direction, out hit, range, layerMaskIgnore))
         {
-            Debug.Log(hit.transform.name);
-
             EnemyStats enemyStats = hit.transform.GetComponent<EnemyStats>();
             if (enemyStats != null)
             {
-                //enemyStats.TakeDamage(damage);
+                Debug.Log(hit.transform.name + " is hit!");
+                enemyStats.ChangeHealthPoints(damage);
             }
             else
             {
+                Debug.Log(hit.transform.name);
                 GameObject impactPrefab = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
                 Destroy(impactPrefab, 3f);
             }
@@ -171,4 +174,5 @@ public class Weapon : MonoBehaviour
             yield return null;
         }
     }
+    #endregion
 }

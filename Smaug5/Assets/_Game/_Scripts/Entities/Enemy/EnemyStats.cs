@@ -4,7 +4,31 @@ using UnityEngine;
 
 public class EnemyStats : MonoBehaviour
 {
+    #region Variáveis Globais
     [Header("Estatísticas do Inimigo")]
-    public int Health = 100;
+    public int MaxHealth = 100;
+    public int CurrentHealth;
     public int Damage = 20;
+    #endregion
+
+    private void Start()
+    {
+        CurrentHealth = MaxHealth;
+    }
+
+    #region Funções Próprias
+    public void ChangeHealthPoints(int points)
+    {
+        if (CurrentHealth > 0)
+        {
+            CurrentHealth -= points;
+        }
+
+        if (CurrentHealth <= 0)
+        {
+            Debug.Log(gameObject.name + " is DEAD, not big surprise");
+            gameObject.SetActive(false);
+        }
+    }
+    #endregion
 }
