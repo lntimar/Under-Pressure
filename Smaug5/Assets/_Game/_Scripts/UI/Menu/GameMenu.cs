@@ -52,6 +52,10 @@ public class GameMenu : MonoBehaviour
 
     public void GoToControls() => GameMenuManager.Instance.OpenMenu(InGame.Controls, GameMenuManager.GameMenu);
 
-    public void GoToMainMenu() => TransitionManager.Instance().Transition("Main Menu", transitionSettings, loadTime);
+    public void GoToMainMenu() 
+    {
+        Time.timeScale = 0f;
+        TransitionManager.Instance().Transition("Main Menu", transitionSettings, loadTime);
+    } 
     #endregion
 }
