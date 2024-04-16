@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -866,6 +866,12 @@ MonoBehaviour:
   isCrouching: 0
   crouchSpeed: 7.5
   playerBody: {fileID: 599359033}
+  climbingDistance: 0.4
+  stairsCheck: {fileID: 0}
+  stairsMask:
+    serializedVersion: 2
+    m_Bits: 0
+  isClimbing: 0
 --- !u!114 &599359035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -880,6 +886,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 100
   MaxHealth: 100
+  Souls: 0
 --- !u!143 &599359036
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1577,6 +1584,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lookRadius: 50
+  minSpeed: 0
 --- !u!54 &857149299
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2266,6 +2274,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lookRadius: 50
+  minSpeed: 0
 --- !u!195 &1073308788
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2472,6 +2481,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lookRadius: 50
+  minSpeed: 0
 --- !u!95 &1304847688
 Animator:
   serializedVersion: 5
