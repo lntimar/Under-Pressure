@@ -5,17 +5,25 @@ using UnityEngine;
 public class SoulScript : MonoBehaviour
 {
     public int soulValue;
-    SonarScript _sonar;
+    public LayerMask playerLayer;
+    PlayerStats _playerStats;
 
-    private void Awake() => _sonar = GetComponent<SonarScript>();
-
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-
-
-        if (_sonar != null)
+        if (playerLayer == (playerLayer | (1 << other.gameObject.layer)))
         {
-            
+            if (_playerStats == null)
+            {
+                _playerStats = other.gameObject.GetComponent<PlayerStats>();
+                if (_playerStats == null)
+                {
+                    Debug.LogError("PlayerStats não encontrado no objeto do jogador");
+                    return;
+                }
+            }
+
+            _playerStats.Souls += soulValue;
+            Destroy(gameObject);
         }
     }
 }

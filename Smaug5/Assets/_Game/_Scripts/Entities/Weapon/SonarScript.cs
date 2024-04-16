@@ -10,8 +10,9 @@ public class SonarScript : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButton(1))
+        if (Input.GetMouseButtonDown(1))
         {
+            Debug.Log("FUSRODAH");
             affectedObjects.ForEach(obj =>
             {
                 var rb = obj.GetComponent<Rigidbody>();

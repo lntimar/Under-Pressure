@@ -9,6 +9,9 @@ public class EnemyStats : MonoBehaviour
     public int MaxHealth = 100;
     public int CurrentHealth;
     public int Damage = 20;
+
+    [Header("Referências")]
+    public GameObject _soul;
     #endregion
 
     private void Start()
@@ -27,7 +30,8 @@ public class EnemyStats : MonoBehaviour
         if (CurrentHealth <= 0)
         {
             Debug.Log(gameObject.name + " is DEAD, not big surprise");
-            gameObject.SetActive(false);
+            Instantiate(_soul, transform.position, Quaternion.identity);
+            Destroy(gameObject);
         }
     }
     #endregion

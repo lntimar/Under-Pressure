@@ -8,6 +8,7 @@ public class PlayerStats : MonoBehaviour
     [Header("Estatísticas do Jogador")]
     public int Health = 100;
     public int MaxHealth = 100;
+    public int Souls = 0;
     //public float speed = 12f;
     //public int shield = 100;
     //public float armor = 5f;
