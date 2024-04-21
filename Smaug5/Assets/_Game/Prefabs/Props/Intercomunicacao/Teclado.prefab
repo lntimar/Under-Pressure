@@ -66,10 +66,41 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f72ce4741f46e0642b39d2571351ee56,
         type: 3}
       propertyPath: m_Name
-      value: M_Teclado
+      value: Teclado
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f72ce4741f46e0642b39d2571351ee56,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1388748194496970461}
   m_SourcePrefab: {fileID: 100100000, guid: f72ce4741f46e0642b39d2571351ee56, type: 3}
+--- !u!1 &658449781468900072 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f72ce4741f46e0642b39d2571351ee56,
+    type: 3}
+  m_PrefabInstance: {fileID: 423937906083502009}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1388748194496970461
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 658449781468900072}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.02, y: 0.019999998, z: 0.0021056577}
+  m_Center: {x: 0, y: 0, z: 0.0010528286}

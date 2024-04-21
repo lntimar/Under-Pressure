@@ -81,10 +81,41 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 739bff06d4a469b43a9d3dd2d27fc58e,
         type: 3}
       propertyPath: m_Name
-      value: Escada_longa
+      value: Escada Longa
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 739bff06d4a469b43a9d3dd2d27fc58e,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3973308672328781955}
   m_SourcePrefab: {fileID: 100100000, guid: 739bff06d4a469b43a9d3dd2d27fc58e, type: 3}
+--- !u!1 &6422248444821861962 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 739bff06d4a469b43a9d3dd2d27fc58e,
+    type: 3}
+  m_PrefabInstance: {fileID: 6188228732959083291}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &3973308672328781955
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6422248444821861962}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.9688649, y: 0.027839165, z: 0.02609694}
+  m_Center: {x: 0.5007601, y: 0.06831658, z: -0.000044023924}
