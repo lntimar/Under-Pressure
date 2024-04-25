@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 6a77774e96701024dad30d15824fb037, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.035305757, g: 0.14338638, b: 0.17193745, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -210,6 +210,36 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a82a87e68ab906d4bbf876f687e2a155, type: 3}
+--- !u!1 &74368375 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8000526881459911748, guid: 1cf8966aa281a6a4fa451b6236c94f00,
+    type: 3}
+  m_PrefabInstance: {fileID: 5434893545398132188}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &74368381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 74368375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc49c2c0dc084d8438e822a8bf61a657, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waterHeight: 100
+  isUnderwater: 0
+  normalColor:
+    r: 0
+    g: 0
+    b: 0
+    a: 0
+  underwaterColor:
+    r: 0
+    g: 0
+    b: 0
+    a: 0
 --- !u!1 &102936020
 GameObject:
   m_ObjectHideFlags: 0
@@ -2546,7 +2576,11 @@ PrefabInstance:
     - {fileID: 3085266810321219194, guid: 1cf8966aa281a6a4fa451b6236c94f00, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8000526881459911748, guid: 1cf8966aa281a6a4fa451b6236c94f00,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 74368381}
   m_SourcePrefab: {fileID: 100100000, guid: 1cf8966aa281a6a4fa451b6236c94f00, type: 3}
 --- !u!1001 &6533625207050538789
 PrefabInstance:
