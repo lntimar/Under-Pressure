@@ -7,7 +7,7 @@ public class SoulScript : MonoBehaviour
 {
     public int soulValue;
     public LayerMask playerLayer;
-    public TextMeshProUGUI soulDisplay;
+    //public TextMeshProUGUI soulDisplay;
     PlayerStats _playerStats;
 
     private void OnTriggerEnter(Collider other)
@@ -25,10 +25,10 @@ public class SoulScript : MonoBehaviour
             }
 
             _playerStats.Souls += soulValue;
-            if (soulDisplay == null)
+            /*if (soulDisplay == null)
             {
                 soulDisplay.SetText("Almas: " + _playerStats.Souls);
-            }
+            }*/
             Destroy(gameObject);
         }
     }

@@ -7,17 +7,26 @@ public class SonarScript : MonoBehaviour
 {
     public float force = 700f;
     private List<GameObject> affectedObjects = new ();
+    public PlayerStats playerStats;
 
     private void Update()
     {
         if (Input.GetMouseButtonDown(1))
         {
-            Debug.Log("FUSRODAH");
-            affectedObjects.ForEach(obj =>
+            if (playerStats.Souls == 1)
             {
-                var rb = obj.GetComponent<Rigidbody>();
-                rb.AddExplosionForce(force, transform.position, 15f, 2f);
-            });
+                Debug.Log("FUSRODAH");
+                playerStats.Souls--;
+                affectedObjects.ForEach(obj =>
+                {
+                    var rb = obj.GetComponent<Rigidbody>();
+                    rb.AddExplosionForce(force, transform.position, 15f, 2f);
+                });
+            }
+            else
+            {
+                Debug.Log("Sem almas o suficiente!");
+            }
         }
     }
 
