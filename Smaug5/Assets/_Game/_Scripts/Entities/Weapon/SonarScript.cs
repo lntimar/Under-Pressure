@@ -47,6 +47,4 @@ public class SonarScript : MonoBehaviour
             affectedObjects.Remove(other.gameObject);
         }
     }
-
-
 }

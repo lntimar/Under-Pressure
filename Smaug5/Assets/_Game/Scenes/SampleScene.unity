@@ -1039,6 +1039,7 @@ MonoBehaviour:
   CurrentHealth: 0
   Damage: 20
   _soul: {fileID: 7353898820259312844, guid: 5cc2ca53f855ed34884846cf590d6905, type: 3}
+  sonarScript: {fileID: 1509562239}
 --- !u!54 &494330927
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1144,6 +1145,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8120726205671866242, guid: 1cf8966aa281a6a4fa451b6236c94f00,
+        type: 3}
+      propertyPath: ammoDisplay
+      value: 
+      objectReference: {fileID: 125954165}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2152,6 +2158,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1401991456}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1509562239 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6077960993787923247, guid: 1cf8966aa281a6a4fa451b6236c94f00,
+    type: 3}
+  m_PrefabInstance: {fileID: 518832646}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db73a1e99e67c724b8b767e6ce23f02b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1584707395
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2288,6 +2306,7 @@ MonoBehaviour:
   CurrentHealth: 0
   Damage: 20
   _soul: {fileID: 7353898820259312844, guid: 5cc2ca53f855ed34884846cf590d6905, type: 3}
+  sonarScript: {fileID: 1509562239}
 --- !u!54 &1614242444
 Rigidbody:
   m_ObjectHideFlags: 0
