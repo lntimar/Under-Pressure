@@ -8,12 +8,13 @@ public class SonarScript : MonoBehaviour
     public float force = 700f;
     public List<GameObject> affectedObjects = new ();
     public PlayerStats playerStats;
+    public int soulsRequired = 1;
 
     private void Update()
     {
         if (Input.GetMouseButtonDown(1))
         {
-            if (playerStats.Souls == 1)
+            if (playerStats.Souls == soulsRequired)
             {
                 Debug.Log("FUSRODAH");
                 playerStats.Souls--;
