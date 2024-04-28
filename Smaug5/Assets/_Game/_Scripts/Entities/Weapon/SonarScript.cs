@@ -6,7 +6,7 @@ using UnityEngine;
 public class SonarScript : MonoBehaviour
 {
     public float force = 700f;
-    private List<GameObject> affectedObjects = new ();
+    public List<GameObject> affectedObjects = new ();
     public PlayerStats playerStats;
 
     private void Update()
@@ -47,4 +47,6 @@ public class SonarScript : MonoBehaviour
             affectedObjects.Remove(other.gameObject);
         }
     }
+
+
 }

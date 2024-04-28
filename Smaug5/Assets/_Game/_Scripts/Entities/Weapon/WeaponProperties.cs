@@ -70,7 +70,7 @@ public class Weapon : MonoBehaviour
     #region Funções Próprias
     private void ShootingInput()
     {
-        if (allowButtonHold)
+        if (allowButtonHold) //Pode manter o botão segurado pra atirar
         {
             shooting = Input.GetMouseButton(0);
         }
@@ -79,7 +79,7 @@ public class Weapon : MonoBehaviour
             shooting = Input.GetMouseButtonDown(0);
         }
 
-        //RECARREGAR
+        //RECARREGAR se as balas acabarem, ou se apertar R
         if (Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !reloading)
         {
             Reload();
