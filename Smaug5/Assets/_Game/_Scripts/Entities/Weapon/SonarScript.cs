@@ -6,18 +6,28 @@ using UnityEngine;
 public class SonarScript : MonoBehaviour
 {
     public float force = 700f;
-    private List<GameObject> affectedObjects = new ();
+    public List<GameObject> affectedObjects = new ();
+    public PlayerStats playerStats;
+    public int soulsRequired = 1;
 
     private void Update()
     {
         if (Input.GetMouseButtonDown(1))
         {
-            Debug.Log("FUSRODAH");
-            affectedObjects.ForEach(obj =>
+            if (playerStats.Souls == soulsRequired)
             {
-                var rb = obj.GetComponent<Rigidbody>();
-                rb.AddExplosionForce(force, transform.position, 15f, 2f);
-            });
+                Debug.Log("FUSRODAH");
+                playerStats.Souls--;
+                affectedObjects.ForEach(obj =>
+                {
+                    var rb = obj.GetComponent<Rigidbody>();
+                    rb.AddExplosionForce(force, transform.position, 15f, 2f);
+                });
+            }
+            else
+            {
+                Debug.Log("Sem almas o suficiente!");
+            }
         }
     }
 

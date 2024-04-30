@@ -52,8 +52,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-        isClimbing = Physics.CheckSphere(stairsCheck.position, climbingDistance, stairsMask);
+        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask); //Checa se o jogador está no chão
+        isClimbing = Physics.CheckSphere(stairsCheck.position, climbingDistance, stairsMask); //*Checa se o jogador está escalando
 
         if (!isGrounded)
         {
@@ -127,7 +127,7 @@ public class PlayerMovement : MonoBehaviour
         }
         #endregion
 
-        if (!isClimbing)
+        if (!isClimbing) //Movimentação normal, enquanto não está escalando
         {
             characterController.Move(move * moveSpeed * Time.deltaTime);
         }
@@ -143,7 +143,7 @@ public class PlayerMovement : MonoBehaviour
         #endregion
 
         #region Pular
-        if (Input.GetButtonDown("Jump") && isGrounded && !isCrouching)
+        if (Input.GetButtonDown("Jump") && isGrounded && !isCrouching) //Se está no chão e não está agachado, pode pular
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
@@ -154,18 +154,19 @@ public class PlayerMovement : MonoBehaviour
         characterController.Move(velocity * Time.deltaTime);
 
         #region Correr
-        if (Input.GetKey(KeyCode.LeftShift) && isGrounded && !isCrouching)
+        if (Input.GetKey(KeyCode.LeftShift) && isGrounded && !isCrouching) //Se está no chão, não está agachado, e pressionar shift, pode correr
         {
-            isSprinting = true;
+            isSprinting = true; //Muda a velocidade
             moveSpeed = sprintSpeed;
         }
         else if (!isCrouching)
         {
-            isSprinting = false;
+            isSprinting = false; //Muda a velocidade
             moveSpeed = normalSpeed;
         }
         #endregion
 
+        //MUDAR LÓGICA DE AGACHAR, NO MOMENTO ELE SÓ FICA MENOR
         #region Agachar
         if (Input.GetKey(KeyCode.LeftControl) && isGrounded && !isCrouching)
         {
@@ -183,9 +184,5 @@ public class PlayerMovement : MonoBehaviour
         }
         #endregion
     }
-    #endregion
-
-    #region Funções Próprias
-
     #endregion
 }

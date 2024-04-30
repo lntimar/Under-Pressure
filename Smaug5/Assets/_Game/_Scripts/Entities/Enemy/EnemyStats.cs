@@ -12,6 +12,7 @@ public class EnemyStats : MonoBehaviour
 
     [Header("Referências")]
     public GameObject _soul;
+    public SonarScript sonarScript;
     #endregion
 
     private void Start()
@@ -33,6 +34,11 @@ public class EnemyStats : MonoBehaviour
             Instantiate(_soul, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
+    }
+
+    private void OnDestroy()
+    {
+        sonarScript.affectedObjects.Remove(gameObject);
     }
     #endregion
 }
