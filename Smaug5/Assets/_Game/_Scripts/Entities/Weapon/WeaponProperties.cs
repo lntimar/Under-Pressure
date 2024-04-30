@@ -36,6 +36,7 @@ public class Weapon : MonoBehaviour
     public Transform attackPoint;
     public LayerMask enemies;
     public Rigidbody playerRb;
+    public Animator playerAnim;
     #endregion
 
     #region Funções Unity
@@ -92,6 +93,7 @@ public class Weapon : MonoBehaviour
         //ATIRAR
         if (readyToShoot && shooting && !reloading && bulletsLeft > 0)
         {
+            playerAnim.SetTrigger("Shoot");
             bulletsShot = bulletsPerTap;
             ShootHitscan();
         }

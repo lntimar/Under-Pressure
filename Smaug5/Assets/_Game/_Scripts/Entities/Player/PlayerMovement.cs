@@ -34,23 +34,98 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask stairsMask;
     public bool isClimbing = false;
 
+    [Header("Animação")] 
+    public RuntimeAnimatorController defaultController;
+    public RuntimeAnimatorController withGunController;
+    public RuntimeAnimatorController crouchController;
+
+    // Componentes:
+    private Animator animator;
+
     #endregion
 
     #region Funções Unity
+    void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
+
     void Update()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
         isClimbing = Physics.CheckSphere(stairsCheck.position, climbingDistance, stairsMask);
+
+        if (!isGrounded)
+        {
+            isCrouching = false;
+        }
+
 
         if (isGrounded && velocity.y < -20)
         {
             velocity.y = -2f; //Podia ser 0, mas o checksphere ativa antes, ent é mais seguro deixar menor
         }
 
+        #region Andar
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
         Vector3 move = transform.right * x + transform.forward * z;
+        #endregion
+
+        #region Animando
+
+        if (isCrouching) // Agachado
+        {
+            if (animator.runtimeAnimatorController != crouchController)
+            {
+                animator.runtimeAnimatorController = crouchController;
+            }
+
+            // Checa Animação de Andar Agachado
+            if (move != Vector3.zero && !isSprinting)
+            {
+                animator.SetBool("isWalking", true);
+            }
+            else
+            {
+                animator.SetBool("isWalking", false);
+            }
+        }
+        else // Default & Com Arma
+        {
+            if (PlayerStats.HasGun)
+            {
+                if (animator.runtimeAnimatorController != withGunController)
+                {
+                    animator.runtimeAnimatorController = withGunController;
+                }
+            }
+            else
+            {
+                if (animator.runtimeAnimatorController != defaultController)
+                {
+                    animator.runtimeAnimatorController = defaultController;
+                }
+            }
+            
+            // Checa Animação de Andar
+            if (move != Vector3.zero && !isSprinting)
+            {
+                animator.SetBool("isWalking", true);
+            }
+            else
+            {
+                animator.SetBool("isWalking", false);
+            }
+
+            // Checa Animação de Pulo
+            animator.SetBool("isGrounded", isGrounded);
+
+            // Checa Animação de Correr
+            animator.SetBool("IsRunning", isSprinting);
+        }
+        #endregion
 
         if (!isClimbing)
         {
@@ -92,7 +167,7 @@ public class PlayerMovement : MonoBehaviour
         #endregion
 
         #region Agachar
-        if (Input.GetKeyDown(KeyCode.LeftControl) && isGrounded && !isCrouching)
+        if (Input.GetKey(KeyCode.LeftControl) && isGrounded && !isCrouching)
         {
             isCrouching = true;
             playerBody.transform.localScale = crouchScale;

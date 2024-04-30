@@ -15,6 +15,8 @@ public class PlayerStats : MonoBehaviour
 
     // Componentes:
     private PlayerProgress _playerProgress;
+
+    public static bool HasGun = false;
     #endregion
 
     #region Funções Unity
