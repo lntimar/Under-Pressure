@@ -1080,6 +1080,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 565910953494705957, guid: 1cf8966aa281a6a4fa451b6236c94f00,
+        type: 3}
+      propertyPath: m_Radius
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6055703682730630511, guid: 1cf8966aa281a6a4fa451b6236c94f00,
         type: 3}
       propertyPath: m_Enabled
