@@ -565,6 +565,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8192
   isClimbing: 0
+  playerAnimator: {fileID: 5884701454585185137}
   defaultController: {fileID: 9100000, guid: 5d890fa4eef86a345b92b15ef49e27c1, type: 2}
   withGunController: {fileID: 9100000, guid: 94ca80bf4c5cbd448a36088e216faa7e, type: 2}
   crouchController: {fileID: 9100000, guid: 00a755a27880edb42bbd1487da46a346, type: 2}
@@ -637,7 +638,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   playerRb: {fileID: 614080978531534284}
-  playerAnim: {fileID: 0}
+  playerAnim: {fileID: 5884701454585185137}
 --- !u!1 &8000526881459911748
 GameObject:
   m_ObjectHideFlags: 0
@@ -823,6 +824,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6932011816732209122}
     m_Modifications:
+    - target: {fileID: 2920563041527063744, guid: 43a619527ab69de429247d13625a5b44,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 5d890fa4eef86a345b92b15ef49e27c1, type: 2}
     - target: {fileID: 8443141976434893824, guid: 43a619527ab69de429247d13625a5b44,
         type: 3}
       propertyPath: m_Name
@@ -906,6 +912,12 @@ PrefabInstance:
 --- !u!4 &525377579058436363 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9108460188178267834, guid: 43a619527ab69de429247d13625a5b44,
+    type: 3}
+  m_PrefabInstance: {fileID: 8731710395873273777}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &5884701454585185137 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2920563041527063744, guid: 43a619527ab69de429247d13625a5b44,
     type: 3}
   m_PrefabInstance: {fileID: 8731710395873273777}
   m_PrefabAsset: {fileID: 0}

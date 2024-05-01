@@ -44,11 +44,6 @@ public class PlayerMovement : MonoBehaviour
     #endregion
 
     #region Funções Unity
-    void Start()
-    {
-        playerAnimator = GetComponent<Animator>();
-    }
-
     void Update()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask); //Checa se o jogador está no chão
