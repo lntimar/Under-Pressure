@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 43406064467743951}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.613, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -558,13 +558,14 @@ MonoBehaviour:
     m_Bits: 8
   isCrouching: 0
   crouchSpeed: 7.5
-  playerBody: {fileID: 0}
+  playerBody: {fileID: 525377579058436363}
   climbingDistance: 0.4
   stairsCheck: {fileID: 7149834172924938197}
   stairsMask:
     serializedVersion: 2
     m_Bits: 8192
   isClimbing: 0
+  rb: {fileID: 614080978531534284}
   playerAnimator: {fileID: 5884701454585185137}
   defaultController: {fileID: 9100000, guid: 5d890fa4eef86a345b92b15ef49e27c1, type: 2}
   withGunController: {fileID: 9100000, guid: 94ca80bf4c5cbd448a36088e216faa7e, type: 2}
