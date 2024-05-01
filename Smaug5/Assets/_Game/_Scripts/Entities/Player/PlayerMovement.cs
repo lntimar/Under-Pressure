@@ -38,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
     public RuntimeAnimatorController defaultController;
     public RuntimeAnimatorController withGunController;
     public RuntimeAnimatorController crouchController;
+    public RuntimeAnimatorController climbController;
 
     // Componentes:
     private Animator animator;
@@ -80,6 +81,7 @@ public class PlayerMovement : MonoBehaviour
             if (animator.runtimeAnimatorController != crouchController)
             {
                 animator.runtimeAnimatorController = crouchController;
+                animator.speed = 1f;
             }
 
             // Checa Animação de Andar Agachado
@@ -92,6 +94,22 @@ public class PlayerMovement : MonoBehaviour
                 animator.SetBool("isWalking", false);
             }
         }
+        else if (isClimbing) // Escalando
+        {
+            if (animator.runtimeAnimatorController != climbController)
+            {
+                animator.runtimeAnimatorController = climbController;
+            }
+
+            if (move.y != 0)
+            {
+                animator.speed = 1f;
+            }
+            else
+            {
+                animator.speed = 0f;
+            }
+        }
         else // Default & Com Arma
         {
             if (PlayerStats.HasGun)
@@ -99,6 +117,7 @@ public class PlayerMovement : MonoBehaviour
                 if (animator.runtimeAnimatorController != withGunController)
                 {
                     animator.runtimeAnimatorController = withGunController;
+                    animator.speed = 1f;
                 }
             }
             else
@@ -106,6 +125,7 @@ public class PlayerMovement : MonoBehaviour
                 if (animator.runtimeAnimatorController != defaultController)
                 {
                     animator.runtimeAnimatorController = defaultController;
+                    animator.speed = 1f;
                 }
             }
             
