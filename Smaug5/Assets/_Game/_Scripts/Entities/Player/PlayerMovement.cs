@@ -47,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask); //Checa se o jogador está no chão
-        isClimbing = Physics.CheckSphere(stairsCheck.position, climbingDistance, stairsMask); //*Checa se o jogador está escalando
+        isClimbing = Physics.CheckSphere(stairsCheck.position, climbingDistance, stairsMask); //Checa se o jogador está escalando
 
         if (!isGrounded)
         {
@@ -132,7 +132,7 @@ public class PlayerMovement : MonoBehaviour
                 playerAnimator.SetBool("isWalking", false);
             }
 
-            // Checa Animação de Pulo
+            // Desativa Animação de Pulo
             playerAnimator.SetBool("isGrounded", isGrounded);
 
             // Checa Animação de Correr
@@ -164,6 +164,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("Jump") && isGrounded && !isCrouching) //Se está no chão e não está agachado, pode pular
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            playerAnimator.SetTrigger("Jump");
         }
         #endregion
 
