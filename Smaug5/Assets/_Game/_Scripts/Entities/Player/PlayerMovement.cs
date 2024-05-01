@@ -34,21 +34,19 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask stairsMask;
     public bool isClimbing = false;
 
-    [Header("Animação")] 
+    [Header("Animação")]
+    public Animator playerAnimator;
     public RuntimeAnimatorController defaultController;
     public RuntimeAnimatorController withGunController;
     public RuntimeAnimatorController crouchController;
     public RuntimeAnimatorController climbController;
-
-    // Componentes:
-    private Animator animator;
 
     #endregion
 
     #region Funções Unity
     void Start()
     {
-        animator = GetComponent<Animator>();
+        playerAnimator = GetComponent<Animator>();
     }
 
     void Update()
@@ -78,72 +76,72 @@ public class PlayerMovement : MonoBehaviour
 
         if (isCrouching) // Agachado
         {
-            if (animator.runtimeAnimatorController != crouchController)
+            if (playerAnimator.runtimeAnimatorController != crouchController)
             {
-                animator.runtimeAnimatorController = crouchController;
-                animator.speed = 1f;
+                playerAnimator.runtimeAnimatorController = crouchController;
+                playerAnimator.speed = 1f;
             }
 
             // Checa Animação de Andar Agachado
             if (move != Vector3.zero && !isSprinting)
             {
-                animator.SetBool("isWalking", true);
+                playerAnimator.SetBool("isWalking", true);
             }
             else
             {
-                animator.SetBool("isWalking", false);
+                playerAnimator.SetBool("isWalking", false);
             }
         }
         else if (isClimbing) // Escalando
         {
-            if (animator.runtimeAnimatorController != climbController)
+            if (playerAnimator.runtimeAnimatorController != climbController)
             {
-                animator.runtimeAnimatorController = climbController;
+                playerAnimator.runtimeAnimatorController = climbController;
             }
 
             if (move.y != 0)
             {
-                animator.speed = 1f;
+                playerAnimator.speed = 1f;
             }
             else
             {
-                animator.speed = 0f;
+                playerAnimator.speed = 0f;
             }
         }
         else // Default & Com Arma
         {
             if (PlayerStats.HasGun)
             {
-                if (animator.runtimeAnimatorController != withGunController)
+                if (playerAnimator.runtimeAnimatorController != withGunController)
                 {
-                    animator.runtimeAnimatorController = withGunController;
-                    animator.speed = 1f;
+                    playerAnimator.runtimeAnimatorController = withGunController;
+                    playerAnimator.speed = 1f;
                 }
             }
             else
             {
-                if (animator.runtimeAnimatorController != defaultController)
+                if (playerAnimator.runtimeAnimatorController != defaultController)
                 {
-                    animator.runtimeAnimatorController = defaultController;
-                    animator.speed = 1f;
+                    playerAnimator.runtimeAnimatorController = defaultController;
+                    playerAnimator.speed = 1f;
                 }
             }
             
             // Checa Animação de Andar
             if (move != Vector3.zero && !isSprinting)
             {
-                animator.SetBool("isWalking", true);
+                playerAnimator.SetBool("isWalking", true);
             }
             else
             {
-                animator.SetBool("isWalking", false);
+                playerAnimator.SetBool("isWalking", false);
             }
 
             // Checa Animação de Pulo
-            animator.SetBool("isGrounded", isGrounded);
+            playerAnimator.SetBool("isGrounded", isGrounded);
 
             // Checa Animação de Correr
-            animator.SetBool("IsRunning", isSprinting);
+            playerAnimator.SetBool("IsRunning", isSprinting);
         }
         #endregion
 
