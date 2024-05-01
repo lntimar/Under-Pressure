@@ -132,13 +132,18 @@ public class PlayerMovement : MonoBehaviour
             characterController.Move(move * moveSpeed * Time.deltaTime);
         }
 
-        //ARRUMAR
+        //QUASE LÁ
         #region Escalar
         if (isClimbing)
         {
+            gravity = 0f;
             float verticalInput = Input.GetAxis("Vertical");
-            Vector3 climbMovement = transform.up * verticalInput * moveSpeed * Time.deltaTime;
-            characterController.Move(climbMovement);
+            Vector3 climbDirection = Vector3.up * verticalInput * moveSpeed;
+            characterController.Move(climbDirection * Time.deltaTime);
+        }
+        else
+        {
+            gravity = -9.81f;
         }
         #endregion
 
