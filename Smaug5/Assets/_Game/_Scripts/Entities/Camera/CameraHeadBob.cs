@@ -12,6 +12,8 @@ public class CameraHeadBob : MonoBehaviour
     [SerializeField, Range(10f, 100f)] private float Smooth = 10.0f;
 
     private Vector3 _startPos;
+
+    private bool _canMove = true;
     #endregion
 
     #region Funções Unity
@@ -19,8 +21,12 @@ public class CameraHeadBob : MonoBehaviour
 
     private void Update()
     {
-        CheckForHeadbobTrigger();
-        StopHeadbob();
+        if (_canMove)
+        {
+            print("Teste");
+            CheckForHeadbobTrigger();
+            StopHeadbob();
+        }
     }
     #endregion
 
@@ -49,6 +55,19 @@ public class CameraHeadBob : MonoBehaviour
     {
         if (transform.localPosition == _startPos) return;
         transform.localPosition = Vector3.Lerp(transform.localPosition, _startPos, 1 * Time.deltaTime);
+    }
+
+    public void Stop()
+    {
+        _canMove = false;
+        transform.localPosition = _startPos;
+    }
+
+    public void Enable() => _canMove = true;
+
+    public bool IsActive()
+    {
+        return _canMove;
     }
     #endregion
 }

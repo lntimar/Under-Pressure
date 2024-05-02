@@ -452,7 +452,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7047675319096408201}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 24.13, z: -20.05}
   m_LocalScale: {x: 1.2, y: 1.8, z: 1.2}
   m_ConstrainProportionsScale: 0
@@ -565,12 +565,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8192
   isClimbing: 0
-  rb: {fileID: 614080978531534284}
   playerAnimator: {fileID: 5884701454585185137}
   defaultController: {fileID: 9100000, guid: 5d890fa4eef86a345b92b15ef49e27c1, type: 2}
   withGunController: {fileID: 9100000, guid: 94ca80bf4c5cbd448a36088e216faa7e, type: 2}
   crouchController: {fileID: 9100000, guid: 00a755a27880edb42bbd1487da46a346, type: 2}
   climbController: {fileID: 9100000, guid: e2d5cb7147404ec4ea714592e4e241ba, type: 2}
+  cameraHeadBobScript: {fileID: 8450418704956456161}
 --- !u!1 &7189273282692579182
 GameObject:
   m_ObjectHideFlags: 0
@@ -908,7 +908,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8443141976434893824, guid: 43a619527ab69de429247d13625a5b44,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5356659612470289025}
   m_SourcePrefab: {fileID: 100100000, guid: 43a619527ab69de429247d13625a5b44, type: 3}
 --- !u!4 &525377579058436363 stripped
 Transform:
@@ -916,6 +920,24 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8731710395873273777}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &865065733322425265 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8443141976434893824, guid: 43a619527ab69de429247d13625a5b44,
+    type: 3}
+  m_PrefabInstance: {fileID: 8731710395873273777}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5356659612470289025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 865065733322425265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c03eb38337a1a9b43bf4936f66c47ea7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!95 &5884701454585185137 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 2920563041527063744, guid: 43a619527ab69de429247d13625a5b44,

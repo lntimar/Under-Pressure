@@ -41,6 +41,8 @@ public class PlayerMovement : MonoBehaviour
     public RuntimeAnimatorController crouchController;
     public RuntimeAnimatorController climbController;
 
+    [Header("Referências:")] 
+    public CameraHeadBob cameraHeadBobScript;
     #endregion
 
     #region Funções Unity
@@ -51,7 +53,19 @@ public class PlayerMovement : MonoBehaviour
 
         if (!isGrounded)
         {
+            if (!isClimbing)
+            {
+                cameraHeadBobScript.Stop();
+            }
+
             isCrouching = false;
+        }
+        else
+        {
+            if (!cameraHeadBobScript.IsActive())
+            {
+                cameraHeadBobScript.Enable();
+            }
         }
 
 
@@ -123,20 +137,27 @@ public class PlayerMovement : MonoBehaviour
             }
             
             // Checa Animação de Andar
-            if (move != Vector3.zero && !isSprinting)
+            if (move != Vector3.zero && isGrounded)
             {
-                playerAnimator.SetBool("isWalking", true);
+                if (isSprinting) // Caso estiver Correndo
+                {
+                    playerAnimator.SetBool("isWalking", false);
+                    playerAnimator.SetBool("isSprinting", true);
+                }
+                else // Caso só estiver Caminhando
+                {
+                    playerAnimator.SetBool("isWalking", true);
+                    playerAnimator.SetBool("isSprinting", false);
+                }
             }
             else
             {
                 playerAnimator.SetBool("isWalking", false);
+                playerAnimator.SetBool("isSprinting", false);
             }
 
             // Desativa Animação de Pulo
             playerAnimator.SetBool("isGrounded", isGrounded);
-
-            // Checa Animação de Correr
-            playerAnimator.SetBool("IsRunning", isSprinting);
         }
         #endregion
 
