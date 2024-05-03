@@ -511,7 +511,7 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 3
   m_Height: 3.66
-  m_Radius: 1
+  m_Radius: 0.6
   m_SlopeLimit: 45
   m_StepOffset: 0.7
   m_SkinWidth: 0.08
@@ -565,7 +565,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8192
   isClimbing: 0
-  rb: {fileID: 614080978531534284}
   playerAnimator: {fileID: 5884701454585185137}
   defaultController: {fileID: 9100000, guid: 5d890fa4eef86a345b92b15ef49e27c1, type: 2}
   withGunController: {fileID: 9100000, guid: 94ca80bf4c5cbd448a36088e216faa7e, type: 2}
