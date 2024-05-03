@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 43406064467743951}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.613, z: 0}
+  m_LocalPosition: {x: 0, y: 1.63, z: 0.34}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -912,7 +912,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8443141976434893824, guid: 43a619527ab69de429247d13625a5b44,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5356659612470289025}
+      addedObject: {fileID: 8173469471568577839}
   m_SourcePrefab: {fileID: 100100000, guid: 43a619527ab69de429247d13625a5b44, type: 3}
 --- !u!4 &525377579058436363 stripped
 Transform:
@@ -926,7 +926,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 8731710395873273777}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5356659612470289025
+--- !u!114 &8173469471568577839
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -938,6 +938,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c03eb38337a1a9b43bf4936f66c47ea7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraHeadBobScript: {fileID: 8450418704956456161}
+  playerTop: {fileID: 5652215123546158729}
+  positions:
+  - {x: 0, y: 1.53, z: 0.18}
+  - {x: 0, y: 0.64, z: 0.22}
+  - {x: 0, y: 0.7, z: 0.22}
+  - {x: 0, y: 0.1, z: 0.01}
+  - {x: 0, y: 2.906, z: -0.121}
+--- !u!137 &5652215123546158729 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 3989617398756118840, guid: 43a619527ab69de429247d13625a5b44,
+    type: 3}
+  m_PrefabInstance: {fileID: 8731710395873273777}
+  m_PrefabAsset: {fileID: 0}
 --- !u!95 &5884701454585185137 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 2920563041527063744, guid: 43a619527ab69de429247d13625a5b44,

@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class CameraHeadBob : MonoBehaviour
 {
-    #region Variáveis 
+    #region Variáveis Globais
     // Unity Inspector:
-    [SerializeField, Range(0.001f, 0.01f)] private float Amount = 0.002f;
-    [SerializeField, Range(1f, 30f)] private float Frequency = 10.0f;
+    [SerializeField, Range(0.001f, 0.01f)] private float Amount;
+    [SerializeField, Range(1f, 30f)] private float Frequency;
 
-    [SerializeField, Range(10f, 100f)] private float Smooth = 10.0f;
+    [SerializeField, Range(10f, 100f)] private float Smooth;
 
     private Vector3 _startPos;
 
@@ -23,7 +23,6 @@ public class CameraHeadBob : MonoBehaviour
     {
         if (_canMove)
         {
-            print("Teste");
             CheckForHeadbobTrigger();
             StopHeadbob();
         }
@@ -33,7 +32,7 @@ public class CameraHeadBob : MonoBehaviour
     #region Funções Próprias
     private void CheckForHeadbobTrigger()
     {
-        float inputMagnitude = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).magnitude;
+        var inputMagnitude = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).magnitude;
 
         if (inputMagnitude > 0)
         {
@@ -43,8 +42,7 @@ public class CameraHeadBob : MonoBehaviour
 
     private Vector3 StartHeadBob()
     {
-
-        Vector3 pos = Vector3.zero;
+        var pos = Vector3.zero;
         pos.y += Mathf.Lerp(pos.y, Mathf.Sin(Time.time * Frequency) * Amount * 1.4f, Smooth * Time.deltaTime);
         pos.x += Mathf.Lerp(pos.x, Mathf.Cos(Time.time * Frequency / 2f) * Amount * 1.6f, Smooth * Time.deltaTime);
         transform.localPosition += pos;
@@ -69,5 +67,7 @@ public class CameraHeadBob : MonoBehaviour
     {
         return _canMove;
     }
+
+    public void ChangeStartPos(Vector3 newPos) => _startPos = newPos;
     #endregion
 }

@@ -107,15 +107,6 @@ public class PlayerMovement : MonoBehaviour
             {
                 playerAnimator.runtimeAnimatorController = climbController;
             }
-
-            if (move.y != 0)
-            {
-                playerAnimator.speed = 1f;
-            }
-            else
-            {
-                playerAnimator.speed = 0f;
-            }
         }
         else // Default & Com Arma
         {
