@@ -63,7 +63,7 @@ public class Weapon : MonoBehaviour
         }
         else
         {
-            gunModel.transform.localRotation = Quaternion.identity;
+            gunModel.transform.localRotation = Quaternion.Euler(-90f, 0f, 90f);
         }
     }
     #endregion
@@ -171,7 +171,7 @@ public class Weapon : MonoBehaviour
         while (reloading)
         {
             // Adicione a lógica de rotação aqui
-            gunModel.transform.Rotate(Time.deltaTime * rotationSpeed, 0, 0);
+            gunModel.transform.Rotate(0, Time.deltaTime * rotationSpeed, 0);
 
             yield return null;
         }
