@@ -1090,9 +1090,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5884701454585185137, guid: 1cf8966aa281a6a4fa451b6236c94f00,
         type: 3}
+<<<<<<< Updated upstream
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: e2d5cb7147404ec4ea714592e4e241ba, type: 2}
+=======
+      propertyPath: m_Radius
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3695092090504732001, guid: 1cf8966aa281a6a4fa451b6236c94f00,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4420141569033294889, guid: 1cf8966aa281a6a4fa451b6236c94f00,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5051982433009548261, guid: 1cf8966aa281a6a4fa451b6236c94f00,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5884701454585185137, guid: 1cf8966aa281a6a4fa451b6236c94f00,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 94ca80bf4c5cbd448a36088e216faa7e, type: 2}
+>>>>>>> Stashed changes
     - target: {fileID: 6055703682730630511, guid: 1cf8966aa281a6a4fa451b6236c94f00,
         type: 3}
       propertyPath: m_Enabled
@@ -1158,8 +1184,18 @@ PrefabInstance:
       propertyPath: ammoDisplay
       value: 
       objectReference: {fileID: 125954165}
+<<<<<<< Updated upstream
     - target: {fileID: 8620574170786859759, guid: 1cf8966aa281a6a4fa451b6236c94f00,
         type: 3}
+=======
+    - target: {fileID: 8450418704956456161, guid: 1cf8966aa281a6a4fa451b6236c94f00,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8620574170786859759, guid: 1cf8966aa281a6a4fa451b6236c94f00,
+        type: 3}
+>>>>>>> Stashed changes
       propertyPath: m_CastShadows
       value: 3
       objectReference: {fileID: 0}

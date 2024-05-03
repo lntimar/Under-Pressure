@@ -14,7 +14,7 @@ public class ChangeCameraPosition : MonoBehaviour
 
     private int _lastIndex;
 
-    private void ChangePos(int index)
+    public void ChangePos(int index)
     {
         cameraHeadBobScript.ChangeStartPos(positions[index]);
 
