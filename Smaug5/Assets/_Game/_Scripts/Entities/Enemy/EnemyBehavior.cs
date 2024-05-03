@@ -21,7 +21,7 @@ public class EnemyBehavior : MonoBehaviour
     #region Default Methods
     void Start()
     {
-        animator = GetComponent<Animator>();
+        animator = transform.Find("GFX").gameObject.GetComponent<Animator>();
         target = PlayerManager.instance.player.transform;
         agent = GetComponent<NavMeshAgent>();
         boxColliders = GetComponentsInChildren<BoxCollider>();
