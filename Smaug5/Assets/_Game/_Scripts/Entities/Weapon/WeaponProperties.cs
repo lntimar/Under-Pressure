@@ -176,5 +176,16 @@ public class Weapon : MonoBehaviour
             yield return null;
         }
     }
+
+    //CRASHA QUANDO USA, ARRUMAR
+    IEnumerator FlickWhileShooting()
+    {
+        while (shooting)
+        {
+            gunModel.transform.Rotate(0f, Time.deltaTime * 10f, 0f);
+        }
+
+        yield return null;
+    }
     #endregion
 }
