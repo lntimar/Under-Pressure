@@ -68,9 +68,11 @@ public class EnemyBehavior : MonoBehaviour
     //Ataque acontece quando player encosta na hitbox na mão do inimigo
     public void EnemyAttack()
     {
-        if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Z_Attack"))
+        var animInfo = animator.GetCurrentAnimatorClipInfo(0);
+        var curAnimName = animInfo[0].clip.name;
+        if (!curAnimName.Contains("Attack"))
         {
-            animator.SetTrigger("Attack");
+            animator.Play("Enemy Attack " + Random.Range(1, 5));
             Debug.Log("Trigger Attack");
             //agent.SetDestination(transform.position);
         }
@@ -111,6 +113,5 @@ public class EnemyBehavior : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, lookRadius);
     }
-
     #endregion
 }
