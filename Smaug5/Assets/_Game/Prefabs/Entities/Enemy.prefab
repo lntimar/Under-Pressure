@@ -2206,7 +2206,7 @@ GameObject:
   - component: {fileID: 4794464250986837346}
   - component: {fileID: 1929674466963783160}
   m_Layer: 0
-  m_Name: GFX
+  m_Name: Enemy Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2275,7 +2275,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ragdollTime: 1.5
-  animator: {fileID: 6824930362322147006}
   capsuleCollder: {fileID: 4504783596630952967}
 --- !u!1 &7359194218664030628
 GameObject:
