@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyBehavior : MonoBehaviour
+public class EnemyBehaviour : MonoBehaviour
 {
     #region Global Variables
     //Tamanho da visão do inimigo

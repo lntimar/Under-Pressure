@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
+using UnityEditor;
 using UnityEngine;
 
 public class SonarScript : MonoBehaviour
@@ -20,6 +21,12 @@ public class SonarScript : MonoBehaviour
                 playerStats.Souls--;
                 affectedObjects.ForEach(obj =>
                 {
+                    // Caso for o inimigo, ativar ragdoll
+                    if (obj.TryGetComponent<EnemyBehaviour>(out EnemyBehaviour enemyBehaviour))
+                    {
+                        
+                    }
+
                     var rb = obj.GetComponent<Rigidbody>();
                     rb.AddExplosionForce(force, transform.position, 15f, 2f);
                 });

@@ -9,10 +9,12 @@ public class EnemyStats : MonoBehaviour
     public int MaxHealth = 100;
     public int CurrentHealth;
     public int Damage = 20;
+    public float DestroyTime = 1.25f;
 
     [Header("Referências")]
-    public GameObject _soul;
+    public GameObject Soul;
     public SonarScript sonarScript;
+    public Animator animator;
     #endregion
 
     private void Start()
@@ -30,15 +32,16 @@ public class EnemyStats : MonoBehaviour
 
         if (CurrentHealth <= 0)
         {
-            Debug.Log(gameObject.name + " is DEAD, not big surprise");
-            Instantiate(_soul, transform.position, Quaternion.identity);
-            Destroy(gameObject);
+            animator.Play("Enemy Death " + Random.Range(1, 3));
+            Invoke("DestroyEnemy", DestroyTime);
         }
     }
 
-    private void OnDestroy()
+    private void DestroyEnemy()
     {
+        Instantiate(Soul, transform.position, Quaternion.identity);
         sonarScript.affectedObjects.Remove(gameObject);
+        Destroy(gameObject);
     }
     #endregion
 }

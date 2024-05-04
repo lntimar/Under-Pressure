@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class AttackCollider : MonoBehaviour
 {
-    private EnemyBehavior enemyBehavior;
+    private EnemyBehaviour enemyBehavior;
 
     private void Start()
     {
-        enemyBehavior = GetComponentInParent<EnemyBehavior>();
+        enemyBehavior = GetComponentInParent<EnemyBehaviour>();
     }
 
     public void DisableAttack()
