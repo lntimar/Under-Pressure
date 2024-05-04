@@ -1521,25 +1521,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2989020630247227823, guid: 3b3ee2fd8f011234fb4bc89e0cb07663,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.0000022687962
-      objectReference: {fileID: 0}
-    - target: {fileID: 2989020630247227823, guid: 3b3ee2fd8f011234fb4bc89e0cb07663,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.018903801
-      objectReference: {fileID: 0}
     - target: {fileID: 4357643530112878626, guid: 3b3ee2fd8f011234fb4bc89e0cb07663,
         type: 3}
       propertyPath: m_Name
       value: Enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 5320086469893161660, guid: 3b3ee2fd8f011234fb4bc89e0cb07663,
-        type: 3}
-      propertyPath: lookRadius
-      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
