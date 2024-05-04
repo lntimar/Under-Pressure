@@ -24,7 +24,8 @@ public class SonarScript : MonoBehaviour
                     // Caso for o inimigo, ativar ragdoll
                     if (obj.TryGetComponent<EnemyBehaviour>(out EnemyBehaviour enemyBehaviour))
                     {
-                        
+                        var ragdollScript = enemyBehaviour.transform.Find("Enemy Body").gameObject.GetComponent<EnemyRagdoll>();
+                        ragdollScript.StartRagdoll();
                     }
 
                     var rb = obj.GetComponent<Rigidbody>();

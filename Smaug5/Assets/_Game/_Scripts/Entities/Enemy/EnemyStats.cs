@@ -1,46 +1,56 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyStats : MonoBehaviour
 {
     #region Variáveis Globais
+    [Header("Configurações:")]
+
     [Header("Estatísticas do Inimigo")]
     public int MaxHealth = 100;
     public int CurrentHealth;
     public int Damage = 20;
-    public float DestroyTime = 1.25f;
+    [SerializeField] private float destroyTime = 1.25f;
 
     [Header("Referências")]
-    public GameObject Soul;
-    public SonarScript sonarScript;
-    public Animator animator;
+    [SerializeField] private GameObject soulPrefab;
+    [SerializeField] private Animator animator;
+    
+    // Referências:
+    private SonarScript _sonarScript;
     #endregion
+
+    #region Funções Unity
+    private void Awake() => _sonarScript = GameObject.FindObjectOfType<SonarScript>();
 
     private void Start()
     {
         CurrentHealth = MaxHealth;
     }
+    #endregion
 
     #region Funções Próprias
     public void ChangeHealthPoints(int points)
     {
         if (CurrentHealth > 0)
-        {
             CurrentHealth -= points;
-        }
 
         if (CurrentHealth <= 0)
         {
+            GetComponent<EnemyBehaviour>().enabled = false;
+            GetComponent<CapsuleCollider>().enabled = false;
+            GetComponent<NavMeshAgent>().enabled = false;
             animator.Play("Enemy Death " + Random.Range(1, 3));
-            Invoke("DestroyEnemy", DestroyTime);
+            Invoke("DestroyEnemy", destroyTime);
         }
     }
 
     private void DestroyEnemy()
     {
-        Instantiate(Soul, transform.position, Quaternion.identity);
-        sonarScript.affectedObjects.Remove(gameObject);
+        Instantiate(soulPrefab, transform.position, Quaternion.identity);
+        _sonarScript.affectedObjects.Remove(gameObject);
         Destroy(gameObject);
     }
     #endregion
