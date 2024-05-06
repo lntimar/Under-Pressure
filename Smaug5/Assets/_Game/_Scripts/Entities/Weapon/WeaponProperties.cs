@@ -30,6 +30,9 @@ public class Weapon : MonoBehaviour
     //public GameObject muzzleFlash;
     public TextMeshProUGUI ammoDisplay;
     public GameObject impactEffect;
+    Vector3 initialPosition;
+    Vector3 recoilPosition;
+    bool isRecoiling = false;
 
     [Header("Referências")]
     public Camera playerCamera;
@@ -44,6 +47,9 @@ public class Weapon : MonoBehaviour
     {
         bulletsLeft = magazineSize;
         readyToShoot = true;
+
+        initialPosition = transform.localPosition; //Pega posição inicial
+        recoilPosition = initialPosition + Vector3.up * recoilForce; //Posição que a arma vai ao atirar
     }
 
     private void Update()
@@ -57,13 +63,23 @@ public class Weapon : MonoBehaviour
 
         if (reloading)
         {
-            //gunSprite.transform.localRotation = Quaternion.Euler(60f, 0f, 0f);
             StartCoroutine(RotateWhileReloading());
             //Adicionar animação de recarregar quando tiver uma
         }
         else
         {
             gunModel.transform.localRotation = Quaternion.Euler(-90f, 0f, 90f);
+        }
+
+        if (isRecoiling)
+        {
+            //O Lerp move a posição inicial pra posição de tiro quando o bool isRecoiling fica verdadeirol, quando o jogador atira
+            transform.localPosition = Vector3.Lerp(transform.localPosition, initialPosition, Time.deltaTime * 10f);
+
+            if (Vector3.Distance(transform.localPosition, initialPosition) < 0.01f)
+            {
+                isRecoiling = false;
+            }
         }
     }
     #endregion
@@ -103,6 +119,10 @@ public class Weapon : MonoBehaviour
     {
         readyToShoot = false;
 
+        transform.localPosition = recoilPosition;
+
+        isRecoiling = true;
+
         //PROPAGAÇÃO DE BALA
         float x = Random.Range(-horizontalSpread, horizontalSpread);
         float y = Random.Range(-horizontalSpread, verticalSpread);
@@ -139,7 +159,7 @@ public class Weapon : MonoBehaviour
         bulletsShot--;
 
         //RECÚO
-        playerRb.AddForce(-direction * recoilForce, ForceMode.Impulse);
+        //playerRb.AddForce(-direction * recoilForce, ForceMode.Impulse);
 
         Invoke("ResetShot", timeBetweenShooting);
         if (bulletsShot > 0 && bulletsLeft > 0)
@@ -175,17 +195,6 @@ public class Weapon : MonoBehaviour
 
             yield return null;
         }
-    }
-
-    //CRASHA QUANDO USA, ARRUMAR
-    IEnumerator FlickWhileShooting()
-    {
-        while (shooting)
-        {
-            gunModel.transform.Rotate(0f, Time.deltaTime * 10f, 0f);
-        }
-
-        yield return null;
     }
     #endregion
 }

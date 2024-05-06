@@ -1026,8 +1026,9 @@ MonoBehaviour:
   MaxHealth: 100
   CurrentHealth: 0
   Damage: 20
-  _soul: {fileID: 7353898820259312844, guid: 5cc2ca53f855ed34884846cf590d6905, type: 3}
-  sonarScript: {fileID: 1509562239}
+  destroyTime: 1.25
+  soulPrefab: {fileID: 0}
+  animator: {fileID: 0}
 --- !u!54 &494330927
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2045,18 +2046,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1401991456}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1509562239 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1193070246969998846, guid: 1cf8966aa281a6a4fa451b6236c94f00,
-    type: 3}
-  m_PrefabInstance: {fileID: 4307176836108938934}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db73a1e99e67c724b8b767e6ce23f02b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1584707395
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2192,8 +2181,9 @@ MonoBehaviour:
   MaxHealth: 100
   CurrentHealth: 0
   Damage: 20
-  _soul: {fileID: 7353898820259312844, guid: 5cc2ca53f855ed34884846cf590d6905, type: 3}
-  sonarScript: {fileID: 1509562239}
+  destroyTime: 1.25
+  soulPrefab: {fileID: 0}
+  animator: {fileID: 0}
 --- !u!54 &1614242444
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2605,6 +2595,11 @@ PrefabInstance:
       propertyPath: ammoDisplay
       value: 
       objectReference: {fileID: 125954165}
+    - target: {fileID: 898640570577382655, guid: 1cf8966aa281a6a4fa451b6236c94f00,
+        type: 3}
+      propertyPath: recoilForce
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2800027571597143880, guid: 1cf8966aa281a6a4fa451b6236c94f00,
         type: 3}
       propertyPath: m_Name
