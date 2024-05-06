@@ -33,6 +33,7 @@ public class Weapon : MonoBehaviour
     Vector3 initialPosition;
     Vector3 recoilPosition;
     bool isRecoiling = false;
+    public float recoilSpeed;
 
     [Header("Referências")]
     public Camera playerCamera;
@@ -80,6 +81,8 @@ public class Weapon : MonoBehaviour
             {
                 isRecoiling = false;
             }
+
+            StartCoroutine(RecoilWhileShooting());
         }
     }
     #endregion
@@ -192,6 +195,16 @@ public class Weapon : MonoBehaviour
         {
             // Adicione a lógica de rotação aqui
             gunModel.transform.Rotate(0, Time.deltaTime * rotationSpeed, 0);
+
+            yield return null;
+        }
+    }
+
+    IEnumerator RecoilWhileShooting()
+    {
+        while (isRecoiling)
+        {
+            gunModel.transform.Rotate(0, Time.deltaTime * recoilSpeed, 0);
 
             yield return null;
         }
