@@ -157,13 +157,18 @@ public class PlayerMovement : MonoBehaviour
             characterController.Move(move * moveSpeed * Time.deltaTime);
         }
 
-        //QUASE LÁ
         #region Escalar
         if (isClimbing)
         {
             gravity = 0f;
             float verticalInput = Input.GetAxis("Vertical");
             Vector3 climbDirection = Vector3.up * verticalInput * moveSpeed;
+
+            if (verticalInput == 0)
+            {
+                velocity.y = 0f;
+            }
+
             characterController.Move(climbDirection * Time.deltaTime);
         }
         else
