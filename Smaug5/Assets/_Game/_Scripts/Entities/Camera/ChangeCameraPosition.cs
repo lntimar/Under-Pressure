@@ -5,21 +5,27 @@ using UnityEngine.Rendering;
 
 public class ChangeCameraPosition : MonoBehaviour
 {
-    [Header("Referências:")] 
+    #region Variáveis Globais
+    [Header("Referências:")]
     [SerializeField] private CameraHeadBob cameraHeadBobScript;
     [SerializeField] private SkinnedMeshRenderer playerTop;
 
-    [Header("Posições:")] 
+    [Header("Posições:")]
     [SerializeField] private Vector3[] positions;
 
-    private int _lastIndex;
+    private int _lastIndex = 0;
 
+    private bool _isFirstTime = true;
+    #endregion
+
+    #region Funções Próprias
     public void ChangePos(int index)
     {
         cameraHeadBobScript.ChangeStartPos(positions[index]);
 
-        if (index != _lastIndex)
+        if (index != _lastIndex && !_isFirstTime)
         {
+            _isFirstTime = false;
             playerTop.shadowCastingMode = ShadowCastingMode.ShadowsOnly;
             Invoke("ResetPlayerTop", 0.1f);
         }
@@ -28,4 +34,5 @@ public class ChangeCameraPosition : MonoBehaviour
     }
 
     private void ResetPlayerTop() => playerTop.shadowCastingMode = ShadowCastingMode.On;
+    #endregion
 }

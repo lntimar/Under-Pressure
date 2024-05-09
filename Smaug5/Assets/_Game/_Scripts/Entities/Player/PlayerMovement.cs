@@ -167,7 +167,7 @@ public class PlayerMovement : MonoBehaviour
             }
 
             // Desativa Animação de Pulo
-            playerAnimator.SetBool("isGrounded", isGrounded);
+            playerAnimator.SetFloat("speedY", velocity.y);
         }
         #endregion
 
