@@ -2210,8 +2210,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b41bb0859f8ebf24dbad3e064071f96d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerBody1: {fileID: 0}
-  playerBody2: {fileID: 0}
+  playerBody1: {fileID: 5983734213406405047}
+  playerBody2: {fileID: 4089439098667311197}
   isSprinting: 0
   sprintSpeed: 30
   normalSpeed: 15
