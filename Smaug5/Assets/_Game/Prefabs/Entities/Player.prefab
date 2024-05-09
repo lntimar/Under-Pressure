@@ -132,6 +132,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 214374431200771425}
   - {fileID: 4113934205852787900}
   m_Father: {fileID: 4570555654654513192}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1052,7 +1053,6 @@ Transform:
   m_LocalScale: {x: 1.2, y: 1.8, z: 1.2}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 214374431200771425}
   - {fileID: 4570555654654513192}
   - {fileID: 8789435169796097}
   - {fileID: 554316749099549957}
@@ -1139,6 +1139,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b41bb0859f8ebf24dbad3e064071f96d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultPos: {x: 0, y: -6.102, z: 0}
+  withGunPos: {x: 1.34, y: -5.96, z: 0.55}
   isSprinting: 0
   sprintSpeed: 30
   normalSpeed: 15
@@ -1166,6 +1168,7 @@ MonoBehaviour:
   crouchController: {fileID: 9100000, guid: 00a755a27880edb42bbd1487da46a346, type: 2}
   climbController: {fileID: 9100000, guid: e2d5cb7147404ec4ea714592e4e241ba, type: 2}
   cameraHeadBobScript: {fileID: 4370388159700675754}
+  cameraTransform: {fileID: 6543510421826537098}
 --- !u!1 &2843883007437634028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1638,9 +1641,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4089439098667311197}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.78, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.34, y: -5.96, z: 0.55}
+  m_LocalScale: {x: 2.4000003, y: 3.6, z: 2.4000003}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 84161888238671729}
@@ -1651,7 +1654,7 @@ Transform:
   - {fileID: 216945982948104879}
   - {fileID: 4747059925626423574}
   - {fileID: 4299144658127818312}
-  m_Father: {fileID: 3801135057846138306}
+  m_Father: {fileID: 6543510421826537098}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &8070713142443311810
 Animator:
@@ -2044,6 +2047,7 @@ MonoBehaviour:
   ammoDisplay: {fileID: 0}
   impactEffect: {fileID: 6525395587224242095, guid: 0f06cc63beefd1d46a18cf5ca81828e5,
     type: 3}
+  recoilSpeed: 0
   playerCamera: {fileID: 8068506225128389881}
   attackPoint: {fileID: 1094991866981197711}
   enemies:

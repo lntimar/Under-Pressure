@@ -5,6 +5,10 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     #region Variáveis Globais
+    [Header("Modelo:")] 
+    public GameObject playerBody1;
+    public GameObject playerBody2;
+
     [Header("Movimentação")]
     public bool isSprinting = false;
     public float sprintSpeed = 30f;
@@ -24,7 +28,6 @@ public class PlayerMovement : MonoBehaviour
     [Header("Agachar")]
     public bool isCrouching = false;
     public float crouchSpeed = 7.5f;
-    public Transform playerBody;
     Vector3 crouchScale = new Vector3(1.2f, 0.9f, 1.2f);
     Vector3 playerScale = new Vector3(1.2f, 1.8f, 1.2f);
 
@@ -35,7 +38,6 @@ public class PlayerMovement : MonoBehaviour
     public bool isClimbing = false;
 
     [Header("Animação")]
-    public Animator playerAnimator;
     public RuntimeAnimatorController defaultController;
     public RuntimeAnimatorController withGunController;
     public RuntimeAnimatorController crouchController;
@@ -43,9 +45,19 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Referências:")] 
     public CameraHeadBob cameraHeadBobScript;
+
+    private Animator playerAnimator;
+
+    private enum PlayerModel
+    {
+        DEFAULT,
+        WITH_GUN
+    }
     #endregion
 
     #region Funções Unity
+    void Awake() => ChangeModel(PlayerModel.DEFAULT);
+
     void Update()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask); //Checa se o jogador está no chão
@@ -82,11 +94,12 @@ public class PlayerMovement : MonoBehaviour
         #endregion
 
         #region Animando
-
         if (isCrouching) // Agachado
         {
             if (playerAnimator.runtimeAnimatorController != crouchController)
             {
+                ChangeModel(PlayerModel.DEFAULT);
+
                 playerAnimator.runtimeAnimatorController = crouchController;
                 playerAnimator.speed = 1f;
             }
@@ -105,6 +118,8 @@ public class PlayerMovement : MonoBehaviour
         {
             if (playerAnimator.runtimeAnimatorController != climbController)
             {
+                ChangeModel(PlayerModel.DEFAULT);
+
                 playerAnimator.runtimeAnimatorController = climbController;
             }
         }
@@ -114,6 +129,8 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (playerAnimator.runtimeAnimatorController != withGunController)
                 {
+                    ChangeModel(PlayerModel.WITH_GUN);
+
                     playerAnimator.runtimeAnimatorController = withGunController;
                     playerAnimator.speed = 1f;
                 }
@@ -122,6 +139,8 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (playerAnimator.runtimeAnimatorController != defaultController)
                 {
+                    ChangeModel(PlayerModel.DEFAULT);
+
                     playerAnimator.runtimeAnimatorController = defaultController;
                     playerAnimator.speed = 1f;
                 }
@@ -219,6 +238,25 @@ public class PlayerMovement : MonoBehaviour
             moveSpeed = normalSpeed;
         }
         #endregion
+    }
+
+    // Ativa o modelo do Player desejado para as animações
+    void ChangeModel(PlayerModel type)
+    {
+        if (type == PlayerModel.DEFAULT)
+        {
+            playerBody1.SetActive(true);
+            playerBody2.SetActive(false);
+
+            playerAnimator = playerBody1.GetComponent<Animator>();
+        }
+        else // WITH_GUN
+        {
+            playerBody1.SetActive(false);
+            playerBody2.SetActive(true);
+
+            playerAnimator = playerBody2.GetComponent<Animator>();
+        }
     }
     #endregion
 }
