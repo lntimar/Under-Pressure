@@ -147,7 +147,7 @@ public class PlayerMovement : MonoBehaviour
             }
             
             // Checa Animação de Andar
-            if (move != Vector3.zero && isGrounded)
+            if (move != Vector3.zero && velocity.y <= -1.9f)
             {
                 if (isSprinting) // Caso estiver Correndo
                 {
