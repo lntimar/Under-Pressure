@@ -21,8 +21,6 @@ public class OptionsMenu : MonoBehaviour
             LoadVolume();
         else
             SetMasterVolume();
-
-        volumeSlider.value = 1f;
     }
     #endregion
 
