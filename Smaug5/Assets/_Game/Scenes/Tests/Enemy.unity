@@ -199,6 +199,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 898640570577382655, guid: 1cf8966aa281a6a4fa451b6236c94f00,
+        type: 3}
+      propertyPath: recoilForce
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2800027571597143880, guid: 1cf8966aa281a6a4fa451b6236c94f00,
         type: 3}
       propertyPath: m_Name
