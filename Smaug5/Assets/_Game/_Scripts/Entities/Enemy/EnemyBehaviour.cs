@@ -14,6 +14,9 @@ public class EnemyBehaviour : MonoBehaviour
     [Header("Movimentação:")]
     [SerializeField] private float minSpeed = 0f;
 
+    [Header("Sons:")] 
+    [SerializeField] private float screamInterval = 20f;
+
     // Componentes:
     private NavMeshAgent _agent;
     private Animator _animator;
@@ -22,6 +25,10 @@ public class EnemyBehaviour : MonoBehaviour
 
     // Referências:
     private Transform _target;
+
+    // Sfx:
+    private int _enemySfxIndex = 1;
+    private bool _canScream = true;
     #endregion
 
     #region Default Methods
@@ -55,6 +62,7 @@ public class EnemyBehaviour : MonoBehaviour
             else
             {
                 _animator.SetBool("Chasing", true);
+                PlayScreamSFX();
                 //Debug.Log("chasing on");
             }
         }
@@ -78,6 +86,13 @@ public class EnemyBehaviour : MonoBehaviour
         var curAnimName = animInfo[0].clip.name;
         if (!curAnimName.Contains("Attack"))
         {
+            if (AudioManager.Instance != null)
+            {
+                AudioManager.Instance.PlaySFX("enemy attack " + _enemySfxIndex);
+
+                if (_enemySfxIndex == 1) _enemySfxIndex = 2;
+                else _enemySfxIndex = 1;
+            }
             _animator.Play("Enemy Attack " + Random.Range(1, 5));
             Debug.Log("Trigger Attack");
             //_agent.SetDestination(transform.position);
@@ -118,6 +133,22 @@ public class EnemyBehaviour : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, lookRadius);
+    }
+
+    private void PlayScreamSFX()
+    {
+        if (AudioManager.Instance != null && _canScream)
+        {
+            AudioManager.Instance.PlaySFX("enemy scream " + Random.Range(1, 3));
+            StartCoroutine(SetScreamInterval());
+        }
+    }
+
+    private IEnumerator SetScreamInterval()
+    {
+        _canScream = false;
+        yield return new WaitForSeconds(screamInterval);
+        _canScream = true;
     }
     #endregion
 }

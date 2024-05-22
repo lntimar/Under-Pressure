@@ -41,6 +41,8 @@ public class Weapon : MonoBehaviour
     public LayerMask enemies;
     public Rigidbody playerRb;
     public Animator playerAnim;
+
+    // Referências:
     #endregion
 
     #region Funções Unity
@@ -113,6 +115,7 @@ public class Weapon : MonoBehaviour
         if (readyToShoot && shooting && !reloading && bulletsLeft > 0)
         {
             playerAnim.SetTrigger("Shoot");
+            if (AudioManager.Instance != null) AudioManager.Instance.PlaySFX("weapon shot");
             bulletsShot = bulletsPerTap;
             ShootHitscan();
         }
@@ -178,6 +181,7 @@ public class Weapon : MonoBehaviour
 
     private void Reload()
     {
+        if (AudioManager.Instance != null) AudioManager.Instance.PlaySFX("weapon reload");
         Debug.Log("RECARREGANDO!");
         reloading = true;
         Invoke("ReloadFinished", reloadTime);

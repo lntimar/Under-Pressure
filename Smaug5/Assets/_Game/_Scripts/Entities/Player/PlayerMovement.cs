@@ -46,7 +46,17 @@ public class PlayerMovement : MonoBehaviour
     [Header("Referências:")] 
     public CameraHeadBob cameraHeadBobScript;
 
+    [Header("Sons:")] 
+    public float walkStepsInterval;
+    public float sprintStepsInterval;
+    public float crouchStepsInterval;
+    public float climbStepsInterval;
+    
     private Animator playerAnimator;
+
+    // Sfxs Passos
+    private bool canPlaySteps = true;
+    private int stepsSfxIndex = 1;
 
     private enum PlayerModel
     {
@@ -98,6 +108,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (playerAnimator.runtimeAnimatorController != crouchController)
             {
+                stepsSfxIndex = 1;
                 ChangeModel(PlayerModel.DEFAULT);
 
                 playerAnimator.runtimeAnimatorController = crouchController;
@@ -108,6 +119,7 @@ public class PlayerMovement : MonoBehaviour
             if (move != Vector3.zero && !isSprinting)
             {
                 playerAnimator.SetBool("isWalking", true);
+                PlayStepsSFX();
             }
             else
             {
@@ -118,9 +130,20 @@ public class PlayerMovement : MonoBehaviour
         {
             if (playerAnimator.runtimeAnimatorController != climbController)
             {
+                stepsSfxIndex = 1;
                 ChangeModel(PlayerModel.DEFAULT);
 
                 playerAnimator.runtimeAnimatorController = climbController;
+            }
+
+            if (move.y != 0)
+            {
+                playerAnimator.speed = 1f;
+                PlayStepsSFX();
+            }
+            else
+            {
+                playerAnimator.speed = 0f;
             }
         }
         else // Default & Com Arma
@@ -129,6 +152,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (playerAnimator.runtimeAnimatorController != withGunController)
                 {
+                    stepsSfxIndex = 1;
                     ChangeModel(PlayerModel.WITH_GUN);
 
                     playerAnimator.runtimeAnimatorController = withGunController;
@@ -139,6 +163,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (playerAnimator.runtimeAnimatorController != defaultController)
                 {
+                    stepsSfxIndex = 1;
                     ChangeModel(PlayerModel.DEFAULT);
 
                     playerAnimator.runtimeAnimatorController = defaultController;
@@ -153,11 +178,13 @@ public class PlayerMovement : MonoBehaviour
                 {
                     playerAnimator.SetBool("isWalking", false);
                     playerAnimator.SetBool("isSprinting", true);
+                    PlayStepsSFX();
                 }
                 else // Caso só estiver Caminhando
                 {
                     playerAnimator.SetBool("isWalking", true);
                     playerAnimator.SetBool("isSprinting", false);
+                    PlayStepsSFX();
                 }
             }
             else
@@ -199,6 +226,7 @@ public class PlayerMovement : MonoBehaviour
         #region Pular
         if (Input.GetButtonDown("Jump") && isGrounded && !isCrouching) //Se está no chão e não está agachado, pode pular
         {
+            if (AudioManager.Instance != null) AudioManager.Instance.PlaySFX("player jump");
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
             playerAnimator.SetTrigger("Jump");
         }
@@ -257,6 +285,67 @@ public class PlayerMovement : MonoBehaviour
 
             playerAnimator = playerBody2.GetComponent<Animator>();
         }
+    }
+
+    void PlayStepsSFX()
+    {
+        if (AudioManager.Instance != null)
+        {
+            // Pegue a referência do animator controller atual
+            var runTime = playerAnimator.runtimeAnimatorController;
+
+            if (canPlaySteps)
+            {
+                if (runTime == defaultController || withGunController) // Toque Andando / Correndo
+                {
+                    if (!isSprinting)
+                    {
+                        AudioManager.Instance.PlaySFX("player walk " + stepsSfxIndex);
+                        StartCoroutine(SetStepsInterval(walkStepsInterval));
+                    }
+                    else
+                    {
+                        AudioManager.Instance.PlaySFX("player run " + stepsSfxIndex);
+                        StartCoroutine(SetStepsInterval(walkStepsInterval));
+                    }
+
+                    // Alterando Próximo Passo
+                    if (stepsSfxIndex < 4)
+                        stepsSfxIndex++;
+                    else
+                        stepsSfxIndex = 0;
+                }
+                else if (runTime == crouchController) // Toque Agachando
+                {
+                    AudioManager.Instance.PlaySFX("player walk " + stepsSfxIndex);
+                    StartCoroutine(SetStepsInterval(crouchStepsInterval));
+
+                    // Alterando Próximo Passo
+                    if (stepsSfxIndex < 4)
+                        stepsSfxIndex++;
+                    else
+                        stepsSfxIndex = 0;
+                }
+                else // Toque Escalando
+                {
+                    AudioManager.Instance.PlaySFX("player climb " + stepsSfxIndex);
+                    StartCoroutine(SetStepsInterval(climbStepsInterval));
+
+                    // Alterando Próximo Passo
+                    if (stepsSfxIndex < 2)
+                        stepsSfxIndex++;
+                    else
+                        stepsSfxIndex = 0;
+                }
+            }
+        }
+    }
+
+    IEnumerator SetStepsInterval(float interval)
+    {
+        canPlaySteps = false;
+        yield return new WaitForSeconds(interval);
+        canPlaySteps = true;
     }
     #endregion
 }

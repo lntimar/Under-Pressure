@@ -20,16 +20,19 @@ public class AudioManager : MonoBehaviour
     private static string musicCurName;
     private static AudioSource curMusicAudioSource;
     private GameObject musicCurObj;
+
+    public static AudioManager Instance;
     #endregion
 
     #region Funções Unity
-    /*
+    
     private void Awake()
     {
         //DontDestroyOnLoad(gameObject); // Faz com que o objeto mova entre as scenes
         //AudioListener.volume = PlayerPrefs.GetFloat("masterVolume"); // Alterando o masterVolume com base no PlayerPrefs
+        Instance = this;
     }
-    */
+    
 
     private void Start() => _fadeVolume = GetComponent<FadeVolume>();
 

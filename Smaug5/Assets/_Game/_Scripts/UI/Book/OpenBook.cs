@@ -97,7 +97,7 @@ public class OpenBook : MonoBehaviour
             tempTexts[i].text = pageEditorScript.BookPages[LastPageIndex].Texts[i];
         }
 
-        // TODO: SFX abrindo livro
+        if (AudioManager.Instance != null) AudioManager.Instance.PlaySFX("book open");
     }
 
     public void ClickClose()
@@ -116,7 +116,7 @@ public class OpenBook : MonoBehaviour
             tempTexts[i].text = pageEditorScript.BookPages[LastPageIndex].Texts[i];
         }
 
-        // TODO: SFX fechando Livro
+        if (AudioManager.Instance != null) AudioManager.Instance.PlaySFX("book close");
     }
     #endregion
 }

@@ -89,6 +89,8 @@ public class FlipPage : MonoBehaviour
 
             textsFlipPages[0].text = pageEditorScript.BookPages[_curPageIndex + 1].Texts[0];
             textsFlipPages[1].text = pageEditorScript.BookPages[_curPageIndex].Texts[1];
+
+            if (AudioManager.Instance != null) AudioManager.Instance.PlaySFX("book flip 1");
         }
         else // Next
         {
@@ -99,9 +101,10 @@ public class FlipPage : MonoBehaviour
 
             textsFlipPages[0].text = pageEditorScript.BookPages[_curPageIndex].Texts[0];
             textsFlipPages[1].text = pageEditorScript.BookPages[_curPageIndex - 1].Texts[1];
+
+            if (AudioManager.Instance != null) AudioManager.Instance.PlaySFX("book flip 2");
         }
 
-        
 
         _isClicked = true;
         _startTime = DateTime.Now;

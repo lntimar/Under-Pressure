@@ -17,6 +17,7 @@ public class SonarScript : MonoBehaviour
         {
             if (playerStats.Souls == soulsRequired)
             {
+                if (AudioManager.Instance != null) AudioManager.Instance.PlaySFX("weapon sonar");
                 Debug.Log("FUSRODAH");
                 playerStats.Souls--;
                 affectedObjects.ForEach(obj =>

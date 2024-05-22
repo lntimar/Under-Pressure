@@ -29,7 +29,10 @@ public class SoulScript : MonoBehaviour
             {
                 soulDisplay.SetText("Almas: " + _playerStats.Souls);
             }*/
-            Destroy(gameObject);
+
+            if (AudioManager.Instance != null) AudioManager.Instance.PlaySFX("orb catch");
+
+            Destroy(gameObject, 0.1f);
         }
     }
 }
