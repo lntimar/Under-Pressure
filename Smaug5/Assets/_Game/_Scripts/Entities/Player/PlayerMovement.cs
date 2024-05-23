@@ -45,7 +45,6 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Referências:")] 
     public CameraHeadBob cameraHeadBobScript;
-
     private Animator playerAnimator;
 
     private enum PlayerModel
@@ -226,15 +225,13 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftControl) && isGrounded && !isCrouching)
         {
             isCrouching = true;
-            //playerBody.transform.localScale = crouchScale;
-            //characterController.transform.localScale = crouchScale;
+            //playerBodyCollider.transform.localScale = crouchScale;
             moveSpeed = crouchSpeed;
         }
         if (Input.GetKeyUp(KeyCode.LeftControl) && isGrounded && isCrouching)
         {
             isCrouching = false;
-            //playerBody.transform.localScale = playerScale;
-            //characterController.transform.localScale = playerScale;
+            //playerBodyCollider.transform.localScale = playerScale;
             moveSpeed = normalSpeed;
         }
         #endregion
