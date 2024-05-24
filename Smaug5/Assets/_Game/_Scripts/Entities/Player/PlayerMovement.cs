@@ -28,8 +28,8 @@ public class PlayerMovement : MonoBehaviour
     [Header("Agachar")]
     public bool isCrouching = false;
     public float crouchSpeed = 7.5f;
-    Vector3 crouchScale = new Vector3(1.2f, 0.9f, 1.2f);
-    Vector3 playerScale = new Vector3(1.2f, 1.8f, 1.2f);
+    float playerColliderHeight = 3.66f;
+    float crouchColliderHeight = 1.83f;
 
     [Header("Escalar")]
     public float climbingDistance = 0.4f;
@@ -220,18 +220,18 @@ public class PlayerMovement : MonoBehaviour
         }
         #endregion
 
-        //MUDAR LÓGICA DE AGACHAR, NO MOMENTO ELE SÓ FICA MENOR
+        //ARRUMAR, ELE TÁ CAINDO NO CHÃO
         #region Agachar
         if (Input.GetKey(KeyCode.LeftControl) && isGrounded && !isCrouching)
         {
             isCrouching = true;
-            //playerBodyCollider.transform.localScale = crouchScale;
+            characterController.height = crouchColliderHeight;
             moveSpeed = crouchSpeed;
         }
         if (Input.GetKeyUp(KeyCode.LeftControl) && isGrounded && isCrouching)
         {
             isCrouching = false;
-            //playerBodyCollider.transform.localScale = playerScale;
+            characterController.height = playerColliderHeight;
             moveSpeed = normalSpeed;
         }
         #endregion
