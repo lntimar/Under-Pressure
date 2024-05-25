@@ -226,15 +226,18 @@ public class PlayerMovement : MonoBehaviour
         {
             isCrouching = true;
             characterController.height = crouchColliderHeight;
+            characterController.center = new Vector3(characterController.center.x, crouchColliderHeight / 2, characterController.center.z); // Ajusta o centro
             moveSpeed = crouchSpeed;
         }
         if (Input.GetKeyUp(KeyCode.LeftControl) && isGrounded && isCrouching)
         {
             isCrouching = false;
             characterController.height = playerColliderHeight;
+            characterController.center = new Vector3(characterController.center.x, playerColliderHeight / 2, characterController.center.z); // Ajusta o centro
             moveSpeed = normalSpeed;
         }
         #endregion
+
     }
 
     // Ativa o modelo do Player desejado para as animações
