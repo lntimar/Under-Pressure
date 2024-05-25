@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -7,11 +8,13 @@ using UnityEngine.Audio;
 public class OptionsMenu : MonoBehaviour
 {
     #region Variáveis Globais
-    [Header("Configurações:")]
     // Inspector:
+    [Header("Configurações:")]
+    
     [Header("Referências:")]
     [SerializeField] private AudioMixer audioMixer;
     [SerializeField] private Slider volumeSlider;
+    [SerializeField] private TextMeshProUGUI txtBtnFullscren;
     #endregion
 
     #region Funções Unity
@@ -42,5 +45,19 @@ public class OptionsMenu : MonoBehaviour
     public void GoBackToMainMenu() => MainMenuManager.Instance.OpenMenu(Default.MainMenu, MainMenuManager.OptionsMenu);
 
     public void GoBackToGameMenu() => GameMenuManager.Instance.OpenMenu(InGame.GameMenu, GameMenuManager.OptionsMenu);
+
+    public void SetFullScreen()
+    {
+        if (!Screen.fullScreen)
+        {
+            Screen.fullScreen = true;
+            txtBtnFullscren.text = "X";
+        }
+        else
+        {
+            Screen.fullScreen = false;
+            txtBtnFullscren.text = " ";
+        }
+    }
     #endregion
 }
