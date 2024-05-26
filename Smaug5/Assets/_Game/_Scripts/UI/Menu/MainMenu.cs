@@ -11,12 +11,26 @@ public class MainMenu : MonoBehaviour
     [Header("Configurações:")]
 
     [Header("Transição:")]
-    [SerializeField] private TransitionSettings transitionSettings;
-    [SerializeField] private float loadTime;
+    [SerializeField] private TransitionSettings firstTransitionSettings;
+    [SerializeField] private float firstLoadTime;
+    [SerializeField] private TransitionSettings playTransitionSettings;
+    [SerializeField] private float playLoadTime;
+
+    private static bool firstTime = true;
     #endregion
 
     #region Funções Próprias
-    public void StartGame() => TransitionManager.Instance().Transition("Level 1", transitionSettings, loadTime);
+
+    private void Start()
+    {
+        if (firstTime)
+        {
+            firstTime = false;
+            TransitionManager.Instance().Transition(firstTransitionSettings, firstLoadTime);
+        }
+    }
+
+    public void StartGame() => TransitionManager.Instance().Transition("NPC Dialogue", playTransitionSettings, playLoadTime);
 
     public void GoToOptions() => MainMenuManager.Instance.OpenMenu(Default.Options, MainMenuManager.MainMenu);
 

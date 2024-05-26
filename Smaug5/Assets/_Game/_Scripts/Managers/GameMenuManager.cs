@@ -13,6 +13,9 @@ public class GameMenuManager : MonoBehaviour
 
     // Referências dos Menus que serão manipulados
     public static GameObject GameMenu, OptionsMenu, ControlsMenu;
+
+    // Efeitos Sonoros Botões
+    private int _curBtnSFXindex = 1;
     #endregion
 
     #region Funções Unity
@@ -56,6 +59,14 @@ public class GameMenuManager : MonoBehaviour
 
         // Desativando o anterior
         callingMenu.SetActive(false);
+    }
+
+    public void PlayBtnSFX()
+    {
+        AudioManager.Instance.PlaySFX("menu confirm " + _curBtnSFXindex);
+
+        if (_curBtnSFXindex == 1) _curBtnSFXindex = 2;
+        else _curBtnSFXindex = 1;
     }
     #endregion
 }

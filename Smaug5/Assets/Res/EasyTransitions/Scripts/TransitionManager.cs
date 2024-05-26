@@ -39,7 +39,7 @@ namespace EasyTransition
         /// <param name="startDelay">The delay before the transition starts.</param>
         public void Transition(TransitionSettings transition, float startDelay)
         {
-            if (transition == null || runningTransition)
+            if (transition == null || runningTransition && Time.timeScale != 0f)
             {
                 Debug.LogError("You have to assing a transition.");
                 return;
