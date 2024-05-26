@@ -1,10 +1,10 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace EasyTransition
 {
-
     public class Transition : MonoBehaviour
     {
         public TransitionSettings transitionSettings;
@@ -18,6 +18,8 @@ namespace EasyTransition
         public Material additiveColorMaterial;
 
         bool hasTransitionTriggeredOnce;
+
+        private float _curPauseTime;
 
         private void Start()
         {
@@ -173,8 +175,19 @@ namespace EasyTransition
                 destroyTime = destroyTime / transitionSettings.transitionSpeed;
 
             //Destroying the transition
-            Destroy(gameObject, destroyTime);
+            if (Time.timeScale != 0f)
+                Destroy(gameObject, destroyTime);
+        }
+
+        private void Update()
+        {
+            if (Time.timeScale == 0f)
+            {
+                _curPauseTime += Time.unscaledDeltaTime;
+
+                if (_curPauseTime >= transitionSettings.destroyTime)
+                    Destroy(gameObject);
+            }
         }
     }
-
 }

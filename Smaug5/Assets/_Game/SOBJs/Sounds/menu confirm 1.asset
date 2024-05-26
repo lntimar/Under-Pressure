@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 389705d74d91e8b4db540df204c1e402, type: 3}
-  m_Name: button 2
+  m_Name: menu confirm 1
   m_EditorClassIdentifier: 
-  Clip: {fileID: 8300000, guid: 361eea1e5091bc7489ab96408cb66605, type: 3}
+  Clip: {fileID: 8300000, guid: 57e7ad86ff2e49643b536d564d864dfe, type: 3}
   Volume: 1
   Pitch: 1

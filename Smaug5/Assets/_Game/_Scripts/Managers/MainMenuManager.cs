@@ -5,11 +5,18 @@ using UnityEngine;
 public class MainMenuManager : MonoBehaviour
 {
     #region Variáveis Globais
+    // Inspector:
+    [Header("Cursor:")] 
+    [SerializeField] private Texture2D cursorTexture;
+
     // Instância da Classe
     public static MainMenuManager Instance;
 
     // Referências dos Menus que serão manipulados
     public static GameObject MainMenu, OptionsMenu, ControlsMenu, CreditsMenu;
+
+    // Efeitos Sonoros Botões
+    private int _curBtnSFXindex = 1;
     #endregion
 
     #region Funções Unity
@@ -17,6 +24,7 @@ public class MainMenuManager : MonoBehaviour
     {
         Instance = this;
         Init();
+        SetCursor();
     }
     #endregion
 
@@ -56,6 +64,21 @@ public class MainMenuManager : MonoBehaviour
 
         // Desativando o anterior
         callingMenu.SetActive(false);
+    }
+
+    public void PlayBtnSFX()
+    {
+        AudioManager.Instance.PlaySFX("menu confirm " + _curBtnSFXindex);
+
+        if (_curBtnSFXindex == 1) _curBtnSFXindex = 2;
+        else _curBtnSFXindex = 1;
+    }
+
+    private void SetCursor()
+    {
+        var cursorHotspot = new Vector2(cursorTexture.width / 2, cursorTexture.height / 2);
+        Cursor.SetCursor(cursorTexture, cursorHotspot, CursorMode.Auto);
+        Cursor.lockState = CursorLockMode.None;
     }
     #endregion
 }

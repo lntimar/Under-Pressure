@@ -7,7 +7,11 @@ using UnityEngine.SceneManagement;
 public class GameMenu : MonoBehaviour
 {
     #region Variáveis Globais
+    // Inspector:
     [Header("Configurações")]
+    
+    [Header("Cursor:")]
+    [SerializeField] private Texture2D cursorTexture;
 
     [Header("Transição:")]
     [SerializeField] private TransitionSettings transitionSettings;
@@ -35,8 +39,12 @@ public class GameMenu : MonoBehaviour
         Time.timeScale = 0f;
         GameMenuManager.MenuCanvas.GetComponent<Canvas>().enabled = true;
         _gamePaused = true;
+
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+
+        var cursorHotspot = new Vector2(cursorTexture.width / 2, cursorTexture.height / 2);
+        Cursor.SetCursor(cursorTexture, cursorHotspot, CursorMode.Auto);
     }
 
     public void Resume()
@@ -54,8 +62,8 @@ public class GameMenu : MonoBehaviour
 
     public void GoToMainMenu() 
     {
-        Time.timeScale = 0f;
-        TransitionManager.Instance().Transition("Main Menu", transitionSettings, loadTime);
-    } 
+        Time.timeScale = 1f;
+        TransitionManager.Instance().Transition("MainMenu", transitionSettings, loadTime);
+    }
     #endregion
 }
