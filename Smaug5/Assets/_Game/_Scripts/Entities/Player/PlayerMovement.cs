@@ -222,18 +222,21 @@ public class PlayerMovement : MonoBehaviour
 
         //ARRUMAR, ELE TÁ CAINDO NO CHÃO
         #region Agachar
+        new Vector3(characterController.center.x, characterController.center.y, characterController.center.z);
+
         if (Input.GetKey(KeyCode.LeftControl) && isGrounded && !isCrouching)
         {
             isCrouching = true;
             characterController.height = crouchColliderHeight;
-            characterController.center = new Vector3(characterController.center.x, crouchColliderHeight / 2, characterController.center.z); // Ajusta o centro
+            characterController.center = new Vector3(characterController.center.x, 0.5f, characterController.center.z); // Ajusta o centro
             moveSpeed = crouchSpeed;
         }
         if (Input.GetKeyUp(KeyCode.LeftControl) && isGrounded && isCrouching)
         {
             isCrouching = false;
             characterController.height = playerColliderHeight;
-            characterController.center = new Vector3(characterController.center.x, playerColliderHeight / 2, characterController.center.z); // Ajusta o centro
+            characterController.center = new Vector3(characterController.center.x, 1f, characterController.center.z); // Ajusta o centro
+            //O correto é ficar no 0, mas ele afunda se for 0. Ver como arrumar.
             moveSpeed = normalSpeed;
         }
         #endregion
