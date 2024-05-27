@@ -55,7 +55,10 @@ public class PlayerMovement : MonoBehaviour
     #endregion
 
     #region Funções Unity
-    void Awake() => ChangeModel(PlayerModel.DEFAULT);
+    void Awake()
+    {
+        ChangeModel(PlayerModel.DEFAULT);
+    }
 
     void Update()
     {
