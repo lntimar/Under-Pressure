@@ -225,8 +225,6 @@ public class PlayerMovement : MonoBehaviour
 
         //ARRUMAR, ELE TÁ CAINDO NO CHÃO
         #region Agachar
-        new Vector3(characterController.center.x, characterController.center.y, characterController.center.z);
-
         if (Input.GetKey(KeyCode.LeftControl) && isGrounded && !isCrouching)
         {
             isCrouching = true;
