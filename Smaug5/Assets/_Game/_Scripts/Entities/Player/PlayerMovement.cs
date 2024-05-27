@@ -45,7 +45,11 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Referências:")] 
     public CameraHeadBob cameraHeadBobScript;
+    
     private Animator playerAnimator;
+    private Rigidbody rb;
+
+    private bool disableVelY = false;
 
     private enum PlayerModel
     {
@@ -55,12 +59,11 @@ public class PlayerMovement : MonoBehaviour
     #endregion
 
     #region Funções Unity
-    void Awake()
-    {
-        ChangeModel(PlayerModel.DEFAULT);
-    }
+    private void Awake() => ChangeModel(PlayerModel.DEFAULT);
 
-    void Update()
+    private void Start() => rb = GetComponent<Rigidbody>();
+
+    private void Update()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask); //Checa se o jogador está no chão
         isClimbing = Physics.CheckSphere(stairsCheck.position, climbingDistance, stairsMask); //Checa se o jogador está escalando
@@ -206,7 +209,8 @@ public class PlayerMovement : MonoBehaviour
         }
         #endregion
 
-        velocity.y += gravity * Time.deltaTime;
+        if (!disableVelY) velocity.y += gravity * Time.deltaTime;
+        else velocity.y = 0f;
 
         characterController.Move(velocity * Time.deltaTime);
 
@@ -231,21 +235,24 @@ public class PlayerMovement : MonoBehaviour
             characterController.height = crouchColliderHeight;
             characterController.center = new Vector3(characterController.center.x, 0.5f, characterController.center.z); // Ajusta o centro
             moveSpeed = crouchSpeed;
+
+            disableVelY = true;
+            Invoke("ResetDisableVelY", 0.00001f);
         }
         if (Input.GetKeyUp(KeyCode.LeftControl) && isGrounded && isCrouching)
         {
             isCrouching = false;
             characterController.height = playerColliderHeight;
-            characterController.center = new Vector3(characterController.center.x, 1f, characterController.center.z); // Ajusta o centro
+            characterController.center = new Vector3(characterController.center.x, 0f, characterController.center.z); // Ajusta o centro
             //O correto é ficar no 0, mas ele afunda se for 0. Ver como arrumar.
+            
             moveSpeed = normalSpeed;
         }
         #endregion
-
     }
 
     // Ativa o modelo do Player desejado para as animações
-    void ChangeModel(PlayerModel type)
+    private void ChangeModel(PlayerModel type)
     {
         if (type == PlayerModel.DEFAULT)
         {
@@ -262,5 +269,7 @@ public class PlayerMovement : MonoBehaviour
             playerAnimator = playerBody2.GetComponent<Animator>();
         }
     }
+
+    private void ResetDisableVelY() => disableVelY = false;
     #endregion
 }

@@ -596,7 +596,6 @@ GameObject:
   - component: {fileID: 330585546}
   - component: {fileID: 330585545}
   - component: {fileID: 330585544}
-  - component: {fileID: 330585547}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -678,18 +677,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &330585547
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 330585543}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -1851,12 +1838,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!143 &1066475267 stripped
-CharacterController:
-  m_CorrespondingSourceObject: {fileID: 1616417150951411775, guid: 1cf8966aa281a6a4fa451b6236c94f00,
-    type: 3}
-  m_PrefabInstance: {fileID: 4307176836108938934}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1193247007
 GameObject:
   m_ObjectHideFlags: 0
@@ -2601,11 +2582,6 @@ PrefabInstance:
       propertyPath: ammoDisplay
       value: 
       objectReference: {fileID: 125954165}
-    - target: {fileID: 898640570577382655, guid: 1cf8966aa281a6a4fa451b6236c94f00,
-        type: 3}
-      propertyPath: recoilForce
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2800027571597143880, guid: 1cf8966aa281a6a4fa451b6236c94f00,
         type: 3}
       propertyPath: m_Name
@@ -2661,11 +2637,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7880508909370203045, guid: 1cf8966aa281a6a4fa451b6236c94f00,
-        type: 3}
-      propertyPath: playerBodyCollider
-      value: 
-      objectReference: {fileID: 1066475267}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

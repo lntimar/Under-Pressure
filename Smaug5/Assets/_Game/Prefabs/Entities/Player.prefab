@@ -2237,10 +2237,6 @@ MonoBehaviour:
   crouchController: {fileID: 9100000, guid: 00a755a27880edb42bbd1487da46a346, type: 2}
   climbController: {fileID: 9100000, guid: e2d5cb7147404ec4ea714592e4e241ba, type: 2}
   cameraHeadBobScript: {fileID: 4370388159700675754}
-  walkStepsInterval: 0
-  sprintStepsInterval: 0
-  crouchStepsInterval: 0
-  climbStepsInterval: 0
 --- !u!1 &2843883007437634028
 GameObject:
   m_ObjectHideFlags: 0
@@ -3774,7 +3770,7 @@ MonoBehaviour:
   bulletsPerTap: 1
   allowButtonHold: 1
   rotationSpeed: 1.7
-  recoilForce: 0
+  recoilForce: 1
   gunModel: {fileID: 7909958634271271512}
   ammoDisplay: {fileID: 0}
   impactEffect: {fileID: 6525395587224242095, guid: 0f06cc63beefd1d46a18cf5ca81828e5,
