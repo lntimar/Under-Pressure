@@ -16,7 +16,8 @@ public class OpenDoor : MonoBehaviour
 
     [HideInInspector] public bool CanInteract = false;
 
-    private static bool[] _doorsOpened = new bool[10];
+    private static bool[] _doorsWithKeyOpened = new bool[10];
+    private static List<int> _doorsWithoutKeyOpened = new List<int>();
     #endregion
 
     #region Funções Unity
@@ -26,10 +27,21 @@ public class OpenDoor : MonoBehaviour
     {
         if (CanInteract)
         {
-            if (Input.GetKeyDown(KeyCode.E) && HasKey())
+            if (targetKey != DoorKeys.Key.None)
             {
-                Open();
-                _doorsOpened[(int)targetKey] = true;
+                if (Input.GetKeyDown(KeyCode.E) && HasKey())
+                {
+                    Open();
+                    _doorsWithKeyOpened[(int)targetKey] = true;
+                }
+            }
+            else
+            {
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    Open();
+                    _doorsWithoutKeyOpened.Add(gameObject.GetInstanceID());
+                }
             }
         }
     }
@@ -45,12 +57,29 @@ public class OpenDoor : MonoBehaviour
 
     private void VerifyAlreadyOpened()
     {
-        for (int i = 0; i < _doorsOpened.Length; i++)
+        if (targetKey != DoorKeys.Key.None) // Porta com Chave
         {
-            if (i == (int)targetKey)
+            for (int i = 0; i < _doorsWithKeyOpened.Length; i++)
             {
-                if (_doorsOpened[i] == true)
+                if (i == (int)targetKey)
+                {
+                    if (_doorsWithKeyOpened[i] == true)
+                    {
+                        Open();
+                        break;
+                    }
+                }
+            }
+        }
+        else // Porta sem Chave
+        {
+            for (int i = 0; i < _doorsWithoutKeyOpened.Count; i++)
+            {
+                if (_doorsWithoutKeyOpened[i] == gameObject.GetInstanceID())
+                {
                     Open();
+                    break;
+                }
             }
         }
     }
