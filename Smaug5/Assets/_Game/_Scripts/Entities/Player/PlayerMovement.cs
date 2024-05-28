@@ -22,8 +22,11 @@ public class PlayerMovement : MonoBehaviour
     public float groundDistance = 0.4f;
     public Transform groundCheck;
     public LayerMask groundMask;
-    Vector3 velocity;
-    bool isGrounded;
+    public float crouchGroundCheckY = -0.32f;
+    private float defaultGroundCheckY;
+    private bool isGrounded;
+
+    private Vector3 velocity;
 
     [Header("Agachar")]
     public bool isCrouching = false;
@@ -45,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Referências:")] 
     public CameraHeadBob cameraHeadBobScript;
-    
+
     private Animator playerAnimator;
     private Rigidbody rb;
 
@@ -61,7 +64,11 @@ public class PlayerMovement : MonoBehaviour
     #region Funções Unity
     private void Awake() => ChangeModel(PlayerModel.DEFAULT);
 
-    private void Start() => rb = GetComponent<Rigidbody>();
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+        defaultGroundCheckY = groundCheck.transform.localPosition.y;
+    }
 
     private void Update()
     {
@@ -84,7 +91,6 @@ public class PlayerMovement : MonoBehaviour
                 cameraHeadBobScript.Enable();
             }
         }
-
 
         if (isGrounded && velocity.y < -20)
         {
@@ -238,6 +244,9 @@ public class PlayerMovement : MonoBehaviour
 
             disableVelY = true;
             Invoke("ResetDisableVelY", 0.00001f);
+
+            groundCheck.transform.localPosition = new Vector3(groundCheck.transform.localPosition.x, crouchGroundCheckY,
+                groundCheck.transform.localPosition.z);
         }
         if (Input.GetKeyUp(KeyCode.LeftControl) && isGrounded && isCrouching)
         {
@@ -246,6 +255,9 @@ public class PlayerMovement : MonoBehaviour
             characterController.center = new Vector3(characterController.center.x, 0f, characterController.center.z); // Ajusta o centro
             //O correto é ficar no 0, mas ele afunda se for 0. Ver como arrumar.
             
+
+            groundCheck.transform.localPosition = new Vector3(groundCheck.transform.localPosition.x, defaultGroundCheckY,
+                groundCheck.localPosition.z);
             moveSpeed = normalSpeed;
         }
         #endregion
