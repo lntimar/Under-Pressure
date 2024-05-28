@@ -60,3 +60,5 @@ MonoBehaviour:
     _layerIndex: 13
   DoorTrigger:
     _layerIndex: 15
+  KeyTrigger:
+    _layerIndex: 16

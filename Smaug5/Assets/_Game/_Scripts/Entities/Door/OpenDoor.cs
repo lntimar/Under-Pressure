@@ -16,23 +16,28 @@ public class OpenDoor : MonoBehaviour
 
     [HideInInspector] public bool CanInteract = false;
 
-    private static bool[] _doorsWithKeyOpened = new bool[10];
-    private static List<int> _doorsWithoutKeyOpened = new List<int>();
+    // Referências:
+    private static Transform _playerTransform;
+
+    private static bool[] _doorsWithKeyOpeneds = new bool[10];
+    private static List<int> _doorsWithoutKeyOpeneds = new List<int>();
     #endregion
 
     #region Funções Unity
+    private void Awake() => _playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+
     private void Start() => VerifyAlreadyOpened();
 
     private void Update()
     {
-        if (CanInteract)
+        if (CanInteract && PlayerIsFacing())
         {
             if (targetKey != DoorKeys.Key.None)
             {
                 if (Input.GetKeyDown(KeyCode.E) && HasKey())
                 {
                     Open();
-                    _doorsWithKeyOpened[(int)targetKey] = true;
+                    _doorsWithKeyOpeneds[(int)targetKey] = true;
                 }
             }
             else
@@ -40,7 +45,7 @@ public class OpenDoor : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     Open();
-                    _doorsWithoutKeyOpened.Add(gameObject.GetInstanceID());
+                    _doorsWithoutKeyOpeneds.Add(gameObject.GetInstanceID());
                 }
             }
         }
@@ -51,7 +56,7 @@ public class OpenDoor : MonoBehaviour
     private void Open()
     {
         if (AudioManager.Instance != null) AudioManager.Instance.PlaySFX("door open");
-        doorAnimator.enabled = false;
+        doorAnimator.enabled = true;
         Destroy(gameObject);
     }
 
@@ -59,11 +64,11 @@ public class OpenDoor : MonoBehaviour
     {
         if (targetKey != DoorKeys.Key.None) // Porta com Chave
         {
-            for (int i = 0; i < _doorsWithKeyOpened.Length; i++)
+            for (int i = 0; i < _doorsWithKeyOpeneds.Length; i++)
             {
                 if (i == (int)targetKey)
                 {
-                    if (_doorsWithKeyOpened[i] == true)
+                    if (_doorsWithKeyOpeneds[i] == true)
                     {
                         Open();
                         break;
@@ -73,9 +78,9 @@ public class OpenDoor : MonoBehaviour
         }
         else // Porta sem Chave
         {
-            for (int i = 0; i < _doorsWithoutKeyOpened.Count; i++)
+            for (int i = 0; i < _doorsWithoutKeyOpeneds.Count; i++)
             {
-                if (_doorsWithoutKeyOpened[i] == gameObject.GetInstanceID())
+                if (_doorsWithoutKeyOpeneds[i] == gameObject.GetInstanceID())
                 {
                     Open();
                     break;
@@ -91,6 +96,21 @@ public class OpenDoor : MonoBehaviour
             if (PlayerProgress.KeysCollected[i] == targetKey)
                 return true;
         }
+
+        return false;
+    }
+
+    private bool PlayerIsFacing()
+    {
+        var triggerDirection = (transform.position - _playerTransform.position).normalized;
+        var playerDirection = _playerTransform.forward;
+
+        float scalar = Vector3.Dot(triggerDirection, playerDirection);
+
+        float angulo = Mathf.Acos(scalar) * Mathf.Rad2Deg;
+
+        if (angulo <= 45f)
+            return true;
 
         return false;
     }

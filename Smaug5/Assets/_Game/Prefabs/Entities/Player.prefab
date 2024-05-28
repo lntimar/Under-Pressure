@@ -2103,9 +2103,10 @@ GameObject:
   - component: {fileID: 1616417150951411775}
   - component: {fileID: 7281671112738867726}
   - component: {fileID: 7880508909370203045}
+  - component: {fileID: 382495252082507506}
   m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2224,6 +2225,7 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 8
+  crouchGroundCheckY: -0.32
   isCrouching: 0
   crouchSpeed: 7.5
   climbingDistance: 0.4
@@ -2237,6 +2239,18 @@ MonoBehaviour:
   crouchController: {fileID: 9100000, guid: 00a755a27880edb42bbd1487da46a346, type: 2}
   climbController: {fileID: 9100000, guid: e2d5cb7147404ec4ea714592e4e241ba, type: 2}
   cameraHeadBobScript: {fileID: 4370388159700675754}
+--- !u!114 &382495252082507506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2800027571597143880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea7efc570912e8b44af0433982c8bebd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2843883007437634028
 GameObject:
   m_ObjectHideFlags: 0

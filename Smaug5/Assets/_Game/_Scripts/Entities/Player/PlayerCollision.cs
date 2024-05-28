@@ -41,6 +41,10 @@ public class PlayerCollision : MonoBehaviour
         {
             col.gameObject.GetComponent<OpenDoor>().CanInteract = true;
         }
+        else if (col.gameObject.layer == CollisionLayersManager.Instance.KeyTrigger.Index)
+        {
+            col.gameObject.GetComponent<GetKey>().CanInteract = true;
+        }
     }
 
     private void OnTriggerExit(Collider col)
@@ -48,6 +52,10 @@ public class PlayerCollision : MonoBehaviour
         if (col.gameObject.layer == CollisionLayersManager.Instance.DoorTrigger.Index)
         {
             col.gameObject.GetComponent<OpenDoor>().CanInteract = false;
+        }
+        else if (col.gameObject.layer == CollisionLayersManager.Instance.KeyTrigger.Index)
+        {
+            col.gameObject.GetComponent<GetKey>().CanInteract = false;
         }
     }
     #endregion

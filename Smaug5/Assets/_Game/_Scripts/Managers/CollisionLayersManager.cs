@@ -15,6 +15,7 @@ public class CollisionLayersManager : MonoBehaviour
     public SingleUnityLayer ConversationTrigger;
     public SingleUnityLayer Stairs;
     public SingleUnityLayer DoorTrigger;
+    public SingleUnityLayer KeyTrigger;
 
     public static CollisionLayersManager Instance;
     #endregion
