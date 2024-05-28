@@ -93,7 +93,8 @@ public class EnemyBehaviour : MonoBehaviour
                 if (_enemySfxIndex == 1) _enemySfxIndex = 2;
                 else _enemySfxIndex = 1;
             }
-            _animator.Play("Enemy Attack " + Random.Range(1, 5));
+            //_animator.Play("Enemy Attack " + Random.Range(1, 5));
+            _animator.Play("Enemy Attack 2");
             Debug.Log("Trigger Attack");
             //_agent.SetDestination(transform.position);
         }
@@ -119,8 +120,8 @@ public class EnemyBehaviour : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        var player = other.GetComponent<PlayerMovement>();
-
+        //var player = other.GetComponent<PlayerMovement>();
+        var player = other.gameObject.GetComponent<PlayerMovement>();
         if (player != null)
         {
             Debug.Log("Bateu");
