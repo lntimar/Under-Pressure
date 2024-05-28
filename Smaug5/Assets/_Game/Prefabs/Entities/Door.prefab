@@ -27,13 +27,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1966517924699933123}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.000078201294, y: 0.0095, z: 0.01033}
-  m_LocalScale: {x: 0.11148273, y: 0.06688965, z: 0.63768125}
+  m_LocalRotation: {x: 1, y: 0, z: 0, w: 0}
+  m_LocalPosition: {x: 3.4829426, y: 5.051094, z: -0.46452522}
+  m_LocalScale: {x: 32.707245, y: 32.70726, z: 31.180918}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 9129538844582468614}
-  m_LocalEulerAnglesHint: {x: -180, y: 0, z: 0}
+  m_Father: {fileID: 1253014154536947582}
+  m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
 --- !u!33 &2969165729583169291
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -138,8 +138,7 @@ Transform:
   m_LocalPosition: {x: 3.46, y: 0, z: 0}
   m_LocalScale: {x: 293.38397, y: 48.897327, z: 488.97327}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 3646541692522953371}
+  m_Children: []
   m_Father: {fileID: 1253014154536947582}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!33 &7857356665767857041
@@ -276,6 +275,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 3646541692522953371}
   - {fileID: 9129538844582468614}
   m_Father: {fileID: 7477746871193199525}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -368,4 +368,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetKey: -1
   doorAnimator: {fileID: 4236350697794652620}
+  gfxTransform: {fileID: 9129538844582468614}
   CanInteract: 0
