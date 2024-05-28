@@ -13,6 +13,7 @@ public class OpenDoor : MonoBehaviour
 
     [Header("Referências:")]
     [SerializeField] private Animator doorAnimator;
+    [SerializeField] private Transform gfxTransform;
 
     [HideInInspector] public bool CanInteract = false;
 
@@ -30,22 +31,25 @@ public class OpenDoor : MonoBehaviour
 
     private void Update()
     {
-        if (CanInteract && PlayerIsFacing())
+        if (CanInteract)
         {
-            if (targetKey != DoorKeys.Key.None)
+            if (PlayerIsFacing())
             {
-                if (Input.GetKeyDown(KeyCode.E) && HasKey())
+                if (targetKey != DoorKeys.Key.None)
                 {
-                    Open();
-                    _doorsWithKeyOpeneds[(int)targetKey] = true;
+                    if (Input.GetKeyDown(KeyCode.E) && HasKey())
+                    {
+                        Open();
+                        _doorsWithKeyOpeneds[(int)targetKey] = true;
+                    }
                 }
-            }
-            else
-            {
-                if (Input.GetKeyDown(KeyCode.E))
+                else
                 {
-                    Open();
-                    _doorsWithoutKeyOpeneds.Add(gameObject.GetInstanceID());
+                    if (Input.GetKeyDown(KeyCode.E))
+                    {
+                        Open();
+                        _doorsWithoutKeyOpeneds.Add(gameObject.GetInstanceID());
+                    }
                 }
             }
         }
@@ -102,7 +106,7 @@ public class OpenDoor : MonoBehaviour
 
     private bool PlayerIsFacing()
     {
-        var triggerDirection = (transform.position - _playerTransform.position).normalized;
+        var triggerDirection = (gfxTransform.position - _playerTransform.position).normalized;
         var playerDirection = _playerTransform.forward;
 
         float scalar = Vector3.Dot(triggerDirection, playerDirection);

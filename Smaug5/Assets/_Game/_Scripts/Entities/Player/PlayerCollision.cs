@@ -37,7 +37,11 @@ public class PlayerCollision : MonoBehaviour
             _playerStats.ChangeHealthPoints(col.gameObject.GetComponent<HealthPack>().Points);
             Destroy(col.gameObject);
         }
-        else if (col.gameObject.layer == CollisionLayersManager.Instance.DoorTrigger.Index)
+    }
+
+    private void OnTriggerStay(Collider col)
+    {
+        if (col.gameObject.layer == CollisionLayersManager.Instance.DoorTrigger.Index)
         {
             col.gameObject.GetComponent<OpenDoor>().CanInteract = true;
         }
