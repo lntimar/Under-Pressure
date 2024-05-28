@@ -13,15 +13,12 @@ public class PlayerProgress : MonoBehaviour
         LoadPoint
     }
 
-    // Unity Inspector:
+    // Inspector:
     [Header("Configurações:")]
 
     [Header("Transição Restart:")]
     [SerializeField] private TransitionSettings transitionSettings;
     [SerializeField] private float loadTime;
-
-    // Referências:
-    private CollisionLayersManager _collisionLayersManager;
 
     // Componentes:
     private PlayerStats _playerStats;
@@ -29,12 +26,13 @@ public class PlayerProgress : MonoBehaviour
     // CheckPoint Atual:
     private static CheckPointTrigger _currentCheckPoint;
     private static LoadPointTrigger _currentLoadPoint;
+
+    public static List<DoorKeys.Key> KeysCollected = new List<DoorKeys.Key>();
     #endregion
 
     #region Funções Unity
     private void Awake()
     {
-        _collisionLayersManager = FindObjectOfType<CollisionLayersManager>();
         _playerStats = GetComponent<PlayerStats>();
 
         // Carregar Valores no PlayerLog
@@ -43,9 +41,9 @@ public class PlayerProgress : MonoBehaviour
 
     private void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.layer == _collisionLayersManager.CheckPoint.Index)
+        if (col.gameObject.layer == CollisionLayersManager.Instance.CheckPoint.Index)
             ChangeCheckPoint(col.gameObject.GetComponent<CheckPointTrigger>());
-        else if (col.gameObject.layer == _collisionLayersManager.LoadPoint.Index)
+        else if (col.gameObject.layer == CollisionLayersManager.Instance.LoadPoint.Index)
             LoadNewScene(col.gameObject.GetComponent<LoadPointTrigger>());
     }
     #endregion

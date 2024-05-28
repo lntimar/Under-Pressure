@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class CollisionLayersManager : MonoBehaviour
 {
-    [Header("Layers:")] 
+    #region Variáveis Globais
+    // Inspector:
+    [Header("Layers:")]
     public SingleUnityLayer Player;
     public SingleUnityLayer CheckPoint;
     public SingleUnityLayer LoadPoint;
@@ -12,4 +14,12 @@ public class CollisionLayersManager : MonoBehaviour
     public SingleUnityLayer HealthPack;
     public SingleUnityLayer ConversationTrigger;
     public SingleUnityLayer Stairs;
+    public SingleUnityLayer DoorTrigger;
+
+    public static CollisionLayersManager Instance;
+    #endregion
+
+    #region Funções Unity
+    private void Awake() => Instance = this;
+    #endregion
 }

@@ -58,3 +58,5 @@ MonoBehaviour:
     _layerIndex: 9
   Stairs:
     _layerIndex: 13
+  DoorTrigger:
+    _layerIndex: 15
