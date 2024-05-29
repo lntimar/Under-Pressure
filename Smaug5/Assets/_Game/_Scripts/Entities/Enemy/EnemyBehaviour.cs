@@ -32,7 +32,7 @@ public class EnemyBehaviour : MonoBehaviour
     #endregion
 
     #region Default Methods
-    void Start()
+    private void Start()
     {
         _animator = transform.Find("Enemy Body").gameObject.GetComponent<Animator>();
         _target = PlayerManager.instance.player.transform;
