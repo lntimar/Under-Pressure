@@ -4,20 +4,24 @@ using UnityEngine;
 
 public class AttackCollider : MonoBehaviour
 {
-    private EnemyBehaviour enemyBehavior;
+    private EnemyBehaviour _enemyBehavior;
+    private Animator _animator;
 
     private void Start()
     {
-        enemyBehavior = GetComponentInParent<EnemyBehaviour>();
+        _enemyBehavior = GetComponentInParent<EnemyBehaviour>();
+        _animator = GetComponent<Animator>();
     }
 
     public void DisableAttack()
     {
-        enemyBehavior.disableAttack();
+        _enemyBehavior.disableAttack();
+        _animator.applyRootMotion = false;
     }
 
     public void EnableAttack() 
     { 
-        enemyBehavior.enableAttack();
+        _enemyBehavior.enableAttack();
+        _animator.applyRootMotion = true;
     }
 }
