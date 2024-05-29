@@ -5,46 +5,42 @@ using UnityEngine.Rendering.PostProcessing;
 
 public class FlashDamage : MonoBehaviour
 {
+    #region Variáveis Globais
     [Header("Configurações:")]
-    [SerializeField] private float maxIntensity;
+    [SerializeField,Range(0f, 1f)] private float effectTime;
+
+    [Header("Referências:")]
     [SerializeField] private PostProcessVolume postVolume;
 
-    // Componentes:
+    // Referência Vinheta
     private Vignette _vignette;
 
+    // Valor máximo da intensidade da vinheta
+    private float _maxIntensity;
+
+    // Valor atual da intensidade da vinheta
     private float _curIntensity = 0f;
+    #endregion
 
     #region Funções Unity
+
     private void Start()
     {
-        postVolume = GetComponent<PostProcessVolume>();
-
-        postVolume.profile.TryGetSettings<Vignette>(out _vignette);
-
-        if (!_vignette)
-            print("error, vignette empty");
-        else
-            _vignette.enabled.Override(false);
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            StartCoroutine(TakeDamageEffect(0.4f));
-        }
-    }
+        postVolume.profile.TryGetSettings<Vignette>(out _vignette); // Pegando a referência da config da vinheta
+        _maxIntensity = _vignette.intensity; // Alocando o valor máximo de intensidade
+    } 
     #endregion
 
     #region Funções Próprias
-    public IEnumerator TakeDamageEffect(float time)
+    private IEnumerator SetDamageEffect()
     {
-        _curIntensity = maxIntensity;
+        _curIntensity = _maxIntensity;
         _vignette.enabled.Override(true);
         _vignette.intensity.Override(_curIntensity);
 
-        yield return new WaitForSeconds(time);
+        yield return new WaitForSeconds(effectTime); // Espere para sumir com o efeito
 
+        // Suma com o efeito
         while (_curIntensity > 0)
         {
             _curIntensity -= 0.01f;
@@ -56,8 +52,10 @@ public class FlashDamage : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
         }
 
+        // Desative a vinheta
         _vignette.enabled.Override(false);
-        yield break;
     }
+
+    public void Apply() => StartCoroutine(SetDamageEffect());
     #endregion
 }

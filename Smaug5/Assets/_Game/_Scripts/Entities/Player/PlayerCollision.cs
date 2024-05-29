@@ -8,26 +8,26 @@ public class PlayerCollision : MonoBehaviour
     #region Variáveis Globais
     // Componentes:
     private PlayerStats _playerStats;
+
+    // Referências:
+    private FlashDamage _flashDamageScript;
     #endregion
 
     #region Funções Unity
     private void Awake()
     {
         _playerStats = GetComponent<PlayerStats>();
-    }
-
-    private void OnCollisionEnter(Collision col)
-    {
-        if (col.gameObject.layer == CollisionLayersManager.Instance.Enemy.Index)
-        {
-            _playerStats.ChangeHealthPoints(col.gameObject.GetComponent<EnemyStats>().Damage);
-            // TODO: Aplicar Knockback
-        }
+        _flashDamageScript = FindObjectOfType<FlashDamage>();
     }
 
     private void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.layer == CollisionLayersManager.Instance.ConversationTrigger.Index)
+        if (col.gameObject.layer == CollisionLayersManager.Instance.Enemy.Index)
+        {
+            _playerStats.ChangeHealthPoints(col.gameObject.GetComponent<EnemyStats>().Damage);
+            _flashDamageScript.Apply();
+        }
+        else if (col.gameObject.layer == CollisionLayersManager.Instance.ConversationTrigger.Index)
         {
             StartConversation(col.gameObject.GetComponent<ConversationTrigger>().ConversationScript);
             Destroy(col.gameObject);
