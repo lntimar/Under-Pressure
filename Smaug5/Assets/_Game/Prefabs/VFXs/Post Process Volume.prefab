@@ -63,7 +63,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sharedProfile: {fileID: 0}
+  sharedProfile: {fileID: 11400000, guid: 8ac322832e9e81b449120db57b7b7295, type: 2}
   isGlobal: 1
   blendDistance: 0
   weight: 1
@@ -80,4 +80,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcaf05fee4417574694b566436f0143c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxIntensity: 0.35
+  effectTime: 0.4
+  postVolume: {fileID: 8550474682587274766}
