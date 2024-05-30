@@ -23,15 +23,11 @@ public class PlayerStats : MonoBehaviour
     #endregion
 
     #region Funções Unity
-
     private void Awake()
     {
         _playerProgress = GetComponent<PlayerProgress>();
         _damageScript = FindObjectOfType<DamageHUD>();
-        InvokeRepeating("Test", 1f, 1);
     }
-
-    private void Test() => ChangeHealthPoints(-15);
     #endregion
 
     #region Funções Próprias
