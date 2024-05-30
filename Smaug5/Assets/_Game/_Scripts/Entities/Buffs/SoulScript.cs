@@ -5,26 +5,32 @@ using UnityEngine;
 
 public class SoulScript : MonoBehaviour
 {
+    #region Variáveis Globais
+    // Inspector:
     public int soulValue;
-    public LayerMask playerLayer;
-    //public TextMeshProUGUI soulDisplay;
-    PlayerStats _playerStats;
 
+    [Header("Referências:")]
+    public LayerMask PlayerLayer;
+    public PlayerStats PlayerStats;
+    //public TextMeshProUGUI soulDisplay;
+    #endregion
+
+    #region Funções Unity
     private void OnTriggerEnter(Collider other)
     {
-        if (playerLayer == (playerLayer | (1 << other.gameObject.layer)))
+        if (PlayerLayer == (PlayerLayer | (1 << other.gameObject.layer)))
         {
-            if (_playerStats == null)
+            if (PlayerStats == null)
             {
-                _playerStats = other.gameObject.GetComponent<PlayerStats>();
-                if (_playerStats == null)
+                PlayerStats = other.gameObject.GetComponent<PlayerStats>();
+                if (PlayerStats == null)
                 {
                     Debug.LogError("PlayerStats não encontrado no objeto do jogador");
                     return;
                 }
             }
 
-            _playerStats.Souls += soulValue;
+            PlayerStats.ChangeOrbSouls(soulValue);
             /*if (soulDisplay == null)
             {
                 soulDisplay.SetText("Almas: " + _playerStats.Souls);
@@ -35,4 +41,5 @@ public class SoulScript : MonoBehaviour
             Destroy(gameObject, 0.1f);
         }
     }
+    #endregion
 }

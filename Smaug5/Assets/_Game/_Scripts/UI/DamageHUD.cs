@@ -42,7 +42,7 @@ public class DamageHUD : MonoBehaviour
     #region Funções Próprias
     private IEnumerator SetDamageEffect()
     {
-        var healthRatio = (float)_playerStatsScript.Health / (float)_playerStatsScript.MaxHealth;
+        var healthRatio = (float)PlayerStats.Health / (float)_playerStatsScript.MaxHealth;
 
         var newIntensity = (_maxIntensity * (1f - healthRatio)) * 8f;
 

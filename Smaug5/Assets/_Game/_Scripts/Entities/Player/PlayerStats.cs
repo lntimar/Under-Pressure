@@ -5,13 +5,14 @@ using UnityEngine;
 public class PlayerStats : MonoBehaviour
 {
     #region Variáveis Globais
-    [Header("Estatísticas do Jogador")]
-    public int Health = 100;
+    [Header("Estatísticas do Jogador:")]
     public int MaxHealth = 100;
-    public int Souls = 0;
-    //public float speed = 12f;
-    //public int shield = 100;
-    //public float armor = 5f;
+    public static int Souls = 0;
+
+    [Header("Orbe:")]
+    public Material OrbLightMaterial;
+    public Color EmissionColor;
+    [Range(0f, 10f)] public float emissionModifier = 0.7f;
 
     // Referências:
     private DamageHUD _damageScript;
@@ -19,19 +20,46 @@ public class PlayerStats : MonoBehaviour
     // Componentes:
     private PlayerProgress _playerProgress;
 
+    // Arma
     public static bool HasGun = true;
+
+    // Orbe
+    private static float _curEmissionIntensity = 0f;
+
+    public static int Health = 0;
     #endregion
 
     #region Funções Unity
     private void Awake()
     {
-        _playerProgress = GetComponent<PlayerProgress>();
         _damageScript = FindObjectOfType<DamageHUD>();
+
+        _playerProgress = GetComponent<PlayerProgress>();
+
+        if (Health == 0)
+        {
+            ChangeHealthPoints(MaxHealth);
+            _curEmissionIntensity = 0f;
+            ChangeOrbSouls();
+        }
+        else
+        {
+            ChangeHealthPoints();
+            ChangeOrbSouls();
+        }
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Z))
+            ChangeOrbSouls(1);
+        else if (Input.GetKeyDown(KeyCode.V))
+            ChangeOrbSouls(-1);
     }
     #endregion
 
     #region Funções Próprias
-    public void ChangeHealthPoints(int points)
+    public void ChangeHealthPoints(int points=0)
     {
         Health = Mathf.Clamp(Health + points, 0, MaxHealth);
 
@@ -39,6 +67,22 @@ public class PlayerStats : MonoBehaviour
 
         if (Health == 0)
             _playerProgress.Restart();
+    }
+
+    public void ChangeOrbSouls(int count=0)
+    {
+        if (Souls + count < 0)
+        {
+            Souls = 0;
+            _curEmissionIntensity = 0;
+        }
+        else
+        {
+            Souls += count;
+            _curEmissionIntensity += emissionModifier * count;
+        }
+        
+        OrbLightMaterial.SetVector("_EmissionColor", EmissionColor * _curEmissionIntensity);
     }
     #endregion
 }

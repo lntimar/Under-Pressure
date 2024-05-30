@@ -6,20 +6,29 @@ using UnityEngine;
 
 public class SonarScript : MonoBehaviour
 {
+    #region Variáveis Globais
+    // Inspector:
+    [Header("Configurações:")]
     public float force = 700f;
-    public List<GameObject> affectedObjects = new ();
-    public PlayerStats playerStats;
     public int soulsRequired = 1;
 
+    [Header("Objetos sendo Afetados:")]
+    public List<GameObject> affectedObjects = new();
+
+    [Header("Referências:")]
+    public PlayerStats playerStats;
+    #endregion
+
+    #region Funções Unity
     private void Update()
     {
         if (Input.GetMouseButtonDown(1))
         {
-            if (playerStats.Souls == soulsRequired)
+            if (PlayerStats.Souls == soulsRequired)
             {
                 if (AudioManager.Instance != null) AudioManager.Instance.PlaySFX("weapon sonar");
                 Debug.Log("FUSRODAH");
-                playerStats.Souls--;
+                playerStats.ChangeOrbSouls(-1);
                 affectedObjects.ForEach(obj =>
                 {
                     // Caso for o inimigo, ativar ragdoll
@@ -57,4 +66,5 @@ public class SonarScript : MonoBehaviour
             affectedObjects.Remove(other.gameObject);
         }
     }
+    #endregion
 }

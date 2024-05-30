@@ -71,7 +71,7 @@ public class PlayerProgress : MonoBehaviour
         // Posição do CheckPoint
         transform.position = new Vector3(PlayerPrefs.GetFloat("playerX"),PlayerPrefs.GetFloat("playerY"), PlayerPrefs.GetFloat("playerZ"));
         // Último valor de HP
-        _playerStats.Health = PlayerPrefs.GetInt("playerHP");
+        PlayerStats.Health = PlayerPrefs.GetInt("playerHP");
         // Quantidade Munição
         // Itens (A Fazer)
     }
@@ -95,7 +95,7 @@ public class PlayerProgress : MonoBehaviour
         }
         
         // Último valor de HP
-        PlayerPrefs.SetInt("playerHP", _playerStats.Health);
+        PlayerPrefs.SetInt("playerHP", PlayerStats.Health);
         // Quantidade Munição
         // Itens (A Fazer)
     }

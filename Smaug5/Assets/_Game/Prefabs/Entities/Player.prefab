@@ -2196,9 +2196,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffab6299725e5bd45bf2bed7c0a5d54f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 100
   MaxHealth: 100
-  Souls: 0
+  OrbLightMaterial: {fileID: 2100000, guid: f5f3fae7f54e3ed4aba9f00084ab4d13, type: 2}
+  EmissionColor: {r: 0.13333334, g: 0.6313726, b: 0.7490196, a: 1}
+  emissionModifier: 2
 --- !u!114 &7880508909370203045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4824,9 +4825,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 5000
+  soulsRequired: 1
   affectedObjects: []
   playerStats: {fileID: 7281671112738867726}
-  soulsRequired: 1
 --- !u!1 &6935555981150120048
 GameObject:
   m_ObjectHideFlags: 0
