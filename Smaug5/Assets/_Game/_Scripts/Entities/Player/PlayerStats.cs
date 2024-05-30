@@ -40,7 +40,7 @@ public class PlayerStats : MonoBehaviour
         {
             ChangeHealthPoints(MaxHealth);
             _curEmissionIntensity = 0f;
-            ChangeOrbSouls();
+            ChangeOrbSouls(1);
         }
         else
         {
