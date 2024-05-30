@@ -125,7 +125,7 @@ public class Weapon : MonoBehaviour
     {
         readyToShoot = false;
 
-        transform.localPosition = recoilPosition;
+        //transform.localPosition = recoilPosition;
 
         isRecoiling = true;
 
