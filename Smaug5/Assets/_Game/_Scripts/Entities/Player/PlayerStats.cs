@@ -48,14 +48,6 @@ public class PlayerStats : MonoBehaviour
             ChangeOrbSouls();
         }
     }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Z))
-            ChangeOrbSouls(1);
-        else if (Input.GetKeyDown(KeyCode.V))
-            ChangeOrbSouls(-1);
-    }
     #endregion
 
     #region Funções Próprias
