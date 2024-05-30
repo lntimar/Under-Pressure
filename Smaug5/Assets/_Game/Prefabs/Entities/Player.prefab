@@ -6565,6 +6565,29 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 5162735565954720854}
+<<<<<<< Updated upstream
+=======
+    - targetCorrespondingSourceObject: {fileID: 8564002361488720797, guid: a7fcedaab9880614ab94e0f961462de7,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3823634030299787420}
+    - targetCorrespondingSourceObject: {fileID: 8564002361488720797, guid: a7fcedaab9880614ab94e0f961462de7,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4367475195146965678}
+    - targetCorrespondingSourceObject: {fileID: 8564002361488720797, guid: a7fcedaab9880614ab94e0f961462de7,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7965834015591313376}
+    - targetCorrespondingSourceObject: {fileID: 8564002361488720797, guid: a7fcedaab9880614ab94e0f961462de7,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4889840980372867135}
+    - targetCorrespondingSourceObject: {fileID: 8564002361488720797, guid: a7fcedaab9880614ab94e0f961462de7,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3630889142775383252}
+>>>>>>> Stashed changes
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a7fcedaab9880614ab94e0f961462de7, type: 3}
 --- !u!4 &7389846050979557602 stripped
