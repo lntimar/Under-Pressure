@@ -13,6 +13,9 @@ public class PlayerStats : MonoBehaviour
     //public int shield = 100;
     //public float armor = 5f;
 
+    // Referências:
+    private DamageHUD _damageScript;
+
     // Componentes:
     private PlayerProgress _playerProgress;
 
@@ -20,13 +23,23 @@ public class PlayerStats : MonoBehaviour
     #endregion
 
     #region Funções Unity
-    private void Awake() => _playerProgress = GetComponent<PlayerProgress>();
+
+    private void Awake()
+    {
+        _playerProgress = GetComponent<PlayerProgress>();
+        _damageScript = FindObjectOfType<DamageHUD>();
+        InvokeRepeating("Test", 1f, 1);
+    }
+
+    private void Test() => ChangeHealthPoints(-15);
     #endregion
 
     #region Funções Próprias
     public void ChangeHealthPoints(int points)
     {
         Health = Mathf.Clamp(Health + points, 0, MaxHealth);
+
+        _damageScript.Change();
 
         if (Health == 0)
             _playerProgress.Restart();

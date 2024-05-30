@@ -2247,6 +2247,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1905145377921283234, guid: 7c8851c163c2b59458ebe2dbca1f20c1,
+        type: 3}
+      propertyPath: postVolumeHealth
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4025105560727559287, guid: 7c8851c163c2b59458ebe2dbca1f20c1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2297,12 +2302,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6307914764505860148, guid: 7c8851c163c2b59458ebe2dbca1f20c1,
+        type: 3}
+      propertyPath: priority
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6912782471266249388, guid: 7c8851c163c2b59458ebe2dbca1f20c1,
         type: 3}
       propertyPath: m_Name
       value: Post Process Volume
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6307914764505860148, guid: 7c8851c163c2b59458ebe2dbca1f20c1, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
