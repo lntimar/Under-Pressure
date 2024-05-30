@@ -18,21 +18,16 @@ public class CameraShake : MonoBehaviour
         _camAnim = gameObject.GetComponent<Animator>();
     }
 
-    private void Start()
-    {
-        ApplyScreenShake();
-
-        _camAnim.speed = animationSpeed;
-
-        InvokeRepeating("ApplyScreenShake", 1f, 0.1f);
-    }
+    private void Start() => _camAnim.speed = animationSpeed;
     #endregion
 
     #region Funções Próprias
-    public void ApplyScreenShake()
+    public void ApplyScreenShake(int anim=0)
     {
+        if (anim == 0) _camAnim.SetInteger("random", Random.Range(1, 3));
+        else _camAnim.SetInteger("random", anim);
+
         _camAnim.SetTrigger("shake");
-        _camAnim.SetInteger("random", Random.Range(1, 3));
     }
     #endregion
 }
