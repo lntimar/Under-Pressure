@@ -7,7 +7,7 @@ public class AttackCollider : MonoBehaviour
     #region Variáveis Globais
     // Componentes:
     private EnemyBehaviour _enemyBehaviour;
-    private Animator _animator;
+    [SerializeField] private Animator _animator;
     #endregion
 
     #region Funções Unity
@@ -23,12 +23,12 @@ public class AttackCollider : MonoBehaviour
 
     private void VerifyIsAttacking()
     {
-        var animInfo = _animator.GetCurrentAnimatorClipInfo(0);
+        /*var animInfo = _animator.GetCurrentAnimatorClipInfo(0);
         var curAnimName = animInfo[0].clip.name;
         if (curAnimName.Contains("Attack"))
             _animator.applyRootMotion = true;
         else
-            _animator.applyRootMotion = false;
+            _animator.applyRootMotion = false;*/
     }
     #endregion
 }

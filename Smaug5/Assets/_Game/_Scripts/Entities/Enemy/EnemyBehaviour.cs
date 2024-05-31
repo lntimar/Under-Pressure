@@ -45,26 +45,26 @@ public class EnemyBehaviour : MonoBehaviour
     {
         //Calcula a distância entre o Player e o Inimigo
         float distance = Vector3.Distance(_target.position, transform.position);
-        
+
         //Se player está dentro do raio de visão, calcula automaticamente a rota até ele
-        if (distance <= lookRadius) 
+        //if (distance <= lookRadius && distance > _agent.stoppingDistance)
+        if (distance > _agent.stoppingDistance + (0.5f))
         {
             _agent.SetDestination(_target.position);
-
+            FaceTarget();
+            _animator.SetBool("Chasing", true);
+            PlayScreamSFX();
+            Debug.Log("chasing on");
+        }
+        else
+        {
             //Está perto do player e pronto para atacar
-            if (distance <= _agent.stoppingDistance)
-            {
-                _animator.SetBool("Chasing", false);
-                //Debug.Log("chasing off");
-                EnemyAttack();
-                FaceTarget();
-            }
-            else
-            {
-                _animator.SetBool("Chasing", true);
-                PlayScreamSFX();
-                //Debug.Log("chasing on");
-            }
+            //_agent.SetDestination(transform.position);
+            _agent.velocity = Vector3.zero;
+            _animator.SetBool("Chasing", false);
+            Debug.Log("chasing off");
+            EnemyAttack();
+            FaceTarget();
         }
     }
 
@@ -93,8 +93,7 @@ public class EnemyBehaviour : MonoBehaviour
                 if (_enemySfxIndex == 1) _enemySfxIndex = 2;
                 else _enemySfxIndex = 1;
             }
-            //_animator.Play("Enemy Attack " + Random.Range(1, 5));
-            _animator.Play("Enemy Attack 2");
+            _animator.Play("Enemy Attack " + Random.Range(1, 4));
             Debug.Log("Trigger Attack");
             //_agent.SetDestination(transform.position);
         }
@@ -105,7 +104,7 @@ public class EnemyBehaviour : MonoBehaviour
         foreach (BoxCollider collider in _boxColliders)
         {
             collider.enabled = false;
-            Debug.Log("Desativou Colisor");
+            //Debug.Log("Desativou Colisor");
         }
     }
 
@@ -114,19 +113,19 @@ public class EnemyBehaviour : MonoBehaviour
         foreach (BoxCollider collider in _boxColliders)
         {
             collider.enabled = true;
-            Debug.Log("Ativou Colisor");
+            //Debug.Log("Ativou Colisor");
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         //var player = other.GetComponent<PlayerMovement>();
-        var player = other.gameObject.GetComponent<PlayerMovement>();
+        /*var player = other.gameObject.GetComponent<PlayerMovement>();
         if (player != null)
         {
             Debug.Log("Bateu");
             //tirar vida jogador
-        }
+        }*/
     }
 
     //Apenas visual do raio de visão
