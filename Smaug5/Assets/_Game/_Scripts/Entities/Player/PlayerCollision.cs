@@ -18,6 +18,7 @@ public class PlayerCollision : MonoBehaviour
         if (col.gameObject.layer == CollisionLayersManager.Instance.Enemy.Index)
         {
             _playerStats.ChangeHealthPoints(col.gameObject.GetComponent<EnemyStats>().Damage);
+            //Debug.Log("Bateu");
         }
         else if (col.gameObject.layer == CollisionLayersManager.Instance.ConversationTrigger.Index)
         {
