@@ -125,7 +125,7 @@ public class Weapon : MonoBehaviour
     {
         readyToShoot = false;
 
-        //transform.localPosition = recoilPosition;
+        transform.localPosition = recoilPosition;
 
         isRecoiling = true;
 
@@ -154,6 +154,7 @@ public class Weapon : MonoBehaviour
             }
         }
 
+        //BALANÇAR CAMERA
         //BALANÇAR CAMERA
         //StartCoroutine(camShake.Shake(camShakeDuration, camShakeMagnitude));
 

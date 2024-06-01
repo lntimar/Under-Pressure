@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class EnemyBehaviour : MonoBehaviour
 {
     #region Global Variables
+    // Inspector:
     [Header("Configurações:")]
     //Tamanho da visão do inimigo
     [Header("Visão do Inimigo:")]
@@ -17,57 +18,79 @@ public class EnemyBehaviour : MonoBehaviour
     [Header("Sons:")] 
     [SerializeField] private float screamInterval = 20f;
 
+    [Header("Ataque:")] 
+    [SerializeField] private float resetAttackTime = 1.25f;
+
     // Componentes:
     private NavMeshAgent _agent;
-    private Animator _animator;
     private BoxCollider[] _boxColliders;
-    private Rigidbody _rb;
 
     // Referências:
     private Transform _target;
+    private Animator _enemyAnimator;
+    private Transform _enemyTransform;
 
     // Sfx:
     private int _enemySfxIndex = 1;
     private bool _canScream = true;
+
+    // Ataque:
+    private bool _canAttack = true;
     #endregion
 
     #region Default Methods
     private void Start()
     {
-        _animator = transform.Find("Enemy Body").gameObject.GetComponent<Animator>();
+        _enemyAnimator = transform.Find("Enemy Body").gameObject.GetComponent<Animator>();
+        _enemyTransform = _enemyAnimator.gameObject.transform;
         _target = PlayerManager.instance.player.transform;
         _agent = GetComponent<NavMeshAgent>();
         _boxColliders = GetComponentsInChildren<BoxCollider>();
-        _rb = GetComponent<Rigidbody>();
     }
 
     private void Update()
     {
         //Calcula a distância entre o Player e o Inimigo
-        float distance = Vector3.Distance(_target.position, transform.position);
+        float distance = Vector3.Distance(transform.position,  _target.position);
 
-        //Se player está dentro do raio de visão, calcula automaticamente a rota até ele
-        //if (distance <= lookRadius && distance > _agent.stoppingDistance)
-        if (distance > _agent.stoppingDistance + (0.5f))
+        if (distance <= _agent.stoppingDistance)
         {
-            _agent.SetDestination(_target.position);
+            _agent.enabled = false;
+
+            if (_canAttack)
+            {
+                _enemyAnimator.Play("Enemy Attack " + Random.Range(1, 3));
+                _canAttack = false;
+
+                Invoke("ResetCanAttack", resetAttackTime);
+
+                if (AudioManager.Instance != null)
+                {
+                    AudioManager.Instance.PlaySFX("enemy attack " + _enemySfxIndex);
+
+                    if (_enemySfxIndex == 1) _enemySfxIndex = 2;
+                    else _enemySfxIndex = 1;
+                }
+            }
             FaceTarget();
-            _animator.SetBool("Chasing", true);
-            PlayScreamSFX();
-            Debug.Log("chasing on");
         }
         else
         {
-            //Está perto do player e pronto para atacar
-            //_agent.SetDestination(transform.position);
-            _agent.velocity = Vector3.zero;
-            _animator.SetBool("Chasing", false);
-            Debug.Log("chasing off");
-            EnemyAttack();
-            FaceTarget();
+            if (distance <= lookRadius)
+            {
+                FaceTarget();
+                _enemyAnimator.Play("Enemy Running");
+                PlayScreamSFX();
+                _agent.enabled = true;
+                _agent.SetDestination(_target.position);
+            }
+            else
+            {
+                _enemyAnimator.Play("Enemy Idle");
+                _agent.enabled = false;
+            }
         }
     }
-
     #endregion
 
     #region Custom Methods
@@ -77,26 +100,6 @@ public class EnemyBehaviour : MonoBehaviour
         Vector3 direction = (_target.position - transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
-    }
-
-    //Ataque acontece quando player encosta na hitbox na mão do inimigo
-    public void EnemyAttack()
-    {
-        var animInfo = _animator.GetCurrentAnimatorClipInfo(0);
-        var curAnimName = animInfo[0].clip.name;
-        if (!curAnimName.Contains("Attack"))
-        {
-            if (AudioManager.Instance != null)
-            {
-                AudioManager.Instance.PlaySFX("enemy attack " + _enemySfxIndex);
-
-                if (_enemySfxIndex == 1) _enemySfxIndex = 2;
-                else _enemySfxIndex = 1;
-            }
-            _animator.Play("Enemy Attack " + Random.Range(1, 4));
-            Debug.Log("Trigger Attack");
-            //_agent.SetDestination(transform.position);
-        }
     }
 
     public void disableAttack()
@@ -117,16 +120,7 @@ public class EnemyBehaviour : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        //var player = other.GetComponent<PlayerMovement>();
-        /*var player = other.gameObject.GetComponent<PlayerMovement>();
-        if (player != null)
-        {
-            Debug.Log("Bateu");
-            //tirar vida jogador
-        }*/
-    }
+    private void ResetCanAttack() => _canAttack = true;
 
     //Apenas visual do raio de visão
     private void OnDrawGizmosSelected()
