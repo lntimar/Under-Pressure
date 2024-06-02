@@ -52,8 +52,6 @@ public class PlayerMovement : MonoBehaviour
     private Animator playerAnimator;
     private Rigidbody rb;
 
-    private bool disableVelY = false;
-
     private enum PlayerModel
     {
         DEFAULT,
@@ -215,8 +213,7 @@ public class PlayerMovement : MonoBehaviour
         }
         #endregion
 
-        if (!disableVelY) velocity.y += gravity * Time.deltaTime;
-        else velocity.y = 0f;
+        velocity.y += gravity * Time.deltaTime;
 
         characterController.Move(velocity * Time.deltaTime);
 
@@ -235,26 +232,23 @@ public class PlayerMovement : MonoBehaviour
 
         //ARRUMAR, ELE TÁ CAINDO NO CHÃO
         #region Agachar
-        if (Input.GetKey(KeyCode.LeftControl) && isGrounded && !isCrouching)
+        if (Input.GetKey(KeyCode.LeftControl) && isGrounded)
         {
             isCrouching = true;
             characterController.height = crouchColliderHeight;
-            characterController.center = new Vector3(characterController.center.x, 0.5f, characterController.center.z); // Ajusta o centro
+            //characterController.center = new Vector3(characterController.center.x, 0.0f, characterController.center.z); // Ajusta o centro
             moveSpeed = crouchSpeed;
-
-            disableVelY = true;
-            Invoke("ResetDisableVelY", 0.00001f);
 
             groundCheck.transform.localPosition = new Vector3(groundCheck.transform.localPosition.x, crouchGroundCheckY,
                 groundCheck.transform.localPosition.z);
         }
-        if (Input.GetKeyUp(KeyCode.LeftControl) && isGrounded && isCrouching)
+        if (Input.GetKeyUp(KeyCode.LeftControl))
         {
             isCrouching = false;
             characterController.height = playerColliderHeight;
-            characterController.center = new Vector3(characterController.center.x, 0f, characterController.center.z); // Ajusta o centro
+            //characterController.center = new Vector3(characterController.center.x, 0.5f, characterController.center.z); // Ajusta o centro
             //O correto é ficar no 0, mas ele afunda se for 0. Ver como arrumar.
-            
+            transform.position += Vector3.up * 0.75f;
 
             groundCheck.transform.localPosition = new Vector3(groundCheck.transform.localPosition.x, defaultGroundCheckY,
                 groundCheck.localPosition.z);
@@ -281,7 +275,5 @@ public class PlayerMovement : MonoBehaviour
             playerAnimator = playerBody2.GetComponent<Animator>();
         }
     }
-
-    private void ResetDisableVelY() => disableVelY = false;
     #endregion
 }
