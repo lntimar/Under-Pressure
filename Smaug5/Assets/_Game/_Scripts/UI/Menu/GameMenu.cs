@@ -1,6 +1,7 @@
 using EasyTransition;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -23,6 +24,11 @@ public class GameMenu : MonoBehaviour
     #region Funções Unity
     private void Update()
     {
+        if (!MouseScreenCheck())
+            Pause();
+        else
+            Resume();
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (!_gamePaused)
@@ -64,6 +70,24 @@ public class GameMenu : MonoBehaviour
     {
         Time.timeScale = 1f;
         TransitionManager.Instance().Transition("MainMenu", transitionSettings, loadTime);
+    }
+
+    private bool MouseScreenCheck()
+    {
+        if (Input.mousePosition.x == 0 || Input.mousePosition.y == 0 ||
+            Input.mousePosition.x >= Handles.GetMainGameViewSize().x - 1 ||
+            Input.mousePosition.y >= Handles.GetMainGameViewSize().y - 1)
+        {
+            return false;
+        }
+        else if (Input.mousePosition.x == 0 || Input.mousePosition.y == 0 || Input.mousePosition.x >= Screen.width - 1 || Input.mousePosition.y >= Screen.height - 1)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
     }
     #endregion
 }

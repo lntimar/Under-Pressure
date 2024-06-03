@@ -148,7 +148,7 @@ public class Weapon : MonoBehaviour
             }
             else
             {
-                Debug.Log(hit.transform.name);
+                //Debug.Log(hit.transform.name);
                 GameObject impactPrefab = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
                 Destroy(impactPrefab, 3f);
             }
