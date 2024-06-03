@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -214,7 +215,6 @@ public class PlayerMovement : MonoBehaviour
         #endregion
 
         velocity.y += gravity * Time.deltaTime;
-
         characterController.Move(velocity * Time.deltaTime);
 
         #region Correr
