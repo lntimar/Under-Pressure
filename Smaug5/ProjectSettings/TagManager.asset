@@ -6,6 +6,7 @@ TagManager:
   tags:
   - SoulDisplay
   - AudioManager
+  - Stairs
   layers:
   - Default
   - TransparentFX
@@ -24,8 +25,8 @@ TagManager:
   - Post Processing
   - Door Trigger
   - Key Trigger
-  - 
-  - 
+  - Weapon
+  - Stairs Trigger
   - 
   - 
   - 
