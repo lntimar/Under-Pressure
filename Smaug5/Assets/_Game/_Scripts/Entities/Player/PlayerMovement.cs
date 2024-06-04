@@ -68,10 +68,30 @@ public class PlayerMovement : MonoBehaviour
         defaultGroundCheckY = groundCheck.transform.localPosition.y;
     }
 
+    void DesativarFilhos(GameObject obj)
+    {
+        foreach (Transform child in obj.transform)
+        {
+            child.gameObject.SetActive(false);
+            DesativarFilhos(child.gameObject);
+        }
+    }
+
+    void AtivarFilhos(GameObject obj)
+    {
+        foreach (Transform child in obj.transform)
+        {
+            child.gameObject.SetActive(true);
+            AtivarFilhos(child.gameObject);
+        }
+    }
+
+
     private void Update()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask); //Checa se o jogador está no chão
         isClimbing = Physics.CheckSphere(stairsCheck.position, climbingDistance, stairsMask); //Checa se o jogador está escalando
+
 
         if (!isGrounded)
         {
@@ -273,6 +293,18 @@ public class PlayerMovement : MonoBehaviour
             playerBody2.SetActive(true);
 
             playerAnimator = playerBody2.GetComponent<Animator>();
+        }
+    }
+
+    private void OnApplicationFocus(bool hasFocus)
+    {
+        if (!hasFocus)
+        {
+            Time.timeScale = 0;
+        }
+        else
+        {
+            Time.timeScale = 1;
         }
     }
     #endregion
