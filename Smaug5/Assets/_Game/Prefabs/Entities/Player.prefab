@@ -168,7 +168,7 @@ MonoBehaviour:
   sprintScalar: 20
   jumpCooldown: 0.25
   jumpForce: 550
-  climbSpeed: 5
+  climbSpeed: 400
   HasTouchStairs: 0
 --- !u!1 &3165613716544102776
 GameObject:

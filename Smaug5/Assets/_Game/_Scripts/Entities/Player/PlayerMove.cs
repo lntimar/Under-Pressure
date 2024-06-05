@@ -74,7 +74,13 @@ public class PlayerMove : MonoBehaviour
         Cursor.visible = false;
     }
 
-    private void FixedUpdate() => Movement();
+    private void FixedUpdate()
+    {
+        if (!HasTouchStairs)
+            Movement();
+        else
+            StaisMovement();
+    }
 
     private void Update()
     {
@@ -141,12 +147,8 @@ public class PlayerMove : MonoBehaviour
 
     private void Movement()
     {
-        //Extra gravity
-        if (!HasTouchStairs)
-        {
-            _rb.AddForce(Vector3.down * Time.deltaTime * 10);
-        }
-
+        _rb.useGravity = true;
+        _rb.AddForce(Vector3.down * Time.deltaTime * 10);
         //Find actual velocity relative to where player is looking
         var mag = FindVelRelativeToLook();
         var xMag = mag.x;
@@ -188,12 +190,20 @@ public class PlayerMove : MonoBehaviour
 
         _rb.AddForce(orientation.transform.forward * _y * moveSpeed * scalar * Time.deltaTime * multiplier * multiplierV);
         _rb.AddForce(orientation.transform.right * _x * moveSpeed * scalar * Time.deltaTime * multiplier);
+    }
 
-        if (HasTouchStairs)
-        {
-            var verticalInput = Input.GetAxis("Vertical");
-            _rb.AddForce(Vector3.up * climbSpeed * verticalInput * Time.deltaTime);
-        }
+    private void StaisMovement()
+    {
+        _rb.useGravity = false;
+
+
+        var verticalInput = Input.GetAxis("Vertical");
+        var horizontalInput = Input.GetAxis("Horizontal");
+
+        if (verticalInput != 0)
+            _rb.velocity = new Vector3(horizontalInput, verticalInput, 0f).normalized * climbSpeed * Time.deltaTime;
+        else
+            _rb.velocity = Vector3.right * horizontalInput * climbSpeed * Time.deltaTime;
     }
 
     private void Jump()
