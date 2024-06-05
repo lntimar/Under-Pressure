@@ -593,8 +593,6 @@ MonoBehaviour:
   enemies:
     serializedVersion: 2
     m_Bits: 1024
-  playerRb: {fileID: 0}
-  playerAnim: {fileID: 0}
 --- !u!114 &7840469709920327256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -907,6 +905,7 @@ GameObject:
   - component: {fileID: 1219696903999063260}
   - component: {fileID: 1762607712869485789}
   - component: {fileID: 3619193978852058048}
+  - component: {fileID: 4441634371354323085}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1065,6 +1064,21 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+--- !u!114 &4441634371354323085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6165487204653463702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68f14d8955043394c9b1626b2d50d637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amount: 0.01
+  frequency: 8.6
+  smooth: 100
 --- !u!1 &6425158268132111768
 GameObject:
   m_ObjectHideFlags: 0
@@ -1602,7 +1616,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81b89af08a1a49f4bb3566f4a974c972, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
 --- !u!1 &7662663189579705066
 GameObject:
   m_ObjectHideFlags: 0

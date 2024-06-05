@@ -79,7 +79,7 @@ public class PlayerMove : MonoBehaviour
         if (!HasTouchStairs)
             Movement();
         else
-            StaisMovement();
+            StairsMovement();
     }
 
     private void Update()
@@ -192,10 +192,9 @@ public class PlayerMove : MonoBehaviour
         _rb.AddForce(orientation.transform.right * _x * moveSpeed * scalar * Time.deltaTime * multiplier);
     }
 
-    private void StaisMovement()
+    private void StairsMovement()
     {
         _rb.useGravity = false;
-
 
         var verticalInput = Input.GetAxis("Vertical");
         var horizontalInput = Input.GetAxis("Horizontal");
