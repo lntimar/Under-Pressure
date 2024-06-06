@@ -39,8 +39,6 @@ public class Weapon : MonoBehaviour
     public Camera playerCamera;
     public Transform attackPoint;
     public LayerMask enemies;
-
-    // Referências:
     #endregion
 
     #region Funções Unity
@@ -82,7 +80,7 @@ public class Weapon : MonoBehaviour
                 isRecoiling = false;
             }
 
-            StartCoroutine(RecoilWhileShooting());
+            //StartCoroutine(RecoilWhileShooting());
         }
     }
     #endregion
@@ -201,6 +199,7 @@ public class Weapon : MonoBehaviour
         }
     }
 
+    /*
     IEnumerator RecoilWhileShooting()
     {
         while (isRecoiling)
@@ -210,5 +209,6 @@ public class Weapon : MonoBehaviour
             yield return null;
         }
     }
+    */
     #endregion
 }
