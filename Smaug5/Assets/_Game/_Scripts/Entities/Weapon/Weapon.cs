@@ -141,12 +141,12 @@ public class Weapon : MonoBehaviour
 
         //RAYCAST
         RaycastHit hit;
-        if (Physics.Raycast(playerCamera.transform.position, direction, out hit, range, layerMaskIgnore))
+        if (Physics.Raycast(playerCamera.transform.position, direction, out hit, range, ~layerMaskIgnore))
         {
             EnemyStats enemyStats = hit.transform.GetComponent<EnemyStats>();
             if (enemyStats != null)
             {
-                Debug.Log(hit.transform.name + " is hit!");
+                //Debug.Log(hit.transform.name + " is hit!");
                 enemyStats.ChangeHealthPoints(damage);
             }
             else
