@@ -9,6 +9,10 @@ public class PlayerMove : MonoBehaviour
 
     [Header("Referências:")]
     [SerializeField] private Transform orientation;
+    [SerializeField] private Animator playerWalkAnimator;
+    [SerializeField] private Animator playerGunAnimator;
+    [SerializeField] private Animator playerCrouchAnimator;
+    [SerializeField] private Animator playerClimbAnimator;
 
     [Header("Rotação")]
     [SerializeField] private float sensitivity = 50f;
@@ -74,18 +78,19 @@ public class PlayerMove : MonoBehaviour
         Cursor.visible = false;
     }
 
+    private void Update()
+    {
+        MyInput();
+        Look();
+        Animate();
+    }
+
     private void FixedUpdate()
     {
         if (!HasTouchStairs)
             Movement();
         else
             StairsMovement();
-    }
-
-    private void Update()
-    {
-        MyInput();
-        Look();
     }
 
     private void OnCollisionStay(Collision collision)
@@ -289,5 +294,77 @@ public class PlayerMove : MonoBehaviour
     }
 
     private void StopGrounded() => grounded = false;
+
+    private void Animate()
+    {
+        if (_crouching)  // Agachado
+        {
+            playerCrouchAnimator.gameObject.SetActive(true);
+            playerClimbAnimator.gameObject.SetActive(false);
+            playerWalkAnimator.gameObject.SetActive(false);
+            playerGunAnimator.gameObject.SetActive(false);
+
+            if (_x != 0 || _y != 0)
+                playerCrouchAnimator.SetBool("move", true);
+            else
+                playerCrouchAnimator.SetBool("move", false);
+        }
+        else if (HasTouchStairs) // Escalando
+        {
+            playerCrouchAnimator.gameObject.SetActive(false);
+            playerClimbAnimator.gameObject.SetActive(true);
+            playerWalkAnimator.gameObject.SetActive(false);
+            playerGunAnimator.gameObject.SetActive(false);
+
+            if (_x != 0 || _y != 0)
+                playerClimbAnimator.SetBool("move", true);
+            else
+                playerClimbAnimator.SetBool("move", false);
+        }
+        else // Andando
+        {
+            if (!PlayerStats.HasGun) // Sem Arma
+            {
+                playerCrouchAnimator.gameObject.SetActive(false);
+                playerClimbAnimator.gameObject.SetActive(false);
+                playerWalkAnimator.gameObject.SetActive(true);
+
+                if (_x != 0 || _y != 0)
+                {
+                    playerWalkAnimator.SetBool("move", true);
+
+                    if (_sprinting)
+                        playerWalkAnimator.speed = 1.5f;
+                    else
+                        playerWalkAnimator.speed = 1f;
+                }
+                else
+                {
+                    playerWalkAnimator.SetBool("move", false);
+                }
+            }
+            else // Com Arma
+            {
+                playerCrouchAnimator.gameObject.SetActive(false);
+                playerClimbAnimator.gameObject.SetActive(false);
+                playerWalkAnimator.gameObject.SetActive(false);
+                playerGunAnimator.gameObject.SetActive(true);
+
+                if (_x != 0 || _y != 0)
+                {
+                    playerGunAnimator.SetBool("move", true);
+
+                    if (_sprinting)
+                        playerGunAnimator.speed = 1.5f;
+                    else
+                        playerGunAnimator.speed = 1f;
+                }
+                else
+                {
+                    playerGunAnimator.SetBool("move", false);
+                }
+            }
+        }
+    }
     #endregion
 }

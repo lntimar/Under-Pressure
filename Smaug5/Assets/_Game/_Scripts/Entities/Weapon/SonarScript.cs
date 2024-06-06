@@ -15,11 +15,12 @@ public class SonarScript : MonoBehaviour
     [Header("Objetos sendo Afetados:")]
     public List<GameObject> affectedObjects = new();
 
-    [Header("Referências:")]
-    public PlayerStats playerStats;
+    private PlayerStats playerStats;
     #endregion
 
     #region Funções Unity
+    private void Start() => playerStats = FindObjectOfType<PlayerStats>();
+
     private void Update()
     {
         if (Input.GetMouseButtonDown(1))
