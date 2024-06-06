@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6151466732133068447}
   - component: {fileID: 5231654830628153709}
   - component: {fileID: 3586836439906797645}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Coral Solitario 1 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 4537338251984120245}
   - component: {fileID: 366361453540631485}
   - component: {fileID: 662144062843648918}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Coral Solitario 2 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 8343050096370438124}
   - component: {fileID: 1591368093407371418}
   - component: {fileID: 5379891306359918005}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -337,7 +337,7 @@ GameObject:
   - component: {fileID: 1797753443502094261}
   - component: {fileID: 7194794210929136281}
   - component: {fileID: 1851863811010193423}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Orb Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -452,7 +452,7 @@ GameObject:
   - component: {fileID: 7648726547378743549}
   - component: {fileID: 3550251975077787987}
   - component: {fileID: 4225402528691497311}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Coral Solitario 1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -588,7 +588,7 @@ MonoBehaviour:
   impactEffect: {fileID: 6525395587224242095, guid: 0f06cc63beefd1d46a18cf5ca81828e5,
     type: 3}
   recoilSpeed: 0
-  playerCamera: {fileID: 0}
+  playerCamera: {fileID: 9150142301635986416}
   attackPoint: {fileID: 5352460600302200686}
   enemies:
     serializedVersion: 2
@@ -620,7 +620,7 @@ GameObject:
   - component: {fileID: 1213747157005071135}
   - component: {fileID: 7101629352926064422}
   - component: {fileID: 7776014554558597088}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Estrela do Mar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -703,7 +703,7 @@ GameObject:
   - component: {fileID: 5174658132786738097}
   - component: {fileID: 8716682578778401381}
   - component: {fileID: 1214421120272846658}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Grupo de Corais
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -786,7 +786,7 @@ GameObject:
   - component: {fileID: 4385100901270015048}
   - component: {fileID: 4183722418208735813}
   - component: {fileID: 7242935005369700439}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Estrela do Mar (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -867,7 +867,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6173470515698076250}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1089,7 +1089,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5952697115417829605}
   - component: {fileID: 6315644792490218339}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1182,7 +1182,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6307496830207128927}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1218,7 +1218,7 @@ GameObject:
   - component: {fileID: 7563356602613526200}
   - component: {fileID: 892803736430127499}
   - component: {fileID: 5126278020987392833}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Estrela do Mar (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1301,7 +1301,7 @@ GameObject:
   - component: {fileID: 3157251173663733585}
   - component: {fileID: 5458905552969984688}
   - component: {fileID: 2750060673148028407}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Grupo de Corais (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1384,7 +1384,7 @@ GameObject:
   - component: {fileID: 2268758038687141096}
   - component: {fileID: 2430271892823493793}
   - component: {fileID: 8153104461601149583}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Coral Solitario 1 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1465,7 +1465,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 240028427375449001}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1499,7 +1499,7 @@ GameObject:
   - component: {fileID: 5968593457259590431}
   - component: {fileID: 2824374930856738154}
   - component: {fileID: 7293930037206404170}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Coral Solitario 1 (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1627,7 +1627,7 @@ GameObject:
   - component: {fileID: 3418694748795570978}
   - component: {fileID: 183544988971201776}
   - component: {fileID: 5267957000725575137}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Coral Solitario 1 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1710,7 +1710,7 @@ GameObject:
   - component: {fileID: 8437238233383967066}
   - component: {fileID: 8550238851927953822}
   - component: {fileID: 326971722553852430}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Coral Solitario 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1791,7 +1791,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6709758127571340298}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Corals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1828,7 +1828,7 @@ GameObject:
   - component: {fileID: 6932135849340313514}
   - component: {fileID: 4176773559527174355}
   - component: {fileID: 4446760545557088884}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Estrela do Mar (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1909,7 +1909,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 464305067612758252}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Mid
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -26,7 +26,7 @@ public class GetKey : MonoBehaviour
     private void Update()
     {
         if (CanInteract && PlayerIsFacing())
-        {
+        { 
             if (Input.GetKeyDown(KeyCode.E))
             {
                 Get();

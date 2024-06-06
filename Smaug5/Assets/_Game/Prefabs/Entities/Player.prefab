@@ -14,6 +14,9 @@ GameObject:
   - component: {fileID: 2604659128548941571}
   - component: {fileID: 1603716132080458894}
   - component: {fileID: 5604764333053545098}
+  - component: {fileID: 1697414894549374630}
+  - component: {fileID: 7200263062016339230}
+  - component: {fileID: 8265826455850512203}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -170,6 +173,48 @@ MonoBehaviour:
   jumpForce: 550
   climbSpeed: 400
   HasTouchStairs: 0
+--- !u!114 &1697414894549374630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2480740536883848918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffab6299725e5bd45bf2bed7c0a5d54f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHealth: 100
+  OrbLightMaterial: {fileID: 2100000, guid: f5f3fae7f54e3ed4aba9f00084ab4d13, type: 2}
+  EmissionColor: {r: 0.13333334, g: 0.6313726, b: 0.7490196, a: 1}
+  emissionModifier: 2
+--- !u!114 &7200263062016339230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2480740536883848918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea7efc570912e8b44af0433982c8bebd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8265826455850512203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2480740536883848918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bffb538a2b4d62f4f978046543d74a94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transitionSettings: {fileID: 0}
+  loadTime: 0
 --- !u!1 &3165613716544102776
 GameObject:
   m_ObjectHideFlags: 0
