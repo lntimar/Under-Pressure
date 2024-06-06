@@ -743,7 +743,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  volumeTrigger: {fileID: 0}
+  volumeTrigger: {fileID: 8173970751008769297}
   volumeLayer:
     serializedVersion: 2
     m_Bits: 16384
@@ -6114,7 +6114,7 @@ MonoBehaviour:
     m_Bits: 1024
   layerMaskIgnore:
     serializedVersion: 2
-    m_Bits: 360516
+    m_Bits: 523263
   withGunStateAnimator: {fileID: 6543311623540709355}
 --- !u!114 &3842465989851923565
 MonoBehaviour:
