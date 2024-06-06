@@ -35,10 +35,16 @@ public class Weapon : MonoBehaviour
     bool isRecoiling = false;
     public float recoilSpeed;
 
+    [Header("Posições")] 
+    public Vector3 reloadArmsPos;
+    public Vector3 reloadWeaponPos;
+
     [Header("Referências")]
     public Camera playerCamera;
     public Transform attackPoint;
     public LayerMask enemies;
+    public LayerMask layerMaskIgnore;
+    public Animator withGunStateAnimator;
     #endregion
 
     #region Funções Unity
@@ -70,6 +76,7 @@ public class Weapon : MonoBehaviour
             gunModel.transform.localRotation = Quaternion.Euler(-90f, 0f, 90f);
         }
 
+        /*
         if (isRecoiling)
         {
             //O Lerp move a posição inicial pra posição de tiro quando o bool isRecoiling fica verdadeirol, quando o jogador atira
@@ -80,8 +87,10 @@ public class Weapon : MonoBehaviour
                 isRecoiling = false;
             }
 
+            withGunStateAnimator.Play("With Gun Shoot State Animation");
             //StartCoroutine(RecoilWhileShooting());
         }
+        */
     }
     #endregion
 
@@ -110,6 +119,7 @@ public class Weapon : MonoBehaviour
         //ATIRAR
         if (readyToShoot && shooting && !reloading && bulletsLeft > 0)
         {
+            withGunStateAnimator.Play("With Gun Shoot State Animation");
             if (AudioManager.Instance != null) AudioManager.Instance.PlaySFX("weapon shot");
             bulletsShot = bulletsPerTap;
             ShootHitscan();
@@ -120,7 +130,7 @@ public class Weapon : MonoBehaviour
     {
         readyToShoot = false;
 
-        transform.localPosition = recoilPosition;
+        //transform.localPosition = recoilPosition;
 
         isRecoiling = true;
 
@@ -130,8 +140,6 @@ public class Weapon : MonoBehaviour
         Vector3 direction = playerCamera.transform.forward + new Vector3(x, y, 0);
 
         //RAYCAST
-        int layerMaskIgnore = ~(1 << LayerMask.NameToLayer("IgnoreRaycast"));
-
         RaycastHit hit;
         if (Physics.Raycast(playerCamera.transform.position, direction, out hit, range, layerMaskIgnore))
         {
@@ -177,6 +185,7 @@ public class Weapon : MonoBehaviour
 
     private void Reload()
     {
+        withGunStateAnimator.Play("With Gun Reload State Animation");
         if (AudioManager.Instance != null) AudioManager.Instance.PlaySFX("weapon reload");
         reloading = true;
         Invoke("ReloadFinished", reloadTime);
@@ -184,6 +193,7 @@ public class Weapon : MonoBehaviour
 
     private void ReloadFinished()
     {
+        withGunStateAnimator.Play("With Gun Default State Animation");
         bulletsLeft = magazineSize;
         reloading = false;
     }

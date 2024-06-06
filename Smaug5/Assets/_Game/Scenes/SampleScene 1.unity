@@ -2147,18 +2147,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1401991456}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1536892361 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1697414894549374630, guid: d08d75ed9e6f7ee4585edfa8a5027092,
-    type: 3}
-  m_PrefabInstance: {fileID: 415856809746564210}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ffab6299725e5bd45bf2bed7c0a5d54f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1536943718
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3662,11 +3650,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 500969332736146753, guid: e6680183c186b124cae0ad47ec917155,
-        type: 3}
-      propertyPath: playerStats
-      value: 
-      objectReference: {fileID: 1536892361}
     - target: {fileID: 938800489285479106, guid: e6680183c186b124cae0ad47ec917155,
         type: 3}
       propertyPath: volumeTrigger
@@ -3677,21 +3660,11 @@ PrefabInstance:
       propertyPath: ammoDisplay
       value: 
       objectReference: {fileID: 125954165}
-    - target: {fileID: 3596478744628031397, guid: e6680183c186b124cae0ad47ec917155,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3842465989851923565, guid: e6680183c186b124cae0ad47ec917155,
         type: 3}
       propertyPath: headBob
       value: 
       objectReference: {fileID: 531590108656714268}
-    - target: {fileID: 3896552345180187980, guid: e6680183c186b124cae0ad47ec917155,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5018328219510071984, guid: e6680183c186b124cae0ad47ec917155,
         type: 3}
       propertyPath: m_Name
@@ -3746,16 +3719,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8640160483168360219, guid: e6680183c186b124cae0ad47ec917155,
-        type: 3}
-      propertyPath: playerStats
-      value: 
-      objectReference: {fileID: 1536892361}
-    - target: {fileID: 9008255341737846609, guid: e6680183c186b124cae0ad47ec917155,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
