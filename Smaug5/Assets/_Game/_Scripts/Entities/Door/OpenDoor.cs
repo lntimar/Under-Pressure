@@ -82,6 +82,7 @@ public class OpenDoor : MonoBehaviour
         }
         else // Porta sem Chave
         {
+            //testei com o debug.log, a linha debaixo nn é chamada
             for (int i = 0; i < _doorsWithoutKeyOpeneds.Count; i++)
             {
                 if (_doorsWithoutKeyOpeneds[i] == gameObject.GetInstanceID())
