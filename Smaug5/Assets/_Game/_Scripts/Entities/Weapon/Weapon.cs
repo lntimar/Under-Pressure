@@ -43,6 +43,14 @@ public class Weapon : MonoBehaviour
     public Transform muzzlePoint;
     public GameObject bulletHolePrefab;
 
+    [Header("Municao HUD")]
+    public Material lightAmmoMaterial;
+    public Material unLightAmmoMaterial;
+    public List<MeshRenderer> ammos = new List<MeshRenderer>();
+    public MeshRenderer bigCoral;
+    public Material bigCoralLightMaterial;
+    public Material bigCoralUnLightMaterial;
+
     [Header("Referências")]
     public Camera playerCamera;
     public Transform attackPoint;
@@ -121,6 +129,7 @@ public class Weapon : MonoBehaviour
         }
 
         //ATIRAR
+
         if (readyToShoot && shooting && !reloading && bulletsLeft > 0)
         {
             withGunStateAnimator.Play("With Gun Shoot State Animation");
@@ -129,6 +138,19 @@ public class Weapon : MonoBehaviour
             Destroy(muzzleFlash, 0.1f);
             if (AudioManager.Instance != null) AudioManager.Instance.PlaySFX("weapon shot");
             bulletsShot = bulletsPerTap;
+
+            for (int i = 0; i < ammos.Count; i++)
+            {
+                if (ammos[i].sharedMaterial != unLightAmmoMaterial)
+                {
+                    ammos[i].sharedMaterial = unLightAmmoMaterial;
+
+                    if (i == ammos.Count - 1)
+                        bigCoral.sharedMaterial = bigCoralUnLightMaterial;
+
+                    break;
+                }
+            }
             ShootHitscan();
         }
     }
@@ -158,7 +180,7 @@ public class Weapon : MonoBehaviour
             }
             else
             {
-                Debug.Log(hit.transform.name);
+                //Debug.Log(hit.transform.name);
                 GameObject bulletHole = Instantiate(bulletHolePrefab, hit.point, Quaternion.LookRotation(hit.normal));
                 bulletHole.transform.position += bulletHole.transform.forward / 1000;
                 Destroy(bulletHole, 10f);
@@ -201,6 +223,12 @@ public class Weapon : MonoBehaviour
 
     private void ReloadFinished()
     {
+        for (int i = 0; i < ammos.Count; i++)
+        {
+            if (ammos[i].sharedMaterial != lightAmmoMaterial)
+                ammos[i].sharedMaterial = lightAmmoMaterial;
+        }
+        bigCoral.sharedMaterial = bigCoralLightMaterial;
         withGunStateAnimator.Play("With Gun Default State Animation");
         bulletsLeft = magazineSize;
         reloading = false;

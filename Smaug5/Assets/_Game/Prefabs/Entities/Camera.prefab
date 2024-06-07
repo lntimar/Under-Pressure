@@ -430,7 +430,7 @@ GameObject:
   - component: {fileID: 4358651828097483666}
   - component: {fileID: 5987690178729734378}
   m_Layer: 17
-  m_Name: Coral Solitario 1 (2)
+  m_Name: Coral Solitario 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -513,7 +513,7 @@ GameObject:
   - component: {fileID: 5606318041017832814}
   - component: {fileID: 214477912032331898}
   m_Layer: 17
-  m_Name: Coral Solitario 1 (5)
+  m_Name: Coral Solitario 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1747,7 +1747,7 @@ GameObject:
   - component: {fileID: 5107386502656473366}
   - component: {fileID: 4512960129666743170}
   m_Layer: 17
-  m_Name: Coral Solitario 1 (4)
+  m_Name: Coral Solitario 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1862,7 +1862,7 @@ GameObject:
   - component: {fileID: 663484430746768563}
   - component: {fileID: 3392753796335924072}
   m_Layer: 17
-  m_Name: Coral Solitario 1 (1)
+  m_Name: Coral Solitario 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6128,7 +6128,7 @@ MonoBehaviour:
   range: 100
   reloadTime: 1.05
   timeBetweenShots: 0
-  magazineSize: 10
+  magazineSize: 6
   bulletsPerTap: 1
   allowButtonHold: 0
   rotationSpeed: 1
@@ -6143,6 +6143,21 @@ MonoBehaviour:
   muzzlePoint: {fileID: 1320761101098247519}
   bulletHolePrefab: {fileID: 5928861024965293672, guid: 49401fc074b189f41a87c34fa785b383,
     type: 3}
+  lightAmmoMaterial: {fileID: 2100000, guid: 8e4e5fd67bbbb544f809c942ff5d1613, type: 2}
+  unLightAmmoMaterial: {fileID: 18858803709778759, guid: d870b4f0cba458640b29cda304d40186,
+    type: 3}
+  ammos:
+  - {fileID: 5987690178729734378}
+  - {fileID: 3392753796335924072}
+  - {fileID: 4689728249461006321}
+  - {fileID: 631394487566580293}
+  - {fileID: 4512960129666743170}
+  - {fileID: 214477912032331898}
+  bigCoral: {fileID: 1275642417434930341}
+  bigCoralLightMaterial: {fileID: 2100000, guid: 1c65436968e91dd4ea2c3c169fd0506d,
+    type: 2}
+  bigCoralUnLightMaterial: {fileID: 2100000, guid: bfaeaf5b726df464b9daf8f561715069,
+    type: 2}
   playerCamera: {fileID: 7875319255038831672}
   attackPoint: {fileID: 2361068869701278841}
   enemies:
@@ -10360,7 +10375,7 @@ GameObject:
   - component: {fileID: 4299058530137828670}
   - component: {fileID: 4689728249461006321}
   m_Layer: 17
-  m_Name: Coral Solitario 1
+  m_Name: Coral Solitario 6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10797,7 +10812,7 @@ GameObject:
   - component: {fileID: 5860872032747252522}
   - component: {fileID: 631394487566580293}
   m_Layer: 17
-  m_Name: Coral Solitario 1 (3)
+  m_Name: Coral Solitario 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
