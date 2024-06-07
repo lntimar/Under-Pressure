@@ -75,7 +75,6 @@ public class OpenDoor : MonoBehaviour
                     if (_doorsWithKeyOpeneds[i] == true)
                     {
                         Open();
-                        Debug.Log("ABRATE SESAMO");
                         break;
                     }
                 }
@@ -83,10 +82,8 @@ public class OpenDoor : MonoBehaviour
         }
         else // Porta sem Chave
         {
-            //ele chama até aqui, ele nn chama a próxima linha. suspeito que o problema é nela
             for (int i = 0; i < _doorsWithoutKeyOpeneds.Count; i++)
             {
-                Debug.Log("ABRATE SESAMO");
                 if (_doorsWithoutKeyOpeneds[i] == gameObject.GetInstanceID())
                 {
                     Open();
