@@ -180,11 +180,13 @@ public class PlayerMove : MonoBehaviour
         var multiplierV = 1f;
 
         // Movement in air
+        /*
         if (!grounded)
         {
             multiplier = 0.5f;
             multiplierV = 0.5f;
         }
+        */
 
         //Apply forces to move player
         var scalar = 1f;
