@@ -29,7 +29,6 @@ public class Weapon : MonoBehaviour
     public GameObject gunModel;
     //public GameObject muzzleFlash;
     public TextMeshProUGUI ammoDisplay;
-    public GameObject impactEffect;
     Vector3 initialPosition;
     Vector3 recoilPosition;
     bool isRecoiling = false;
@@ -38,6 +37,11 @@ public class Weapon : MonoBehaviour
     [Header("Posições")] 
     public Vector3 reloadArmsPos;
     public Vector3 reloadWeaponPos;
+
+    [Header("Efeitos")] 
+    public GameObject muzzleFlashPrefab;
+    public Transform muzzlePoint;
+    public GameObject bulletHolePrefab;
 
     [Header("Referências")]
     public Camera playerCamera;
@@ -120,6 +124,9 @@ public class Weapon : MonoBehaviour
         if (readyToShoot && shooting && !reloading && bulletsLeft > 0)
         {
             withGunStateAnimator.Play("With Gun Shoot State Animation");
+            var muzzleFlash = Instantiate(muzzleFlashPrefab, muzzlePoint.position, Quaternion.identity);
+            muzzleFlash.transform.parent = transform;
+            Destroy(muzzleFlash, 0.1f);
             if (AudioManager.Instance != null) AudioManager.Instance.PlaySFX("weapon shot");
             bulletsShot = bulletsPerTap;
             ShootHitscan();
@@ -151,9 +158,10 @@ public class Weapon : MonoBehaviour
             }
             else
             {
-                //Debug.Log(hit.transform.name);
-                GameObject impactPrefab = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
-                Destroy(impactPrefab, 3f);
+                Debug.Log(hit.transform.name);
+                GameObject bulletHole = Instantiate(bulletHolePrefab, hit.point, Quaternion.LookRotation(hit.normal));
+                bulletHole.transform.position += bulletHole.transform.forward / 1000;
+                Destroy(bulletHole, 10f);
             }
         }
 
