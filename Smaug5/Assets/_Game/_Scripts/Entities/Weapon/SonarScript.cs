@@ -15,6 +15,12 @@ public class SonarScript : MonoBehaviour
     [Header("Objetos sendo Afetados:")]
     public List<GameObject> affectedObjects = new();
 
+    [Header("Efeitos:")] 
+    public GameObject sonarEffect;
+
+    [Header("Referências:")]
+    public Animator withGunStateAnimator;
+
     private PlayerStats playerStats;
     #endregion
 
@@ -25,10 +31,12 @@ public class SonarScript : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1))
         {
-            if (PlayerStats.Souls == soulsRequired)
+           if (PlayerStats.Souls == soulsRequired)
             {
+                withGunStateAnimator.Play("With Gun Shoot State Animation");
                 if (AudioManager.Instance != null) AudioManager.Instance.PlaySFX("weapon sonar");
                 Debug.Log("FUSRODAH");
+                sonarEffect.gameObject.SetActive(true);
                 playerStats.ChangeOrbSouls(-1);
                 affectedObjects.ForEach(obj =>
                 {
@@ -44,7 +52,7 @@ public class SonarScript : MonoBehaviour
                 });
             }
             else
-            {
+            { 
                 Debug.Log("Sem almas o suficiente!");
             }
         }
