@@ -119,6 +119,7 @@ GameObject:
   - component: {fileID: 7857356665767857041}
   - component: {fileID: 244521195389574461}
   - component: {fileID: 8434578423270982096}
+  - component: {fileID: 1879733839977988723}
   m_Layer: 0
   m_Name: GFX
   m_TagString: Untagged
@@ -212,6 +213,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.019999998, y: 0.020000007, z: 0.020000007}
   m_Center: {x: 0, y: -1.1368684e-15, z: 0.0100000035}
+--- !u!114 &1879733839977988723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4297710341569293628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: 0
+  eraseRenderer: 0
 --- !u!1 &4378436246076426403
 GameObject:
   m_ObjectHideFlags: 0
@@ -369,6 +384,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetKey: -1
   doorAnimator: {fileID: 4236350697794652620}
+  outlineEffect: {fileID: 1879733839977988723}
   gfxTransform: {fileID: 9129538844582468614}
   CanInteract: 0
 --- !u!1 &5076371963182518716

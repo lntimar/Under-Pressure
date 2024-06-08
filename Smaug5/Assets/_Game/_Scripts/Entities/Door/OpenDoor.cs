@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using cakeslice;
 using UnityEngine;
 
 public class OpenDoor : MonoBehaviour
@@ -13,6 +14,7 @@ public class OpenDoor : MonoBehaviour
 
     [Header("Referências:")]
     [SerializeField] private Animator doorAnimator;
+    [SerializeField] private Outline outlineEffect;
     [SerializeField] private Transform gfxTransform;
 
     [HideInInspector] public bool CanInteract = false;
@@ -35,6 +37,7 @@ public class OpenDoor : MonoBehaviour
         {
             if (PlayerIsFacing())
             {
+                outlineEffect.eraseRenderer = false;
                 if (targetKey != DoorKeys.Key.None)
                 {
                     if (Input.GetKeyDown(KeyCode.E) && HasKey())
@@ -53,12 +56,17 @@ public class OpenDoor : MonoBehaviour
                 }
             }
         }
+        else
+        {
+            outlineEffect.eraseRenderer = true;
+        }
     }
     #endregion
 
     #region Funções Próprias
     private void Open()
     {
+        outlineEffect.eraseRenderer = true;
         if (AudioManager.Instance != null) AudioManager.Instance.PlaySFX("door open");
         doorAnimator.enabled = true;
         Destroy(gameObject);

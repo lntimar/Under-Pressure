@@ -1,12 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using cakeslice;
 using UnityEngine;
 
 public class GetKey : MonoBehaviour
 {
     #region Variáveis Globais
+    // Inspector:
+    [Header("Configurações:")]
     [SerializeField] private DoorKeys.Key key;
 
+    [Header("Referências:")]
+    [SerializeField] private Outline outlineEffect;
+    
     [HideInInspector] public bool CanInteract = false;
 
     // Referências:
@@ -25,13 +31,23 @@ public class GetKey : MonoBehaviour
 
     private void Update()
     {
-        if (CanInteract && PlayerIsFacing())
-        { 
-            if (Input.GetKeyDown(KeyCode.E))
+        if (CanInteract)
+        {
+            if (PlayerIsFacing())
             {
-                Get();
-                _keysCaughts[(int)key] = true;
+                print("Foi!");
+                outlineEffect.eraseRenderer = false;
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    print("Foi 2");
+                    Get();
+                    _keysCaughts[(int)key] = true;
+                }
             }
+        }
+        else
+        {
+            outlineEffect.eraseRenderer = true;
         }
     }
     #endregion
