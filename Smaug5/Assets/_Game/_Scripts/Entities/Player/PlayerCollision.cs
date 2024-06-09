@@ -20,44 +20,11 @@ public class PlayerCollision : MonoBehaviour
             _playerStats.ChangeHealthPoints(col.gameObject.GetComponent<EnemyStats>().Damage);
             //Debug.Log("Bateu");
         }
-        else if (col.gameObject.layer == CollisionLayersManager.Instance.ConversationTrigger.Index)
-        {
-            StartConversation(col.gameObject.GetComponent<ConversationTrigger>().ConversationScript);
-            Destroy(col.gameObject);
-        }
         else if (col.gameObject.layer == CollisionLayersManager.Instance.HealthPack.Index)
         {
             _playerStats.ChangeHealthPoints(col.gameObject.GetComponent<HealthPack>().Points);
             Destroy(col.gameObject);
         }
     }
-
-    private void OnTriggerStay(Collider col)
-    {
-        if (col.gameObject.layer == CollisionLayersManager.Instance.DoorTrigger.Index)
-        {
-            col.gameObject.GetComponent<OpenDoor>().CanInteract = true;
-        }
-        else if (col.gameObject.layer == CollisionLayersManager.Instance.KeyTrigger.Index)
-        {
-            col.gameObject.GetComponent<GetKey>().CanInteract = true;
-        }
-    }
-
-    private void OnTriggerExit(Collider col)
-    {
-        if (col.gameObject.layer == CollisionLayersManager.Instance.DoorTrigger.Index)
-        {
-            col.gameObject.GetComponent<OpenDoor>().CanInteract = false;
-        }
-        else if (col.gameObject.layer == CollisionLayersManager.Instance.KeyTrigger.Index)
-        {
-            col.gameObject.GetComponent<GetKey>().CanInteract = false;
-        }
-    }
-    #endregion
-
-    #region Funções Próprias
-    private void StartConversation(NPCConversation conversation) => ConversationManager.Instance.StartConversation(conversation);
     #endregion
 }

@@ -39,6 +39,7 @@ public class Weapon : MonoBehaviour
     public Vector3 reloadWeaponPos;
 
     [Header("Efeitos")] 
+    public GameObject enemyHitPrefab;
     public GameObject muzzleFlashPrefab;
     public Transform muzzlePoint;
     public GameObject bulletHolePrefab;
@@ -133,7 +134,7 @@ public class Weapon : MonoBehaviour
         if (readyToShoot && shooting && !reloading && bulletsLeft > 0)
         {
             withGunStateAnimator.Play("With Gun Shoot State Animation");
-            var muzzleFlash = Instantiate(muzzleFlashPrefab, muzzlePoint.position, Quaternion.identity);
+            var muzzleFlash = Instantiate(muzzleFlashPrefab, muzzlePoint.position, Quaternion.LookRotation(muzzlePoint.transform.forward));
             muzzleFlash.transform.parent = transform;
             Destroy(muzzleFlash, 0.1f);
             if (AudioManager.Instance != null) AudioManager.Instance.PlaySFX("weapon shot");
@@ -177,11 +178,14 @@ public class Weapon : MonoBehaviour
             {
                 //Debug.Log(hit.transform.name + " is hit!");
                 enemyStats.ChangeHealthPoints(damage);
+                var enemyHit = Instantiate(enemyHitPrefab, hit.point, Quaternion.LookRotation(hit.normal));
+                enemyHit.transform.position += enemyHit.transform.forward / 1000;
+                Destroy(enemyHit, 1f);
             }
             else
             {
                 //Debug.Log(hit.transform.name);
-                GameObject bulletHole = Instantiate(bulletHolePrefab, hit.point, Quaternion.LookRotation(hit.normal));
+                var bulletHole = Instantiate(bulletHolePrefab, hit.point, Quaternion.LookRotation(hit.normal));
                 bulletHole.transform.position += bulletHole.transform.forward / 1000;
                 Destroy(bulletHole, 10f);
             }

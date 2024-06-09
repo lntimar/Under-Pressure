@@ -33,16 +33,11 @@ public class GetKey : MonoBehaviour
     {
         if (CanInteract)
         {
-            if (PlayerIsFacing())
-            {
-                print("Foi!");
-                outlineEffect.eraseRenderer = false;
-                if (Input.GetKeyDown(KeyCode.E))
-                {
-                    print("Foi 2");
-                    Get();
-                    _keysCaughts[(int)key] = true;
-                }
+            outlineEffect.eraseRenderer = false;
+            if (Input.GetKeyDown(KeyCode.E))
+            { 
+                Get();
+                _keysCaughts[(int)key] = true;
             }
         }
         else
@@ -73,21 +68,6 @@ public class GetKey : MonoBehaviour
                 }
             }
         }
-    }
-
-    private bool PlayerIsFacing()
-    {
-        var triggerDirection = (transform.position - _playerTransform.position).normalized;
-        var playerDirection = _playerTransform.forward;
-
-        float scalar = Vector3.Dot(triggerDirection, playerDirection);
-
-        float angulo = Mathf.Acos(scalar) * Mathf.Rad2Deg;
-
-        if (angulo <= 45f)
-            return true;
-
-        return false;
     }
     #endregion
 }

@@ -22,7 +22,7 @@ public class OpenDoor : MonoBehaviour
     // Referências:
     private static Transform _playerTransform;
 
-    private static bool[] _doorsWithKeyOpeneds = new bool[10];
+    private static bool[] _doorsWithKeyOpeneds = new bool[50];
     private static List<int> _doorsWithoutKeyOpeneds = new List<int>();
     #endregion
 
@@ -35,8 +35,8 @@ public class OpenDoor : MonoBehaviour
     {
         if (CanInteract)
         {
-            if (PlayerIsFacing())
-            {
+            //if (PlayerIsFacing())
+            //{
                 outlineEffect.eraseRenderer = false;
                 if (targetKey != DoorKeys.Key.None)
                 {
@@ -54,7 +54,7 @@ public class OpenDoor : MonoBehaviour
                         _doorsWithoutKeyOpeneds.Add(gameObject.GetInstanceID());
                     }
                 }
-            }
+            //}
         }
         else
         {
@@ -115,7 +115,7 @@ public class OpenDoor : MonoBehaviour
 
     private bool PlayerIsFacing()
     {
-        var triggerDirection = (gfxTransform.position - _playerTransform.position).normalized;
+        var triggerDirection = (gfxTransform.localPosition - _playerTransform.position).normalized;
         var playerDirection = _playerTransform.forward;
 
         float scalar = Vector3.Dot(triggerDirection, playerDirection);

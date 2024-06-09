@@ -49,7 +49,7 @@ public class EnemyStats : MonoBehaviour
 
     private void DestroyEnemy()
     {
-        Instantiate(soulPrefab, transform.position, Quaternion.identity);
+        Instantiate(soulPrefab, transform.position + Vector3.up * 2.25f, Quaternion.identity);
         _sonarScript.affectedObjects.Remove(gameObject);
         Destroy(gameObject);
     }
