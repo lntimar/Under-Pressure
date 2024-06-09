@@ -134,7 +134,7 @@ public class Weapon : MonoBehaviour
         if (readyToShoot && shooting && !reloading && bulletsLeft > 0)
         {
             withGunStateAnimator.Play("With Gun Shoot State Animation");
-            var muzzleFlash = Instantiate(muzzleFlashPrefab, muzzlePoint.position, Quaternion.identity);
+            var muzzleFlash = Instantiate(muzzleFlashPrefab, muzzlePoint.position, Quaternion.LookRotation(muzzlePoint.transform.forward));
             muzzleFlash.transform.parent = transform;
             Destroy(muzzleFlash, 0.1f);
             if (AudioManager.Instance != null) AudioManager.Instance.PlaySFX("weapon shot");
