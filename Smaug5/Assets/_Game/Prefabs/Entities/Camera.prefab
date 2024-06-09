@@ -6171,6 +6171,8 @@ MonoBehaviour:
   recoilSpeed: 0
   reloadArmsPos: {x: 0, y: 0, z: 0}
   reloadWeaponPos: {x: 0, y: 0, z: 0}
+  enemyHitPrefab: {fileID: 1758473627833946668, guid: 9b21333b068a5084ba09535839bee3c8,
+    type: 3}
   muzzleFlashPrefab: {fileID: 181757747934877192, guid: ebadfceb6f6b0424dacdc2efb052be5e,
     type: 3}
   muzzlePoint: {fileID: 2041643507130831472}
