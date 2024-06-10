@@ -15,19 +15,11 @@ public class GetKey : MonoBehaviour
     
     [HideInInspector] public bool CanInteract = false;
 
-    // Referências:
-    private static Transform _playerTransform;
-
     private static bool[] _keysCaughts = new bool[10];
     #endregion
 
     #region Funções Unity
-    private void Awake()
-    {
-        _playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-
-        VerifyAlreadyCaught();
-    }
+    private void Awake() => VerifyAlreadyCaught();
 
     private void Update()
     {

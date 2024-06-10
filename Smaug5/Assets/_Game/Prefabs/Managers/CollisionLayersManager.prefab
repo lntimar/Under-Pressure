@@ -62,3 +62,7 @@ MonoBehaviour:
     _layerIndex: 15
   KeyTrigger:
     _layerIndex: 16
+  BookTrigger:
+    _layerIndex: 21
+  WeaponCollectTrigger:
+    _layerIndex: 20
