@@ -39,6 +39,8 @@ public class PlayerMove : MonoBehaviour
 
     // Referências:
     private Transform _playerCam;
+    private GameObject _weapon;
+
 
     // Componentes:
     private Rigidbody _rb;
@@ -68,6 +70,21 @@ public class PlayerMove : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
         _playerCam = FindObjectOfType<MoveCamera>().transform;
+
+        _weapon = FindObjectOfType<Weapon>().gameObject;
+
+        if (PlayerStats.HasGun)
+        {
+            playerWalkAnimator.gameObject.SetActive(false);
+            playerGunAnimator.gameObject.SetActive(true);
+            _weapon.SetActive(true);
+        }
+        else
+        {
+            playerWalkAnimator.gameObject.SetActive(true);
+            playerGunAnimator.gameObject.SetActive(false);
+            _weapon.SetActive(false);
+        }
     }
     
     private void Start()
@@ -83,10 +100,19 @@ public class PlayerMove : MonoBehaviour
         MyInput();
         Look();
         Animate();
+
+        if (PlayerStats.HasGun)
+        {
+            if (_crouching || HasTouchStairs)
+                _weapon.SetActive(false);
+            else
+                _weapon.SetActive(true);
+        }
     }
 
     private void FixedUpdate()
     {
+
         if (!HasTouchStairs)
             Movement();
         else
