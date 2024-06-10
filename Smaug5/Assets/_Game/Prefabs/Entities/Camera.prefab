@@ -6200,7 +6200,7 @@ MonoBehaviour:
     m_Bits: 1024
   layerMaskIgnore:
     serializedVersion: 2
-    m_Bits: 523254
+    m_Bits: 1047542
   withGunStateAnimator: {fileID: 6543311623540709355}
 --- !u!114 &3842465989851923565
 MonoBehaviour:
