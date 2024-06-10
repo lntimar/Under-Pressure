@@ -24,6 +24,14 @@ public class InteractionTrigger : MonoBehaviour
         {
             col.gameObject.GetComponent<GetKey>().CanInteract = true;
         }
+        else if (col.gameObject.layer == CollisionLayersManager.Instance.WeaponCollectTrigger.Index)
+        {
+            col.gameObject.GetComponent<WeaponCollectTrigger>().CanInteract = true;
+        }
+        else if (col.gameObject.layer == CollisionLayersManager.Instance.BookTrigger.Index)
+        {
+            col.gameObject.GetComponent<BookInteractTrigger>().CanInteract = true;
+        }
     }
 
     private void OnTriggerExit(Collider col)
@@ -31,11 +39,18 @@ public class InteractionTrigger : MonoBehaviour
         if (col.gameObject.layer == CollisionLayersManager.Instance.DoorTrigger.Index)
         {
             col.gameObject.GetComponent<OpenDoor>().CanInteract = false;
-            print("Saiu");
         }
         else if (col.gameObject.layer == CollisionLayersManager.Instance.KeyTrigger.Index)
         {
             col.gameObject.GetComponent<GetKey>().CanInteract = false;
+        }
+        else if (col.gameObject.layer == CollisionLayersManager.Instance.WeaponCollectTrigger.Index)
+        {
+            col.gameObject.GetComponent<WeaponCollectTrigger>().CanInteract = false;
+        }
+        else if (col.gameObject.layer == CollisionLayersManager.Instance.BookTrigger.Index)
+        {
+            col.gameObject.GetComponent<BookInteractTrigger>().CanInteract = false;
         }
     }
 

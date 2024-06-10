@@ -21,7 +21,7 @@ public class PlayerStats : MonoBehaviour
     private PlayerProgress _playerProgress;
 
     // Arma
-    public static bool HasGun = true;
+    public static bool HasGun = false;
 
     // Orbe
     private static float _curEmissionIntensity = 0f;
