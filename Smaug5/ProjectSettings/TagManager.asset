@@ -7,6 +7,7 @@ TagManager:
   - SoulDisplay
   - AudioManager
   - Stairs
+  - CrossHairUI
   layers:
   - Default
   - TransparentFX
@@ -30,7 +31,7 @@ TagManager:
   - Interact Trigger
   - Weapon Collect Trigger
   - Book Trigger
-  - 
+  - Book UI
   - 
   - 
   - 
