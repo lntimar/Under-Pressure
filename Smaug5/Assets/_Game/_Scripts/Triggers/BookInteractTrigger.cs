@@ -9,16 +9,24 @@ public class BookInteractTrigger : MonoBehaviour
     // Inspector:
     [Header("Referências:")]
     [SerializeField] private Outline outlineEffect;
+    [SerializeField] private GameObject book;
 
     [HideInInspector] public bool CanInteract = false;
+
+    private GameObject _crossHairUI;
     #endregion
 
     #region Funções Unity
+    private void Awake() => _crossHairUI = GameObject.FindGameObjectWithTag("CrossHairUI");
+
     private void Update()
     {
         if (CanInteract)
         {
             outlineEffect.eraseRenderer = false;
+
+            if (Input.GetKeyDown(KeyCode.E) && !book.active)
+                Open();
         }
         else
         {
@@ -26,4 +34,13 @@ public class BookInteractTrigger : MonoBehaviour
         }
     }
     #endregion
+
+    private void Open()
+    {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        _crossHairUI.SetActive(false);
+        Camera.main.enabled = false;
+        book.SetActive(true);
+    }
 }
