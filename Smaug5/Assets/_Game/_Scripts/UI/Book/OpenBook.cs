@@ -9,7 +9,8 @@ public class OpenBook : MonoBehaviour
 {
     #region Variáveis Globais
     // Unity Inspector:
-    [Header("Referências:")]
+    [Header("CrossHair:")] 
+    [SerializeField] private GameObject crossHairUI;
 
     [Header("Botões:")]
     [SerializeField] private Button openBtn;
@@ -38,15 +39,19 @@ public class OpenBook : MonoBehaviour
     #region Funções Unity
     private void Start()
     {
+        /*
         if (openBtn != null)
             openBtn.onClick.AddListener(() => ClickOpen());
+        */
+
+        Invoke("ClickOpen", 0.75f);
     }
 
     private void Update()
     {
         if (_isOpenClicked || _isCloseClicked)
         {
-            transform.Rotate(_rotation * Time.deltaTime);
+            transform.Rotate(_rotation * Time.deltaTime * 0.8f);
             _endTime = DateTime.Now;
 
             if (_isOpenClicked)
@@ -117,6 +122,17 @@ public class OpenBook : MonoBehaviour
         }
 
         if (AudioManager.Instance != null) AudioManager.Instance.PlaySFX("book close");
+
+        Invoke("CloseBook", 0.5f);
+    }
+
+    private void CloseBook()
+    {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        crossHairUI.SetActive(false);
+        Camera.main.enabled = true;
+        gameObject.SetActive(false);
     }
     #endregion
 }
