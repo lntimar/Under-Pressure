@@ -9,7 +9,8 @@ public class OpenBook : MonoBehaviour
 {
     #region Variáveis Globais
     // Unity Inspector:
-    [Header("CrossHair:")] 
+    [Header("Referências:")] 
+    [SerializeField] private Camera mainCamera;
     [SerializeField] private GameObject crossHairUI;
 
     [Header("Botões:")]
@@ -131,7 +132,7 @@ public class OpenBook : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         crossHairUI.SetActive(false);
-        Camera.main.enabled = true;
+        mainCamera.enabled = true;
         gameObject.SetActive(false);
     }
     #endregion

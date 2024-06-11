@@ -10,10 +10,6 @@ public class GameMenu : MonoBehaviour
     #region Variáveis Globais
     // Inspector:
     [Header("Configurações")]
-
-    [Header("Referências:")]
-    [SerializeField] private GameObject crossHairUI;
-
     [Header("Cursor:")]
     [SerializeField] private Texture2D cursorTexture;
 
@@ -22,9 +18,12 @@ public class GameMenu : MonoBehaviour
     [SerializeField] private float loadTime;
 
     private bool _gamePaused;
+    private GameObject _crossHairUI;
     #endregion
 
     #region Funções Unity
+    private void Awake() => _crossHairUI = GameObject.FindGameObjectWithTag("CrossHairUI");
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -40,7 +39,7 @@ public class GameMenu : MonoBehaviour
     #region Funções Próprias
     private void Pause()
     {
-        crossHairUI.SetActive(false);
+        _crossHairUI.SetActive(false);
         Time.timeScale = 0f;
         GameMenuManager.MenuCanvas.GetComponent<Canvas>().enabled = true;
         _gamePaused = true;
@@ -54,7 +53,7 @@ public class GameMenu : MonoBehaviour
 
     public void Resume()
     {
-        crossHairUI.SetActive(true);
+        _crossHairUI.SetActive(true);
         Time.timeScale = 1f;
         GameMenuManager.MenuCanvas.GetComponent<Canvas>().enabled = false;
         _gamePaused = false;

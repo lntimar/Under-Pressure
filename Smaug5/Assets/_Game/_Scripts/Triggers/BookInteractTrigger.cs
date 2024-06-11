@@ -10,12 +10,15 @@ public class BookInteractTrigger : MonoBehaviour
     [Header("Referências:")]
     [SerializeField] private Outline outlineEffect;
     [SerializeField] private GameObject book;
-    [SerializeField] private GameObject crossHairUI;
 
     [HideInInspector] public bool CanInteract = false;
+
+    private GameObject _crossHairUI;
     #endregion
 
     #region Funções Unity
+    private void Awake() => _crossHairUI = GameObject.FindGameObjectWithTag("CrossHairUI");
+
     private void Update()
     {
         if (CanInteract)
@@ -36,7 +39,7 @@ public class BookInteractTrigger : MonoBehaviour
     {
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
-        crossHairUI.SetActive(false);
+        _crossHairUI.SetActive(false);
         Camera.main.enabled = false;
         book.SetActive(true);
     }

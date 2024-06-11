@@ -7,6 +7,7 @@ TagManager:
   - SoulDisplay
   - AudioManager
   - Stairs
+  - CrossHairUI
   layers:
   - Default
   - TransparentFX

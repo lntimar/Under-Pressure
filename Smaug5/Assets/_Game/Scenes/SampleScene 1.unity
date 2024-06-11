@@ -2353,6 +2353,12 @@ Transform:
   - {fileID: 899114511}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!20 &1469545942 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 7875319255038831672, guid: e6680183c186b124cae0ad47ec917155,
+    type: 3}
+  m_PrefabInstance: {fileID: 1118851821203697769}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1485340031 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6573312245584832436, guid: 718be08bbba198640904ae1e85aee10f,
@@ -2735,11 +2741,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Crosshair Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 6955167558090841494, guid: 6c2a1de19c1f4d64baf3804fbe8f1cd1,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 9189943275298534468, guid: 6c2a1de19c1f4d64baf3804fbe8f1cd1,
         type: 3}
       propertyPath: m_Pivot.x
@@ -2971,6 +2972,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4292140077015993035, guid: 718be08bbba198640904ae1e85aee10f,
+        type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 1469545942}
+    - target: {fileID: 4292140077015993035, guid: 718be08bbba198640904ae1e85aee10f,
+        type: 3}
+      propertyPath: crossHairUI
+      value: 
+      objectReference: {fileID: 937619620}
     - target: {fileID: 6573312245584832436, guid: 718be08bbba198640904ae1e85aee10f,
         type: 3}
       propertyPath: m_Name
