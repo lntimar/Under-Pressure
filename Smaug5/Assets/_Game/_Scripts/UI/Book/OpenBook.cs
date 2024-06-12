@@ -12,6 +12,7 @@ public class OpenBook : MonoBehaviour
     [Header("Referências:")] 
     [SerializeField] private Camera mainCamera;
     [SerializeField] private GameObject crossHairUI;
+    [SerializeField] private GameObject bookParent;
 
     [Header("Botões:")]
     [SerializeField] private Button openBtn;
@@ -35,21 +36,36 @@ public class OpenBook : MonoBehaviour
     private DateTime _endTime;
 
     [HideInInspector] public int LastPageIndex = 0;
+
+    private Rigidbody _playerRb;
+
+    private bool _canOpen = true;
     #endregion
 
     #region Funções Unity
+    /*
     private void Start()
     {
-        /*
         if (openBtn != null)
             openBtn.onClick.AddListener(() => ClickOpen());
-        */
+        
+    }
+    */
 
-        Invoke("ClickOpen", 0.75f);
+    private void OnEnable()
+    {
+        _playerRb = FindObjectOfType<PlayerMove>().gameObject.GetComponent<Rigidbody>();
+
+        if (_canOpen)
+        {
+            Invoke("ClickOpen", 0.75f);
+            _canOpen = false;
+        }
     }
 
     private void Update()
     {
+        _playerRb.velocity = Vector3.zero;
         if (_isOpenClicked || _isCloseClicked)
         {
             transform.Rotate(_rotation * Time.deltaTime * 0.8f);
@@ -124,16 +140,21 @@ public class OpenBook : MonoBehaviour
 
         if (AudioManager.Instance != null) AudioManager.Instance.PlaySFX("book close");
 
-        Invoke("CloseBook", 0.5f);
+        Invoke("CloseBook", 1.5f);
     }
 
     private void CloseBook()
     {
+        gameObject.SetActive(true);
+        insideBackCover.SetActive(true);
+        openedBook.SetActive(false);
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         crossHairUI.SetActive(false);
         mainCamera.enabled = true;
-        gameObject.SetActive(false);
+        bookParent.SetActive(false);
+
+        _canOpen = true;
     }
     #endregion
 }

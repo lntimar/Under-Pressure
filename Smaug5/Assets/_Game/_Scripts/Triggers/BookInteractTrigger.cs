@@ -14,10 +14,16 @@ public class BookInteractTrigger : MonoBehaviour
     [HideInInspector] public bool CanInteract = false;
 
     private GameObject _crossHairUI;
+    private Rigidbody _playerRb;
     #endregion
 
     #region Funções Unity
-    private void Awake() => _crossHairUI = GameObject.FindGameObjectWithTag("CrossHairUI");
+
+    private void Awake()
+    {
+        _crossHairUI = GameObject.FindGameObjectWithTag("CrossHairUI");
+        _playerRb = FindObjectOfType<PlayerMove>().gameObject.GetComponent<Rigidbody>();
+    } 
 
     private void Update()
     {
