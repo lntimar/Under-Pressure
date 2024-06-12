@@ -112,7 +112,6 @@ public class PlayerMove : MonoBehaviour
 
     private void FixedUpdate()
     {
-
         if (!HasTouchStairs)
             Movement();
         else
@@ -121,6 +120,12 @@ public class PlayerMove : MonoBehaviour
 
     private void OnCollisionStay(Collision collision)
     {
+        if (collision.gameObject.CompareTag("SlopeStair"))
+        {
+            if (_x == 0 && _y == 0)
+                _rb.velocity = Vector3.zero;
+        }
+
         //Make sure we are only checking for walkable layers
         int layer = collision.gameObject.layer;
         if (whatIsGround != (whatIsGround | (1 << layer))) return;
@@ -247,6 +252,14 @@ public class PlayerMove : MonoBehaviour
             //Add jump forces
             _rb.AddForce(Vector2.up * jumpForce * 1.5f);
 
+            if (_y > 0f)
+            {
+                if (_sprinting)
+                    _rb.AddForce(Vector3.forward * jumpForce * 1f);
+                else
+                    _rb.AddForce(transform.forward * jumpForce * 0.5f);
+            }
+
             //If jumping while falling, reset _y velocity.
             Vector3 vel = _rb.velocity;
             if (_rb.velocity.y < 0.5f)
@@ -280,8 +293,6 @@ public class PlayerMove : MonoBehaviour
 
     private void CounterMovement(float x, float y, Vector2 mag)
     {
-        if (!grounded || _jumping) return;
-
         //Counter movement
         if (Math.Abs(mag.x) > threshold && Math.Abs(x) < 0.05f || (mag.x < -threshold && x > 0) || (mag.x > threshold && x < 0))
         {
@@ -292,7 +303,7 @@ public class PlayerMove : MonoBehaviour
             _rb.AddForce(moveSpeed * orientation.transform.forward * Time.deltaTime * -mag.y * counterMovement);
         }
 
-        if (Mathf.Sqrt((Mathf.Pow(_rb.velocity.x, 2) + Mathf.Pow(_rb.velocity.z, 2))) > maxSpeed)
+        if (Mathf.Sqrt((Mathf.Pow(_rb.velocity.x, 2f) + Mathf.Pow(_rb.velocity.z, 2f))) > maxSpeed)
         {
             var fallspeed = _rb.velocity.y;
             var n = _rb.velocity.normalized * maxSpeed;
