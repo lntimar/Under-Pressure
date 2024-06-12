@@ -8,6 +8,7 @@ TagManager:
   - AudioManager
   - Stairs
   - CrossHairUI
+  - SlopeStair
   layers:
   - Default
   - TransparentFX
