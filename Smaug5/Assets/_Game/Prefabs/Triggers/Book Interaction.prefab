@@ -219,6 +219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineEffect: {fileID: 5091920654597087687}
+  book: {fileID: 0}
   CanInteract: 0
 --- !u!1 &6979606553286784475
 GameObject:
@@ -246,7 +247,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.073912784, y: 0.073912784, z: -0.7032332, w: 0.7032332}
   m_LocalPosition: {x: 8.24, y: 11.04, z: -7.83}
-  m_LocalScale: {x: 1.0972, y: 1.0972, z: 1.0972}
+  m_LocalScale: {x: 1.0971997, y: 1.0972, z: 1.0971997}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 27685489744187801}
