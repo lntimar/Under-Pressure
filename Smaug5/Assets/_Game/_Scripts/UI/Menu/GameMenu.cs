@@ -9,7 +9,11 @@ public class GameMenu : MonoBehaviour
 {
     #region Variáveis Globais
     // Inspector:
-    [Header("Configurações")]
+    [Header("Configurações")] 
+    
+    [Header("Cena Menu:")] 
+    [SerializeField] private string menuSceneName;
+
     [Header("Cursor:")]
     [SerializeField] private Texture2D cursorTexture;
 
@@ -68,7 +72,7 @@ public class GameMenu : MonoBehaviour
     public void GoToMainMenu() 
     {
         Time.timeScale = 1f;
-        TransitionManager.Instance().Transition("MainMenu", transitionSettings, loadTime);
+        TransitionManager.Instance().Transition(menuSceneName, transitionSettings, loadTime);
     }
     #endregion
 }

@@ -10,27 +10,30 @@ public class MainMenu : MonoBehaviour
     // Unity Inspector:
     [Header("Configurações:")]
 
+    [Header("Primeira Cena:")]
+    [SerializeField] private string firstSceneName;
+
     [Header("Transição:")]
     [SerializeField] private TransitionSettings firstTransitionSettings;
     [SerializeField] private float firstLoadTime;
     [SerializeField] private TransitionSettings playTransitionSettings;
     [SerializeField] private float playLoadTime;
 
-    private static bool firstTime = true;
+    private static bool _firstTime = true;
     #endregion
 
     #region Funções Próprias
 
     private void Start()
     {
-        if (firstTime)
+        if (_firstTime)
         {
-            firstTime = false;
+            _firstTime = false;
             TransitionManager.Instance().Transition(firstTransitionSettings, firstLoadTime);
         }
     }
 
-    public void StartGame() => TransitionManager.Instance().Transition("NPC Dialogue", playTransitionSettings, playLoadTime);
+    public void StartGame() => TransitionManager.Instance().Transition(firstSceneName, playTransitionSettings, playLoadTime);
 
     public void GoToOptions() => MainMenuManager.Instance.OpenMenu(Default.Options, MainMenuManager.MainMenu);
 

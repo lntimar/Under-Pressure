@@ -4784,6 +4784,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91308c428e0dca84daec5b3c6804a044, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  firstSceneName: Scene 1
   firstTransitionSettings: {fileID: 11400000, guid: 46ea0d11d7b51e049b232a9685cf3d19,
     type: 2}
   firstLoadTime: 0
