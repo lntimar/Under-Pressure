@@ -197,6 +197,7 @@ public class PlayerMove : MonoBehaviour
 
     private void StartCrouch()
     {
+        _rb.velocity = Vector3.zero;
         transform.localScale = _crouchScale;
         transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
     }
