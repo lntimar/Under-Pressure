@@ -58,7 +58,7 @@ MeshRenderer:
   m_GameObject: {fileID: 2480740536883848918}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
@@ -175,6 +175,7 @@ MonoBehaviour:
   jumpCooldown: 0.25
   jumpForce: 600
   climbSpeed: 400
+  CanStopCrouch: 1
   HasTouchStairs: 0
 --- !u!114 &1697414894549374630
 MonoBehaviour:

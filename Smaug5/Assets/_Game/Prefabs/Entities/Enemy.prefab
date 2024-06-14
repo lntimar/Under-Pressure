@@ -2728,7 +2728,7 @@ SkinnedMeshRenderer:
   m_GameObject: {fileID: 7962554773885181609}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
@@ -12757,6 +12757,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1055772745631532417}
     m_Modifications:
+    - target: {fileID: 7693042446818882598, guid: bbbcfd3a061bd5b43b0304fe97b31fde,
+        type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8197625719594653171, guid: bbbcfd3a061bd5b43b0304fe97b31fde,
         type: 3}
       propertyPath: m_Name
@@ -12846,6 +12851,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6669039619094854682}
     m_Modifications:
+    - target: {fileID: 7693042446818882598, guid: bbbcfd3a061bd5b43b0304fe97b31fde,
+        type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8197625719594653171, guid: bbbcfd3a061bd5b43b0304fe97b31fde,
         type: 3}
       propertyPath: m_Name
@@ -12935,6 +12945,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7659713415841845534}
     m_Modifications:
+    - target: {fileID: 7693042446818882598, guid: bbbcfd3a061bd5b43b0304fe97b31fde,
+        type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8197625719594653171, guid: bbbcfd3a061bd5b43b0304fe97b31fde,
         type: 3}
       propertyPath: m_Name
@@ -13091,6 +13106,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 10a11cf02a515de4c9c229757c5cea1b,
         type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 10a11cf02a515de4c9c229757c5cea1b,
+        type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 75d8502aa33327b40850ad3d1993de20, type: 2}
@@ -13123,6 +13143,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6669039619094854682}
     m_Modifications:
+    - target: {fileID: 7693042446818882598, guid: bbbcfd3a061bd5b43b0304fe97b31fde,
+        type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8197625719594653171, guid: bbbcfd3a061bd5b43b0304fe97b31fde,
         type: 3}
       propertyPath: m_Name
@@ -13275,6 +13300,11 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 10a11cf02a515de4c9c229757c5cea1b,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 10a11cf02a515de4c9c229757c5cea1b,
+        type: 3}
+      propertyPath: m_ReceiveShadows
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 10a11cf02a515de4c9c229757c5cea1b,
