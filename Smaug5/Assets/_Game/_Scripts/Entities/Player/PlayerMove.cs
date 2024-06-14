@@ -66,7 +66,6 @@ public class PlayerMove : MonoBehaviour
     #endregion
 
     #region Funções Unity
-
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
@@ -130,10 +129,6 @@ public class PlayerMove : MonoBehaviour
             if (_x == 0 && _y == 0)
                 _rb.velocity = Vector3.zero;
         }
-        else if (collision.gameObject.CompareTag("Duct"))
-        {
-            StartCrouch();
-        }
 
         //Make sure we are only checking for walkable layers
         int layer = collision.gameObject.layer;
@@ -159,12 +154,6 @@ public class PlayerMove : MonoBehaviour
             _cancellingGrounded = true;
             Invoke(nameof(StopGrounded), Time.deltaTime * delay);
         }
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Duct"))
-            StopCrouch();
     }
     #endregion
 
@@ -196,13 +185,13 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
-    private void StartCrouch()
+    public void StartCrouch()
     {
         transform.localScale = _crouchScale;
         transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
     }
 
-    private void StopCrouch()
+    public void StopCrouch()
     {
         transform.localScale = _playerScale;
         transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
@@ -212,6 +201,7 @@ public class PlayerMove : MonoBehaviour
     {
         _rb.useGravity = true;
         _rb.AddForce(Vector3.down * Time.deltaTime * 10);
+
         //Find actual velocity relative to where player is looking
         var mag = FindVelRelativeToLook();
         var xMag = mag.x;
@@ -254,6 +244,7 @@ public class PlayerMove : MonoBehaviour
             scalar = sprintScalar;
 
         _rb.AddForce(orientation.transform.forward * _y * moveSpeed * scalar * Time.deltaTime * multiplier * multiplierV);
+  
         _rb.AddForce(orientation.transform.right * _x * moveSpeed * scalar * Time.deltaTime * multiplier);
     }
 
