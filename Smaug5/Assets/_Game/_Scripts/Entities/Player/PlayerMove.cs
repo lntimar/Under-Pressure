@@ -167,12 +167,10 @@ public class PlayerMove : MonoBehaviour
     private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.layer == CollisionLayersManager.Instance.StayCrouchTrigger.Index)
+        {
             _stayCrouching = true;
-    }
-
-    private void OnTriggerExit(Collider collision)
-    {
-        if (collision.gameObject.layer == CollisionLayersManager.Instance.StopStayCrouchTrigger.Index)
+        }
+        else if (collision.gameObject.layer == CollisionLayersManager.Instance.StopStayCrouchTrigger.Index)
         {
             _stayCrouching = false;
             transform.localScale = _playerScale;
