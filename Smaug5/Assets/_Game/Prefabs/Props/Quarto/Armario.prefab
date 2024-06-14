@@ -60,13 +60,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 8f3603c8df8ea354682d4eaf68809b5c,
         type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 8f3603c8df8ea354682d4eaf68809b5c,
+        type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: d8e4113b7016e9945a40822051795e9b, type: 2}
     - target: {fileID: 919132149155446097, guid: 8f3603c8df8ea354682d4eaf68809b5c,
         type: 3}
       propertyPath: m_Name
-      value: M_armario
+      value: Armario
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

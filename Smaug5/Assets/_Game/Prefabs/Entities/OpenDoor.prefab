@@ -51,7 +51,7 @@ MeshRenderer:
   m_GameObject: {fileID: 1966517924699933123}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
@@ -158,7 +158,7 @@ MeshRenderer:
   m_GameObject: {fileID: 4297710341569293628}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
@@ -368,5 +368,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetKey: -1
   doorAnimator: {fileID: 4236350697794652620}
+  outlineEffect: {fileID: 0}
   gfxTransform: {fileID: 9129538844582468614}
   CanInteract: 0

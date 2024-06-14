@@ -58,7 +58,7 @@ MeshRenderer:
   m_GameObject: {fileID: 2480740536883848918}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
@@ -111,9 +111,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
-  m_Height: 1.5304896
+  m_Height: 1.3830076
   m_Direction: 1
-  m_Center: {x: 0, y: -0.23475523, z: 0}
+  m_Center: {x: 0, y: -0.2455535, z: 0}
 --- !u!54 &1603716132080458894
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -482,4 +482,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7563d972a6dd514097999fa6f9c6952, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orientation: {fileID: 2560771920211432799}
