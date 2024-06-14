@@ -172,7 +172,7 @@ public class PlayerMove : MonoBehaviour
 
     private void OnTriggerExit(Collider collision)
     {
-        if (collision.gameObject.layer == CollisionLayersManager.Instance.StayCrouchTrigger.Index)
+        if (collision.gameObject.layer == CollisionLayersManager.Instance.StopStayCrouchTrigger.Index)
             _stayCrouching = false;
     }
     #endregion
