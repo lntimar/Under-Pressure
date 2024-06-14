@@ -56,6 +56,7 @@ public class PlayerMove : MonoBehaviour
     // Agachar:
     private Vector3 _crouchScale;
     private Vector3 _playerScale;
+    private bool _stayCrouching = true;
 
     // Inputs:
     private float _x, _y;
@@ -112,6 +113,13 @@ public class PlayerMove : MonoBehaviour
             else
                 _weapon.SetActive(true);
         }
+
+        if (_stayCrouching)
+        {
+            transform.localScale = _crouchScale;
+            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+            _crouching = true;
+        }
     }
 
     private void FixedUpdate()
@@ -155,6 +163,18 @@ public class PlayerMove : MonoBehaviour
             Invoke(nameof(StopGrounded), Time.deltaTime * delay);
         }
     }
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (collision.gameObject.layer == CollisionLayersManager.Instance.StayCrouchTrigger.Index)
+            _stayCrouching = true;
+    }
+
+    private void OnTriggerExit(Collider collision)
+    {
+        if (collision.gameObject.layer == CollisionLayersManager.Instance.StayCrouchTrigger.Index)
+            _stayCrouching = false;
+    }
     #endregion
 
     #region Funções Próprias
@@ -169,7 +189,7 @@ public class PlayerMove : MonoBehaviour
         //Crouching
         if (Input.GetKey(KeyCode.LeftControl))
             StartCrouch();
-        if (Input.GetKeyUp(KeyCode.LeftControl))
+        if (Input.GetKeyUp(KeyCode.LeftControl) && _stayCrouching)
             StopCrouch();
     }
 

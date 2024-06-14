@@ -18,6 +18,7 @@ public class CollisionLayersManager : MonoBehaviour
     public SingleUnityLayer KeyTrigger;
     public SingleUnityLayer BookTrigger;
     public SingleUnityLayer WeaponCollectTrigger;
+    public SingleUnityLayer StayCrouchTrigger;
 
     public static CollisionLayersManager Instance;
     #endregion
