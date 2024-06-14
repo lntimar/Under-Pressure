@@ -66,3 +66,5 @@ MonoBehaviour:
     _layerIndex: 21
   WeaponCollectTrigger:
     _layerIndex: 20
+  StayCrouchTrigger:
+    _layerIndex: 23
