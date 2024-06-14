@@ -175,6 +175,7 @@ MonoBehaviour:
   jumpCooldown: 0.25
   jumpForce: 600
   climbSpeed: 400
+  CanStopCrouch: 1
   HasTouchStairs: 0
 --- !u!114 &1697414894549374630
 MonoBehaviour:
@@ -481,3 +482,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7563d972a6dd514097999fa6f9c6952, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  orientation: {fileID: 2560771920211432799}
