@@ -193,7 +193,7 @@ public class PlayerMove : MonoBehaviour
         //Crouching
         if (Input.GetKey(KeyCode.LeftControl))
             StartCrouch();
-        if (Input.GetKeyUp(KeyCode.LeftControl) && _stayCrouching)
+        if (Input.GetKeyUp(KeyCode.LeftControl) && !_stayCrouching)
             StopCrouch();
     }
 
