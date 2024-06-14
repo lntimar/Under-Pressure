@@ -101,7 +101,7 @@ public class PlayerMove : MonoBehaviour
     {
         MyInput();
 
-        if (!_gameMenuScript.IsPaused())
+        if (!_gameMenuScript.IsPaused() && !HasTouchStairs)
             Look();
 
         Animate();
@@ -312,6 +312,9 @@ public class PlayerMove : MonoBehaviour
     {
         var mouseX = Input.GetAxis("Mouse X") * sensitivity * Time.fixedDeltaTime * sensMultiplier;
         var mouseY = Input.GetAxis("Mouse Y") * sensitivity * Time.fixedDeltaTime * sensMultiplier;
+
+        if (HasTouchStairs)
+            mouseX = 0f;
 
         //Find current look rotation
         var rot = _playerCam.transform.localRotation.eulerAngles;
