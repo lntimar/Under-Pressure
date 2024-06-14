@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 999a74b50b7c0ef4ca5e0853721f9d6b, type: 3}
+  m_Name: 2
+  m_EditorClassIdentifier: 
+  Texts:
+  - "DIA 4 algo bateu no submarino n\xE3o sei o que foi mas o leviathan atracou minha
+    cabe\xE7a est\xE1 me matando, os tripulantes come\xE7aram a ficar malucos atirando
+    uns nos outros eu vou eu mesmo descobrir o que t\xE1 acontecendo a bordo ou meu
+    nome n\xE3o \xE9 Skinner Malloy "
+  - 

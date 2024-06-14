@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 999a74b50b7c0ef4ca5e0853721f9d6b, type: 3}
+  m_Name: 0
+  m_EditorClassIdentifier: 
+  Texts:
+  - "DI\xC1RIO DE BORDO \u2013 LEVIATHAN J-41 Caso perdido, devolver ao Capit\xE3o
+    Edward Skinner Malloy "
+  - "DIA 1 \u2013 13:23 Descemos algumas centenas de metros na \xE1gua e j\xE1 me
+    bateu aquela sensa\xE7\xE3o. Todos os marinheiros sabem qual, a sensa\xE7\xE3o
+    de adentrar no desconhecido. De entrar na boca da criatura que habita os mares
+    mais profundos. Isso, e uma baita dor no est\xF4mago. "

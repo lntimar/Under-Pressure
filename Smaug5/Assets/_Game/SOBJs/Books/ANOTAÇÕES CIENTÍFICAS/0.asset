@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 999a74b50b7c0ef4ca5e0853721f9d6b, type: 3}
+  m_Name: 0
+  m_EditorClassIdentifier: 
+  Texts:
+  - "ANOTA\xC7\xD5ES DE FRANK HELLENBERG"
+  - "Soro Amplificador Biol\xF3gico Concentrado -Inicialmente conceituada para assistir
+    soldados de guerra em momentos de crise, a ideia evoluiu de um soro curativo
+    pra um soro que amplifica as fun\xE7\xF5es f\xEDsicas do usu\xE1rio. Testes confirmam
+    velocidade ampliada, reflexos expandidos e n\xEDveis de estamina elevados. Mais
+    cobaias est\xE3o sendo procuradas pra experimentos mais avan\xE7ados. "
