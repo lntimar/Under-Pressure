@@ -150,7 +150,7 @@ public class OpenBook : MonoBehaviour
         openedBook.SetActive(false);
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        crossHairUI.SetActive(false);
+        crossHairUI.SetActive(true);
         mainCamera.enabled = true;
         bookParent.SetActive(false);
 
