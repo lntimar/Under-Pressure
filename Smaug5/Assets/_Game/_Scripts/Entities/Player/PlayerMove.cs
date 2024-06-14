@@ -56,7 +56,7 @@ public class PlayerMove : MonoBehaviour
     // Agachar:
     private Vector3 _crouchScale;
     private Vector3 _playerScale;
-    private bool _stayCrouching = true;
+    private bool _stayCrouching = false;
 
     // Inputs:
     private float _x, _y;
