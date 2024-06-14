@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 999a74b50b7c0ef4ca5e0853721f9d6b, type: 3}
+  m_Name: 1
+  m_EditorClassIdentifier: 
+  Texts:
+  - "Protocolos Para Ativa\xE7\xE3o de Agentes Adormecidos -Testes foram conduzidos
+    para procurar a frequ\xEAncia certa que influencie os agentes. Como um lembrete,
+    deve ser lembrado que os mesmos n\xE3o devem, sob circunst\xE2ncia alguma, acordar
+    antes do momento estipulado. Eles ainda s\xE3o cobaias, e n\xE3o sabemos como
+    um despertar precoce pode afet\xE1-los. "
+  - "Canh\xE3o de M\xE3o Energizado -Um pequeno projeto pr\xF3prio. Estive experimentando
+    na cria\xE7\xE3o de uma arma que seja capaz de liberar energia altamente concentrada
+    a partir do aparente nada. Como uma fun\xE7\xE3o secund\xE1ria, planejo com que
+    solte um \u201Cempurr\xE3o\u201D por falta de melhor palavra. Isso auxiliaria
+    a lidar com inimigos no curto alcance, enquanto providencia utilidade e controle
+    do campo de batalha. Entretanto, encontrei um empecilho. Nenhuma fonte de energia
+    parece alimentar o canh\xE3o por tempo suficiente. Terei de buscar alternativas,
+    e espero que essa explora\xE7\xE3o me traga ideias. "
