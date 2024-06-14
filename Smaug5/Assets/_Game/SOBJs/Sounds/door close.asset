@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: door close
   m_EditorClassIdentifier: 
   Clip: {fileID: 8300000, guid: b9989be0d2e29674685bcd422f0e4906, type: 3}
-  Volume: 1
+  Volume: 0.6
   Pitch: 1

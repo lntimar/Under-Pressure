@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: weapon sonar
   m_EditorClassIdentifier: 
   Clip: {fileID: 8300000, guid: 87c8efb819f1b784d8589a18a65df3b5, type: 3}
-  Volume: 1
+  Volume: 0.6
   Pitch: 1

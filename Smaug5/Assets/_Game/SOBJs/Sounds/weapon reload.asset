@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: weapon reload
   m_EditorClassIdentifier: 
   Clip: {fileID: 8300000, guid: e56d2c313a03aff48bf81f2734d4f5c0, type: 3}
-  Volume: 1
+  Volume: 0.6
   Pitch: 1

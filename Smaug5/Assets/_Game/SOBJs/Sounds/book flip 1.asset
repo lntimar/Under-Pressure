@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: book flip 1
   m_EditorClassIdentifier: 
   Clip: {fileID: 8300000, guid: b3c92e66994ea3f48848e41ec1fa0505, type: 3}
-  Volume: 1
+  Volume: 0.6
   Pitch: 1

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: water drip
   m_EditorClassIdentifier: 
   Clip: {fileID: 8300000, guid: b12269ddfb850084fa082f71a9945f36, type: 3}
-  Volume: 1
+  Volume: 0.6
   Pitch: 1

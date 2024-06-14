@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: key catch
   m_EditorClassIdentifier: 
   Clip: {fileID: 8300000, guid: b9608c28de37da44088b505f1f2a72fd, type: 3}
-  Volume: 1
+  Volume: 0.6
   Pitch: 1

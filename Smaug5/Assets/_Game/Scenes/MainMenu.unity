@@ -4857,7 +4857,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e51306a2e865da84a9dadea50694cffc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioMixer: {fileID: 24100000, guid: 0fb87ec143f71da4ab2b6d25c300c844, type: 2}
+  audioMixer: {fileID: 24100000, guid: c1b8485265214bf4f9884b4b29533932, type: 2}
   volumeSlider: {fileID: 1117811586}
   txtBtnFullscren: {fileID: 359423727}
 --- !u!1 &1068415805
@@ -5325,11 +5325,11 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1063872019}
         m_TargetAssemblyTypeName: OptionsMenu, Assembly-CSharp
         m_MethodName: SetMasterVolume
         m_Mode: 1

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: weapon shot
   m_EditorClassIdentifier: 
   Clip: {fileID: 8300000, guid: b43040b3b7695a746a0e97a362391dbb, type: 3}
-  Volume: 1
+  Volume: 0.6
   Pitch: 1

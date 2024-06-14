@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: enemy scream 1
   m_EditorClassIdentifier: 
   Clip: {fileID: 8300000, guid: 19c12c6fd9ccddd43afca55f400dc84d, type: 3}
-  Volume: 1
+  Volume: 0.6
   Pitch: 1
