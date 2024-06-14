@@ -14,11 +14,15 @@ public class PlayerProgress : MonoBehaviour
     }
 
     // Inspector:
-    [Header("Configurações:")]
+    [Header("Configurações:")] 
+
+    [Header("Transição Nova Cena:")] 
+    [SerializeField] private TransitionSettings newSceneTransitionSettings;
+    [SerializeField] private float newSceneLoadTime;
 
     [Header("Transição Restart:")]
-    [SerializeField] private TransitionSettings transitionSettings;
-    [SerializeField] private float loadTime;
+    [SerializeField] private TransitionSettings restartTransitionSettings;
+    [SerializeField] private float restartLoadTime;
 
     // Componentes:
     private PlayerStats _playerStats;
@@ -49,13 +53,13 @@ public class PlayerProgress : MonoBehaviour
     #endregion
 
     #region Funções Próprias
-    public void Restart() => TransitionManager.Instance().Transition(SceneManager.GetActiveScene().name, transitionSettings, loadTime);
+    public void Restart() => TransitionManager.Instance().Transition(SceneManager.GetActiveScene().name, restartTransitionSettings, restartLoadTime);
 
     private void LoadNewScene(LoadPointTrigger newLoadPoint)
     {
         _currentLoadPoint = newLoadPoint;
-        WriteStats(WriteType.LoadPoint);
-        SceneManager.LoadScene(_currentLoadPoint.SceneName);
+        //WriteStats(WriteType.LoadPoint);
+        TransitionManager.Instance().Transition(newLoadPoint.SceneName, newSceneTransitionSettings, newSceneLoadTime);
     } 
 
     private void ChangeCheckPoint(CheckPointTrigger newCheckPoint)
@@ -69,7 +73,7 @@ public class PlayerProgress : MonoBehaviour
     {
         // Carregue:
         // Posição do CheckPoint
-        transform.position = new Vector3(PlayerPrefs.GetFloat("playerX"),PlayerPrefs.GetFloat("playerY"), PlayerPrefs.GetFloat("playerZ"));
+        //transform.position = new Vector3(PlayerPrefs.GetFloat("playerX"),PlayerPrefs.GetFloat("playerY"), PlayerPrefs.GetFloat("playerZ"));
         // Último valor de HP
         PlayerStats.Health = PlayerPrefs.GetInt("playerHP");
         // Quantidade Munição
