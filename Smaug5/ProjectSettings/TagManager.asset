@@ -9,6 +9,7 @@ TagManager:
   - Stairs
   - CrossHairUI
   - SlopeStair
+  - Duct
   layers:
   - Default
   - TransparentFX
