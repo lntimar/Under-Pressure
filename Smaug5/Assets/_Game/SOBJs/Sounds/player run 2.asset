@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: player run 2
   m_EditorClassIdentifier: 
   Clip: {fileID: 8300000, guid: fadbf77ab2091d745bed94fd9b224b4f, type: 3}
-  Volume: 1
+  Volume: 0.6
   Pitch: 1

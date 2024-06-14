@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: weapon catch
   m_EditorClassIdentifier: 
   Clip: {fileID: 8300000, guid: 7e46c28426782e24abe3a621a5e8d97f, type: 3}
-  Volume: 1
+  Volume: 0.6
   Pitch: 1

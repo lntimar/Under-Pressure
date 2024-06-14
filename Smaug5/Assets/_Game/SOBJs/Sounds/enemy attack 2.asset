@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: enemy attack 2
   m_EditorClassIdentifier: 
   Clip: {fileID: 8300000, guid: 090f8c0ff91c12b4f8fce8f409b63294, type: 3}
-  Volume: 1
+  Volume: 0.6
   Pitch: 1

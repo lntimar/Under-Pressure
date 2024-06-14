@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: player jump
   m_EditorClassIdentifier: 
   Clip: {fileID: 8300000, guid: 34ce793a9a4804c47ae2e956451df396, type: 3}
-  Volume: 1
+  Volume: 0.6
   Pitch: 1
