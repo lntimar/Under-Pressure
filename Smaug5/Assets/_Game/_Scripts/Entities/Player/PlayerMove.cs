@@ -56,7 +56,7 @@ public class PlayerMove : MonoBehaviour
     // Agachar:
     private Vector3 _crouchScale;
     private Vector3 _playerScale;
-    private bool _stayCrouching = false;
+    private bool _canResetCrouchSpeed = true;
 
     // Inputs:
     private float _x, _y;
@@ -99,13 +99,6 @@ public class PlayerMove : MonoBehaviour
 
     private void Update()
     {
-        if (_stayCrouching)
-        {
-            transform.localScale = _crouchScale;
-            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-            _crouching = true;
-        }
-
         MyInput();
 
         if (!_gameMenuScript.IsPaused())
@@ -137,6 +130,10 @@ public class PlayerMove : MonoBehaviour
             if (_x == 0 && _y == 0)
                 _rb.velocity = Vector3.zero;
         }
+        else if (collision.gameObject.CompareTag("Duct"))
+        {
+            StartCrouch();
+        }
 
         //Make sure we are only checking for walkable layers
         int layer = collision.gameObject.layer;
@@ -164,18 +161,10 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider collision)
+    private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.layer == CollisionLayersManager.Instance.StayCrouchTrigger.Index)
-        {
-            _stayCrouching = true;
-        }
-        else if (collision.gameObject.layer == CollisionLayersManager.Instance.StopStayCrouchTrigger.Index)
-        {
-            _stayCrouching = false;
-            transform.localScale = _playerScale;
-            transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
-        }
+        if (collision.gameObject.CompareTag("Duct"))
+            StopCrouch();
     }
     #endregion
 
@@ -185,14 +174,26 @@ public class PlayerMove : MonoBehaviour
         _x = Input.GetAxisRaw("Horizontal");
         _y = Input.GetAxisRaw("Vertical");
         _jumping = Input.GetButton("Jump");
+
         _crouching = Input.GetKey(KeyCode.LeftControl);
         _sprinting = Input.GetKey(KeyCode.LeftShift);
 
         //Crouching
         if (Input.GetKey(KeyCode.LeftControl))
+        {
+            if (_canResetCrouchSpeed)
+            {
+                _rb.velocity = new Vector3(0f, _rb.velocity.y, 0f);
+                _canResetCrouchSpeed = false;
+            }
             StartCrouch();
-        if (Input.GetKeyUp(KeyCode.LeftControl) && !_stayCrouching)
+        }
+
+        if (Input.GetKeyUp(KeyCode.LeftControl))
+        {
+            _canResetCrouchSpeed = true;
             StopCrouch();
+        }
     }
 
     private void StartCrouch()

@@ -68,3 +68,5 @@ MonoBehaviour:
     _layerIndex: 20
   StayCrouchTrigger:
     _layerIndex: 23
+  StopStayCrouchTrigger:
+    _layerIndex: 24
