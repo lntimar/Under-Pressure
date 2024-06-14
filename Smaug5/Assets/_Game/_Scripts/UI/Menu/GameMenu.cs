@@ -58,6 +58,7 @@ public class GameMenu : MonoBehaviour
     public void Resume()
     {
         _crossHairUI.SetActive(true);
+        _crossHairUI.gameObject.transform.Find("Img Crosshair").gameObject.SetActive(true);
         Time.timeScale = 1f;
         GameMenuManager.MenuCanvas.GetComponent<Canvas>().enabled = false;
         _gamePaused = false;
