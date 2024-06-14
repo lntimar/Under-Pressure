@@ -40,7 +40,7 @@ public class PlayerMove : MonoBehaviour
     // Referências:
     private Transform _playerCam;
     private GameObject _weapon;
-
+    private GameMenu _gameMenuScript;
 
     // Componentes:
     private Rigidbody _rb;
@@ -70,6 +70,7 @@ public class PlayerMove : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
         _playerCam = FindObjectOfType<MoveCamera>().transform;
+        _gameMenuScript = FindObjectOfType<GameMenu>();
 
         _weapon = FindObjectOfType<Weapon>().gameObject;
 
@@ -98,7 +99,10 @@ public class PlayerMove : MonoBehaviour
     private void Update()
     {
         MyInput();
-        Look();
+
+        if (!_gameMenuScript.IsPaused())
+            Look();
+
         Animate();
 
         if (PlayerStats.HasGun)

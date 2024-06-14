@@ -74,5 +74,10 @@ public class GameMenu : MonoBehaviour
         Time.timeScale = 1f;
         TransitionManager.Instance().Transition(menuSceneName, transitionSettings, loadTime);
     }
+
+    public bool IsPaused()
+    {
+        return _gamePaused;
+    }
     #endregion
 }
