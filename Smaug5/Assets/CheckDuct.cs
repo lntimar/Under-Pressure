@@ -11,12 +11,12 @@ public class CheckDuct : MonoBehaviour
     private void OnTriggerStay(Collider collision)
     {
         if (collision.gameObject.CompareTag("Duct"))
-            _playerMoveScript.StartCrouch();
+            _playerMoveScript.SetCanStopCrouch(false);
     }
 
     private void OnTriggerExit(Collider collision)
     {
         if (collision.gameObject.CompareTag("Duct"))
-            _playerMoveScript.StopCrouch();
+            _playerMoveScript.SetCanStopCrouch(true);
     } 
 }

@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
@@ -57,11 +58,11 @@ public class PlayerMove : MonoBehaviour
     private Vector3 _crouchScale;
     private Vector3 _playerScale;
     private bool _canResetCrouchSpeed = true;
+    [HideInInspector] public bool CanStopCrouch = true;
 
     // Inputs:
     private float _x, _y;
     private bool _jumping, _sprinting, _crouching;
-    
     public bool HasTouchStairs = false;
     #endregion
 
@@ -164,10 +165,8 @@ public class PlayerMove : MonoBehaviour
         _y = Input.GetAxisRaw("Vertical");
         _jumping = Input.GetButton("Jump");
 
-        _crouching = Input.GetKey(KeyCode.LeftControl);
         _sprinting = Input.GetKey(KeyCode.LeftShift);
 
-        //Crouching
         if (Input.GetKey(KeyCode.LeftControl))
         {
             if (_canResetCrouchSpeed)
@@ -178,23 +177,45 @@ public class PlayerMove : MonoBehaviour
             StartCrouch();
         }
 
-        if (Input.GetKeyUp(KeyCode.LeftControl))
+        if (Input.GetKeyUp(KeyCode.LeftControl) && CanStopCrouch)
         {
             _canResetCrouchSpeed = true;
             StopCrouch();
         }
     }
 
-    public void StartCrouch()
+    private void StartCrouch()
     {
+        _crouching = true;
         transform.localScale = _crouchScale;
         transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
     }
 
-    public void StopCrouch()
+    private void StopCrouch()
     {
+        _crouching = false;
         transform.localScale = _playerScale;
         transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
+    }
+
+    public void SetCanStopCrouch(bool canStop)
+    {
+        if (canStop)
+        {
+            CanStopCrouch = true;
+            StartCoroutine(StopCrouchInterval(1.5f));
+        }
+        else
+        {
+            CanStopCrouch = false;
+            StopAllCoroutines();
+        }
+    }
+
+    private IEnumerator StopCrouchInterval(float t)
+    {
+        yield return new WaitForSeconds(t);
+        StopCrouch();
     }
 
     private void Movement()
@@ -253,12 +274,8 @@ public class PlayerMove : MonoBehaviour
         _rb.useGravity = false;
 
         var verticalInput = Input.GetAxis("Vertical");
-        var horizontalInput = Input.GetAxis("Horizontal");
 
-        if (verticalInput != 0)
-            _rb.velocity = new Vector3(horizontalInput, verticalInput, 0f).normalized * climbSpeed * Time.deltaTime;
-        else
-            _rb.velocity = Vector3.right * horizontalInput * climbSpeed * Time.deltaTime;
+        _rb.velocity = Vector3.up * verticalInput * climbSpeed * Time.deltaTime;
     }
 
     private void Jump()
