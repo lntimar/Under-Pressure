@@ -99,6 +99,13 @@ public class PlayerMove : MonoBehaviour
 
     private void Update()
     {
+        if (_stayCrouching)
+        {
+            transform.localScale = _crouchScale;
+            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+            _crouching = true;
+        }
+
         MyInput();
 
         if (!_gameMenuScript.IsPaused())
@@ -112,13 +119,6 @@ public class PlayerMove : MonoBehaviour
                 _weapon.SetActive(false);
             else
                 _weapon.SetActive(true);
-        }
-
-        if (_stayCrouching)
-        {
-            transform.localScale = _crouchScale;
-            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-            _crouching = true;
         }
     }
 
@@ -173,7 +173,11 @@ public class PlayerMove : MonoBehaviour
     private void OnTriggerExit(Collider collision)
     {
         if (collision.gameObject.layer == CollisionLayersManager.Instance.StopStayCrouchTrigger.Index)
+        {
             _stayCrouching = false;
+            transform.localScale = _playerScale;
+            transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
+        }
     }
     #endregion
 
