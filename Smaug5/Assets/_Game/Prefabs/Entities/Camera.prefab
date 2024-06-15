@@ -468,7 +468,7 @@ MeshRenderer:
   m_GameObject: {fileID: 593398002382437806}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 0
+  m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
@@ -551,7 +551,7 @@ MeshRenderer:
   m_GameObject: {fileID: 594898574199170830}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 0
+  m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
@@ -1820,7 +1820,7 @@ MeshRenderer:
   m_GameObject: {fileID: 1278048277455999365}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 0
+  m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
@@ -1935,7 +1935,7 @@ MeshRenderer:
   m_GameObject: {fileID: 1401481161609220989}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 0
+  m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
@@ -2177,7 +2177,7 @@ MeshRenderer:
   m_GameObject: {fileID: 1493496987056197545}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 0
+  m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
@@ -5912,7 +5912,7 @@ MeshRenderer:
   m_GameObject: {fileID: 3777366548396831277}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 0
+  m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
@@ -6197,10 +6197,10 @@ MonoBehaviour:
   attackPoint: {fileID: 2361068869701278841}
   enemies:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 134218752
   layerMaskIgnore:
     serializedVersion: 2
-    m_Bits: 1047542
+    m_Bits: 251657206
   withGunStateAnimator: {fileID: 6543311623540709355}
 --- !u!114 &3842465989851923565
 MonoBehaviour:
@@ -6960,7 +6960,7 @@ MeshRenderer:
   m_GameObject: {fileID: 4331354921970818737}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 0
+  m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
@@ -9716,7 +9716,7 @@ MeshRenderer:
   m_GameObject: {fileID: 6415540427279386240}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 0
+  m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
@@ -10433,7 +10433,7 @@ MeshRenderer:
   m_GameObject: {fileID: 6880203617797369282}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 0
+  m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
@@ -10870,7 +10870,7 @@ MeshRenderer:
   m_GameObject: {fileID: 7231083924394329171}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 0
+  m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
@@ -11202,7 +11202,7 @@ GameObject:
   - component: {fileID: 3387340273707820357}
   - component: {fileID: 3857357488241713004}
   - component: {fileID: 8640160483168360219}
-  m_Layer: 12
+  m_Layer: 26
   m_Name: SonarZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}

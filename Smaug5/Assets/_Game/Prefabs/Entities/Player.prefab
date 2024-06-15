@@ -170,7 +170,7 @@ MonoBehaviour:
   grounded: 0
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 33554440
   counterMovement: 0.175
   threshold: 0.01
   maxSlopeAngle: 35
