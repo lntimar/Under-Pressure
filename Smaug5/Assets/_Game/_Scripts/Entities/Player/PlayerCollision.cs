@@ -15,12 +15,13 @@ public class PlayerCollision : MonoBehaviour
 
     private void OnTriggerEnter(Collider col)
     {
-        GameObject colObjeto = col.gameObject;
-        Debug.Log(colObjeto.name);
-        if (col.gameObject.layer == CollisionLayersManager.Instance.Enemy.Index)
+        //GameObject colObjeto = col.gameObject;
+        //Debug.Log(colObjeto.name);
+        if (col.gameObject.layer == CollisionLayersManager.Instance.EnemyAttack.Index)
         {
-            _playerStats.ChangeHealthPoints(-col.gameObject.GetComponent<EnemyStats>().Damage);
             Debug.Log("Bateu");
+            _playerStats.ChangeHealthPoints(-col.gameObject.GetComponent<EnemyStats>().Damage);
+            
         }
         else if (col.gameObject.layer == CollisionLayersManager.Instance.HealthPack.Index)
         {
