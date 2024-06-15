@@ -11258,7 +11258,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 5000
-  soulsRequired: 1
+  soulsRequired: 3
   affectedObjects: []
   sonarEffect: {fileID: 8310876059195324476}
   withGunStateAnimator: {fileID: 6543311623540709355}

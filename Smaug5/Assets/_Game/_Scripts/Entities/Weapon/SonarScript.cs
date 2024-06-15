@@ -10,7 +10,7 @@ public class SonarScript : MonoBehaviour
     // Inspector:
     [Header("Configurações:")]
     public float force = 700f;
-    public int soulsRequired = 1;
+    public int soulsRequired = 3;
 
     [Header("Objetos sendo Afetados:")]
     public List<GameObject> affectedObjects = new();
@@ -31,7 +31,7 @@ public class SonarScript : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1))
         {
-           if (PlayerStats.Souls == soulsRequired)
+           if (PlayerStats.Souls >= soulsRequired)
             {
                 withGunStateAnimator.Play("With Gun Shoot State Animation");
                 if (AudioManager.Instance != null) AudioManager.Instance.PlaySFX("weapon sonar");
