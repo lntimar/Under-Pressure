@@ -14,7 +14,9 @@ public class AttackCollider : MonoBehaviour
     #endregion
 
     #region Funções Próprias
-    public void DisableAttack() => _enemyBehaviour.disableAttack();
+    //public void DisableAttack() => _enemyBehaviour.disableAttack();
+    //Teste trocar aqui
+    public void DisableAttack() => _enemyBehaviour.enableAttack();
 
     public void EnableAttack() => _enemyBehaviour.enableAttack();
     #endregion
