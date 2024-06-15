@@ -19,7 +19,6 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private float walkStepsInterval;
     [SerializeField] private float climbStepsInterval;
     [SerializeField] private float sprintStepsInterval;
-    [SerializeField] private float crouchStepsInterval;
 
     [Header("Rotação:")]
     [SerializeField] private float sensitivity = 50f;
@@ -73,10 +72,9 @@ public class PlayerMove : MonoBehaviour
 
     // SFX:
     private bool _canPlayStepSFX = true;
-    private int _walkStepsIndex = 0;
-    private int _climbStepsIndex = 0;
-    private int _sprintStepsIndex = 0;
-    private int _crouchStepsIndex = 0;
+    private int _walkStepsIndex = 1;
+    private int _climbStepsIndex = 1;
+    private int _sprintStepsIndex = 1;
     #endregion
 
     #region Funções Unity
@@ -114,7 +112,7 @@ public class PlayerMove : MonoBehaviour
     {
         MyInput();
 
-        if (!_gameMenuScript.IsPaused() && !HasTouchStairs)
+        if (!_gameMenuScript.IsPaused())
             Look();
 
         Animate();
@@ -328,9 +326,6 @@ public class PlayerMove : MonoBehaviour
         var mouseX = Input.GetAxis("Mouse X") * sensitivity * Time.fixedDeltaTime * sensMultiplier;
         var mouseY = Input.GetAxis("Mouse Y") * sensitivity * Time.fixedDeltaTime * sensMultiplier;
 
-        if (HasTouchStairs)
-            mouseX = 0f;
-
         //Find current look rotation
         var rot = _playerCam.transform.localRotation.eulerAngles;
         _desiredX = rot.y + mouseX;
@@ -467,7 +462,7 @@ public class PlayerMove : MonoBehaviour
     {
         if (_x != 0 || _y != 0)
         {
-            if (_canPlayStepSFX)
+            if (_canPlayStepSFX && !_crouching)
             {
                 _canPlayStepSFX = false;
 
@@ -475,26 +470,18 @@ public class PlayerMove : MonoBehaviour
                 {
                     AudioManager.Instance.PlaySFX("player run " + _sprintStepsIndex);
 
-                    if (_sprintStepsIndex < 4) _sprintStepsIndex = 4;
-                    else _sprintStepsIndex = 0;
+                    if (_sprintStepsIndex < 4) _sprintStepsIndex++;
+                    else _sprintStepsIndex = 1;
 
                     StartCoroutine(ResetCanPlayStepSFX(sprintStepsInterval));
                 }
-                else if (_crouching)
-                {
-                    AudioManager.Instance.PlaySFX("player walk " + _sprintStepsIndex);
-
-                    if (_crouchStepsIndex < 4) _crouchStepsIndex = 4;
-                    else _crouchStepsIndex = 0;
-
-                    StartCoroutine(ResetCanPlayStepSFX(crouchStepsInterval));
-                }
                 else if (HasTouchStairs)
                 {
+                    print(_climbStepsIndex);
                     AudioManager.Instance.PlaySFX("player climb " + _climbStepsIndex);
 
-                    if (_climbStepsIndex < 4) _climbStepsIndex = 4;
-                    else _climbStepsIndex = 0;
+                    if (_climbStepsIndex == 1) _climbStepsIndex = 2;
+                    else _climbStepsIndex = 2;
 
                     StartCoroutine(ResetCanPlayStepSFX(climbStepsInterval));
                 }
@@ -502,8 +489,8 @@ public class PlayerMove : MonoBehaviour
                 {
                     AudioManager.Instance.PlaySFX("player walk " + _walkStepsIndex);
 
-                    if (_walkStepsIndex < 4) _walkStepsIndex = 4;
-                    else _walkStepsIndex = 0;
+                    if (_walkStepsIndex == 1) _walkStepsIndex = 2;
+                    else _walkStepsIndex = 2;
 
                     StartCoroutine(ResetCanPlayStepSFX(walkStepsInterval));
                 }
@@ -511,10 +498,9 @@ public class PlayerMove : MonoBehaviour
         }
         else
         {
-            _walkStepsIndex = 0;
-            _sprintStepsIndex = 0;
-            _climbStepsIndex = 0;
-            _crouchStepsIndex = 0;
+            _walkStepsIndex = 1;
+            _sprintStepsIndex = 1;
+            _climbStepsIndex = 1;
         }
     }
 
