@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: player climb 1
   m_EditorClassIdentifier: 
   Clip: {fileID: 8300000, guid: 9c29839dc3afe6e4895a98a433458ec3, type: 3}
-  Volume: 0.6
+  Volume: 0.7
   Pitch: 1

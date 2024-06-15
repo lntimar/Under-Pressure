@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 1697414894549374630}
   - component: {fileID: 7200263062016339230}
   - component: {fileID: 8265826455850512203}
+  - component: {fileID: 9213063727806560877}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -158,6 +159,9 @@ MonoBehaviour:
   playerGunAnimator: {fileID: 0}
   playerCrouchAnimator: {fileID: 0}
   playerClimbAnimator: {fileID: 0}
+  walkStepsInterval: 0.6
+  climbStepsInterval: 0.5
+  sprintStepsInterval: 0.3
   sensitivity: 100
   sensMultiplier: 1
   moveSpeed: 4500
@@ -223,6 +227,30 @@ MonoBehaviour:
   restartTransitionSettings: {fileID: 11400000, guid: 013263c83b6a84c4d95beaa8bd163ac8,
     type: 2}
   restartLoadTime: 0
+--- !u!167 &9213063727806560877
+AudioReverbZone:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2480740536883848918}
+  m_Enabled: 1
+  m_MinDistance: 10
+  m_MaxDistance: 15
+  m_ReverbPreset: 23
+  m_Room: -1000
+  m_RoomHF: -4000
+  m_DecayTime: 1.49
+  m_DecayHFRatio: 0.1
+  m_Reflections: -449
+  m_ReflectionsDelay: 0.007
+  m_Reverb: 1700
+  m_ReverbDelay: 0.011
+  m_HFReference: 5000
+  m_Diffusion: 100
+  m_Density: 100
+  m_LFReference: 250
+  m_RoomLF: 0
 --- !u!1 &3165613716544102776
 GameObject:
   m_ObjectHideFlags: 0
