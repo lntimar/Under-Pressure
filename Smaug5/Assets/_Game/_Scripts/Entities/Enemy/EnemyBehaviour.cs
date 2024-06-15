@@ -107,7 +107,7 @@ public class EnemyBehaviour : MonoBehaviour
         foreach (BoxCollider collider in _boxColliders)
         {
             collider.enabled = false;
-            //Debug.Log("Desativou Colisor");
+            Debug.Log("Desativou Colisor");
         }
     }
 
@@ -116,7 +116,7 @@ public class EnemyBehaviour : MonoBehaviour
         foreach (BoxCollider collider in _boxColliders)
         {
             collider.enabled = true;
-            //Debug.Log("Ativou Colisor");
+            Debug.Log("Ativou Colisor");
         }
     }
 
