@@ -48,6 +48,11 @@ public class PlayerStats : MonoBehaviour
             ChangeOrbSouls();
         }
     }
+
+    private void Update()
+    {
+        Debug.Log(Health);
+    }
     #endregion
 
     #region Funções Próprias

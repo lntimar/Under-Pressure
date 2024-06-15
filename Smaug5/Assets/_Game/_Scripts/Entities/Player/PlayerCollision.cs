@@ -20,8 +20,10 @@ public class PlayerCollision : MonoBehaviour
         if (col.gameObject.layer == CollisionLayersManager.Instance.EnemyAttack.Index)
         {
             Debug.Log("Bateu");
-            _playerStats.ChangeHealthPoints(-col.gameObject.GetComponent<EnemyStats>().Damage);
-            
+            _playerStats.ChangeHealthPoints(-EnemyStats.Damage);
+            //_playerStats.ChangeHealthPoints(-col.gameObject.transform.parent.gameObject.GetComponent<EnemyStats>().Damage);
+            //_playerStats.ChangeHealthPoints(-col.gameObject.GetComponent<EnemyStats>().Damage);
+
         }
         else if (col.gameObject.layer == CollisionLayersManager.Instance.HealthPack.Index)
         {

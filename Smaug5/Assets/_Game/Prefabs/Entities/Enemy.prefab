@@ -177,10 +177,10 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 0.45, y: 0.67, z: 0.34}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.4879761, y: 0.7072566, z: 0.41241276}
+  m_Center: {x: 0.0022831894, y: 0.018628383, z: 0.009307213}
 --- !u!1 &1348510887488210365
 GameObject:
   m_ObjectHideFlags: 0
@@ -1114,7 +1114,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 100
   CurrentHealth: 0
-  Damage: 20
   destroyTime: 4
   soulPrefab: {fileID: 7353898820259312844, guid: 5cc2ca53f855ed34884846cf590d6905,
     type: 3}
@@ -2683,10 +2682,10 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 3.6354163, y: 4.4622483, z: 4.8869324}
-  m_Center: {x: 1.558474, y: -1.5623834, z: 0.73968756}
+  m_Size: {x: 0.44786534, y: 0.7004874, z: 0.4262383}
+  m_Center: {x: -0.053066265, y: 0.30895528, z: 0.02869627}
 --- !u!1 &7962554773885181609
 GameObject:
   m_ObjectHideFlags: 0
