@@ -215,6 +215,7 @@ public class PlayerMove : MonoBehaviour
     {
         if (canStop)
         {
+            _crouching = false;
             CanStopCrouch = true;
             StartCoroutine(StopCrouchInterval(1.5f));
         }
@@ -228,6 +229,7 @@ public class PlayerMove : MonoBehaviour
     private IEnumerator StopCrouchInterval(float t)
     {
         yield return new WaitForSeconds(t);
+        _crouching = false;
         StopCrouch();
     }
 
@@ -477,7 +479,6 @@ public class PlayerMove : MonoBehaviour
                 }
                 else if (HasTouchStairs)
                 {
-                    print(_climbStepsIndex);
                     AudioManager.Instance.PlaySFX("player climb " + _climbStepsIndex);
 
                     if (_climbStepsIndex == 1) _climbStepsIndex = 2;
