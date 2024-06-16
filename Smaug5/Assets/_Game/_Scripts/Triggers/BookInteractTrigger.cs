@@ -13,6 +13,7 @@ public class BookInteractTrigger : MonoBehaviour
 
     [HideInInspector] public bool CanInteract = false;
 
+    // Referências:
     private GameObject _crossHairUI;
     private Rigidbody _playerRb;
     #endregion
@@ -43,6 +44,8 @@ public class BookInteractTrigger : MonoBehaviour
 
     private void Open()
     {
+        FindObjectOfType<Weapon>().enabled = false;
+        FindObjectOfType<SonarScript>().enabled = false;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         _crossHairUI.SetActive(false);
