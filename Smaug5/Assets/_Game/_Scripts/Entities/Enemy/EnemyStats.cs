@@ -42,7 +42,8 @@ public class EnemyStats : MonoBehaviour
             GetComponent<EnemyBehaviour>().enabled = false;
             GetComponent<CapsuleCollider>().enabled = false;
             GetComponent<NavMeshAgent>().enabled = false;
-            animator.Play("Enemy Death " + Random.Range(1, 3));
+            //animator.Play("Enemy Death " + Random.Range(1, 3));
+            animator.enabled = false;
             Invoke("DestroyEnemy", destroyTime);
         }
     }
