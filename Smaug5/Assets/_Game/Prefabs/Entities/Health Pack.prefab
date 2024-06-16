@@ -255,8 +255,8 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 0.26673195, g: 0.3971497, b: 0.509434, a: 1}
-      maxColor: {r: 0.31394625, g: 0.74003464, b: 0.7830189, a: 1}
+      minColor: {r: 0.34451762, g: 0.9245283, b: 0.54220355, a: 1}
+      maxColor: {r: 0.399431, g: 0.78431374, b: 0.31372553, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -4049,7 +4049,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.54254186, g: 0.9056604, b: 0.8727355, a: 1}
+      maxColor: {r: 0.34042364, g: 0.9622642, b: 0.4116234, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -4883,9 +4883,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6137074572290967527}
   - component: {fileID: 7190637568744709270}
-  - component: {fileID: 9020762108007806157}
-  m_Layer: 0
-  m_Name: Soul
+  - component: {fileID: -5545815450307285352}
+  m_Layer: 11
+  m_Name: Health Pack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4929,7 +4929,7 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 1.4690771
   m_Center: {x: 0.14797282, y: 0, z: 0}
---- !u!114 &9020762108007806157
+--- !u!114 &-5545815450307285352
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4938,16 +4938,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7353898820259312844}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b8c700b91a916c40aa675f5bbcf2b2f, type: 3}
+  m_Script: {fileID: 11500000, guid: 712be673957e4ba4b972ef1ba136af4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soulValue: 1
-  rotationSpeed: 40
-  floatStrength: 0.35
-  chaseSpeed: 200
-  PlayerLayer:
-    serializedVersion: 2
-    m_Bits: 64
+  Points: 50
 --- !u!1 &8511954897474955223
 GameObject:
   m_ObjectHideFlags: 0
@@ -5171,7 +5165,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0, g: 1, b: 0.9088969, a: 0.20392157}
+      maxColor: {r: 0.37952518, g: 1, b: 0.3537736, a: 0.20392157}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -5818,7 +5812,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 30
+      scalar: 10
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -9804,12 +9798,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: f48b2f3d7597d0e49ace45f35a34fc78, type: 2}
+      objectReference: {fileID: 2100000, guid: b925c2e8a02eee54ba8cc191410f75b4, type: 2}
     - target: {fileID: 919297028677442653, guid: e16261de95e3e0443978d830a43e18b3,
         type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 2100000, guid: d2104d98191394a4cbce54b67eac74d5, type: 2}
+      objectReference: {fileID: 2100000, guid: 1906a8a1c5189c646bc1f236c15dc05a, type: 2}
     - target: {fileID: 1711653417149775240, guid: e16261de95e3e0443978d830a43e18b3,
         type: 3}
       propertyPath: m_Name
