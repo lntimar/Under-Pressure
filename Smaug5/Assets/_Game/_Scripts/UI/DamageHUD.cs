@@ -55,6 +55,11 @@ public class DamageHUD : MonoBehaviour
         }
     }
 
-    public void Change() => StartCoroutine(SetDamageEffect());
+    public void Change()
+    {
+        if (_playerStatsScript != null)
+            StartCoroutine(SetDamageEffect());
+    }
+
     #endregion
 }

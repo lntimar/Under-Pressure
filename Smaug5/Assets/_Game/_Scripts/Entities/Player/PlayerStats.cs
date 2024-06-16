@@ -60,7 +60,8 @@ public class PlayerStats : MonoBehaviour
     {
         Health = Mathf.Clamp(Health + points, 0, MaxHealth);
 
-        _damageScript.Change();
+        if (_damageScript != null)
+            _damageScript.Change();
 
         if (Health == 0)
             _playerProgress.Restart();
