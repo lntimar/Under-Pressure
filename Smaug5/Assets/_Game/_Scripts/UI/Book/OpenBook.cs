@@ -154,8 +154,8 @@ public class OpenBook : MonoBehaviour
         mainCamera.enabled = true;
         bookParent.SetActive(false);
 
-        FindObjectOfType<Weapon>().enabled = true;
-        FindObjectOfType<SonarScript>().enabled = true;
+        //FindObjectOfType<Weapon>().enabled = true;
+        //FindObjectOfType<SonarScript>().enabled = true;
 
         _canOpen = true;
     }

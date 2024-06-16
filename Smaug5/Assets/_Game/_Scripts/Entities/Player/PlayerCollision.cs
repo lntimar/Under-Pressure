@@ -25,7 +25,8 @@ public class PlayerCollision : MonoBehaviour
             //_playerStats.ChangeHealthPoints(-col.gameObject.GetComponent<EnemyStats>().Damage);
 
         }
-        else if (col.gameObject.layer == CollisionLayersManager.Instance.HealthPack.Index)
+        
+        if (col.gameObject.layer == CollisionLayersManager.Instance.HealthPack.Index)
         {
             _playerStats.ChangeHealthPoints(col.gameObject.GetComponent<HealthPack>().Points);
             Destroy(col.gameObject);
