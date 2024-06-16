@@ -37,7 +37,7 @@ public class SonarScript : MonoBehaviour
                 if (AudioManager.Instance != null) AudioManager.Instance.PlaySFX("weapon sonar");
                 Debug.Log("FUSRODAH");
                 sonarEffect.gameObject.SetActive(true);
-                playerStats.ChangeOrbSouls(-1);
+                playerStats.ChangeOrbSouls(-3);
                 affectedObjects.ForEach(obj =>
                 {
                     // Caso for o inimigo, ativar ragdoll

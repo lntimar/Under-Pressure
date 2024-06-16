@@ -19,6 +19,7 @@ public class CollisionLayersManager : MonoBehaviour
     public SingleUnityLayer BookTrigger;
     public SingleUnityLayer WeaponCollectTrigger;
     public SingleUnityLayer EnemyAttack;
+    public SingleUnityLayer SoulOrb;
 
     public static CollisionLayersManager Instance;
     #endregion

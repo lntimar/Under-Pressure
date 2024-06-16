@@ -31,6 +31,11 @@ public class PlayerCollision : MonoBehaviour
             _playerStats.ChangeHealthPoints(col.gameObject.GetComponent<HealthPack>().Points);
             Destroy(col.gameObject);
         }
+
+        if (col.gameObject.layer == CollisionLayersManager.Instance.SoulOrb.Index)
+        {
+            Debug.Log("bolas");
+        }
     }
     #endregion
 }

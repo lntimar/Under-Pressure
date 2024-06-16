@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 550010260473234768}
-  m_Layer: 0
+  m_Layer: 29
   m_Name: Aura
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 6683334155615260291}
   - component: {fileID: 7253816416278350392}
   - component: {fileID: 432213682012263655}
-  m_Layer: 0
+  m_Layer: 29
   m_Name: Trails
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4884,7 +4884,7 @@ GameObject:
   - component: {fileID: 6137074572290967527}
   - component: {fileID: 7190637568744709270}
   - component: {fileID: 9020762108007806157}
-  m_Layer: 0
+  m_Layer: 29
   m_Name: Soul
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4959,7 +4959,7 @@ GameObject:
   - component: {fileID: 8206237186213354313}
   - component: {fileID: 8666320354806296114}
   - component: {fileID: 3728512835852898502}
-  m_Layer: 0
+  m_Layer: 29
   m_Name: Smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9814,6 +9814,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Orb
+      objectReference: {fileID: 0}
+    - target: {fileID: 1711653417149775240, guid: e16261de95e3e0443978d830a43e18b3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 29
       objectReference: {fileID: 0}
     - target: {fileID: 2056688289703520050, guid: e16261de95e3e0443978d830a43e18b3,
         type: 3}
