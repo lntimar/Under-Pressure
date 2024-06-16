@@ -30,7 +30,7 @@ public class EnemyRagdoll : MonoBehaviour
         Invoke("StopRagdoll", ragdollTime);
     }
 
-    private void StogRadgoll()
+    public void StopRagdoll()
     {
         _animator.enabled = true;
         capsuleCollder.enabled = true;

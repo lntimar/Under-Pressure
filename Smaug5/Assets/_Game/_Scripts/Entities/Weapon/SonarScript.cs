@@ -45,6 +45,7 @@ public class SonarScript : MonoBehaviour
                     {
                         var ragdollScript = enemyBehaviour.transform.Find("Enemy Body").gameObject.GetComponent<EnemyRagdoll>();
                         ragdollScript.StartRagdoll();
+                        Invoke("ragdollScript.StopRagdoll", 2f);
                     }
 
                     var rb = obj.GetComponent<Rigidbody>();
