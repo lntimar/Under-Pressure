@@ -44,8 +44,12 @@ public class BookInteractTrigger : MonoBehaviour
 
     private void Open()
     {
-        //FindObjectOfType<Weapon>().enabled = false;
-        //FindObjectOfType<SonarScript>().enabled = false;
+        if (FindObjectOfType<Weapon>() != null)
+        {
+            FindObjectOfType<Weapon>().enabled = false;
+            FindObjectOfType<SonarScript>().enabled = false;
+        }
+        
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         _crossHairUI.SetActive(false);

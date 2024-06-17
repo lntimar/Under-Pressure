@@ -6200,7 +6200,7 @@ MonoBehaviour:
     m_Bits: 134218752
   layerMaskIgnore:
     serializedVersion: 2
-    m_Bits: 251657206
+    m_Bits: 520092662
   withGunStateAnimator: {fileID: 6543311623540709355}
 --- !u!114 &3842465989851923565
 MonoBehaviour:
@@ -6214,7 +6214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12407776e44d9d442b30938fd3cb3e30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  headBob: {fileID: 0}
+  headBob: {fileID: 8264057343620401216}
   amount: 0.008
   frequency: 16.9
   smooth: 10
