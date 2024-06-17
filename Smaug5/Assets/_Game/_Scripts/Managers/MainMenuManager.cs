@@ -26,6 +26,8 @@ public class MainMenuManager : MonoBehaviour
         Init();
         SetCursor();
     }
+
+    private void Start() => Cursor.visible = true;
     #endregion
 
     #region Funções Próprias

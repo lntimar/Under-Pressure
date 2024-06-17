@@ -21,14 +21,20 @@ public class SonarScript : MonoBehaviour
     [Header("Referências:")]
     public Animator withGunStateAnimator;
 
+    // Referências:
     private PlayerStats playerStats;
+    private GameMenu _gameMenuScript;
     #endregion
 
     #region Funções Unity
+    private void Awake() => _gameMenuScript = FindObjectOfType<GameMenu>();
+
     private void Start() => playerStats = FindObjectOfType<PlayerStats>();
 
     private void Update()
     {
+        if (_gameMenuScript.IsPaused()) return;
+
         if (Input.GetMouseButtonDown(1))
         {
            if (PlayerStats.Souls >= soulsRequired)

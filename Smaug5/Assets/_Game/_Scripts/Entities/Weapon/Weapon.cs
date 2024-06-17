@@ -58,6 +58,9 @@ public class Weapon : MonoBehaviour
     public LayerMask enemies;
     public LayerMask layerMaskIgnore;
     public Animator withGunStateAnimator;
+
+    // Referências:
+    private GameMenu _gameMenuScript;
     #endregion
 
     #region Funções Unity
@@ -68,10 +71,14 @@ public class Weapon : MonoBehaviour
 
         initialPosition = transform.localPosition; //Pega posição inicial
         recoilPosition = initialPosition + Vector3.up * recoilForce; //Posição que a arma vai ao atirar
+
+        _gameMenuScript = FindObjectOfType<GameMenu>();
     }
 
     private void Update()
     {
+        if (_gameMenuScript.IsPaused()) return;
+
         ShootingInput();
 
         if (ammoDisplay != null)
