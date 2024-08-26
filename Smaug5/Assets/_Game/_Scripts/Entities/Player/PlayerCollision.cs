@@ -25,14 +25,13 @@ public class PlayerCollision : MonoBehaviour
             //_playerStats.ChangeHealthPoints(-col.gameObject.GetComponent<EnemyStats>().Damage);
 
         }
-        
-        if (col.gameObject.layer == CollisionLayersManager.Instance.HealthPack.Index)
+        else if (col.gameObject.layer == CollisionLayersManager.Instance.HealthPack.Index)
         {
+            if (AudioManager.Instance != null) AudioManager.Instance.PlaySFX("orb catch");
             _playerStats.ChangeHealthPoints(col.gameObject.GetComponent<HealthPack>().Points);
             Destroy(col.gameObject);
         }
-
-        if (col.gameObject.layer == CollisionLayersManager.Instance.SoulOrb.Index)
+        else if (col.gameObject.layer == CollisionLayersManager.Instance.SoulOrb.Index)
         {
             Debug.Log("bolas");
         }
