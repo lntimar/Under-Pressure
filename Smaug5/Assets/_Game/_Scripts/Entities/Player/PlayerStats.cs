@@ -49,11 +49,6 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        ChangeHealthPoints(-20);
-    }
-
     private void Update()
     {
         Debug.Log(Health);
