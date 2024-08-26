@@ -33,7 +33,11 @@ public class MainMenu : MonoBehaviour
         }
     }
 
-    public void StartGame() => TransitionManager.Instance().Transition(firstSceneName, playTransitionSettings, playLoadTime);
+    public void StartGame()
+    {
+        PlayerProgress.ResetProgress();
+        TransitionManager.Instance().Transition(firstSceneName, playTransitionSettings, playLoadTime);
+    }
 
     public void GoToOptions() => MainMenuManager.Instance.OpenMenu(Default.Options, MainMenuManager.MainMenu);
 

@@ -103,5 +103,11 @@ public class PlayerProgress : MonoBehaviour
         // Quantidade Munição
         // Itens (A Fazer)
     }
+
+    public static void ResetProgress() 
+    {
+        KeysCollected = new List<DoorKeys.Key>();
+        PlayerStats.HasGun = false;
+    }
     #endregion
 }
