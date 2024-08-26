@@ -41,7 +41,7 @@ TagManager:
   - EnemyLimbs
   - EnemyAttack
   - SoulOrb
-  - 
+  - Door
   - 
   m_SortingLayers:
   - name: Default

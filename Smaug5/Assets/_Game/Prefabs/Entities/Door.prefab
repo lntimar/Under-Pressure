@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 2969165729583169291}
   - component: {fileID: 365597950984306941}
   - component: {fileID: 3674180841974569073}
-  m_Layer: 0
-  m_Name: Fechadura
+  m_Layer: 30
+  m_Name: Lock 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 244521195389574461}
   - component: {fileID: 8434578423270982096}
   - component: {fileID: 1879733839977988723}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: GFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -399,8 +399,8 @@ GameObject:
   - component: {fileID: 8967322992088782851}
   - component: {fileID: 2190504150964994447}
   - component: {fileID: 825018218017421791}
-  m_Layer: 0
-  m_Name: Fechadura (1)
+  m_Layer: 30
+  m_Name: Lock 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

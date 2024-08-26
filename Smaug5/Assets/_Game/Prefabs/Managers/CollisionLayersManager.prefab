@@ -66,7 +66,9 @@ MonoBehaviour:
     _layerIndex: 21
   WeaponCollectTrigger:
     _layerIndex: 20
-  StayCrouchTrigger:
-    _layerIndex: 23
-  StopStayCrouchTrigger:
-    _layerIndex: 24
+  EnemyAttack:
+    _layerIndex: 28
+  SoulOrb:
+    _layerIndex: 29
+  Door:
+    _layerIndex: 30

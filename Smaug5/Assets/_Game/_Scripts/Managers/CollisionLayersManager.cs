@@ -20,6 +20,8 @@ public class CollisionLayersManager : MonoBehaviour
     public SingleUnityLayer WeaponCollectTrigger;
     public SingleUnityLayer EnemyAttack;
     public SingleUnityLayer SoulOrb;
+    public SingleUnityLayer Door;
+
 
     public static CollisionLayersManager Instance;
     #endregion
