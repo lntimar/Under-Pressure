@@ -36,23 +36,43 @@ public class DamageHUD : MonoBehaviour
         _maxIntensity = _vignetteEffect.intensity; 
 
         _vignetteEffect.intensity.Override(0f);
-    } 
+    }
     #endregion
 
     #region Funções Próprias
     private IEnumerator SetDamageEffect()
     {
+        // Calcule a proporção atual de saúde
         var healthRatio = (float)PlayerStats.Health / (float)_playerStatsScript.MaxHealth;
 
+        // Determina a nova intensidade com base na proporção de saúde
         var newIntensity = (_maxIntensity * (1f - healthRatio)) * 8f;
 
-        // Suma com o efeito
-        while (_curIntensityEffect < newIntensity)
+        // Se a nova intensidade for menor que a atual, reduza a intensidade
+        if (newIntensity < _curIntensityEffect)
         {
-            _curIntensityEffect += 0.01f;
-            _vignetteEffect.intensity.Override(_curIntensityEffect);
-            yield return new WaitForSeconds(0.01f);
+            // Reduz a intensidade
+            while (_curIntensityEffect > newIntensity)
+            {
+                _curIntensityEffect -= 0.01f;
+                _vignetteEffect.intensity.Override(_curIntensityEffect);
+                yield return new WaitForSeconds(0.01f);
+            }
         }
+        else
+        {
+            // Aumenta a intensidade
+            while (_curIntensityEffect < newIntensity)
+            {
+                _curIntensityEffect += 0.01f;
+                _vignetteEffect.intensity.Override(_curIntensityEffect);
+                yield return new WaitForSeconds(0.01f);
+            }
+        }
+
+        // Ajusta a intensidade final para não ultrapassar o valor calculado
+        _curIntensityEffect = Mathf.Clamp(_curIntensityEffect, 0, newIntensity);
+        _vignetteEffect.intensity.Override(_curIntensityEffect);
     }
 
     public void Change()
