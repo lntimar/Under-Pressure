@@ -22,6 +22,7 @@ public class GameMenu : MonoBehaviour
     [SerializeField] private float loadTime;
 
     private bool _gamePaused;
+    public bool _canPause = true;
     private GameObject _crossHairUI;
     #endregion
 
@@ -32,7 +33,7 @@ public class GameMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (!_gamePaused)
+            if (!_gamePaused && _canPause)
                 Pause();
             else
                 Resume();

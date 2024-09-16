@@ -37,7 +37,9 @@ public class SonarScript : MonoBehaviour
 
         if (Input.GetMouseButtonDown(1))
         {
-           if (PlayerStats.Souls >= soulsRequired)
+            Debug.Log("Almas: " + PlayerStats.Souls);
+
+            if (PlayerStats.Souls >= soulsRequired)
             {
                 withGunStateAnimator.Play("With Gun Shoot State Animation");
                 if (AudioManager.Instance != null) AudioManager.Instance.PlaySFX("weapon sonar");
@@ -56,11 +58,14 @@ public class SonarScript : MonoBehaviour
 
                     var rb = obj.GetComponent<Rigidbody>();
                     rb.AddExplosionForce(force, transform.position, 15f, 2f);
+
+                    playerStats.ChangeOrbSouls(-3);
                 });
             }
-            else
-            { 
+           else if (PlayerStats.Souls < soulsRequired)
+            {
                 Debug.Log("Sem almas o suficiente!");
+                return;
             }
         }
     }

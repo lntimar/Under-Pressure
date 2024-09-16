@@ -9,7 +9,7 @@ public class BookInteractTrigger : MonoBehaviour
     // Inspector:
     [Header("Referências:")]
     [SerializeField] private Outline outlineEffect;
-    [SerializeField] private GameObject book;
+    [SerializeField] public GameObject book;
 
     [HideInInspector] public bool CanInteract = false;
 
@@ -32,7 +32,7 @@ public class BookInteractTrigger : MonoBehaviour
         {
             outlineEffect.eraseRenderer = false;
 
-            if (Input.GetKeyDown(KeyCode.E) && !book.active)
+            if (Input.GetKeyDown(KeyCode.E) && !book.activeSelf)
                 Open();
         }
         else
@@ -55,5 +55,7 @@ public class BookInteractTrigger : MonoBehaviour
         _crossHairUI.SetActive(false);
         Camera.main.enabled = false;
         book.SetActive(true);
+        //FindObjectOfType<GameMenu>()._canPause = false;
+        //preciso habilitar o _canPause na lógica de sair do livro
     }
 }
