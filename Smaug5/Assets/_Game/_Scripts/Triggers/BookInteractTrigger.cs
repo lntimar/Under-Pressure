@@ -14,7 +14,7 @@ public class BookInteractTrigger : MonoBehaviour
     [HideInInspector] public bool CanInteract = false;
 
     // Referências:
-    private GameObject _crossHairUI;
+    public GameObject _crossHairUI;
     private Rigidbody _playerRb;
     #endregion
 
@@ -55,7 +55,7 @@ public class BookInteractTrigger : MonoBehaviour
         _crossHairUI.SetActive(false);
         Camera.main.enabled = false;
         book.SetActive(true);
-        //FindObjectOfType<GameMenu>()._canPause = false;
-        //preciso habilitar o _canPause na lógica de sair do livro
+        FindObjectOfType<GameMenu>()._canPause = false;
+        FindObjectOfType<BookInteractTrigger>()._crossHairUI.SetActive(false);
     }
 }

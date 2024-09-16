@@ -93,6 +93,9 @@ public class OpenBook : MonoBehaviour
 
                     for (int i = 0; i < tempTexts.Length; i++)
                         tempTexts[i].transform.parent.gameObject.SetActive(false);
+
+                    FindObjectOfType<GameMenu>()._canPause = true;
+                    FindObjectOfType<BookInteractTrigger>()._crossHairUI.SetActive(true);
                 }
             }
         }
