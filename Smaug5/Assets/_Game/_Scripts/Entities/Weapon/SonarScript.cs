@@ -70,16 +70,16 @@ public class SonarScript : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
         var rb = other.GetComponent<Rigidbody>();
-        if (rb != null)
+        if (rb != null && other.gameObject.CompareTag("Enemy"))
         {
             affectedObjects.Add(other.gameObject);
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    public void OnTriggerExit(Collider other)
     {
         var rb = other.GetComponent<Rigidbody>();
         if (rb != null)

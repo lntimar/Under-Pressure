@@ -10,6 +10,7 @@ TagManager:
   - CrossHairUI
   - SlopeStair
   - Duct
+  - Enemy
   layers:
   - Default
   - TransparentFX
