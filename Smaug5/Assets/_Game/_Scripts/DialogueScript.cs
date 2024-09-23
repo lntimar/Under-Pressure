@@ -7,19 +7,33 @@ using UnityEngine.XR;
 public class DialogueScript : MonoBehaviour
 {
     #region Variáveis Globais
+    public GameObject dialogueCanvas;
     public TextMeshProUGUI dialogueText;
     public string[] dialogueLines;
     public float textSpeed;
 
     private int index;
+    private BoxCollider _boxCollider;
     #endregion
 
     #region Funções Unity
-    void Start()
+    private void Start()
     {
-        dialogueText.text = string.Empty;
-        StartDialogue();
+        _boxCollider = GetComponent<BoxCollider>();
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            dialogueCanvas.SetActive(true);
+            dialogueText.text = string.Empty;
+            StartDialogue();
+
+            _boxCollider.enabled = false;
+        }
+    }
+
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -38,7 +52,7 @@ public class DialogueScript : MonoBehaviour
     #endregion
 
     #region Funções Próprias
-    private void StartDialogue()
+    public void StartDialogue()
     {
         index = 0;
         StartCoroutine(TypeLine());
@@ -63,7 +77,7 @@ public class DialogueScript : MonoBehaviour
         }
         else
         {
-            gameObject.SetActive(false);
+            dialogueCanvas.SetActive(false);
         }
     }
     #endregion
