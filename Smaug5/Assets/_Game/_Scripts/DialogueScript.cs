@@ -14,6 +14,7 @@ public class DialogueScript : MonoBehaviour
 
     private int index;
     private BoxCollider _boxCollider;
+    private bool isDialogueActive = false;
     #endregion
 
     #region Funções Unity
@@ -24,8 +25,9 @@ public class DialogueScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !isDialogueActive)
         {
+            isDialogueActive = true;
             dialogueCanvas.SetActive(true);
             dialogueText.text = string.Empty;
             StartDialogue();
@@ -36,7 +38,7 @@ public class DialogueScript : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (isDialogueActive && Input.GetMouseButtonDown(0))
         {
             if (dialogueText.text == dialogueLines[index])
             {
@@ -78,6 +80,7 @@ public class DialogueScript : MonoBehaviour
         else
         {
             dialogueCanvas.SetActive(false);
+            isDialogueActive = false;
         }
     }
     #endregion
