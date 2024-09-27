@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2733200123364525356
+--- !u!1 &1784985460687524030
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,52 +8,52 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4818916326557343005}
-  - component: {fileID: 5856496721449336988}
+  - component: {fileID: 5591037397151055473}
+  - component: {fileID: 7726897412243052600}
   m_Layer: 0
-  m_Name: Point Light (1)
+  m_Name: Spot Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
---- !u!4 &4818916326557343005
+--- !u!4 &5591037397151055473
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2733200123364525356}
+  m_GameObject: {fileID: 1784985460687524030}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.000000029802322, y: 0.000000059604645, z: -0.7071068, w: -0.7071068}
-  m_LocalPosition: {x: 0.053359594, y: -0.04496473, z: -0.057151057}
-  m_LocalScale: {x: 0.5679734, y: 4.448002, z: 0.3374206}
+  m_LocalRotation: {x: 1, y: -0, z: -0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2941801879937365112}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!108 &5856496721449336988
+  m_Father: {fileID: 8233991010009864501}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!108 &7726897412243052600
 Light:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2733200123364525356}
+  m_GameObject: {fileID: 1784985460687524030}
   m_Enabled: 1
   serializedVersion: 10
-  m_Type: 2
+  m_Type: 0
   m_Shape: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5283019, g: 0.5283019, b: 0.35635456, a: 1}
   m_Intensity: 2
-  m_Range: 25
-  m_SpotAngle: 30
-  m_InnerSpotAngle: 21.80208
+  m_Range: 120
+  m_SpotAngle: 120
+  m_InnerSpotAngle: 1
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 1
+    m_Strength: 0.75
     m_Bias: 0.05
     m_NormalBias: 0.4
     m_NearPlane: 0.2
@@ -83,12 +83,12 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
-  m_ColorTemperature: 6570
-  m_UseColorTemperature: 0
+  m_ColorTemperature: 5225
+  m_UseColorTemperature: 1
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
@@ -170,7 +170,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: f5596abc2b72eee4296d6a35147fdb49,
         type: 3}
       propertyPath: m_ReceiveShadows
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: f5596abc2b72eee4296d6a35147fdb49,
         type: 3}
@@ -182,13 +182,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: M_Lampada2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f5596abc2b72eee4296d6a35147fdb49,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: f5596abc2b72eee4296d6a35147fdb49,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 4818916326557343005}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5596abc2b72eee4296d6a35147fdb49, type: 3}
 --- !u!4 &2941801879937365112 stripped
@@ -258,7 +259,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: ce13030818883474b92aadc7360510e7,
         type: 3}
       propertyPath: m_ReceiveShadows
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: ce13030818883474b92aadc7360510e7,
         type: 3}
@@ -270,9 +271,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lampada Pequena
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ce13030818883474b92aadc7360510e7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: ce13030818883474b92aadc7360510e7,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5591037397151055473}
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: ce13030818883474b92aadc7360510e7,
         type: 3}
       insertIndex: -1
