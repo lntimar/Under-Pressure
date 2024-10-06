@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1784985460687524030
+--- !u!1 &4441203218329132968
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,45 +8,45 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5591037397151055473}
-  - component: {fileID: 7726897412243052600}
+  - component: {fileID: 2024448506412900754}
+  - component: {fileID: 7337637073298697223}
   m_Layer: 0
-  m_Name: Spot Light
+  m_Name: Spot Light (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
   m_IsActive: 1
---- !u!4 &5591037397151055473
+--- !u!4 &2024448506412900754
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1784985460687524030}
+  m_GameObject: {fileID: 4441203218329132968}
   serializedVersion: 2
-  m_LocalRotation: {x: 1, y: -0, z: -0, w: 0}
+  m_LocalRotation: {x: -0.70710677, y: 0.7071068, z: -0.000000119209275, w: 0.000000029802319}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.43868697, y: 5.725891, z: 1.618043}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8233991010009864501}
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!108 &7726897412243052600
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!108 &7337637073298697223
 Light:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1784985460687524030}
+  m_GameObject: {fileID: 4441203218329132968}
   m_Enabled: 1
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 0.5283019, g: 0.5283019, b: 0.35635456, a: 1}
-  m_Intensity: 2
-  m_Range: 120
-  m_SpotAngle: 120
+  m_Intensity: 10
+  m_Range: 90
+  m_SpotAngle: 90
   m_InnerSpotAngle: 1
   m_CookieSize: 10
   m_Shadows:
@@ -83,7 +83,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -185,7 +185,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f5596abc2b72eee4296d6a35147fdb49,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -209,17 +209,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: ce13030818883474b92aadc7360510e7,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 9.434356
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ce13030818883474b92aadc7360510e7,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 21.97
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ce13030818883474b92aadc7360510e7,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -22.56
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ce13030818883474b92aadc7360510e7,
         type: 3}
@@ -274,7 +274,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ce13030818883474b92aadc7360510e7,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -282,11 +282,11 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: ce13030818883474b92aadc7360510e7,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5591037397151055473}
+      addedObject: {fileID: 2941801879937365112}
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: ce13030818883474b92aadc7360510e7,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2941801879937365112}
+      addedObject: {fileID: 2024448506412900754}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce13030818883474b92aadc7360510e7, type: 3}
 --- !u!4 &8233991010009864501 stripped

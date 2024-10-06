@@ -236,8 +236,8 @@ MonoBehaviour:
     value: {fileID: 0}
     defaultState: 1
   tonemapper:
-    overrideState: 0
-    value: 2
+    overrideState: 1
+    value: 1
   toneCurveToeStrength:
     overrideState: 0
     value: 0
@@ -264,29 +264,29 @@ MonoBehaviour:
     overrideState: 0
     value: 1
   temperature:
-    overrideState: 1
-    value: 100
+    overrideState: 0
+    value: -43
   tint:
     overrideState: 0
-    value: 100
+    value: -36
   colorFilter:
-    overrideState: 1
-    value: {r: 0.036445353, g: 0.08296873, b: 0.3679245, a: 1}
+    overrideState: 0
+    value: {r: 0.08392668, g: 0.34350267, b: 0.7735849, a: 1}
   hueShift:
     overrideState: 0
-    value: 180
+    value: 55
   saturation:
     overrideState: 1
-    value: 40
+    value: -20
   brightness:
     overrideState: 0
     value: 0
   postExposure:
-    overrideState: 1
-    value: 2
+    overrideState: 0
+    value: -3.33
   contrast:
     overrideState: 1
-    value: -44
+    value: -9
   mixerRedOutRedIn:
     overrideState: 0
     value: -200
@@ -294,8 +294,8 @@ MonoBehaviour:
     overrideState: 0
     value: 0
   mixerRedOutBlueIn:
-    overrideState: 0
-    value: 200
+    overrideState: 1
+    value: -200
   mixerGreenOutRedIn:
     overrideState: 0
     value: 0
@@ -307,7 +307,7 @@ MonoBehaviour:
     value: 0
   mixerBlueOutRedIn:
     overrideState: 0
-    value: 0
+    value: 3
   mixerBlueOutGreenIn:
     overrideState: 0
     value: 0
