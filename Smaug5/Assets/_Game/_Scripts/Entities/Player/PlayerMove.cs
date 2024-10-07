@@ -67,7 +67,8 @@ public class PlayerMove : MonoBehaviour
 
     // Inputs:
     private float _x, _y;
-    private bool _jumping, _sprinting, _crouching;
+    [HideInInspector] public bool IsJumping { get; private set; }
+    private bool _sprinting, _crouching;
     public bool HasTouchStairs = false;
 
     // SFX:
@@ -138,21 +139,12 @@ public class PlayerMove : MonoBehaviour
 
     private void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.CompareTag("SlopeStair"))
-        {
-            if (_x == 0 && _y == 0)
-                _rb.velocity = Vector3.zero;
-        }
-
-        //Make sure we are only checking for walkable layers
         int layer = collision.gameObject.layer;
         if (whatIsGround != (whatIsGround | (1 << layer))) return;
 
-        //Iterate through every collision in a physics update
         for (int i = 0; i < collision.contactCount; i++)
         {
             Vector3 normal = collision.contacts[i].normal;
-            //FLOOR
             if (IsFloor(normal))
             {
                 grounded = true;
@@ -161,7 +153,6 @@ public class PlayerMove : MonoBehaviour
             }
         }
 
-        //Invoke ground/wall cancel, since we can't check normals with CollisionExit
         float delay = 3f;
         if (!_cancellingGrounded)
         {
@@ -176,7 +167,7 @@ public class PlayerMove : MonoBehaviour
     {
         _x = Input.GetAxisRaw("Horizontal");
         _y = Input.GetAxisRaw("Vertical");
-        _jumping = Input.GetButton("Jump");
+        IsJumping = Input.GetButton("Jump");
 
         _sprinting = Input.GetKey(KeyCode.LeftShift);
 
@@ -238,41 +229,25 @@ public class PlayerMove : MonoBehaviour
         _rb.useGravity = true;
         _rb.AddForce(Vector3.down * Time.deltaTime * 10);
 
-        //Find actual velocity relative to where player is looking
         var mag = FindVelRelativeToLook();
         var xMag = mag.x;
         var yMag = mag.y;
 
-        //Counteract sliding and sloppy movement
         CounterMovement(_x, _y, mag);
 
-        //If holding jump && ready to jump, then jump
-        if (_readyToJump && _jumping) Jump();
+        if (_readyToJump && IsJumping) Jump();
 
-        //Set max speed
         var maxSpeed = this.maxSpeed;
         if (_sprinting) maxSpeed *= 4f;
 
-        //If speed is larger than maxspeed, cancel out the input so you don't go over max speed
         if (_x > 0 && xMag > maxSpeed) _x = 0;
         if (_x < 0 && xMag < -maxSpeed) _x = 0;
         if (_y > 0 && yMag > maxSpeed) _y = 0;
         if (_y < 0 && yMag < -maxSpeed) _y = 0;
 
-        //Some multipliers
         var multiplier = 1f;
         var multiplierV = 1f;
 
-        // Movement in air
-        /*
-        if (!grounded)
-        {
-            multiplier = 0.5f;
-            multiplierV = 0.5f;
-        }
-        */
-
-        //Apply forces to move player
         var scalar = 1f;
         if (_crouching)
             scalar = crouchScalar;
@@ -299,7 +274,6 @@ public class PlayerMove : MonoBehaviour
         {
             _readyToJump = false;
 
-            //Add jump forces
             _rb.AddForce(Vector2.up * jumpForce * 1.5f);
 
             if (_y > 0f)
@@ -310,7 +284,6 @@ public class PlayerMove : MonoBehaviour
                     _rb.AddForce(transform.forward * jumpForce * 0.5f);
             }
 
-            //If jumping while falling, reset _y velocity.
             Vector3 vel = _rb.velocity;
             if (_rb.velocity.y < 0.5f)
                 _rb.velocity = new Vector3(vel.x, 0, vel.z);
@@ -322,21 +295,19 @@ public class PlayerMove : MonoBehaviour
     }
 
     private void ResetJump() => _readyToJump = true;
-    
+
+
     private void Look()
     {
         var mouseX = Input.GetAxis("Mouse X") * sensitivity * Time.fixedDeltaTime * sensMultiplier;
         var mouseY = Input.GetAxis("Mouse Y") * sensitivity * Time.fixedDeltaTime * sensMultiplier;
 
-        //Find current look rotation
         var rot = _playerCam.transform.localRotation.eulerAngles;
         _desiredX = rot.y + mouseX;
 
-        //Rotate, and also make sure we dont over- or under-rotate.
         _xRotation -= mouseY;
         _xRotation = Mathf.Clamp(_xRotation, -90f, 90f);
 
-        //Perform the rotations
         _playerCam.transform.localRotation = Quaternion.Euler(_xRotation, _desiredX, 0);
         orientation.transform.localRotation = Quaternion.Euler(0, _desiredX, 0);
     }

@@ -124,7 +124,7 @@ Rigidbody:
   m_GameObject: {fileID: 2480740536883848918}
   serializedVersion: 4
   m_Mass: 3
-  m_Drag: 0
+  m_Drag: 0.5
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -177,7 +177,7 @@ MonoBehaviour:
   crouchScalar: 0.35
   sprintScalar: 20
   jumpCooldown: 0.25
-  jumpForce: 600
+  jumpForce: 850
   climbSpeed: 400
   CanStopCrouch: 1
   HasTouchStairs: 0
@@ -281,6 +281,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3623552146682284053}
+  - {fileID: 1771765343756135687}
   - {fileID: 1131037458979358003}
   - {fileID: 1853539788080364293}
   m_Father: {fileID: 6802910122462034333}
@@ -448,6 +449,74 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3af59cdb6d7bb324a9bae597a3fb735d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &6045928438873957196
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1771765343756135687}
+  - component: {fileID: 864307265729132816}
+  - component: {fileID: 3087900327953439145}
+  m_Layer: 31
+  m_Name: SlopeStair Trigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1771765343756135687
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6045928438873957196}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.102}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2560771920211432799}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &864307265729132816
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6045928438873957196}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.34526324, y: 0.12794168, z: 0.32492453}
+  m_Center: {x: -0.00061952544, y: -0.64609456, z: 0.09063342}
+--- !u!114 &3087900327953439145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6045928438873957196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d18d65b9cdd20ce4cb20c99d3234d11f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerRb: {fileID: 1603716132080458894}
+  _playerMove: {fileID: 5604764333053545098}
 --- !u!1 &8887307977090167793
 GameObject:
   m_ObjectHideFlags: 0

@@ -805,7 +805,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   amount: 0.01
-  frequency: 10
+  frequency: 20
   smooth: 100
 --- !u!114 &6200626450320247652
 MonoBehaviour:
