@@ -515,6 +515,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d18d65b9cdd20ce4cb20c99d3234d11f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slopeJumpForce: 10
+  slopeJumpTime: 0.35
   _playerRb: {fileID: 1603716132080458894}
   _playerMove: {fileID: 5604764333053545098}
 --- !u!1 &8887307977090167793
