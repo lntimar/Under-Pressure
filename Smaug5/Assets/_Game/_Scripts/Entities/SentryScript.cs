@@ -6,21 +6,22 @@ using UnityEngine;
 public class SentryScript : MonoBehaviour
 {
     public float projectileSpeed;
-    [SerializeField] private float timer = 5;
+    [SerializeField] private float fireRate = 5;
     public GameObject sentryProjectile;
     public Transform projectileSpawnPoint;
     public float detectionRange = 20f;
     public LayerMask playerLayer;
-    private float bulletTime;
+    private float nextFireTime;
     private Transform playerTransform;
 
     void Update()
     {
         Detect();
 
-        if (playerTransform != null)
+        if (playerTransform != null && Time.time >= nextFireTime)
         {
             Shoot();
+            nextFireTime = Time.time + fireRate;
         }
     }
 
@@ -42,19 +43,14 @@ public class SentryScript : MonoBehaviour
     void Shoot()
     {
         Debug.Log("POW");
-        bulletTime -= Time.time;
 
-        if (bulletTime > 0)
-        {
-            return;
-        }
+        GameObject bulletObj = Instantiate(sentryProjectile, projectileSpawnPoint.position, Quaternion.identity);
+        Rigidbody bulletRigidbody = bulletObj.GetComponent<Rigidbody>();
 
-        bulletTime = timer;
+        //direção jogador
+        Vector3 directionToPlayer = (playerTransform.position - projectileSpawnPoint.position).normalized;
 
-        GameObject bulletObj = Instantiate(sentryProjectile, projectileSpawnPoint.transform.position, projectileSpawnPoint.transform.rotation) as GameObject;
-        Rigidbody bulletRig = bulletObj.GetComponent<Rigidbody>();
-        bulletRig.AddForce(bulletRig.transform.forward * projectileSpeed);
-        Destroy(bulletObj, 5f);
+        bulletRigidbody.velocity = directionToPlayer * projectileSpeed;
     }
 
     private void OnDrawGizmosSelected()
