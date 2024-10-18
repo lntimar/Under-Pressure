@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class SentryScript : MonoBehaviour
 {
+    #region Variáveis
     public float projectileSpeed;
     [SerializeField] private float fireRate = 5;
     public GameObject sentryProjectile;
@@ -16,7 +17,9 @@ public class SentryScript : MonoBehaviour
     private bool canDrawLine = true;
     [SerializeField] private float drawLineCooldown = 0.5f;
     private LineRenderer lineRenderer;
+    #endregion
 
+    #region Funções Unity
     private void Start()
     {
         lineRenderer = GetComponent<LineRenderer>();
@@ -24,29 +27,16 @@ public class SentryScript : MonoBehaviour
         lineRenderer.enabled = false;
     }
 
-    void Update()
+    private void Update()
     {
         Detect();
-
-        if (playerTransform != null && Time.time >= nextFireTime)
-        {
-            Shoot();
-            nextFireTime = Time.time + fireRate;
-        }
-
-        if (canDrawLine && playerTransform != null)
-        {
-            lineRenderer.enabled = true;
-            lineRenderer.SetPosition(0, projectileSpawnPoint.position);
-            lineRenderer.SetPosition(1, playerTransform.position);
-        }
-        else
-        {
-            lineRenderer.enabled = false;
-        }
+        VerifyToShoot();
+        DrawLine();
     }
+    #endregion
 
-    void Detect()
+    #region Funções Próprias
+    private void Detect()
     {
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, detectionRange, playerLayer);
 
@@ -61,9 +51,18 @@ public class SentryScript : MonoBehaviour
         }
     }
 
-    void Shoot()
+    private void VerifyToShoot()
     {
-        Debug.Log("POW");
+        if (playerTransform != null && Time.time >= nextFireTime)
+        {
+            Shoot();
+            nextFireTime = Time.time + fireRate;
+        }
+    }
+
+    private void Shoot()
+    {
+        //Debug.Log("POW");
 
         GameObject bulletObj = Instantiate(sentryProjectile, projectileSpawnPoint.position, Quaternion.identity);
         Rigidbody bulletRigidbody = bulletObj.GetComponent<Rigidbody>();
@@ -77,7 +76,7 @@ public class SentryScript : MonoBehaviour
         StartCoroutine(StartDrawLineCooldown());
     }
 
-    IEnumerator StartDrawLineCooldown()
+    private IEnumerator StartDrawLineCooldown()
     {
         yield return new WaitForSeconds(drawLineCooldown);
         canDrawLine = true;
@@ -88,4 +87,19 @@ public class SentryScript : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, detectionRange);
     }
+
+    private void DrawLine() 
+    {
+        if (canDrawLine && playerTransform != null)
+        {
+            lineRenderer.enabled = true;
+            lineRenderer.SetPosition(0, projectileSpawnPoint.position);
+            lineRenderer.SetPosition(1, playerTransform.position + Vector3.down * 0.35f);
+        }
+        else
+        {
+            lineRenderer.enabled = false;
+        }
+    }
+    #endregion
 }
