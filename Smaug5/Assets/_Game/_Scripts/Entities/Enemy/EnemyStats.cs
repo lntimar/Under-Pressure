@@ -18,22 +18,22 @@ public class EnemyStats : MonoBehaviour
     public GameObject soulPrefab;
     public Animator animator;
     
-    // Referências:
+    // Referências
     private SonarScript _sonarScript;
+    
+    // Componentes Inimigo
     private Rigidbody _rb;
     #endregion
 
     #region Funções Unity
     private void Awake()
     {
-        _sonarScript = GameObject.FindObjectOfType<SonarScript>();
+        _sonarScript = FindObjectOfType<SonarScript>();
+       
         _rb = GetComponent<Rigidbody>();
     }
 
-    private void Start()
-    {
-        CurrentHealth = MaxHealth;
-    }
+    private void Start() => CurrentHealth = MaxHealth;
     #endregion
 
     #region Funções Próprias
@@ -44,11 +44,14 @@ public class EnemyStats : MonoBehaviour
 
         if (CurrentHealth <= 0)
         {
-            GetComponent<EnemyBehaviour>().enabled = false;
-            GetComponent<CapsuleCollider>().enabled = false;
-            GetComponent<NavMeshAgent>().enabled = false;
-            //animator.Play("Enemy Death " + Random.Range(1, 3));
-            animator.enabled = false;
+            if (animator != null) 
+            {
+                animator.enabled = false;
+                GetComponent<EnemyBehaviour>().enabled = false;
+                GetComponent<CapsuleCollider>().enabled = false;
+                GetComponent<NavMeshAgent>().enabled = false;
+            }
+
             Invoke("DestroyEnemy", destroyTime);
         }
     }
