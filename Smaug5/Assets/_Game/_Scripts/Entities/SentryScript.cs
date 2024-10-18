@@ -13,6 +13,16 @@ public class SentryScript : MonoBehaviour
     public LayerMask playerLayer;
     private float nextFireTime;
     private Transform playerTransform;
+    private bool canDrawLine = true;
+    [SerializeField] private float drawLineCooldown = 0.5f;
+    private LineRenderer lineRenderer;
+
+    private void Start()
+    {
+        lineRenderer = GetComponent<LineRenderer>();
+        lineRenderer.positionCount = 2;
+        lineRenderer.enabled = false;
+    }
 
     void Update()
     {
@@ -22,6 +32,17 @@ public class SentryScript : MonoBehaviour
         {
             Shoot();
             nextFireTime = Time.time + fireRate;
+        }
+
+        if (canDrawLine && playerTransform != null)
+        {
+            lineRenderer.enabled = true;
+            lineRenderer.SetPosition(0, projectileSpawnPoint.position);
+            lineRenderer.SetPosition(1, playerTransform.position);
+        }
+        else
+        {
+            lineRenderer.enabled = false;
         }
     }
 
@@ -51,6 +72,15 @@ public class SentryScript : MonoBehaviour
         Vector3 directionToPlayer = (playerTransform.position - projectileSpawnPoint.position).normalized;
 
         bulletRigidbody.velocity = directionToPlayer * projectileSpeed;
+
+        canDrawLine = false;
+        StartCoroutine(StartDrawLineCooldown());
+    }
+
+    IEnumerator StartDrawLineCooldown()
+    {
+        yield return new WaitForSeconds(drawLineCooldown);
+        canDrawLine = true;
     }
 
     private void OnDrawGizmosSelected()
