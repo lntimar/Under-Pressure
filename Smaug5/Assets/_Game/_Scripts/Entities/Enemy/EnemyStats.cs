@@ -11,7 +11,7 @@ public class EnemyStats : MonoBehaviour
     [Header("Estatísticas do Inimigo")]
     public int MaxHealth = 100;
     public int CurrentHealth;
-    public static int Damage = 15;
+    public static int Damage = 25;
     public float destroyTime = 1.25f;
 
     [Header("Referências")]
