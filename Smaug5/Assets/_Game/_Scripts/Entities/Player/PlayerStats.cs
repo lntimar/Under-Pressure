@@ -14,6 +14,9 @@ public class PlayerStats : MonoBehaviour
     public Color EmissionColor;
     [Range(0f, 10f)] public float emissionModifier = 0.7f;
 
+    [Header("Referências:")]
+    [SerializeField] private ScannerHUD scannerHud;
+
     // Referências:
     private DamageHUD _damageScript;
 
@@ -58,6 +61,9 @@ public class PlayerStats : MonoBehaviour
         if (_damageScript != null)
             _damageScript.Change();
 
+        if (scannerHud != null)
+            scannerHud.SetHealthBar();
+
         if (Health == 0)
             _playerProgress.Restart();
     }
@@ -74,6 +80,9 @@ public class PlayerStats : MonoBehaviour
             Souls += count;
             _curEmissionIntensity += emissionModifier * count;
         }
+
+        if (scannerHud != null)
+            scannerHud.SetSonarEnergyBar();
         
         OrbLightMaterial.SetVector("_EmissionColor", EmissionColor * _curEmissionIntensity);
     }

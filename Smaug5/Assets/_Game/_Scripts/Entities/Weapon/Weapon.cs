@@ -25,26 +25,25 @@ public class Weapon : MonoBehaviour
     bool readyToShoot;
     bool reloading;
 
-    [Header("Gráficos")]
+    [Header("Gráficos:")]
     public GameObject gunModel;
-    //public GameObject muzzleFlash;
     public TextMeshProUGUI ammoDisplay;
     Vector3 initialPosition;
     Vector3 recoilPosition;
     bool isRecoiling = false;
     public float recoilSpeed;
 
-    [Header("Posições")] 
+    [Header("Posições:")] 
     public Vector3 reloadArmsPos;
     public Vector3 reloadWeaponPos;
 
-    [Header("Efeitos")] 
+    [Header("Efeitos:")] 
     public GameObject enemyHitPrefab;
     public GameObject muzzleFlashPrefab;
     public Transform muzzlePoint;
     public GameObject bulletHolePrefab;
 
-    [Header("Municao HUD")]
+    [Header("Municao HUD:")]
     public Material lightAmmoMaterial;
     public Material unLightAmmoMaterial;
     public List<MeshRenderer> ammos = new List<MeshRenderer>();
@@ -52,12 +51,13 @@ public class Weapon : MonoBehaviour
     public Material bigCoralLightMaterial;
     public Material bigCoralUnLightMaterial;
 
-    [Header("Referências")]
+    [Header("Referências:")]
     public Camera playerCamera;
     public Transform attackPoint;
     public LayerMask enemies;
     public LayerMask layerMaskIgnore;
     public Animator withGunStateAnimator;
+    [SerializeField] private ScannerHUD scannerHud;
 
     // Referências:
     private GameMenu _gameMenuScript;
@@ -80,37 +80,7 @@ public class Weapon : MonoBehaviour
         if (_gameMenuScript.IsPaused()) return;
 
         ShootingInput();
-
-        if (ammoDisplay != null)
-        {
-            ammoDisplay.SetText(bulletsLeft + " / " + magazineSize);
-        }
-
-        if (reloading)
-        {
-            StartCoroutine(RotateWhileReloading());
-            //Adicionar animação de recarregar quando tiver uma
-        }
-        else
-        {
-            gunModel.transform.localRotation = Quaternion.Euler(-90f, 0f, 90f);
-        }
-
-        /*
-        if (isRecoiling)
-        {
-            //O Lerp move a posição inicial pra posição de tiro quando o bool isRecoiling fica verdadeirol, quando o jogador atira
-            transform.localPosition = Vector3.Lerp(transform.localPosition, initialPosition, Time.deltaTime * 10f);
-
-            if (Vector3.Distance(transform.localPosition, initialPosition) < 0.01f)
-            {
-                isRecoiling = false;
-            }
-
-            withGunStateAnimator.Play("With Gun Shoot State Animation");
-            //StartCoroutine(RecoilWhileShooting());
-        }
-        */
+        VeriyReloadAnimation();
     }
     #endregion
 
@@ -118,26 +88,17 @@ public class Weapon : MonoBehaviour
     private void ShootingInput()
     {
         if (allowButtonHold) //Pode manter o botão segurado pra atirar
-        {
             shooting = Input.GetMouseButton(0);
-        }
         else
-        {
             shooting = Input.GetMouseButtonDown(0);
-        }
 
         //RECARREGAR se as balas acabarem, ou se apertar R
         if (Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !reloading)
-        {
             Reload();
-        }
         if (readyToShoot && shooting && !reloading && bulletsLeft <= 0)
-        {
             Reload();
-        }
 
         //ATIRAR
-
         if (readyToShoot && shooting && !reloading && bulletsLeft > 0)
         {
             withGunStateAnimator.Play("With Gun Shoot State Animation");
@@ -208,6 +169,10 @@ public class Weapon : MonoBehaviour
         bulletsLeft--;
         bulletsShot--;
 
+        // UI Munição
+        if (scannerHud != null)
+            scannerHud.SetAmmoText(bulletsLeft);
+
         //RECÚO
         //playerRb.AddForce(-direction * recoilForce, ForceMode.Impulse);
 
@@ -244,7 +209,7 @@ public class Weapon : MonoBehaviour
         reloading = false;
     }
 
-    IEnumerator RotateWhileReloading()
+    private IEnumerator RotateWhileReloading()
     {
         while (reloading)
         {
@@ -255,16 +220,12 @@ public class Weapon : MonoBehaviour
         }
     }
 
-    /*
-    IEnumerator RecoilWhileShooting()
+    private void VeriyReloadAnimation() 
     {
-        while (isRecoiling)
-        {
-            gunModel.transform.Rotate(0, Time.deltaTime * recoilSpeed, 0);
-
-            yield return null;
-        }
+        if (reloading)
+            StartCoroutine(RotateWhileReloading());
+        else
+            gunModel.transform.localRotation = Quaternion.Euler(-90f, 0f, 90f);
     }
-    */
     #endregion
 }
