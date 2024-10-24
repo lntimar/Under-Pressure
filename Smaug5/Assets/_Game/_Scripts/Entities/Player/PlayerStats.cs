@@ -62,7 +62,7 @@ public class PlayerStats : MonoBehaviour
             _damageScript.Change();
 
         if (scannerHud != null)
-            scannerHud.SetHealthBar();
+            scannerHud.SetLifeText(Health);
 
         if (Health == 0)
             _playerProgress.Restart();

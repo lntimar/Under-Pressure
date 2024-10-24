@@ -171,7 +171,7 @@ public class Weapon : MonoBehaviour
 
         // UI Munição
         if (scannerHud != null)
-            scannerHud.SetAmmoText(bulletsLeft);
+            scannerHud.SetAmmoBar(bulletsLeft);
 
         //RECÚO
         //playerRb.AddForce(-direction * recoilForce, ForceMode.Impulse);

@@ -8,42 +8,48 @@ public class ScannerHUD : MonoBehaviour
 {
     #region Variáveis
     [Header("Configurações:")]
-    [SerializeField] private int lifeMaxIndex = 4;
+    [SerializeField] private int ammoMaxIndex = 4;
     [SerializeField] private int sonarEnergyMaxIndex = 3;
 
     [Header("Referências:")]
-    [SerializeField] private TextMeshProUGUI txtAmmo;
-    [SerializeField] private Image[] imgsLife;
-    [SerializeField] private Image[] imgsSonarEnergy;
+    [SerializeField] private TextMeshProUGUI txtLife;
+    [SerializeField] private MeshRenderer[] ammoBars;
+    [SerializeField] private MeshRenderer[] sonarEnergyBars;
     [SerializeField] private PlayerStats playerStats;
+
+    [Header("Luz Barras:")]
+    [SerializeField] private Material lightMaterialAmmo;
+    [SerializeField] private Material unlightMaterialAmmo;
+    [SerializeField] private Material lightMaterialSonar;
+    [SerializeField] private Material unlightMaterialSonar;
     #endregion
 
     #region Funções Próprias
-    public void SetAmmoText(int value) => txtAmmo.text = value.ToString();
+    public void SetLifeText(int value) => txtLife.text = value.ToString();
 
-    public void SetHealthBar() 
+    public void SetAmmoBar(int value) 
     {
-        var maxIndex = (PlayerStats.Health * lifeMaxIndex / playerStats.MaxHealth) - 1;
+        var targetIndex = value;
 
-        for (int i = 0; i < lifeMaxIndex; i++) 
+        for (int i = 0; i < ammoMaxIndex; i++) 
         {
-            if (i <= maxIndex)
-                imgsLife[i].enabled = true;
+            if (i <= targetIndex)
+                ammoBars[i].sharedMaterial = lightMaterialAmmo;
             else
-                imgsLife[i].enabled = false;
+                ammoBars[i].sharedMaterial = unlightMaterialAmmo;
         }
     }
 
     public void SetSonarEnergyBar() 
     {
-        var maxIndex = PlayerStats.Souls;
+        var targetIndex = PlayerStats.Souls;
 
         for (int i = 0; i < sonarEnergyMaxIndex; i++) 
         {
-            if (i <= maxIndex)
-                imgsSonarEnergy[i].enabled = true;
+            if (i <= targetIndex)
+                sonarEnergyBars[i].sharedMaterial = lightMaterialSonar;
             else
-                imgsSonarEnergy[i].enabled = false;
+                sonarEnergyBars[i].sharedMaterial = unlightMaterialSonar;
         }
     }
     #endregion
