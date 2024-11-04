@@ -25,6 +25,21 @@ public class Weapon : MonoBehaviour
     bool readyToShoot;
     bool reloading;
 
+    [Header("Ataque Corpo a Corpo")]
+    public float meleeDistance;
+    public float meleeDelay;
+    public float meleeSpeed;
+    public int meleeDamage;
+    public LayerMask meleeAttackLayer;
+
+    bool _attacking = false;
+    bool _readyToAttack = true;
+    int _meleeAttackCount;
+
+    //public GameObject hitEffect;
+    //public AudioClip swordSwing;
+    //public AudioClip hitSound;
+
     [Header("Gráficos:")]
     public GameObject gunModel;
     public TextMeshProUGUI ammoDisplay;
