@@ -96,6 +96,11 @@ public class Weapon : MonoBehaviour
 
         ShootingInput();
         VeriyReloadAnimation();
+
+        if (Input.GetButtonDown("F"))
+        {
+            MeleeAttack();
+        }
     }
     #endregion
 
@@ -241,6 +246,49 @@ public class Weapon : MonoBehaviour
             StartCoroutine(RotateWhileReloading());
         else
             gunModel.transform.localRotation = Quaternion.Euler(-90f, 0f, 90f);
+    }
+
+    private void MeleeAttack()
+    {
+        if (!_readyToAttack || _attacking) return;
+
+        _readyToAttack = false;
+        _attacking = true;
+
+        Invoke(nameof(ResetMAttack), meleeSpeed);
+        Invoke(nameof(MAttackRaycast), meleeDelay);
+
+        //audioSource.pitch = Random.Range(0.9f, 1.1f);
+        //audioSource.PlayOneShot(swordSwing);
+    }
+
+    private void ResetMAttack()
+    {
+        _attacking = false;
+        _readyToAttack = true;
+    }
+
+    private void MAttackRaycast()
+    {
+        if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out RaycastHit hit, meleeDistance, meleeAttackLayer))
+        {
+            //TESTAR
+            EnemyStats enemyStats = hit.transform.GetComponent<EnemyStats>();
+            if (enemyStats != null)
+            {
+                //Debug.Log(hit.transform.name + " is hit!");
+                enemyStats.ChangeHealthPoints(damage);
+                var enemyHit = Instantiate(enemyHitPrefab, hit.point, Quaternion.LookRotation(hit.normal));
+                enemyHit.transform.position += enemyHit.transform.forward / 1000;
+                Destroy(enemyHit, 1f);
+            }
+            else if (hit.transform.gameObject.layer != CollisionLayersManager.Instance.Door.Index)
+            {
+                var bulletHole = Instantiate(bulletHolePrefab, hit.point, Quaternion.LookRotation(hit.normal));
+                bulletHole.transform.position += bulletHole.transform.forward / 1000;
+                Destroy(bulletHole, 10f);
+            }
+        }
     }
     #endregion
 }
