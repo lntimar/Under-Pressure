@@ -5,15 +5,15 @@ using UnityEngine;
 
 public class WeaponCollectTrigger : MonoBehaviour
 {
-    #region Variáveis Globais
+    #region VariÃ¡veis Globais
     // Inspector:
-    [Header("Referências:")]
+    [Header("ReferÃªncias:")]
     [SerializeField] private Outline outlineEffect;
 
     [HideInInspector] public bool CanInteract = false;
     #endregion
 
-    #region Funções Unity
+    #region FunÃ§Ãµes Unity
     private void Awake() => VerifyAlreadyCaught();
 
     private void Update()
@@ -31,7 +31,7 @@ public class WeaponCollectTrigger : MonoBehaviour
     }
     #endregion
 
-    #region Funções Próprias
+    #region FunÃ§Ãµes PrÃ³prias
     private void Get()
     {
         PlayerStats.HasGun = true;

@@ -11,6 +11,7 @@ TagManager:
   - SlopeStair
   - Duct
   - Enemy
+  - ScannerCollectTrigger
   layers:
   - Default
   - TransparentFX
@@ -32,7 +33,7 @@ TagManager:
   - Weapon
   - Stairs Trigger
   - Interact Trigger
-  - Weapon Collect Trigger
+  - Collect Trigger
   - Book Trigger
   - Book UI
   - DuctTrigger

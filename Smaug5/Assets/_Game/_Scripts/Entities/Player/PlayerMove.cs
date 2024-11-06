@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    #region Variáveis Globais
+    #region VariÃ¡veis Globais
     // Inspector:
-    [Header("Configurações:")]
+    [Header("ConfiguraÃ§Ãµes:")]
 
-    [Header("Referências:")]
+    [Header("ReferÃªncias:")]
     [SerializeField] private Transform orientation;
     [SerializeField] private Animator playerWalkAnimator;
     [SerializeField] private Animator playerGunAnimator;
@@ -20,7 +20,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private float climbStepsInterval;
     [SerializeField] private float sprintStepsInterval;
 
-    [Header("Rotação:")]
+    [Header("RotaÃ§Ã£o:")]
     [SerializeField] private float sensitivity = 50f;
     [SerializeField] private float sensMultiplier = 1f;
 
@@ -43,15 +43,16 @@ public class PlayerMove : MonoBehaviour
     [Header("Escalar:")]
     [SerializeField] private float climbSpeed = 5f;
 
-    // Referências:
+    // ReferÃªncias:
     private Transform _playerCam;
     private GameObject _weapon;
+    private GameObject _scanner;
     private GameMenu _gameMenuScript;
 
     // Componentes:
     private Rigidbody _rb;
 
-    // Rotação:
+    // Rotaï¿½ï¿½o:
     private float _xRotation;
     private float _desiredX;
 
@@ -78,7 +79,7 @@ public class PlayerMove : MonoBehaviour
     private int _sprintStepsIndex = 1;
     #endregion
 
-    #region Funções Unity
+    #region Funï¿½ï¿½es Unity
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
@@ -86,6 +87,7 @@ public class PlayerMove : MonoBehaviour
         _gameMenuScript = FindObjectOfType<GameMenu>();
 
         _weapon = FindObjectOfType<Weapon>().gameObject;
+        _scanner = FindObjectOfType<ScannerHUD>().gameObject;
 
         if (PlayerStats.HasGun)
         {
@@ -99,6 +101,11 @@ public class PlayerMove : MonoBehaviour
             playerGunAnimator.gameObject.SetActive(false);
             _weapon.SetActive(false);
         }
+
+        if (PlayerStats.HasScanner)
+            _scanner.SetActive(true);
+        else
+            _scanner.SetActive(false);
     }
     
     private void Start()
@@ -126,6 +133,14 @@ public class PlayerMove : MonoBehaviour
                 _weapon.SetActive(true);
         }
 
+        if (PlayerStats.HasScanner)
+        {
+            if (_crouching || HasTouchStairs)
+                _scanner.SetActive(false);
+            else
+                _scanner.SetActive(true);
+        }
+        
         PlayStepsSFX();
     }
 
@@ -162,7 +177,7 @@ public class PlayerMove : MonoBehaviour
     }
     #endregion
 
-    #region Funções Próprias
+    #region FunÃ§Ãµes PrÃ³prias
     private void MyInput()
     {
         _x = Input.GetAxisRaw("Horizontal");
@@ -295,8 +310,7 @@ public class PlayerMove : MonoBehaviour
     }
 
     private void ResetJump() => _readyToJump = true;
-
-
+    
     private void Look()
     {
         var mouseX = Input.GetAxis("Mouse X") * sensitivity * Time.fixedDeltaTime * sensMultiplier;

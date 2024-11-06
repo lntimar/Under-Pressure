@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class PlayerCollision : MonoBehaviour
 {
-    #region Variáveis Globais
+    #region VariÃ¡veis Globais
     // Componentes:
     private PlayerStats _playerStats;
     #endregion
 
-    #region Funções Unity
+    #region FunÃ§Ãµes Unity
     private void Awake() => _playerStats = GetComponent<PlayerStats>();
 
     private void OnTriggerEnter(Collider col)

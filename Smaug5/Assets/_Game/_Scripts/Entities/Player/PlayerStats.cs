@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-    #region Variáveis Globais
-    [Header("Estatísticas do Jogador:")]
+    #region VariÃ¡veis Globais
+    [Header("EstatÃ­sticas do Jogador:")]
     public int MaxHealth = 100;
     public static int Souls = 0;
 
@@ -14,10 +14,10 @@ public class PlayerStats : MonoBehaviour
     public Color EmissionColor;
     [Range(0f, 10f)] public float emissionModifier = 0.7f;
 
-    [Header("Referências:")]
+    [Header("ReferÃªncias:")]
     [SerializeField] private ScannerHUD scannerHud;
 
-    // Referências:
+    // ReferÃªncias:
     private DamageHUD _damageScript;
 
     // Componentes:
@@ -26,13 +26,16 @@ public class PlayerStats : MonoBehaviour
     // Arma
     public static bool HasGun = false;
 
+    // Scanner
+    public static bool HasScanner = false;
+    
     // Orbe
     private static float _curEmissionIntensity = 0f;
 
     public static int Health = 0;
     #endregion
 
-    #region Funções Unity
+    #region FunÃ§Ãµes Unity
     private void Awake()
     {
         _damageScript = FindObjectOfType<DamageHUD>();
@@ -53,7 +56,7 @@ public class PlayerStats : MonoBehaviour
     }
     #endregion
 
-    #region Funções Próprias
+    #region FunÃ§Ãµes PrÃ³prias
     public void ChangeHealthPoints(int points=0)
     {
         Health = Mathf.Clamp(Health + points, 0, MaxHealth);

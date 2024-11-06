@@ -24,9 +24,12 @@ public class InteractionTrigger : MonoBehaviour
         {
             col.gameObject.GetComponent<GetKey>().CanInteract = true;
         }
-        else if (col.gameObject.layer == CollisionLayersManager.Instance.WeaponCollectTrigger.Index)
+        else if (col.gameObject.layer == CollisionLayersManager.Instance.CollectTrigger.Index)
         {
-            col.gameObject.GetComponent<WeaponCollectTrigger>().CanInteract = true;
+            if (col.gameObject.CompareTag("ScannerCollectTrigger"))
+                col.gameObject.GetComponent<ScannerCollectTrigger>().CanInteract = true;
+            else // Weapon
+                col.gameObject.GetComponent<WeaponCollectTrigger>().CanInteract = true;
         }
         else if (col.gameObject.layer == CollisionLayersManager.Instance.BookTrigger.Index)
         {
@@ -44,9 +47,12 @@ public class InteractionTrigger : MonoBehaviour
         {
             col.gameObject.GetComponent<GetKey>().CanInteract = false;
         }
-        else if (col.gameObject.layer == CollisionLayersManager.Instance.WeaponCollectTrigger.Index)
+        else if (col.gameObject.layer == CollisionLayersManager.Instance.CollectTrigger.Index)
         {
-            col.gameObject.GetComponent<WeaponCollectTrigger>().CanInteract = false;
+            if (col.gameObject.CompareTag("ScannerCollectTrigger"))
+                col.gameObject.GetComponent<ScannerCollectTrigger>().CanInteract = false;
+            else // Weapon
+                col.gameObject.GetComponent<WeaponCollectTrigger>().CanInteract = false;
         }
         else if (col.gameObject.layer == CollisionLayersManager.Instance.BookTrigger.Index)
         {

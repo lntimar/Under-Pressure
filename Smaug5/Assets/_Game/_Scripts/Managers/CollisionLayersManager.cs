@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CollisionLayersManager : MonoBehaviour
 {
-    #region Variáveis Globais
+    #region Variï¿½veis Globais
     // Inspector:
     [Header("Layers:")]
     public SingleUnityLayer Player;
@@ -17,7 +17,7 @@ public class CollisionLayersManager : MonoBehaviour
     public SingleUnityLayer DoorTrigger;
     public SingleUnityLayer KeyTrigger;
     public SingleUnityLayer BookTrigger;
-    public SingleUnityLayer WeaponCollectTrigger;
+    public SingleUnityLayer CollectTrigger;
     public SingleUnityLayer EnemyAttack;
     public SingleUnityLayer SoulOrb;
     public SingleUnityLayer Door;
@@ -26,7 +26,7 @@ public class CollisionLayersManager : MonoBehaviour
     public static CollisionLayersManager Instance;
     #endregion
 
-    #region Funções Unity
+    #region Funï¿½ï¿½es Unity
     private void Awake() => Instance = this;
     #endregion
 }

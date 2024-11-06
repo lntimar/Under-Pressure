@@ -64,7 +64,7 @@ MonoBehaviour:
     _layerIndex: 16
   BookTrigger:
     _layerIndex: 21
-  WeaponCollectTrigger:
+  CollectTrigger:
     _layerIndex: 20
   EnemyAttack:
     _layerIndex: 28
