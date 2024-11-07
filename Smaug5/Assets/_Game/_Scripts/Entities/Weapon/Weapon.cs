@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    #region Variáveis Globais
-    [Header("Estatísticas Gerais")]
+    #region Variï¿½veis Globais
+    [Header("Estatï¿½sticas Gerais")]
     public int damage;
     public float timeBetweenShooting;
     public float horizontalSpread;
@@ -40,7 +40,7 @@ public class Weapon : MonoBehaviour
     //public AudioClip swordSwing;
     //public AudioClip hitSound;
 
-    [Header("Gráficos:")]
+    [Header("Grï¿½ficos:")]
     public GameObject gunModel;
     public TextMeshProUGUI ammoDisplay;
     Vector3 initialPosition;
@@ -48,7 +48,7 @@ public class Weapon : MonoBehaviour
     bool isRecoiling = false;
     public float recoilSpeed;
 
-    [Header("Posições:")] 
+    [Header("Posiï¿½ï¿½es:")] 
     public Vector3 reloadArmsPos;
     public Vector3 reloadWeaponPos;
 
@@ -66,7 +66,7 @@ public class Weapon : MonoBehaviour
     public Material bigCoralLightMaterial;
     public Material bigCoralUnLightMaterial;
 
-    [Header("Referências:")]
+    [Header("Referï¿½ncias:")]
     public Camera playerCamera;
     public Transform attackPoint;
     public LayerMask enemies;
@@ -74,18 +74,18 @@ public class Weapon : MonoBehaviour
     public Animator withGunStateAnimator;
     [SerializeField] private ScannerHUD scannerHud;
 
-    // Referências:
+    // Referï¿½ncias:
     private GameMenu _gameMenuScript;
     #endregion
 
-    #region Funções Unity
+    #region Funï¿½ï¿½es Unity
     private void Awake()
     {
         bulletsLeft = magazineSize;
         readyToShoot = true;
 
-        initialPosition = transform.localPosition; //Pega posição inicial
-        recoilPosition = initialPosition + Vector3.up * recoilForce; //Posição que a arma vai ao atirar
+        initialPosition = transform.localPosition; //Pega posiï¿½ï¿½o inicial
+        recoilPosition = initialPosition + Vector3.up * recoilForce; //Posiï¿½ï¿½o que a arma vai ao atirar
 
         _gameMenuScript = FindObjectOfType<GameMenu>();
     }
@@ -97,17 +97,17 @@ public class Weapon : MonoBehaviour
         ShootingInput();
         VeriyReloadAnimation();
 
-        if (Input.GetButtonDown("F"))
+        if (Input.GetKeyDown(KeyCode.F))
         {
             MeleeAttack();
         }
     }
     #endregion
 
-    #region Funções Próprias
+    #region Funï¿½ï¿½es Prï¿½prias
     private void ShootingInput()
     {
-        if (allowButtonHold) //Pode manter o botão segurado pra atirar
+        if (allowButtonHold) //Pode manter o botï¿½o segurado pra atirar
             shooting = Input.GetMouseButton(0);
         else
             shooting = Input.GetMouseButtonDown(0);
@@ -152,7 +152,7 @@ public class Weapon : MonoBehaviour
 
         isRecoiling = true;
 
-        //PROPAGAÇÃO DE BALA
+        //PROPAGAï¿½ï¿½O DE BALA
         float x = Random.Range(-horizontalSpread, horizontalSpread);
         float y = Random.Range(-horizontalSpread, verticalSpread);
         Vector3 direction = playerCamera.transform.forward + new Vector3(x, y, 0);
@@ -178,8 +178,8 @@ public class Weapon : MonoBehaviour
             }
         }
 
-        //BALANÇAR CAMERA
-        //BALANÇAR CAMERA
+        // BALANÃ‡AR CAMERA
+        // BALANÃ‡AR CAMERA
         //StartCoroutine(camShake.Shake(camShakeDuration, camShakeMagnitude));
 
         //MUZZLE EFFECT
@@ -189,11 +189,11 @@ public class Weapon : MonoBehaviour
         bulletsLeft--;
         bulletsShot--;
 
-        // UI Munição
+        // UI MuniÃ§Ã£o
         if (scannerHud != null)
-            scannerHud.SetAmmoBar(bulletsLeft);
+            scannerHud.SetAmmoBar();
 
-        //RECÚO
+        //RECï¿½O
         //playerRb.AddForce(-direction * recoilForce, ForceMode.Impulse);
 
         Invoke("ResetShot", timeBetweenShooting);
@@ -223,6 +223,9 @@ public class Weapon : MonoBehaviour
             if (ammos[i].sharedMaterial != lightAmmoMaterial)
                 ammos[i].sharedMaterial = lightAmmoMaterial;
         }
+        
+        scannerHud.ResetAmmoBar();
+        
         bigCoral.sharedMaterial = bigCoralLightMaterial;
         withGunStateAnimator.Play("With Gun Default State Animation");
         bulletsLeft = magazineSize;
@@ -233,7 +236,7 @@ public class Weapon : MonoBehaviour
     {
         while (reloading)
         {
-            // Adicione a lógica de rotação aqui
+            // Adicione a lï¿½gica de rotaï¿½ï¿½o aqui
             gunModel.transform.Rotate(0, Time.deltaTime * rotationSpeed, 0);
 
             yield return null;

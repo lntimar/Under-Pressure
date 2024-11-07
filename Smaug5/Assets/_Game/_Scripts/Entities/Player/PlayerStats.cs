@@ -77,15 +77,16 @@ public class PlayerStats : MonoBehaviour
         {
             Souls = 0;
             _curEmissionIntensity = 0;
+            scannerHud.ResetSonarEnergyBar();
         }
         else
         {
             Souls += count;
             _curEmissionIntensity += emissionModifier * count;
+            
+            if (scannerHud != null)
+                scannerHud.SetSonarEnergyBar(Souls);
         }
-
-        if (scannerHud != null)
-            scannerHud.SetSonarEnergyBar();
         
         OrbLightMaterial.SetVector("_EmissionColor", EmissionColor * _curEmissionIntensity);
     }

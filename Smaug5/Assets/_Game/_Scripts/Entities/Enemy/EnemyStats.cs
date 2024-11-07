@@ -5,38 +5,30 @@ using UnityEngine.AI;
 
 public class EnemyStats : MonoBehaviour
 {
-    #region Variáveis Globais
-    [Header("Configurações:")]
+    #region VariÃ¡veis Globais
+    [Header("ConfiguraÃ§Ãµes:")]
 
-    [Header("Estatísticas do Inimigo")]
+    [Header("EstatÃ­sticas do Inimigo")]
     public int MaxHealth = 100;
     public int CurrentHealth;
     public static int Damage = 25;
     public float destroyTime = 1.25f;
 
-    [Header("Referências")]
+    [Header("ReferÃªncias")]
     public GameObject soulPrefab;
     public Animator animator;
     
-    // Referências
+    // ReferÃªncias
     private SonarScript _sonarScript;
-    
-    // Componentes Inimigo
-    private Rigidbody _rb;
     #endregion
 
-    #region Funções Unity
-    private void Awake()
-    {
-        _sonarScript = FindObjectOfType<SonarScript>();
-       
-        _rb = GetComponent<Rigidbody>();
-    }
+    #region FunÃ§Ãµes Unity
+    private void Awake() => _sonarScript = FindObjectOfType<SonarScript>();
 
     private void Start() => CurrentHealth = MaxHealth;
     #endregion
 
-    #region Funções Próprias
+    #region FunÃ§Ãµes PrÃ³prias
     public void ChangeHealthPoints(int points)
     {
         if (CurrentHealth > 0)
@@ -60,7 +52,9 @@ public class EnemyStats : MonoBehaviour
     {
         Instantiate(soulPrefab, transform.position + Vector3.up * 2.25f, Quaternion.identity);
         _sonarScript.affectedObjects.Remove(gameObject);
-        Destroy(gameObject);
+        Invoke("SelfDestruct", 0.05f);
     }
+
+    private void SelfDestruct() => Destroy(gameObject);
     #endregion
 }

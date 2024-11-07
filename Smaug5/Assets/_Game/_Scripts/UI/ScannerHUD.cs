@@ -1,56 +1,83 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ScannerHUD : MonoBehaviour
 {
-    #region Variáveis
-    [Header("Configurações:")]
-    [SerializeField] private int ammoMaxIndex = 4;
+    #region VariÃ¡veis
+    [Header("ConfiguraÃ§Ãµes:")]
+    [SerializeField] private int ammoMaxIndex = 6;
     [SerializeField] private int sonarEnergyMaxIndex = 3;
 
-    [Header("Referências:")]
+    [Header("ReferÃªncias:")]
     [SerializeField] private TextMeshProUGUI txtLife;
     [SerializeField] private MeshRenderer[] ammoBars;
-    [SerializeField] private MeshRenderer[] sonarEnergyBars;
+    [SerializeField] private GameObject[] sonarEnergyBars;
     [SerializeField] private PlayerStats playerStats;
 
+    [Header("Alerta:")] 
+    [SerializeField] private float mediumDistance;
+    [SerializeField] private float highDistance;
+    
     [Header("Luz Barras:")]
     [SerializeField] private Material lightMaterialAmmo;
     [SerializeField] private Material unlightMaterialAmmo;
-    [SerializeField] private Material lightMaterialSonar;
-    [SerializeField] private Material unlightMaterialSonar;
+
+    // ReferÃªncias:
+    private Transform _playerTransform;
+    private List<EnemyBehaviour> _enemies = new List<EnemyBehaviour>();
     #endregion
 
-    #region Funções Próprias
+    #region FunÃ§Ãµes Unity
+
+    private void Awake()
+    {
+        _playerTransform = FindObjectOfType<PlayerMove>().transform;
+
+        _enemies = FindObjectsOfType<EnemyBehaviour>().ToList();
+    }
+    #endregion
+    
+    #region FunÃ§Ãµes PrÃ³prias
     public void SetLifeText(int value) => txtLife.text = value.ToString();
 
-    public void SetAmmoBar(int value) 
+    public void SetAmmoBar() 
     {
-        var targetIndex = value;
-
         for (int i = 0; i < ammoMaxIndex; i++) 
         {
-            if (i <= targetIndex)
-                ammoBars[i].sharedMaterial = lightMaterialAmmo;
-            else
+            if (ammoBars[i].sharedMaterial != unlightMaterialAmmo)
+            {
                 ammoBars[i].sharedMaterial = unlightMaterialAmmo;
+                break;
+            }
         }
     }
 
-    public void SetSonarEnergyBar() 
+    public void ResetAmmoBar()
     {
-        var targetIndex = PlayerStats.Souls;
+        for (int i = 0; i < ammoMaxIndex; i++) 
+            ammoBars[i].sharedMaterial = lightMaterialAmmo;
+    }
 
-        for (int i = 0; i < sonarEnergyMaxIndex; i++) 
+    public void SetSonarEnergyBar(int soulCount) 
+    {
+        for (int i = 0; i < sonarEnergyMaxIndex; i++)
         {
-            if (i <= targetIndex)
-                sonarEnergyBars[i].sharedMaterial = lightMaterialSonar;
+            if (i == soulCount - 1)
+                sonarEnergyBars[i].SetActive(true);
             else
-                sonarEnergyBars[i].sharedMaterial = unlightMaterialSonar;
+                sonarEnergyBars[i].SetActive(false);
         }
+    }
+
+    public void ResetSonarEnergyBar()
+    {
+        for (int i = 0; i < sonarEnergyMaxIndex; i++)
+            sonarEnergyBars[i].SetActive(false);
     }
     #endregion
 }
