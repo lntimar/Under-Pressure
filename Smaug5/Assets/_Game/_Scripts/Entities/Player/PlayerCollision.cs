@@ -19,15 +19,12 @@ public class PlayerCollision : MonoBehaviour
         {
             _playerStats.ChangeHealthPoints(-EnemyStats.Damage);
         }
-        else if (col.gameObject.layer == CollisionLayersManager.Instance.HealthPack.Index)
+        else if (col.gameObject.layer == CollisionLayersManager.Instance.HealthPack.Index 
+                 && PlayerStats.Health < PlayerStats.MaxHealthValue)
         {
             if (AudioManager.Instance != null) AudioManager.Instance.PlaySFX("orb catch");
             _playerStats.ChangeHealthPoints(col.gameObject.GetComponent<HealthPack>().Points);
             Destroy(col.gameObject);
-        }
-        else if (col.gameObject.layer == CollisionLayersManager.Instance.SoulOrb.Index)
-        {
-            Debug.Log("bolas");
         }
     }
     #endregion

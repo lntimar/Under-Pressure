@@ -1117,7 +1117,10 @@ MonoBehaviour:
   destroyTime: 4
   soulPrefab: {fileID: 7353898820259312844, guid: 5cc2ca53f855ed34884846cf590d6905,
     type: 3}
+  lifePrefab: {fileID: 7353898820259312844, guid: ab32fb6b4b9a32640a53cb7014fc9230,
+    type: 3}
   animator: {fileID: 6824930362322147006}
+  orbSpawnPoint: {fileID: 6980716298971204548}
 --- !u!1 &4360494698840080005
 GameObject:
   m_ObjectHideFlags: 0
@@ -2289,6 +2292,7 @@ Transform:
   m_Children:
   - {fileID: 3052313340355286211}
   - {fileID: 6669039619094854682}
+  - {fileID: 6980716298971204548}
   - {fileID: 3264782570368154241}
   m_Father: {fileID: 108086736346752800}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2501,6 +2505,37 @@ Transform:
   m_Children:
   - {fileID: 5981701659698016797}
   m_Father: {fileID: 7209519549147798377}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7474780201898405028
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6980716298971204548}
+  m_Layer: 2
+  m_Name: Orb Spawn Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6980716298971204548
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7474780201898405028}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1125180473791173794}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7564904263455809845
 GameObject:

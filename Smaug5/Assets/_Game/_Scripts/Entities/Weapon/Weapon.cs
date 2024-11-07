@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    #region Vari�veis Globais
+    #region Variáveis Globais
     [Header("Estat�sticas Gerais")]
     public int damage;
     public float timeBetweenShooting;
@@ -40,7 +40,7 @@ public class Weapon : MonoBehaviour
     //public AudioClip swordSwing;
     //public AudioClip hitSound;
 
-    [Header("Gr�ficos:")]
+    [Header("Gráficos:")]
     public GameObject gunModel;
     public TextMeshProUGUI ammoDisplay;
     Vector3 initialPosition;
@@ -48,7 +48,7 @@ public class Weapon : MonoBehaviour
     bool isRecoiling = false;
     public float recoilSpeed;
 
-    [Header("Posi��es:")] 
+    [Header("Posições:")] 
     public Vector3 reloadArmsPos;
     public Vector3 reloadWeaponPos;
 
@@ -58,7 +58,7 @@ public class Weapon : MonoBehaviour
     public Transform muzzlePoint;
     public GameObject bulletHolePrefab;
 
-    [Header("Municao HUD:")]
+    [Header("Munição HUD:")]
     public Material lightAmmoMaterial;
     public Material unLightAmmoMaterial;
     public List<MeshRenderer> ammos = new List<MeshRenderer>();
@@ -66,7 +66,7 @@ public class Weapon : MonoBehaviour
     public Material bigCoralLightMaterial;
     public Material bigCoralUnLightMaterial;
 
-    [Header("Refer�ncias:")]
+    [Header("Referências:")]
     public Camera playerCamera;
     public Transform attackPoint;
     public LayerMask enemies;
@@ -74,7 +74,7 @@ public class Weapon : MonoBehaviour
     public Animator withGunStateAnimator;
     [SerializeField] private ScannerHUD scannerHud;
 
-    // Refer�ncias:
+    // Referências:
     private GameMenu _gameMenuScript;
     #endregion
 
@@ -152,7 +152,7 @@ public class Weapon : MonoBehaviour
 
         isRecoiling = true;
 
-        //PROPAGA��O DE BALA
+        //PROPAGAÇÃO DE BALA
         float x = Random.Range(-horizontalSpread, horizontalSpread);
         float y = Random.Range(-horizontalSpread, verticalSpread);
         Vector3 direction = playerCamera.transform.forward + new Vector3(x, y, 0);

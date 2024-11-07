@@ -16,7 +16,9 @@ public class EnemyStats : MonoBehaviour
 
     [Header("Referências")]
     public GameObject soulPrefab;
+    public GameObject lifePrefab;
     public Animator animator;
+    [SerializeField] private Transform orbSpawnPoint;
     
     // Referências
     private SonarScript _sonarScript;
@@ -50,7 +52,21 @@ public class EnemyStats : MonoBehaviour
 
     public void DestroyEnemy()
     {
-        Instantiate(soulPrefab, transform.position + Vector3.up * 2.25f, Quaternion.identity);
+        // Caso a Vida for maximizada, dropar energia do sonar mais frequentemente
+        if (PlayerStats.Health == PlayerStats.MaxHealthValue)
+        {
+            if (Random.Range(0, 100) < 25)
+                Instantiate(lifePrefab, orbSpawnPoint.position + Vector3.up * 2.25f, Quaternion.identity);
+            else
+                Instantiate(soulPrefab, orbSpawnPoint.position + Vector3.up * 2.25f, Quaternion.identity);
+        } // Senão, dropar vida mais frequentemente
+        else
+        {
+            if (Random.Range(0, 100) < 25)
+                Instantiate(soulPrefab, orbSpawnPoint.position + Vector3.up * 2.25f, Quaternion.identity);
+            else
+                Instantiate(lifePrefab, orbSpawnPoint.position + Vector3.up * 2.25f, Quaternion.identity);
+        }
         _sonarScript.affectedObjects.Remove(gameObject);
         Invoke("SelfDestruct", 0.05f);
     }

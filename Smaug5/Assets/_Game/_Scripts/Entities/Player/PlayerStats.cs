@@ -33,6 +33,8 @@ public class PlayerStats : MonoBehaviour
     private static float _curEmissionIntensity = 0f;
 
     public static int Health = 0;
+
+    public static int MaxHealthValue;
     #endregion
 
     #region Funções Unity
@@ -42,6 +44,8 @@ public class PlayerStats : MonoBehaviour
 
         _playerProgress = GetComponent<PlayerProgress>();
 
+        MaxHealthValue = MaxHealth;
+        
         if (Health == 0)
         {
             ChangeHealthPoints(MaxHealth);
