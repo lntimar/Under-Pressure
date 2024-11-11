@@ -12,6 +12,7 @@ TagManager:
   - Duct
   - Enemy
   - ScannerCollectTrigger
+  - WayPoints
   layers:
   - Default
   - TransparentFX
