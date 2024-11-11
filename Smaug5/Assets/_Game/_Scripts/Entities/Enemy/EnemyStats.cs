@@ -21,11 +21,17 @@ public class EnemyStats : MonoBehaviour
     [SerializeField] private Transform orbSpawnPoint;
     
     // Referências
-    private SonarScript _sonarScript;
+    public static SonarScript SonarScript;
     #endregion
 
     #region Funções Unity
-    private void Awake() => _sonarScript = FindObjectOfType<SonarScript>();
+    private void Awake()
+    {
+        if (PlayerStats.HasGun)
+        {
+            SonarScript = FindObjectOfType<SonarScript>();
+        }
+    }
 
     private void Start() => CurrentHealth = MaxHealth;
     #endregion
@@ -67,8 +73,13 @@ public class EnemyStats : MonoBehaviour
             else
                 Instantiate(lifePrefab, orbSpawnPoint.position + Vector3.up * 2.25f, Quaternion.identity);
         }
-        _sonarScript.affectedObjects.Remove(gameObject);
-        Invoke("SelfDestruct", 0.05f);
+
+        /*if (SonarScript.affectedObjects.Contains(gameObject))
+        {
+            SonarScript.affectedObjects.Remove(gameObject);
+        }*/
+
+        Invoke("SelfDestruct", destroyTime);
     }
 
     private void SelfDestruct() => Destroy(gameObject);

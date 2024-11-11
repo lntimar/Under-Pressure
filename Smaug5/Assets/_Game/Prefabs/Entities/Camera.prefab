@@ -6166,13 +6166,13 @@ MonoBehaviour:
   allowButtonHold: 0
   rotationSpeed: 1
   recoilForce: 1
-  meleeDistance: 0
-  meleeDelay: 0
-  meleeSpeed: 0
-  meleeDamage: 0
+  meleeDistance: 3
+  meleeDelay: 0.4
+  meleeSpeed: 1
+  meleeDamage: 25
   meleeAttackLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1024
   gunModel: {fileID: 7229045531439031557}
   ammoDisplay: {fileID: 0}
   recoilSpeed: 0
@@ -13334,12 +13334,6 @@ MeshRenderer:
     type: 3}
   m_PrefabInstance: {fileID: 5641665467039461946}
   m_PrefabAsset: {fileID: 0}
---- !u!23 &1568852928212774210 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 6597377307429412728, guid: b51a23e52ff1eef46b1ff19c11917c04,
-    type: 3}
-  m_PrefabInstance: {fileID: 5641665467039461946}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1806195924221428293 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6294868198533869695, guid: b51a23e52ff1eef46b1ff19c11917c04,
@@ -13391,7 +13385,6 @@ MonoBehaviour:
   ammoMaxIndex: 6
   sonarEnergyMaxIndex: 3
   txtLife: {fileID: 2487828750252128413}
-  alertBar: {fileID: 1568852928212774210}
   ammoBars:
   - {fileID: 4206122605356132059}
   - {fileID: 6417239371042470291}
@@ -13408,11 +13401,6 @@ MonoBehaviour:
   highDistance: 0
   lightMaterialAmmo: {fileID: 2100000, guid: 963a2a9a7a6a97945af9819ab7ac0874, type: 2}
   unlightMaterialAmmo: {fileID: 2100000, guid: 63ba1d3f92aff544ba831b53c73e35d4, type: 2}
-  lightMaterialSonar: {fileID: 0}
-  unlightMaterialSonar: {fileID: 0}
-  lowMaterialAlert: {fileID: 2100000, guid: 1f49e5f09668b314c8559705e9d93fa6, type: 2}
-  mediumMaterialAlert: {fileID: 2100000, guid: 02099d341559de746bc931d112c75822, type: 2}
-  highMaterialAlert: {fileID: 2100000, guid: e016909bdc5027a4081705541e024894, type: 2}
 --- !u!23 &3667511905374702163 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 8984301360054384745, guid: b51a23e52ff1eef46b1ff19c11917c04,

@@ -37,6 +37,7 @@ public class WeaponCollectTrigger : MonoBehaviour
         PlayerStats.HasGun = true;
         if (AudioManager.Instance != null) AudioManager.Instance.PlaySFX("weapon catch");
         Destroy(transform.parent.gameObject);
+        EnemyStats.SonarScript = FindObjectOfType<SonarScript>();
     }
 
     private void VerifyAlreadyCaught()

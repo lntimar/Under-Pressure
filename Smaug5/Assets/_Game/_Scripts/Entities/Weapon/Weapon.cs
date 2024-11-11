@@ -253,6 +253,8 @@ public class Weapon : MonoBehaviour
 
     private void MeleeAttack()
     {
+        Debug.Log("AIII");
+
         if (!_readyToAttack || _attacking) return;
 
         _readyToAttack = false;
@@ -275,6 +277,9 @@ public class Weapon : MonoBehaviour
     {
         if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out RaycastHit hit, meleeDistance, meleeAttackLayer))
         {
+            //audioSource.pitch = 1;
+            //audioSource.PlayOneShot(hitSound);
+
             //TESTAR
             EnemyStats enemyStats = hit.transform.GetComponent<EnemyStats>();
             if (enemyStats != null)
