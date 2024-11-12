@@ -10318,7 +10318,7 @@ MonoBehaviour:
   allowButtonHold: 0
   rotationSpeed: 1
   recoilForce: 1
-  meleeDistance: 3
+  meleeDistance: 6
   meleeDelay: 0.4
   meleeSpeed: 1
   meleeDamage: 25
