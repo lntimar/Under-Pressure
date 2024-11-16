@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class PatrolState : StateMachineBehaviour
 {
     private float timer;
-    public float chaseRange;
+    public float chaseRange = 20;
     Transform player;
     //Lista com os pontos de patrulha do inimigo
     List<Transform> wayPoints = new List<Transform>();
@@ -36,10 +36,17 @@ public class PatrolState : StateMachineBehaviour
         timer += Time.deltaTime;
         if (timer >= 5)
             animator.SetBool("isPatrolling", false);
+
         //Persegue jogador com base na distância
         float distance = Vector3.Distance(player.position, animator.transform.position);
         if (distance < chaseRange)
+        {
+            Debug.Log("ativar caçada");
             animator.SetBool("isChasing", true);
+        }
+        
+        Debug.Log(distance);
+        
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

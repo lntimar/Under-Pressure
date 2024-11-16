@@ -5,7 +5,7 @@ using UnityEngine;
 public class IdleState : StateMachineBehaviour
 {
     private float timer;
-    public float chaseRange;
+    public float chaseRange = 20;
     Transform player;
     
     //OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
@@ -23,9 +23,16 @@ public class IdleState : StateMachineBehaviour
         if (timer >= 5)
             animator.SetBool("isPatrolling", true);
         
+        //Persegue o jogador com base na distância
         float distance = Vector3.Distance(player.position, animator.transform.position);
         if (distance < chaseRange)
+        {
+            Debug.Log("ativar caçada");
             animator.SetBool("isChasing", true);
+        }
+        
+        Debug.Log(distance);
+
     }
 
     //OnStateExit is called when a transition ends and the state machine finishes evaluating this state
