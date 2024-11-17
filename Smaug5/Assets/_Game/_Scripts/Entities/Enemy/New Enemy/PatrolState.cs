@@ -7,6 +7,7 @@ public class PatrolState : StateMachineBehaviour
 {
     private float timer;
     public float chaseRange = 20;
+    public float patrolSpeed = 2;
     Transform player;
     //Lista com os pontos de patrulha do inimigo
     List<Transform> wayPoints = new List<Transform>();
@@ -17,7 +18,9 @@ public class PatrolState : StateMachineBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         agent = animator.GetComponent<NavMeshAgent>();
+        agent.speed = patrolSpeed;
         timer = 0;
+        
         GameObject go = GameObject.FindGameObjectWithTag("WayPoints");
         foreach(Transform t in go.transform)
             wayPoints.Add(t);
@@ -41,11 +44,11 @@ public class PatrolState : StateMachineBehaviour
         float distance = Vector3.Distance(player.position, animator.transform.position);
         if (distance < chaseRange)
         {
-            Debug.Log("ativar caçada");
+            //Debug.Log("ativar caçada");
             animator.SetBool("isChasing", true);
         }
         
-        Debug.Log(distance);
+        //Debug.Log(distance);
         
     }
 
