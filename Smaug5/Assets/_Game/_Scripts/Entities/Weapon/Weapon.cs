@@ -34,7 +34,10 @@ public class Weapon : MonoBehaviour
 
     bool _attacking = false;
     bool _readyToAttack = true;
-    int _meleeAttackCount;
+    //int _meleeAttackCount;
+
+    //public const string MELEEATTACK = "With Gun MeleeAttack State Animation";
+    //string currentAnimationState;
 
     //public GameObject hitEffect;
     //public AudioClip swordSwing;
@@ -253,15 +256,18 @@ public class Weapon : MonoBehaviour
 
     private void MeleeAttack()
     {
-        Debug.Log("AIII");
-
         if (!_readyToAttack || _attacking) return;
 
         _readyToAttack = false;
         _attacking = true;
 
+        withGunStateAnimator.SetTrigger("MeleeAttack");
+        if (AudioManager.Instance != null) AudioManager.Instance.PlaySFX("enemy attack 2");
+
         Invoke(nameof(ResetMAttack), meleeSpeed);
         Invoke(nameof(MAttackRaycast), meleeDelay);
+
+        //ChangeAnimationState(MELEEATTACK);
 
         //audioSource.pitch = Random.Range(0.9f, 1.1f);
         //audioSource.PlayOneShot(swordSwing);
@@ -277,10 +283,11 @@ public class Weapon : MonoBehaviour
     {
         if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out RaycastHit hit, meleeDistance, meleeAttackLayer))
         {
+            Debug.Log("ACERTOU");
+
             //audioSource.pitch = 1;
             //audioSource.PlayOneShot(hitSound);
 
-            //TESTAR
             EnemyStats enemyStats = hit.transform.GetComponent<EnemyStats>();
             if (enemyStats != null)
             {
@@ -298,5 +305,13 @@ public class Weapon : MonoBehaviour
             }
         }
     }
+
+    /*public void ChangeAnimationState(string newState)
+    {
+        if (currentAnimationState == newState) return;
+
+        currentAnimationState = newState;
+        withGunStateAnimator.CrossFadeInFixedTime(currentAnimationState, 0.2f);
+    }*/
     #endregion
 }

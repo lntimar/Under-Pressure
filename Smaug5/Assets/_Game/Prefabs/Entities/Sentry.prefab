@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 537043995064271816}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ProjectileSP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 6583901881578441443}
   - component: {fileID: 2473852101648137216}
   - component: {fileID: 1105755091983984703}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sentry
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -303,7 +303,7 @@ GameObject:
   - component: {fileID: 8234360016198590162}
   - component: {fileID: 1873325551975043674}
   - component: {fileID: 5346443403926336168}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Foot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -407,7 +407,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5936789182579029570}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Orb Spawn Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -441,7 +441,7 @@ GameObject:
   - component: {fileID: 5475937518125169264}
   - component: {fileID: 4382065781109559132}
   - component: {fileID: 7001210011019295494}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SentryBarrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
