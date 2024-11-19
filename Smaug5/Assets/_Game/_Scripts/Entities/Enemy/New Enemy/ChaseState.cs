@@ -4,12 +4,16 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
-
 public class ChaseState : StateMachineBehaviour
 {
     public float chasingSpeed;
     public float stopChaseDistance;
     public float attackRange;
+
+    private bool canPlayScream = true;
+
+    private float screamCurInterval = 0;
+    private float screamMaxInterval = 0;
     
     NavMeshAgent agent;
     Transform player;
@@ -18,6 +22,11 @@ public class ChaseState : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         agent = animator.GetComponent<NavMeshAgent>();
+        if (AudioManager.Instance != null && canPlayScream)
+        {
+            canPlayScream = false;
+            AudioManager.Instance.PlaySFX("enemy scream " + Random.Range(1, 3));
+        }
         player = GameObject.FindGameObjectWithTag("Player").transform;
         
         agent.speed = chasingSpeed;
@@ -47,6 +56,18 @@ public class ChaseState : StateMachineBehaviour
         {
             animator.SetBool("isAttacking", false);
         }
+        
+        // Intervalo Grito
+        if (!canPlayScream)
+        {
+           screamCurInterval += Time.deltaTime;
+           if (screamCurInterval >= screamMaxInterval)
+           {
+               screamCurInterval = 0;
+               canPlayScream = true;
+           }
+        }
+        
         //Debug.Log(distance);
     }
 

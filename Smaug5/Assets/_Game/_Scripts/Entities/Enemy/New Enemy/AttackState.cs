@@ -7,12 +7,19 @@ public class AttackState : StateMachineBehaviour
     public float stopAttackDistance = 12f; 
     private Transform player;    
     //Índice do ataque aleatório        
-    private int attackIndex;              
+    private int attackIndex;
+    private int curSfxIndex = 1;
 
     //Método chamado ao entrar no estado de ataque
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlaySFX("enemy attack " + curSfxIndex);
+            if (curSfxIndex == 1) curSfxIndex = 2;
+            else curSfxIndex = 1;
+        }
         //Escolhe um ataque aleatório ao entrar no estado
         ChooseRandomAttack(animator);
     }
