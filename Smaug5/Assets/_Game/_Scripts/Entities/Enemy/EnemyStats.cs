@@ -47,7 +47,7 @@ public class EnemyStats : MonoBehaviour
             if (animator != null) 
             {
                 animator.enabled = false;
-                GetComponent<EnemyBehaviour>().enabled = false;
+                GetComponent<NewEnemyBehaviour>().enabled = false;
                 GetComponent<CapsuleCollider>().enabled = false;
                 GetComponent<NavMeshAgent>().enabled = false;
             }

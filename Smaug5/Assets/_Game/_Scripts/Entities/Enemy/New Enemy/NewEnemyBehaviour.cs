@@ -30,6 +30,7 @@ public class NewEnemyBehaviour : MonoBehaviour
     // Sfx:
     private int _enemySfxIndex = 1;
     private bool _canScream = true;
+    private int curSfxIndex = 1;
     #endregion
 
     #region Default Methods
@@ -52,6 +53,12 @@ public class NewEnemyBehaviour : MonoBehaviour
     #region Custom Methods
     public void disableAttack()
     {
+         if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlaySFX("enemy attack " + curSfxIndex);
+            if (curSfxIndex == 1) curSfxIndex = 2;
+            else curSfxIndex = 1;
+        }
         foreach (BoxCollider collider in _boxColliders)
         {
             collider.enabled = false;
