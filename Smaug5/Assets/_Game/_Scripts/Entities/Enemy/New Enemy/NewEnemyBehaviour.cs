@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UIElements;
 
 public class NewEnemyBehaviour : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class NewEnemyBehaviour : MonoBehaviour
     //Tamanho da visão do inimigo
     [Header("Visão do Inimigo:")]
     [SerializeField] private float lookRadius = 20f;
+
+    [Header("Grupo de WayPoints:")]
+    public GameObject waypointsGroup;
 
     [Header("Sons:")] 
     [SerializeField] private float screamInterval = 20f;
@@ -51,6 +55,25 @@ public class NewEnemyBehaviour : MonoBehaviour
     #endregion
 
     #region Custom Methods
+
+    //Gerando número aleatório para colocar no tempo de idle
+    public int RandomInteger(int min, int max)
+    {
+        return Random.Range(min, max);
+    }
+
+    // Retorna a lista de waypoints do inimigo
+    public List<Transform> GetWaypoints()
+    {
+        List<Transform> waypoints = new List<Transform>();
+        foreach (Transform t in waypointsGroup.transform)
+        {
+            waypoints.Add(t);
+        }
+        return waypoints;
+    }
+
+
     public void disableAttack()
     {
          if (AudioManager.Instance != null)
@@ -75,7 +98,7 @@ public class NewEnemyBehaviour : MonoBehaviour
         }
     }
 
-    //Apenas visual do raio de vis�o
+    //Apenas visual do raio de visão
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;

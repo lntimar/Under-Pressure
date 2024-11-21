@@ -8,24 +8,41 @@ public class PatrolState : StateMachineBehaviour
     private float timer;
     public float chaseRange = 20;
     public float patrolSpeed = 2;
+    private int randomTime;
     Transform player;
+    NavMeshAgent agent;
+
     //Lista com os pontos de patrulha do inimigo
     List<Transform> wayPoints = new List<Transform>();
-    NavMeshAgent agent;
+    private NewEnemyBehaviour neBehaviour;
 
     //OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        neBehaviour = animator.GetComponent<NewEnemyBehaviour>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         agent = animator.GetComponent<NavMeshAgent>();
         agent.speed = patrolSpeed;
         timer = 0;
+        //Tempo aleatório pra ficar idle
+        randomTime = neBehaviour.RandomInteger(5,10);
         
-        GameObject go = GameObject.FindGameObjectWithTag("WayPoints");
+        //Encontra o objeto pai com os Waypoints
+        if (neBehaviour != null)
+        {
+            wayPoints = neBehaviour.GetWaypoints();
+        }
+
+        // Inicia a patrulha para um waypoint aleatório
+        if (wayPoints.Count > 0)
+        {
+            agent.SetDestination(wayPoints[Random.Range(0, wayPoints.Count)].position);
+        }
+        /*GameObject go = GameObject.FindGameObjectWithTag("WayPoints");
         foreach(Transform t in go.transform)
             wayPoints.Add(t);
 
-        agent.SetDestination(wayPoints[Random.Range(0, wayPoints.Count)].position);
+        agent.SetDestination(wayPoints[Random.Range(0, wayPoints.Count)].position);*/
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -37,8 +54,10 @@ public class PatrolState : StateMachineBehaviour
         }
 
         timer += Time.deltaTime;
-        if (timer >= 5)
+        //if (timer >= 7)
+        if (timer >= randomTime)
             animator.SetBool("isPatrolling", false);
+
 
         //Persegue jogador com base na distância
         float distance = Vector3.Distance(player.position, animator.transform.position);
