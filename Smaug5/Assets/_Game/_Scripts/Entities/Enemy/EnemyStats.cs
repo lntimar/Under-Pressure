@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -18,10 +19,14 @@ public class EnemyStats : MonoBehaviour
     public GameObject soulPrefab;
     public GameObject lifePrefab;
     public Animator animator;
+    public PatrolState patrolState;
     [SerializeField] private Transform orbSpawnPoint;
     
     // Referências
+    Transform player;
     public static SonarScript SonarScript;
+
+    private float distance;
     #endregion
 
     #region Funções Unity
@@ -33,14 +38,32 @@ public class EnemyStats : MonoBehaviour
         }
     }
 
-    private void Start() => CurrentHealth = MaxHealth;
+    private void Start()
+    {
+        CurrentHealth = MaxHealth;
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+        patrolState = animator.GetBehaviour<PatrolState>();
+    } 
+
+    private void Update()
+    {
+        distance = Vector3.Distance(player.position, animator.transform.position);
+    }
+
     #endregion
 
     #region Funções Próprias
     public void ChangeHealthPoints(int points)
     {
         if (CurrentHealth > 0)
+        {
             CurrentHealth -= points;
+            if (distance > patrolState.chaseRange)
+            {
+                animator.SetTrigger("getShot");
+            }
+            //Debug.Log("Dano");
+        }
 
         if (CurrentHealth <= 0)
         {

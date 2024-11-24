@@ -6,8 +6,8 @@ using UnityEngine.AI;
 public class PatrolState : StateMachineBehaviour
 {
     private float timer;
-    public float chaseRange = 20;
-    public float patrolSpeed = 2;
+    public float chaseRange;
+    public float patrolSpeed;
     private int randomTime;
     Transform player;
     NavMeshAgent agent;

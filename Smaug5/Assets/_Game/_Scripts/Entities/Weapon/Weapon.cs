@@ -167,7 +167,7 @@ public class Weapon : MonoBehaviour
             EnemyStats enemyStats = hit.transform.GetComponent<EnemyStats>();
             if (enemyStats != null)
             {
-                Debug.Log(hit.transform.name + " is hit!");
+                //Debug.Log(hit.transform.name + " is hit!");
                 enemyStats.ChangeHealthPoints(damage);
                 var enemyHit = Instantiate(enemyHitPrefab, hit.point, Quaternion.LookRotation(hit.normal));
                 enemyHit.transform.position += enemyHit.transform.forward / 1000;
