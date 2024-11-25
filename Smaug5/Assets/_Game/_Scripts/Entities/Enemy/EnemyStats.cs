@@ -19,7 +19,7 @@ public class EnemyStats : MonoBehaviour
     public GameObject soulPrefab;
     public GameObject lifePrefab;
     public Animator animator;
-    public PatrolState patrolState;
+    private PatrolState patrolState;
     [SerializeField] private Transform orbSpawnPoint;
     
     // Referências
@@ -43,6 +43,7 @@ public class EnemyStats : MonoBehaviour
         CurrentHealth = MaxHealth;
         player = GameObject.FindGameObjectWithTag("Player").transform;
         patrolState = animator.GetBehaviour<PatrolState>();
+
     } 
 
     private void Update()
@@ -58,9 +59,12 @@ public class EnemyStats : MonoBehaviour
         if (CurrentHealth > 0)
         {
             CurrentHealth -= points;
-            if (distance > patrolState.chaseRange)
+            if (gameObject.CompareTag("Enemy"))
             {
-                animator.SetTrigger("getShot");
+                if (distance > patrolState.chaseRange)
+                {
+                    animator.SetTrigger("getShot");
+                }
             }
             //Debug.Log("Dano");
         }
@@ -70,9 +74,12 @@ public class EnemyStats : MonoBehaviour
             if (animator != null) 
             {
                 animator.enabled = false;
-                GetComponent<NewEnemyBehaviour>().enabled = false;
                 GetComponent<CapsuleCollider>().enabled = false;
-                GetComponent<NavMeshAgent>().enabled = false;
+                if (gameObject.CompareTag("Enemy"))
+                {
+                    GetComponent<NewEnemyBehaviour>().enabled = false;
+                    GetComponent<NavMeshAgent>().enabled = false;
+                }
             }
 
             Invoke("DestroyEnemy", destroyTime);
