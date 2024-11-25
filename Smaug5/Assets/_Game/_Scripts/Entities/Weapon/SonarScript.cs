@@ -6,9 +6,9 @@ using UnityEngine;
 
 public class SonarScript : MonoBehaviour
 {
-    #region Variáveis Globais
+    #region Variï¿½veis Globais
     // Inspector:
-    [Header("Configurações:")]
+    [Header("Configuraï¿½ï¿½es:")]
     public float force = 700f;
     public int soulsRequired = 3;
 
@@ -18,15 +18,15 @@ public class SonarScript : MonoBehaviour
     [Header("Efeitos:")] 
     public GameObject sonarEffect;
 
-    [Header("Referências:")]
+    [Header("Referï¿½ncias:")]
     public Animator withGunStateAnimator;
 
-    // Referências:
+    // Referï¿½ncias:
     private PlayerStats playerStats;
     private GameMenu _gameMenuScript;
     #endregion
 
-    #region Funções Unity
+    #region Funï¿½ï¿½es Unity
     private void Awake() => _gameMenuScript = FindObjectOfType<GameMenu>();
 
     private void Start() => playerStats = FindObjectOfType<PlayerStats>();
@@ -49,7 +49,7 @@ public class SonarScript : MonoBehaviour
                 affectedObjects.ForEach(obj =>
                 {
                     // Caso for o inimigo, ativar ragdoll
-                    if (obj.TryGetComponent<EnemyBehaviour>(out EnemyBehaviour enemyBehaviour))
+                    if (obj.TryGetComponent<NewEnemyBehaviour>(out NewEnemyBehaviour enemyBehaviour))
                     {
                         var ragdollScript = enemyBehaviour.transform.Find("Enemy Body").gameObject.GetComponent<EnemyRagdoll>();
                         ragdollScript.StartRagdoll();

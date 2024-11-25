@@ -173,7 +173,7 @@ public class Weapon : MonoBehaviour
                 enemyHit.transform.position += enemyHit.transform.forward / 1000;
                 Destroy(enemyHit, 1f);
             }
-            else if (hit.transform.gameObject.layer != CollisionLayersManager.Instance.Door.Index)
+            else if (hit.transform.gameObject.layer != CollisionLayersManager.Instance.Door.Index && hit.transform.gameObject.layer != CollisionLayersManager.Instance.ConversationTrigger.Index)
             {
                 var bulletHole = Instantiate(bulletHolePrefab, hit.point, Quaternion.LookRotation(hit.normal));
                 bulletHole.transform.position += bulletHole.transform.forward / 1000;
