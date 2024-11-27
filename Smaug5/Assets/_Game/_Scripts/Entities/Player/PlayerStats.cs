@@ -38,7 +38,7 @@ public class PlayerStats : MonoBehaviour
     #endregion
 
     #region Funções Unity
-    private void Awake()
+    private void Start()
     {
         _damageScript = FindObjectOfType<DamageHUD>();
 
@@ -57,6 +57,11 @@ public class PlayerStats : MonoBehaviour
             ChangeHealthPoints();
             ChangeOrbSouls();
         }
+    }
+    
+    private void Update()
+    {
+        Debug.Log(Health);
     }
     #endregion
 
