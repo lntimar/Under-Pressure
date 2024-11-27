@@ -6,7 +6,7 @@ using UnityEngine.XR;
 
 public class DialogueScript : MonoBehaviour
 {
-    #region Variáveis Globais
+    #region Variï¿½veis Globais
     public GameObject dialogueCanvas;
     public TextMeshProUGUI dialogueText;
     public string[] dialogueLines;
@@ -17,7 +17,7 @@ public class DialogueScript : MonoBehaviour
     private bool isDialogueActive = false;
     #endregion
 
-    #region Funções Unity
+    #region Funï¿½ï¿½es Unity
     private void Start()
     {
         _boxCollider = GetComponent<BoxCollider>();
@@ -38,7 +38,7 @@ public class DialogueScript : MonoBehaviour
 
     void Update()
     {
-        if (isDialogueActive && Input.GetMouseButtonDown(0))
+        if (isDialogueActive && Input.GetKeyDown(KeyCode.E))
         {
             if (dialogueText.text == dialogueLines[index])
             {
@@ -53,14 +53,14 @@ public class DialogueScript : MonoBehaviour
     }
     #endregion
 
-    #region Funções Próprias
+    #region Funï¿½ï¿½es Prï¿½prias
     public void StartDialogue()
     {
         index = 0;
         StartCoroutine(TypeLine());
     }
 
-    IEnumerator TypeLine() //escreve as linhas do diálogo
+    IEnumerator TypeLine() //escreve as linhas do diï¿½logo
     {
         foreach (char c in dialogueLines[index].ToCharArray())
         {
