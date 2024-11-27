@@ -48,10 +48,12 @@ public class SonarScript : MonoBehaviour
                 playerStats.ChangeOrbSouls(-3);
                 affectedObjects.ForEach(obj =>
                 {
+                    Debug.Log("xixi");
                     // Caso for o inimigo, ativar ragdoll
                     if (obj.TryGetComponent<NewEnemyBehaviour>(out NewEnemyBehaviour enemyBehaviour))
                     {
-                        var ragdollScript = enemyBehaviour.transform.Find("Enemy Body").gameObject.GetComponent<EnemyRagdoll>();
+                        Debug.Log("cocô");
+                        var ragdollScript = enemyBehaviour.gameObject.GetComponent<EnemyRagdoll>();
                         ragdollScript.StartRagdoll();
                         Invoke("ragdollScript.StopRagdoll", 3f);
                     }
@@ -73,7 +75,8 @@ public class SonarScript : MonoBehaviour
     public void OnTriggerEnter(Collider other)
     {
         var rb = other.GetComponent<Rigidbody>();
-        if (rb != null && other.gameObject.CompareTag("Enemy"))
+        //_rb != null
+        if (other.gameObject.CompareTag("Enemy"))
         {
             affectedObjects.Add(other.gameObject);
         }
@@ -82,7 +85,8 @@ public class SonarScript : MonoBehaviour
     public void OnTriggerExit(Collider other)
     {
         var rb = other.GetComponent<Rigidbody>();
-        if (rb != null)
+        //_rb != null
+        if (other.CompareTag("Enemy"))
         {
             affectedObjects.Remove(other.gameObject);
         }
