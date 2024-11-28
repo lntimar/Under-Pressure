@@ -109,7 +109,7 @@ public class EnemyStats : MonoBehaviour
             SonarScript.affectedObjects.Remove(gameObject);
         }*/
 
-        Invoke("SelfDestruct", destroyTime);
+        Invoke("SelfDestruct", 0.2f);
     }
 
     private void SelfDestruct() => Destroy(gameObject);

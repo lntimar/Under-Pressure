@@ -37,45 +37,35 @@ public class SonarScript : MonoBehaviour
 
         if (Input.GetMouseButtonDown(1))
         {
-            Debug.Log("Almas: " + PlayerStats.Souls);
-
             if (PlayerStats.Souls >= soulsRequired)
             {
                 withGunStateAnimator.Play("With Gun Shoot State Animation");
                 if (AudioManager.Instance != null) AudioManager.Instance.PlaySFX("weapon sonar");
-                Debug.Log("FUSRODAH");
                 sonarEffect.gameObject.SetActive(true);
                 playerStats.ChangeOrbSouls(-3);
                 affectedObjects.ForEach(obj =>
                 {
-                    Debug.Log("xixi");
                     // Caso for o inimigo, ativar ragdoll
                     if (obj.TryGetComponent<NewEnemyBehaviour>(out NewEnemyBehaviour enemyBehaviour))
                     {
-                        Debug.Log("cocô");
                         var ragdollScript = enemyBehaviour.gameObject.GetComponent<EnemyRagdoll>();
                         ragdollScript.StartRagdoll();
-                        Invoke("ragdollScript.StopRagdoll", 3f);
+                        Invoke("ragdollScript.StopRagdoll", 0.1f);
                     }
-
+                    
                     var rb = obj.GetComponent<Rigidbody>();
-                    rb.AddExplosionForce(force, transform.position, 15f, 2f);
-
-                    playerStats.ChangeOrbSouls(-3);
+                    rb.velocity = Vector3.zero;
+                    rb.AddExplosionForce(force, transform.position, 15f, 0.8f);
                 });
-            }
-           else if (PlayerStats.Souls < soulsRequired)
-            {
-                Debug.Log("Sem almas o suficiente!");
-                return;
+                
+                playerStats.ChangeOrbSouls(-3);
+                affectedObjects.Clear();
             }
         }
     }
 
     public void OnTriggerEnter(Collider other)
     {
-        var rb = other.GetComponent<Rigidbody>();
-        //_rb != null
         if (other.gameObject.CompareTag("Enemy"))
         {
             affectedObjects.Add(other.gameObject);
@@ -84,8 +74,6 @@ public class SonarScript : MonoBehaviour
 
     public void OnTriggerExit(Collider other)
     {
-        var rb = other.GetComponent<Rigidbody>();
-        //_rb != null
         if (other.CompareTag("Enemy"))
         {
             affectedObjects.Remove(other.gameObject);

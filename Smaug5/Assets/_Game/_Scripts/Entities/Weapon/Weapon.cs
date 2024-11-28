@@ -93,6 +93,12 @@ public class Weapon : MonoBehaviour
         _gameMenuScript = FindObjectOfType<GameMenu>();
     }
 
+    private void Start()
+    {
+        if (scannerHud != null)
+            scannerHud.SetAmmoBar();
+    }
+
     private void Update()
     {
         if (_gameMenuScript.IsPaused()) return;

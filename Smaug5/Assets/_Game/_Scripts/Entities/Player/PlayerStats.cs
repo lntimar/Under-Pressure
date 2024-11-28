@@ -54,14 +54,12 @@ public class PlayerStats : MonoBehaviour
         }
         else
         {
+            if (scannerHud != null)
+                scannerHud.SetSonarEnergyBar(Souls);
+            
             ChangeHealthPoints();
             ChangeOrbSouls();
         }
-    }
-    
-    private void Update()
-    {
-        Debug.Log(Health);
     }
     #endregion
 

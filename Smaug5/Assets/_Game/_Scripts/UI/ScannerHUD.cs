@@ -40,6 +40,11 @@ public class ScannerHUD : MonoBehaviour
 
         _enemies = FindObjectsOfType<EnemyBehaviour>().ToList();
     }
+
+    private void Start()
+    {
+        
+    }
     #endregion
     
     #region Funções Próprias

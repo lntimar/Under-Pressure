@@ -46,12 +46,6 @@ public class NewEnemyBehaviour : MonoBehaviour
         _agent = GetComponent<NavMeshAgent>();
         _boxColliders = GetComponentsInChildren<BoxCollider>();
     }
-
-    private void Update()
-    {
-    }
-
-
     #endregion
 
     #region Custom Methods
@@ -85,7 +79,7 @@ public class NewEnemyBehaviour : MonoBehaviour
         foreach (BoxCollider collider in _boxColliders)
         {
             collider.enabled = false;
-            Debug.Log("Desativou Colisor");
+            //Debug.Log("Desativou Colisor");
         }
     }
 
@@ -94,7 +88,7 @@ public class NewEnemyBehaviour : MonoBehaviour
         foreach (BoxCollider collider in _boxColliders)
         {
             collider.enabled = true;
-            Debug.Log("Ativou Colisor");
+            //Debug.Log("Ativou Colisor");
         }
     }
 
@@ -104,7 +98,6 @@ public class NewEnemyBehaviour : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, lookRadius);
     }
-
     #endregion
 
 }
