@@ -4,24 +4,33 @@ using UnityEngine;
 
 public class MainMenuManager : MonoBehaviour
 {
-    #region Variáveis Globais
+    #region Variï¿½veis Globais
     // Inspector:
     [Header("Cursor:")] 
     [SerializeField] private Texture2D cursorTexture;
 
-    // Instância da Classe
+    // Instï¿½ncia da Classe
     public static MainMenuManager Instance;
 
-    // Referências dos Menus que serão manipulados
+    // Referï¿½ncias dos Menus que serï¿½o manipulados
     public static GameObject MainMenu, OptionsMenu, ControlsMenu, CreditsMenu;
 
-    // Efeitos Sonoros Botões
+    // Efeitos Sonoros Botï¿½es
     private int _curBtnSFXindex = 1;
+    
+    private static bool _isFirstTime = true;
     #endregion
 
-    #region Funções Unity
+    #region Funï¿½ï¿½es Unity
     private void Awake()
     {
+
+        if (_isFirstTime)
+        {
+            AudioListener.volume = 0.5f;
+            _isFirstTime = false;
+        }
+        
         Instance = this;
         Init();
         SetCursor();
@@ -30,8 +39,8 @@ public class MainMenuManager : MonoBehaviour
     private void Start() => Cursor.visible = true;
     #endregion
 
-    #region Funções Próprias
-    // Coletando os objetos necessários
+    #region Funï¿½ï¿½es Prï¿½prias
+    // Coletando os objetos necessï¿½rios
     private void Init()
     {
         var menuCanvas = GameObject.Find("MainMenu Canvas");
